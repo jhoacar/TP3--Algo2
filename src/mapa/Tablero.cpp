@@ -1,6 +1,6 @@
 #include "Tablero.h"
 #include <iostream>
-#include "Funciones.h"
+#include "../funcionalidades/Funciones.h"
 
 using namespace std;
 

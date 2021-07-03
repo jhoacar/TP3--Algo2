@@ -33,6 +33,8 @@ SRC 		:= src
 OBJ 		:= obj
 HEADERS		:= 
 #./src/funcionalidades/Funciones.h ./src/funcionalidades/Lista.h ./src/funcionalidades/Nodo.h ./src/objetos/Objeto.h
+TEST 		:= test
+
 ###########################################################
 
 ifeq ($(OS),Windows_NT) #WINDOWS ...
@@ -41,7 +43,7 @@ ifeq ($(OS),Windows_NT) #WINDOWS ...
 SEARCH_FILES := dir /s/b
 SEARCH_DIRS  := dir $(SRC) /ad /b /s
 DELETE_FILES := rmdir /Q /S 
-MKDIR 		:= mkdir
+MKDIR 		 := mkdir
 ##########################################################
 else #LINUX ...
 ##########################################################
@@ -49,17 +51,20 @@ else #LINUX ...
 SEARCH_FILES := find $(SRC)/ -type f -iname
 SEARCH_DIRS  := find $(SRC)/ -type d
 DELETE_FILES := rm -f -r ./
-MKDIR 		:= mkdir -p
+MKDIR 		 := mkdir -p
 ##########################################################
 endif
 
 #########################################################
 ### EXTRACCION FICHEROS DEL PROYECTO 
-ALLCPPS 	:= $(shell $(SEARCH_FILES) *.cpp)
-ALLOBJECTS 	:= $(subst .cpp,.o,$(subst $(SRC),$(OBJ),$(ALLCPPS)))#sustituimos la carpeta SRC por OBJ y la extencion .cpp por .o
+MAIN 			:= $(shell $(SEARCH_FILES) main.cpp)
+ALLTESTS		:= $(shell $(subst $(SRC),test,$(SEARCH_FILES)) test_*.cpp)
+ALLCPPS 		:= $(subst $(ALLTESTS),,$(shell $(SEARCH_FILES) *.cpp))
+ALLOBJECTS 		:= $(subst .cpp,.o,$(subst $(SRC),$(OBJ),$(ALLCPPS)))#sustituimos la carpeta SRC por OBJ y la extencion .cpp por .o
+ALLOBJECTS_TEST := $(subst $(call TO_OBJ,$(MAIN)),,$(ALLOBJECTS))
 
-SUBDIRS 	:= $(shell $(SEARCH_DIRS)) 
-OBJSUBDIRS	:= $(subst $(SRC),$(OBJ),$(SUBDIRS))#sustituimos la carpeta SRC por OBJ
+SUBDIRS 		:= $(shell $(SEARCH_DIRS)) 
+OBJSUBDIRS		:= $(subst $(SRC),$(OBJ),$(SUBDIRS))#sustituimos la carpeta SRC por OBJ
 #########################################################
 
 
@@ -94,6 +99,10 @@ clean:
 valgrind:
 	$(VALGRIND) ./$(APP)
 ########################################################
+
+test: $(OBJSUBDIRS) $(ALLOBJECTS_TEST)
+	$(CPP) -c -o $(call TO_OBJ,$(shell $(SEARCH_FILES) $(TEST).cpp)) $(shell $(SEARCH_FILES) $(TEST).cpp) $(FLAGS)
+	$(CPP) -o $(TEST) $(ALLOBJECTS_TEST) $(call TO_OBJ,$(shell $(SEARCH_FILES) $(TEST).cpp))
 
 
 #PHONY es Util para que no sea dependiente y ejecute solo con instruccion. Ejemplo: make info

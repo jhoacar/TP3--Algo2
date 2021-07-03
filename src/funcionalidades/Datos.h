@@ -2,7 +2,7 @@
 #define DATOS_H
 
 #include "../objetos/Objeto.h"
-#include "Tablero.h"
+#include "../mapa/Tablero.h"
 #include <string>
 using std::string;
 using std::type_info;

@@ -2,7 +2,7 @@
 #define TABLERO_H
 
 #include "../objetos/Objeto.h"
-#include "Lista.h"
+#include "../funcionalidades/Lista.h"
 
 const string CARDINALES[4] = {"NO","SO","NE","SE"};
 
