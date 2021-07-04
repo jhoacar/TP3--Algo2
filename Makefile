@@ -33,7 +33,7 @@ SRC 		:= src
 OBJ 		:= obj
 HEADERS		:= 
 #./src/funcionalidades/Funciones.h ./src/funcionalidades/Lista.h ./src/funcionalidades/Nodo.h ./src/objetos/Objeto.h
-TEST 		:= test
+TEST 		:= no_hay_test_todavia
 
 ###########################################################
 

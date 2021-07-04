@@ -25,6 +25,10 @@ void pausa(){
 }
 #endif // __MINGW32__
 
+void activar_color(void){
+	limpiar_pantalla();
+}
+
 void color(int color){
 
 	if(color >= 0 && color< (int)CANTIDAD_COLORES)

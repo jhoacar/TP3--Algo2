@@ -3,6 +3,8 @@
 #include <iostream>
 int main(int argc, char *argv[]){
     
+    activar_color();
+
     string archivo = "estado.txt";
     
     if(argc>1)

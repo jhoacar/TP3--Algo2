@@ -20,6 +20,20 @@ int comparacion(Dato A, Dato B){
         return SMALLER;
 }
 
+/*
+PRE: Dos datos cargados
+POST: Intercambia el valor de ambos datos
+*/
+template <class Dato>
+void swap_datos(Dato &A, Dato &B){
+
+  Dato tmp = A;
+  
+  A = B;
+  
+  B = tmp;
+}
+
 template <class Dato>
 class Lista
 {
@@ -93,11 +107,11 @@ class Lista
     
     //Pre: Un indice a buscar en la lista
     //Post: Devuelve una referencia del dato que se encuentra en dicha posicion
-		Dato& operator[](const int index) const;
+	Dato& operator[](const int index) const;
     
     //Pre: Una lista con la informacion a cargar
     //Post: Eliminimoa la informacion que se encontraba antes y copia la informacion de ahora de la lista
-		void operator=(Lista &list);
+	void operator=(Lista &list);
     
     //Pre: Una lista a unir
     //Post: Devuelve un puntero con la lista de la union, eliminimoando la informacion de la lista del parametro
@@ -376,7 +390,7 @@ void Lista<Dato>::swap(const int index_a, const int index_b){
   if(node_a == nullptr || node_b == nullptr)
     return;
 
-  swap_data( *(node_a->dato), *(node_b->dato) );
+  swap_datos( *(node_a->dato), *(node_b->dato) );
 
 }
 
@@ -399,7 +413,7 @@ Lista<Dato>* Lista<Dato>::obtener_union(Lista &lista){
 template <class Dato>
 void Lista<Dato>::revertir(){
 
-  int middle = int(size/2) - (int)size % 2 == 0 ;
+  int middle = int(size/2) - (((int)size % 2) == 0 );
   
   for(int i = 0 ; i<= middle ; i++)
     swap( i , (int)size - i - 1 );

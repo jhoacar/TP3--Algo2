@@ -74,6 +74,11 @@ bool mostrar_fichero(string name);
 PRE: Un color comprendido en las constantes de colores
 POST: Cambia en la consola el formato de impresion al color de correspondiente
 */
+void activar_color(void);
+/*
+PRE: Un color comprendido en las constantes de colores
+POST: Cambia en la consola el formato de impresion al color de correspondiente
+*/
 void color(int color);
 /*
 PRE: Un numero entero
@@ -101,19 +106,6 @@ int buscar_dato(const Dato vector[],const size_t tope , Dato dato){
 	return encontrado? indice : NO_ENCONTRADO;
 }
 
-/*
-PRE: Dos datos cargados
-POST: Intercambia el valor de ambos datos
-*/
-template <class Dato>
-void swap_datos(Dato &A, Dato &B){
-
-  Dato tmp = A;
-  
-  A = B;
-  
-  B = tmp;
-}
 
 
 #endif
