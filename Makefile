@@ -58,7 +58,7 @@ endif
 #########################################################
 ### EXTRACCION FICHEROS DEL PROYECTO 
 MAIN 			:= $(shell $(SEARCH_FILES) main.cpp)
-ALLTESTS		:= $(shell $(subst $(SRC),test,$(SEARCH_FILES)) test_*.cpp)
+ALLTESTS		:= $(shell $(subst $(SRC),tests,$(SEARCH_FILES)) test_*.cpp)
 ALLCPPS 		:= $(subst $(ALLTESTS),,$(shell $(SEARCH_FILES) *.cpp))
 ALLOBJECTS 		:= $(subst .cpp,.o,$(subst $(SRC),$(OBJ),$(ALLCPPS)))#sustituimos la carpeta SRC por OBJ y la extencion .cpp por .o
 ALLOBJECTS_TEST := $(subst $(call TO_OBJ,$(MAIN)),,$(ALLOBJECTS))
