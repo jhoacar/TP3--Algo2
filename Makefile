@@ -106,15 +106,9 @@ valgrind:
 	$(VALGRIND) ./$(APP)
 ########################################################
 
-<<<<<<< HEAD
-test: $(OBJSUBDIRS) $(ALLOBJECTS_TEST)
-	$(CPP) -c -o $(call TO_OBJ,./tests/$(TEST).cpp) ./tests/$(TEST).cpp $(FLAGS)
-	$(CPP) -o $(TEST) $(ALLOBJECTS_TEST) $(call TO_OBJ,$(shell $(SEARCH_FILES) $(TEST).cpp))
-=======
 test: $(OBJSUBDIRS) $(ALLOBJECTS_TEST) TESTOBJSUBDIRS
 	$(CPP) -c -o tests_obj/$(TEST).o tests/$(TEST).cpp $(FLAGS)
 	$(CPP) -o $(TEST) $(ALLOBJECTS_TEST) tests_obj/$(TEST).o
->>>>>>> Jhoan
 
 
 #PHONY es Util para que no sea dependiente y ejecute solo con instruccion. Ejemplo: make info
