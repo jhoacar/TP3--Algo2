@@ -46,10 +46,10 @@ const string ANSI_COLOR[CANTIDAD_COLORES] = {"\x1b[31m","\x1b[32m","\x1b[33m","\
 const int NO_ENCONTRADO = -1;
 const string NO_NUMERO = "-1";
 
-//Constantes de uso para convencion entre mayor menor o igual de dos datos
-const int SMALLER = -1;
-const int BIGGER = 1;
-const int EQUALS = 0;
+//Constantes de uso para convencion entre mayor menor o igualdad de dos datos
+const int PEQUENO = -1;
+const int GRANDE = 1;
+const int IGUAL = 0;
 
 #endif
 

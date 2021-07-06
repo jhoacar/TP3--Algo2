@@ -3,6 +3,9 @@
 #include <iostream>
 int main(int argc, char *argv[]){
     
+
+    srand(12243443432);
+
     activar_color();
 
     string archivo = "estado.txt";

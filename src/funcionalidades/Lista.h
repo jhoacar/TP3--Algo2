@@ -5,15 +5,15 @@
 #include "../constantes/Constantes.h"
 
 //Pre: Dos datos a comparar, con sobrecargas de los operadores "<,>,=="
-//Post: Compara y devuelve SMALLER si A es menor que B, BIGGER si A es mayor que B y EQUALS caso contrario
+//Post: Compara y devuelve PEQUENO si A es menor que B, GRANDE si A es mayor que B y IGUAL caso contrario
 template<class Dato>
 int comparacion(Dato A, Dato B){
     if(A==B)
-        return EQUALS;
+        return IGUAL;
     else if(A>B)
-        return BIGGER;
+        return GRANDE;
     else
-        return SMALLER;
+        return PEQUENO;
 }
 
 /*
@@ -178,11 +178,11 @@ class Lista
     bool existen_todos(Lista &lista, int(*compare)(Dato A, Dato B));
 
     
-    //Pre: Una funcion de comparacion de datos que devuelve EQUALS, BIGGER o SMALLER
+    //Pre: Una funcion de comparacion de datos que devuelve IGUAL, GRANDE o PEQUENO
     //Post: Devuelve el menor elemento de la lista por dicha funcion
     Dato minimo(int(*compare)(Dato A, Dato B));
 
-    //Pre: Una funcion de comparacion de datos que devuelve EQUALS, BIGGER o SMALLER
+    //Pre: Una funcion de comparacion de datos que devuelve IGUAL, GRANDE o PEQUENO
     //Post: Devuelve el mayor elemento de la lista por dicha funcion
     Dato maximo(int(*compare)(Dato A, Dato B));
 };
@@ -323,12 +323,12 @@ int Lista<Dato>::buscar_dato(int start_search,const Dato dato, int (*compare)(Da
   if(nodo==nullptr)
     return NO_ENCONTRADO;
 
-  bool found = compare(*(nodo->dato) , dato) == EQUALS;
+  bool found = compare(*(nodo->dato) , dato) == IGUAL;
 
   while(start_search < (int) size && !found){
     nodo = nodo->siguiente;
     if(nodo!=nullptr)
-      found = compare(*(nodo->dato) , dato) == EQUALS;
+      found = compare(*(nodo->dato) , dato) == IGUAL;
     start_search++;
   } 	
   return found ? start_search : NO_ENCONTRADO;
@@ -367,7 +367,7 @@ void Lista<Dato>::limpiar(int (*compare)(const Dato a, const Dato b)){
   Lista nueva;
   while(existe_siguiente()){
     Dato dato = siguiente_dato();
-    if(compare(dato,*(actual->dato))!=EQUALS) 
+    if(compare(dato,*(actual->dato))!=IGUAL) 
       nueva.agregar(dato);
   }  
   *this=nueva;
@@ -500,7 +500,7 @@ Dato Lista<Dato>::minimo(int (*compare)(Dato A,Dato B)){
     minimo = siguiente_dato();
   while(existe_siguiente()){
     dato = siguiente_dato();
-    if(compare(dato,minimo)==SMALLER)
+    if(compare(dato,minimo)==PEQUENO)
       minimo = dato;
   }
   reiniciar();
@@ -514,7 +514,7 @@ Dato Lista<Dato>::maximo(int (*compare)(Dato A,Dato B)){
     maximo = siguiente_dato();
   while(existe_siguiente()){
     dato = siguiente_dato();
-    if(compare(dato,maximo)==BIGGER)
+    if(compare(dato,maximo)==GRANDE)
       maximo = dato;
   }
   reiniciar();
@@ -528,7 +528,7 @@ Lista<Dato>* selection_ordenar(Lista<Dato> &list,int (*compare)(const Dato a, co
         Dato minimo = (*nueva)[i];
         int minimo_index = i;
         for(int j = i+1 ; j < nueva->obtener_tamano() ; j++ ){
-          if( compare( (*nueva)[j] , minimo ) == SMALLER ){
+          if( compare( (*nueva)[j] , minimo ) == PEQUENO ){
             minimo = (*nueva)[j];
             minimo_index = j;
           }
@@ -547,7 +547,7 @@ Lista<Dato>* quick_ordenar(Lista<Dato> &list,int (*compare)(const Dato a, const 
     Dato pivot = list[0];
 
     for(int i=1;i<list.obtener_tamano();i++){
-        if(compare(list[i],pivot)==SMALLER)
+        if(compare(list[i],pivot)==PEQUENO)
           left.agregar(list[i]);
         else
           right.agregar(list[i]);

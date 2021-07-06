@@ -32,6 +32,10 @@ void color(int color){
 		cout<<ANSI_COLOR[color];
 }
 
+int obtener_numero_aleatorio(int min, int max){
+	return rand()%max + min;
+}
+
 void limpiar_pantalla(){
 
 	system(LIMPIAR);

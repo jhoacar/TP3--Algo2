@@ -19,8 +19,10 @@ class Casilla{
 
         }
         virtual ~Casilla()=default;
+        
         virtual char obtener_tipo()=0;
         virtual int obtener_energia(int tipo_personaje)=0;
+
         string obtener_cuadrante(){
             return cuadrante;
         }

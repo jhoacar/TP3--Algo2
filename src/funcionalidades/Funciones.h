@@ -60,6 +60,8 @@ PRE: Las opciones que se muestran al usuario, el error por si se equivoca, el in
 POST: Devuelve la opcion del dato elegido del string de opciones o NO_ENCONTRADO (-1) si la opcion fue salir
 */
 int pedir_dato(string opciones,string error,int inicio,int fin,char opcion_salir);
+
+int obtener_numero_aleatorio(int min, int max);
 /*
 PRE: Un nombre del fichero a buscar
 POST: Muestra la informacion del fichero en pantalla, validando los caracteres especiales
