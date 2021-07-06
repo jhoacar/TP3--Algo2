@@ -58,7 +58,7 @@ endif
 #########################################################
 ### EXTRACCION FICHEROS DEL PROYECTO 
 MAIN 			:= $(shell $(SEARCH_FILES) main.cpp)
-ALLTESTS		:= $(shell $(subst $(SRC),test,$(SEARCH_FILES)) test_*.cpp)
+ALLTESTS		:= $(shell $(subst $(SRC),tests,$(SEARCH_FILES)) test_*.cpp)
 ALLCPPS 		:= $(subst $(ALLTESTS),,$(shell $(SEARCH_FILES) *.cpp))
 ALLOBJECTS 		:= $(subst .cpp,.o,$(subst $(SRC),$(OBJ),$(ALLCPPS)))#sustituimos la carpeta SRC por OBJ y la extencion .cpp por .o
 ALLOBJECTS_TEST := $(subst $(call TO_OBJ,$(MAIN)),,$(ALLOBJECTS))
@@ -86,12 +86,18 @@ $(foreach FICHERO,$(ALLCPPS),$(eval $(call COMPILACION,$(CPP),$(call TO_OBJ,$(FI
 ### CREANDO LOS SUBDIRECTORIOS ./obj
 $(OBJSUBDIRS):
 	$(MKDIR) $(OBJSUBDIRS)
+
+TESTOBJSUBDIRS:
+	$(MKDIR) tests_obj
+
 ########################################################
 
 ########################################################
 ### ELIMINANDO TODA LA CARPETA ./obj
 clean:
 	$(DELETE_FILES)$(OBJ)
+	$(DELETE_FILES)tests_obj
+
 ########################################################
 
 ########################################################
@@ -100,9 +106,9 @@ valgrind:
 	$(VALGRIND) ./$(APP)
 ########################################################
 
-test: $(OBJSUBDIRS) $(ALLOBJECTS_TEST)
-	$(CPP) -c -o $(call TO_OBJ,$(shell $(SEARCH_FILES) $(TEST).cpp)) $(shell $(SEARCH_FILES) $(TEST).cpp) $(FLAGS)
-	$(CPP) -o $(TEST) $(ALLOBJECTS_TEST) $(call TO_OBJ,$(shell $(SEARCH_FILES) $(TEST).cpp))
+test: $(OBJSUBDIRS) $(ALLOBJECTS_TEST) TESTOBJSUBDIRS
+	$(CPP) -c -o tests_obj/$(TEST).o tests/$(TEST).cpp $(FLAGS)
+	$(CPP) -o $(TEST) $(ALLOBJECTS_TEST) tests_obj/$(TEST).o
 
 
 #PHONY es Util para que no sea dependiente y ejecute solo con instruccion. Ejemplo: make info
