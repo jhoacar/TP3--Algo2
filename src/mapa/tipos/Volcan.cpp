@@ -16,7 +16,7 @@ char Volcan::obtener_tipo(){
 }
 int Volcan::obtener_energia(int tipo_personaje){
 
-    if(tipo_personaje>=0 && tipo_personaje<=MAX_TIPO_PERSONAJE)
+    if(tipo_personaje>=0 && tipo_personaje<= (int)MAX_TIPO_PERSONAJE)
 
         return ENERGIAS[tipo_personaje][VOLCAN];
     
