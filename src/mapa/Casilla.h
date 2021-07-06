@@ -31,7 +31,7 @@ class Casilla{
             this->objetos.agregar(objeto);
         }
         bool eliminar_objeto(Objeto *objeto){
-            this->objetos.borrar_dato(objeto,comparacion);
+            return this->objetos.borrar_dato(objeto,comparacion);
         }
         Lista<Objeto*> obtener_objetos(){
             return objetos;

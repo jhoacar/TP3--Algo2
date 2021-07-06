@@ -73,19 +73,19 @@ string Tablero::obtener_cuadrante(Coordenada posicion){
 
     else if(posicion.obtener_x()<columnas/2 && posicion.obtener_y()<filas/2)
     
-        return CARDINALES[NO];
+        return CARDINALES[NOROESTE];
     
     else if(posicion.obtener_x()>columnas/2 && posicion.obtener_y()>filas/2)
     
-        return CARDINALES[SE];
+        return CARDINALES[SURESTE];
     
     else if(posicion.obtener_x()>=columnas/2 && posicion.obtener_y()<=filas/2)
     
-        return CARDINALES[NE];
+        return CARDINALES[NORESTE];
     
     else
     
-        return CARDINALES[SO];
+        return CARDINALES[SUROESTE];
 }
 
 bool Tablero::posicion_valida(Coordenada posicion){
@@ -195,7 +195,7 @@ void Tablero::mostrar_tablero(){
                 if(casillas[i][j]!=nullptr){
                     
                     color(AMARILLO);
-                    cout<<" "<<casillas[i][j]->obtener_nombre()<<" ";
+                    //cout<<" "<<casillas[i][j]->obtener_nombre()<<" ";
                     color(RESET);
                     
                 }
@@ -225,13 +225,13 @@ void Tablero::mostrar_leyenda(){
 
     cout<<"\n\tCONVENCION USADA: "<<endl;
     cout<<"\n-*: vacio";
-    cout<<"\n- h: humano simple";
-    cout<<"\n- H: humano caza vampiros-zombis";
+    cout<<"\n- h: humaNOROESTE simple";
+    cout<<"\n- H: humaNOROESTE caza vampiros-zombis";
     cout<<"\n- W: Vanesa";
     cout<<"\n- z: zombi";
     cout<<"\n- v: vampiro";
     cout<<"\n- V: Vampirella"; 
-    cout<<"\n- N: Nosferatu ";
+    cout<<"\n- N: NOROESTEsferatu ";
     cout<<"\n- c: cruz ";
     cout<<"\n- a: agua bendita ";
     cout<<"\n- e: estaca ";
