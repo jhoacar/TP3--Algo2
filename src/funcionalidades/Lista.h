@@ -2,11 +2,7 @@
 #define LISTA_H
 
 #include "Nodo.h"
-
-const int SMALLER = -1;
-const int BIGGER = 1;
-const int EQUALS = 0;
-const int DONT_FOUND = -1;
+#include "../constantes/Constantes.h"
 
 //Pre: Dos datos a comparar, con sobrecargas de los operadores "<,>,=="
 //Post: Compara y devuelve SMALLER si A es menor que B, BIGGER si A es mayor que B y EQUALS caso contrario
@@ -302,7 +298,7 @@ bool Lista<Dato>::es_valido(const int index) const{
 
 template <class Dato>
 bool Lista<Dato>::existe(Dato dato,int (*compare)(Dato A , Dato B)) const{
-  return buscar_dato(0,dato,compare) != DONT_FOUND;
+  return buscar_dato(0,dato,compare) != NO_ENCONTRADO;
 }
 
 
@@ -325,7 +321,7 @@ int Lista<Dato>::buscar_dato(int start_search,const Dato dato, int (*compare)(Da
   Nodo<Dato> *nodo = buscar_nodo(start_search);
   
   if(nodo==nullptr)
-    return DONT_FOUND;
+    return NO_ENCONTRADO;
 
   bool found = compare(*(nodo->dato) , dato) == EQUALS;
 
@@ -335,7 +331,7 @@ int Lista<Dato>::buscar_dato(int start_search,const Dato dato, int (*compare)(Da
       found = compare(*(nodo->dato) , dato) == EQUALS;
     start_search++;
   } 	
-  return found ? start_search : DONT_FOUND;
+  return found ? start_search : NO_ENCONTRADO;
 }
 
 template <class Dato>
@@ -444,7 +440,7 @@ void Lista<Dato>::borrar_todo_occurrences(const Dato dato, int (*compare)(Dato A
   do{
     start = buscar_dato(start,dato,compare);
     borrar(start);
-  }while(start!= DONT_FOUND);
+  }while(start!= NO_ENCONTRADO);
 }
 
 template <class Dato>

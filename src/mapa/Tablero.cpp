@@ -11,7 +11,7 @@ Tablero::Tablero(){
 
     this->columnas=0;
 
-    objetos=nullptr;
+    casillas=nullptr;
 
 }
 
@@ -22,16 +22,16 @@ Tablero::Tablero(int filas,int columnas)
 
     this->columnas=columnas;
 
-    objetos = new Objeto**[filas];
+    casillas = new Casilla**[filas];
 
     for(int i=0; i < filas; i++)
-        objetos[i] = new Objeto*[columnas];
+        casillas[i] = new Casilla*[columnas];
 
 
     for(int i=0; i < filas ;i++){
 
         for(int j=0; j < columnas ;j++)
-            objetos[i][j]=nullptr;
+            casillas[i][j]=nullptr;
     }
 
 }
@@ -42,11 +42,11 @@ Tablero::~Tablero()
 
         for(int j=0; j < columnas ; j++){
 
-            if(objetos[i][j] != nullptr){
+            if(casillas[i][j] != nullptr){
 
-                delete objetos[i][j];
+                delete casillas[i][j];
 
-                objetos[i][j]=nullptr;
+                casillas[i][j]=nullptr;
 
             }
         }
@@ -54,15 +54,15 @@ Tablero::~Tablero()
 
     for(int i=0 ; i < filas ;i++){
     
-        delete[] objetos[i];
+        delete[] casillas[i];
     
-        objetos[i]=nullptr;
+        casillas[i]=nullptr;
     
     }
 
-    delete [] objetos;
+    delete [] casillas;
 
-    objetos=nullptr;
+    casillas=nullptr;
 }
 
 string Tablero::obtener_cuadrante(Coordenada posicion){
@@ -107,7 +107,7 @@ void Tablero::cargar_objeto(Objeto *objeto){
 
             objeto->asignar_cuadrante( obtener_cuadrante ( posicion ) );
     
-            objetos[ posicion.obtener_y() ][ posicion.obtener_x() ] = objeto;
+            //casillas[ posicion.obtener_y() ][ posicion.obtener_x() ] = objeto;
     
         }
 
@@ -131,11 +131,11 @@ bool Tablero::eliminar_objeto(Coordenada posicion){
 
     if(posicion_valida(posicion)){
         
-        if(objetos[posicion.obtener_y()][posicion.obtener_x()]!=nullptr){
+        if(casillas[posicion.obtener_y()][posicion.obtener_x()]!=nullptr){
             
-            delete objetos[posicion.obtener_y()][posicion.obtener_x()];
+            delete casillas[posicion.obtener_y()][posicion.obtener_x()];
             
-            objetos[posicion.obtener_y()][posicion.obtener_x()]=nullptr;
+            casillas[posicion.obtener_y()][posicion.obtener_x()]=nullptr;
             
             return true;
         }
@@ -192,10 +192,10 @@ void Tablero::mostrar_tablero(){
                     color(RESET);
                 }    
 
-                if(objetos[i][j]!=nullptr){
+                if(casillas[i][j]!=nullptr){
                     
                     color(AMARILLO);
-                    cout<<" "<<objetos[i][j]->obtener_nombre()<<" ";
+                    cout<<" "<<casillas[i][j]->obtener_nombre()<<" ";
                     color(RESET);
                     
                 }

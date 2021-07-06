@@ -7,9 +7,6 @@ using std::stringstream;
 using std::fstream;
 using std::cin;
 
-const string NO_NUMERO = "-1";
-
-
 #ifdef __linux__
 #define LIMPIAR "clear"
 void pausa(){

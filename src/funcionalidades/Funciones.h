@@ -1,6 +1,7 @@
 #ifndef FUNCIONES_H
 #define FUNCIONES_H
 
+#include "../constantes/Constantes.h"
 #include "Lista.h"
 
 #include <string>
@@ -8,13 +9,7 @@
 
 using namespace std;
 
-const size_t CANTIDAD_COLORES = 8; 
 
-enum {ROJO=0,VERDE,AMARILLO,AZUL,VIOLETA,CYAN,BLANCO,RESET};
-
-const string ANSI_COLOR[CANTIDAD_COLORES] = {"\x1b[31m","\x1b[32m","\x1b[33m","\x1b[34m","\x1b[35m","\x1b[36m","\x1b[37m","\x1b[0m"};
-
-const int NO_ENCONTRADO = -1;
 /*
 PRE: Un caracter a evaluar
 POST: Verdadero si es minuscula, falso caso contrario

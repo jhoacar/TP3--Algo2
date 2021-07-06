@@ -1,16 +1,14 @@
 #ifndef TABLERO_H
 #define TABLERO_H
 
+#include "../constantes/Constantes.h"
 #include "../objetos/Objeto.h"
-#include "../funcionalidades/Lista.h"
+#include "Casilla.h"
 
-const string CARDINALES[4] = {"NO","SO","NE","SE"};
-
-enum {NO=0,SO,NE,SE};
 
 class Tablero
 {
-	Objeto ***objetos;
+	Casilla ***casillas;
 	int filas;
     int columnas;
 	public:

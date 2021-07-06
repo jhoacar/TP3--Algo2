@@ -31,8 +31,7 @@ VALGRIND	:= valgrind
 FLAGS 		:= -ggdb -std=c++11 -Wconversion -O0 -limits -Wall -Werror -pedantic
 SRC 		:= src
 OBJ 		:= obj
-HEADERS		:= 
-#./src/funcionalidades/Funciones.h ./src/funcionalidades/Lista.h ./src/funcionalidades/Nodo.h ./src/objetos/Objeto.h
+HEADERS		:= Lista.h Nodo.h Objeto.h Casilla.h Constantes.h
 TEST 		:= no_hay_test_todavia
 
 ###########################################################
@@ -65,6 +64,7 @@ ALLOBJECTS_TEST := $(subst $(call TO_OBJ,$(MAIN)),,$(ALLOBJECTS))
 
 SUBDIRS 		:= $(shell $(SEARCH_DIRS)) 
 OBJSUBDIRS		:= $(subst $(SRC),$(OBJ),$(SUBDIRS))#sustituimos la carpeta SRC por OBJ
+DIR_HEADERS 	:= $(shell $(SEARCH_FILES) $(HEADERS))
 #########################################################
 
 
@@ -78,7 +78,7 @@ $(APP): $(OBJSUBDIRS) $(ALLOBJECTS)
 
 ########################################################
 ### GENERADOR DE REGLAS PARA CADA .o
-$(foreach FICHERO,$(ALLCPPS),$(eval $(call COMPILACION,$(CPP),$(call TO_OBJ,$(FICHERO)),$(FICHERO),$(HEADERS),$(FLAGS))))
+$(foreach FICHERO,$(ALLCPPS),$(eval $(call COMPILACION,$(CPP),$(call TO_OBJ,$(FICHERO)),$(FICHERO),$(DIR_HEADERS),$(FLAGS))))
 ########################################################
 
 
@@ -114,4 +114,4 @@ test: $(OBJSUBDIRS) $(ALLOBJECTS_TEST) TESTOBJSUBDIRS
 #PHONY es Util para que no sea dependiente y ejecute solo con instruccion. Ejemplo: make info
 .PHONY: info
 info:
-	$(info $(ALLOBJECTS))
+	$(info $(ALLTESTS))
