@@ -101,7 +101,7 @@ valgrind:
 ########################################################
 
 test: $(OBJSUBDIRS) $(ALLOBJECTS_TEST)
-	$(CPP) -c -o $(call TO_OBJ,$(TEST).cpp) $(TEST).cpp $(FLAGS)
+	$(CPP) -c -o $(call TO_OBJ,./tests/$(TEST).cpp) ./tests/$(TEST).cpp $(FLAGS)
 	$(CPP) -o $(TEST) $(ALLOBJECTS_TEST) $(call TO_OBJ,$(shell $(SEARCH_FILES) $(TEST).cpp))
 
 
