@@ -147,11 +147,11 @@ class Lista
 
     //Pre: Un dato a eliminimoar de la lista y una funcion de comparacion entre dos datos A y B
     //Post: Eliminimoa el dato si lo encontro en la lista basandose en el criterio de la funcion de comparacion
-    void borrar_data(const Dato data, int (*compare)(Dato A, Dato B));
+    bool borrar_dato(const Dato data, int (*compare)(Dato A, Dato B));
 
     //Pre: Un dato a eliminimoar de la lista y una funcion con el criterio de comparacion entre dos Datos A y B
     //Post: Eliminimoa todos las ocurrencias que encuentra del dato en la lista
-    void borrar_todo_occurrences(const Dato data, int (*compare)(Dato A, Dato B));
+    bool borrar_toda_occurrencia(const Dato data, int (*compare)(Dato A, Dato B));
 
     //Pre: Una lista cargada y una funcion que me permita comparar dos Datos, A y B
     //Post: Retorna una nueva lista con los datos de esta lista que no esta con la del parametro
@@ -430,17 +430,20 @@ void Lista<Dato>::mezclar(Lista &list, int (*compare)(const Dato A, const Dato B
 }
 
 template <class Dato>
-void Lista<Dato>::borrar_data(const Dato dato, int (*compare)(Dato A, Dato B)){
-  borrar(buscar_dato(0,dato,compare));
+bool Lista<Dato>::borrar_dato(const Dato dato, int (*compare)(Dato A, Dato B)){
+  return borrar(buscar_dato(0,dato,compare));
 }
 
 template <class Dato>
-void Lista<Dato>::borrar_todo_occurrences(const Dato dato, int (*compare)(Dato A, Dato B)){
-  int start = 0;
+bool Lista<Dato>::borrar_toda_occurrencia(const Dato dato, int (*compare)(Dato A, Dato B)){
+  int start = 0, borrados = -1;
   do{
     start = buscar_dato(start,dato,compare);
     borrar(start);
+    borrados++;
   }while(start!= NO_ENCONTRADO);
+
+  return borrados ? true : false;
 }
 
 template <class Dato>

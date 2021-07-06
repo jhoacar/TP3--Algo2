@@ -20,9 +20,22 @@ const string TIPO_MAPA_STRING[MAX_TIPOS_MAPA]=	{"montana","precipicio","lago","v
 const char TIPO_MAPA_CHAR[MAX_TIPOS_MAPA]=	{'m',	'p',	'l',	'v',	'c',		'V'};
 enum {MONTANA=0,PRECIPICIO,LAGO,VOLCAN,CAMINO,VACIO};
 
+
+const size_t MAX_TIPO_PERSONAJE = 4;
+enum {TIPO_CAZADOR=0,TIPO_HUMANO,TIPO_VAMPIRO,TIPO_ZOMBIE};
+
+//Con las variables enumeradas obtengo una equivalencia (int) en energia de cada tipo de objeto en la matriz de energias
+const int ENERGIAS[MAX_TIPO_PERSONAJE][MAX_TIPOS_MAPA] =   {
+                                                  //{ MONTANA, PRECIPICIO, LAGO , VOLCAN, CAMINO, VACIO }
+                                                    { 0 , 2 , 0 , 1 , 1 , 15 },//TIPO CAZADOR
+                                                    { 2 , 2 , 0 , 1 , 1 , 15 },//TIPO HUMANO
+                                                    { 1 , 0 , 1 , 2 , 1 , 15 },//TIPO VAMPIRO
+                                                    { 1 , 1 , 2 , 0 , 1 , 15 }//TIPO ZOMBIE
+                                                    };
+
 //Constantes de uso para convencion de los cardinales
-const string CARDINALES[4] = {"NO","SO","NE","SE"};
-enum {NO=0,SO,NE,SE};
+const string CARDINALES[4] = {"NOROESTE","SUROESTE","NORESTE","SURESTE"};
+enum {NOROESTE=0,SUROESTE,NORESTE,SURESTE};
 
 //Lista de colores
 const size_t CANTIDAD_COLORES = 8; 
@@ -37,7 +50,6 @@ const string NO_NUMERO = "-1";
 const int SMALLER = -1;
 const int BIGGER = 1;
 const int EQUALS = 0;
-
 
 #endif
 
