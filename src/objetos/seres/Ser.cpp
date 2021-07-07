@@ -11,3 +11,6 @@ Ser::Ser(Coordenada posicion,char nombre):Objeto(posicion,nombre){
 }
 Ser::~Ser(){
 }
+void Ser::mostrar(){
+
+}

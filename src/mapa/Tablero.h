@@ -31,7 +31,7 @@ class Tablero
 		PRE: Una posicion a evaluar
 		POST: Devuelve si se encuentra adentro del tablero
 		*/
-		bool posicion_valida(Coordenada posicion);
+		bool es_valida(Coordenada posicion);
 		/*
 		PRE:
 		POST: Devuelve el numero de filas
@@ -48,6 +48,11 @@ class Tablero
 		*/
 		string obtener_cuadrante(Coordenada posicion);
 		/*
+		PRE:
+		POST: Devuelve la casilla en la posicion indicada
+		*/
+		Casilla* obtener_casilla(Coordenada posicion);
+		/*
 		PRE: Un objeto previamente cargado
 		POST: Carga al tablero la informacion del objeto
 		*/
@@ -56,7 +61,12 @@ class Tablero
 		PRE: Una posicion a buscar
 		POST: Devuelve verdadero si logro eliminar el objeto, falso en caso contrario
 		*/
-		bool eliminar_objeto(Coordenada posicion);
+		bool eliminar_objeto(Objeto *objeto);
+		/*
+		PRE: Una posicion a buscar
+		POST: Devuelve verdadero si logro eliminar el objeto, falso en caso contrario
+		*/
+		bool eliminar_objeto(Coordenada posicion,const char nombre_objeto);
 		/*
 		PRE: 
 		POST: Muestra el tablero con un formato especifico

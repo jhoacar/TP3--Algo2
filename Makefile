@@ -87,7 +87,7 @@ $(foreach FICHERO,$(ALLCPPS),$(eval $(call COMPILACION,$(CPP),$(call TO_OBJ,$(FI
 
 
 ########################################################
-### CREANDO LOS SUBDIRECTORIOS ./obj
+### CREANDO LOS SUBDIRECTORIOS ./obj t ./test_obj
 $(OBJSUBDIRS):
 	$(MKDIR) $(OBJSUBDIRS)
 
@@ -97,7 +97,7 @@ $(TESTOBJDIRS):
 ########################################################
 
 ########################################################
-### ELIMINANDO TODA LA CARPETA ./obj
+### ELIMINANDO TODA LA CARPETA ./obj y ./tests_obj
 clean:
 	$(DELETE_FILES)$(OBJ)
 	$(DELETE_FILES)$(TESTOBJDIRS)

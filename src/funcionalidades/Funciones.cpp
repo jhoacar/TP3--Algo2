@@ -26,6 +26,11 @@ void activar_color(void){
 	limpiar_pantalla();
 }
 
+void gotoxy(int x,int y)    
+{
+    cout<<(char)0x1B<<"["<<y<<";"<<x<<"f";
+}
+
 void color(int color){
 
 	if(color >= 0 && color< (int)CANTIDAD_COLORES)
@@ -33,7 +38,9 @@ void color(int color){
 }
 
 int obtener_numero_aleatorio(int min, int max){
-	return rand()%max + min;
+
+	return rand()%( max - min + 1 ) + min;
+
 }
 
 void limpiar_pantalla(){

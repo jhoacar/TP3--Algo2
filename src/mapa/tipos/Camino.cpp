@@ -24,3 +24,6 @@ int Camino::obtener_energia(int tipo_personaje){
         return NO_ENCONTRADO;
 }
 
+int Camino::obtener_color(){
+    return BG_AMARILLO_CLARO;
+}

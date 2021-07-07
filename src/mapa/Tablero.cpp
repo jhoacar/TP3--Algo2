@@ -67,7 +67,7 @@ Tablero::~Tablero()
 
 string Tablero::obtener_cuadrante(Coordenada posicion){
     
-    if(!posicion_valida(posicion))
+    if(!es_valida(posicion))
     
         return "";
 
@@ -88,7 +88,7 @@ string Tablero::obtener_cuadrante(Coordenada posicion){
         return CARDINALES[SUROESTE];
 }
 
-bool Tablero::posicion_valida(Coordenada posicion){
+bool Tablero::es_valida(Coordenada posicion){
 
     Coordenada limite( columnas , filas );
 
@@ -103,11 +103,11 @@ void Tablero::cargar_objeto(Objeto *objeto){
 
         posicion-=1; //Le resto una posicion para guardarla correctamente en el tablero arrancando en (0,0)
 
-        if(posicion_valida(posicion)){
+        if(es_valida(posicion)){
 
             objeto->asignar_cuadrante( obtener_cuadrante ( posicion ) );
     
-            //casillas[ posicion.obtener_y() ][ posicion.obtener_x() ] = objeto;
+            casillas[ posicion.obtener_y() ][ posicion.obtener_x() ]->agregar_objeto(objeto);
     
         }
 
@@ -124,98 +124,41 @@ int Tablero::obtener_columnas(){
     return this->columnas;
 
 }
+Casilla* Tablero::obtener_casilla(Coordenada posicion){
+    
+    if(es_valida(posicion))
+        return casillas[posicion.obtener_y()][posicion.obtener_x()];        
+    else  
+        return nullptr;
+}
 
-bool Tablero::eliminar_objeto(Coordenada posicion){
+bool Tablero::eliminar_objeto(Objeto *objeto){
 
-    posicion-=1; //Le resto una posicion para eliminarlo correctamente en el tablero arrancando en (0,0)
-
-    if(posicion_valida(posicion)){
+    //if(es_valida(objeto->obtener_posicion())){
         
-        if(casillas[posicion.obtener_y()][posicion.obtener_x()]!=nullptr){
+        //if(casillas[posicion.obtener_y()][posicion.obtener_x()]!=nullptr){
             
-            delete casillas[posicion.obtener_y()][posicion.obtener_x()];
+        //    casillas[posicion.obtener_y()][posicion.obtener_x()]->eliminar_objeto(objeto);
             
-            casillas[posicion.obtener_y()][posicion.obtener_x()]=nullptr;
-            
-            return true;
-        }
-    }
+        //   return true;
+        //}
+    //}
     return false;
+}
+
+bool Tablero::eliminar_objeto(Coordenada posicion,const char nombre_objeto){
+    
+    Casilla *casilla = obtener_casilla(posicion);
+
+    if(casilla==nullptr)
+        return false;
+
+    return casilla->eliminar_objeto(0,nombre_objeto);
+    
 }
 
 void Tablero::mostrar_tablero(){
 
-	for(int i=0; i < filas ; i++){
-
-        if(i==0){
-            cout<<"    ";
-            for(int j=0; j < columnas; j++){
-                
-                if(j % (columnas/2) == 0 ){
-                    color(ROJO);
-                    cout<<" | ";
-                    color(RESET);
-                }
-                color(CYAN);
-                cout<<" "<<(j+1)<<" ";
-                color(RESET);
-            }
-
-            cout<<endl;
-        }
-
-
-        if(i % (filas/2) == 0 ){
-
-            for(int j=0; j < columnas + 3 ; j++){
-                
-                color(ROJO);
-                cout<<" _ ";
-                color(RESET);
-            }
-
-            cout<<endl;
-        }
-		
-        for(int j=-1; j < columnas ; j++){
-
-            if(j==-1){
-                color(CYAN);
-                cout<<" "<< (i < 9? " "+to_string(i+1) : to_string(i+1) )<<" ";
-                color(RESET);
-            }
-            else{
-                
-                if(j % (columnas/2) == 0 ){
-                    color(ROJO);
-                    cout<<" | ";
-                    color(RESET);
-                }    
-
-                if(casillas[i][j]!=nullptr){
-                    
-                    color(AMARILLO);
-                    //cout<<" "<<casillas[i][j]->obtener_nombre()<<" ";
-                    color(RESET);
-                    
-                }
-                else{
-                    cout<<" * ";
-                }
-            }
-        }    
-        color(ROJO);
-        cout<<" | "<<endl;
-        color(RESET);
-	}
-
-    for(int j=0; j < columnas + 3 ; j++){
-
-        color(ROJO);
-        cout<<" - ";
-        color(RESET);
-    }
-    cout<<endl;
 
     mostrar_leyenda();
 }

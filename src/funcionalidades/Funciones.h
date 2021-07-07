@@ -56,11 +56,19 @@ POST: Limpia la consola
 */
 void limpiar_pantalla();
 /*
+PRE: Dos numeros enteros para la posicion de la pantalla
+POST: Coloca el cursor donde se escoga en la pantalla
+*/
+void gotoxy(int x, int y);
+/*
 PRE: Las opciones que se muestran al usuario, el error por si se equivoca, el inicio (mayor que 0) y el fin de las opciones a encontrar y una opcion de salir
 POST: Devuelve la opcion del dato elegido del string de opciones o NO_ENCONTRADO (-1) si la opcion fue salir
 */
 int pedir_dato(string opciones,string error,int inicio,int fin,char opcion_salir);
-
+/*
+PRE: Dos numeros referentes a un intervalo, tomando valor minimo y maximo
+POST: Devuelve un numero comprendido entre ambos, incluyendolos
+*/
 int obtener_numero_aleatorio(int min, int max);
 /*
 PRE: Un nombre del fichero a buscar

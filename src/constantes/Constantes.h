@@ -38,9 +38,39 @@ const string CARDINALES[4] = {"NOROESTE","SUROESTE","NORESTE","SURESTE"};
 enum {NOROESTE=0,SUROESTE,NORESTE,SURESTE};
 
 //Lista de colores
-const size_t CANTIDAD_COLORES = 8; 
-enum {ROJO=0,VERDE,AMARILLO,AZUL,VIOLETA,CYAN,BLANCO,RESET};
-const string ANSI_COLOR[CANTIDAD_COLORES] = {"\x1b[31m","\x1b[32m","\x1b[33m","\x1b[34m","\x1b[35m","\x1b[36m","\x1b[37m","\x1b[0m"};
+/*
+Name            FG  BG
+Black           30  40
+Red             31  41
+Green           32  42
+Yellow          33  43
+Blue            34  44
+Magenta         35  45
+Cyan            36  46
+White           37  47
+Bright Black    90  100
+Bright Red      91  101
+Bright Green    92  102
+Bright Yellow   93  103
+Bright Blue     94  104
+Bright Magenta  95  105
+Bright Cyan     96  106
+Bright White    97  107
+*/
+const size_t CANTIDAD_COLORES = 31; 
+enum {RESET=0,
+      NEGRO,ROJO,VERDE,AMARILLO,AZUL,MAGENTA,CYAN,BLANCO,
+      GRIS,ROJO_CLARO,VERDE_CLARO,AMARILLO_CLARO,AZUL_CLARO,MAGENTA_CLARO,CYAN_CLARO,
+      BG_NEGRO,BG_ROJO,BG_VERDE,BG_AMARILLO,BG_AZUL,BG_MAGENTA,BG_CYAN,BG_BLANCO,
+      BG_GRIS,BG_ROJO_CLARO,BG_VERDE_CLARO,BG_AMARILLO_CLARO,BG_AZUL_CLARO,BG_MAGENTA_CLARO,BG_CYAN_CLARO
+      };
+
+const string ANSI_COLOR[CANTIDAD_COLORES] ={"\x1b[0m",
+                                            "\x1b[30m","\x1b[31m","\x1b[32m","\x1b[33m","\x1b[34m","\x1b[35m","\x1b[36m","\x1b[37m",
+                                            "\x1b[90m","\x1b[91m","\x1b[92m","\x1b[93m","\x1b[94m","\x1b[95m","\x1b[96m",
+                                            "\x1b[40m","\x1b[41m","\x1b[42m","\x1b[43m","\x1b[44m","\x1b[45m","\x1b[46m","\x1b[47m",
+                                            "\x1b[100m","\x1b[101m","\x1b[102m","\x1b[103m","\x1b[104m","\x1b[105m","\x1b[106m"
+                                            };
 
 //Constantes de uso para convencion de no encontrar un dato
 const int NO_ENCONTRADO = -1;
