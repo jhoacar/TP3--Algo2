@@ -4,7 +4,7 @@
 int main(int argc, char *argv[]){
     
 
-    srand(12243443432);
+    srand(12324);
 
     activar_color();
 
