@@ -2,7 +2,8 @@
 #define FUNCIONES_H
 
 #include "../constantes/Constantes.h"
-#include "Lista.h"
+#include "tda/Lista.h"
+#include "../objetos/Coordenada.h"
 
 #include <string>
 #include <iostream>
@@ -91,6 +92,17 @@ POST: Devuelve verdadero si es par
 */
 bool es_par(int numero);
 /*
+PRE: una posicion de referencia y una longitud
+POST: Devuelve una lista de coordenadas, positivas referentes a una cruz de esa longitud
+*/
+Lista<Coordenada> obtener_cruz(Coordenada centro , int longitud, Coordenada limite_inferior, Coordenada limite_superior);
+/*
+PRE: Una posicion de referencia y un tamano
+POST: Devueve una lista de coordenadas, positivas referentes a un cuadrado de ese tamano
+*/
+Lista<Coordenada> obtener_cuadrado(Coordenada centro, int tamano, Coordenada limite_inferior, Coordenada limite_superior);
+
+/*
 PRE: Un vector de datos, un tamaño especifico y un dato a buscar
 POST: Devuelve el indice donde se encontro el dato o NO_ENCONTRADO (-1) en caso contrario
 */
@@ -110,7 +122,5 @@ int buscar_dato(const Dato vector[],const size_t tope , Dato dato){
 	}
 	return encontrado? indice : NO_ENCONTRADO;
 }
-
-
 
 #endif

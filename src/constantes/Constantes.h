@@ -76,6 +76,8 @@ const string ANSI_COLOR[CANTIDAD_COLORES] ={"\x1b[0m",
 const int NO_ENCONTRADO = -1;
 const string NO_NUMERO = "-1";
 
+const int INFINITO = 999999; //Tomara una valor grande
+
 //Constantes de uso para convencion entre mayor menor o igualdad de dos datos
 const int PEQUENO = -1;
 const int GRANDE = 1;

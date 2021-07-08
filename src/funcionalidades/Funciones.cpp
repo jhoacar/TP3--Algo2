@@ -132,6 +132,57 @@ int convertir_entero(string cadena){
 
 }
 
+Lista<Coordenada> obtener_cruz(Coordenada centro, int longitud,Coordenada limite_inferior, Coordenada limite_superior){
+	Lista<Coordenada> cruz;
+	int x,y;
+	for(int i=1;i<=longitud; i++){
+		
+		x = centro.obtener_x();
+		y = centro.obtener_y();
+
+		if(x+i<limite_superior.obtener_x())
+			cruz.agregar({x+i,y});
+		if(y+i<limite_superior.obtener_y())
+			cruz.agregar({x,y+i});
+		if(x-i>=limite_inferior.obtener_x())
+			cruz.agregar({x-i,y});
+		if(y-i>=limite_inferior.obtener_y())
+			cruz.agregar({x,y-i});
+	}
+	return cruz;
+}
+
+Lista<Coordenada> obtener_cuadrado(Coordenada centro, int tamano, Coordenada limite_inferior, Coordenada limite_superior){
+	Lista<Coordenada> cuadrado;
+	int x,y;
+	for(int i=1; i<=tamano; i++){
+		
+		x = centro.obtener_x();
+		y = centro.obtener_y();
+
+		if(x+i<limite_superior.obtener_x())
+			cuadrado.agregar({x+i,y});
+		if(y+i<limite_superior.obtener_y())
+			cuadrado.agregar({x,y+i});
+		if(x+i<limite_superior.obtener_x() && y+i<limite_superior.obtener_y())
+			cuadrado.agregar({x+i,y+i});
+		if(x-i>=limite_inferior.obtener_x() && y-i>=limite_inferior.obtener_y())
+			cuadrado.agregar({x-i,y-i});
+		if(x-i>=limite_inferior.obtener_x()){
+			cuadrado.agregar({x-i,y});
+			if(y+i<limite_superior.obtener_y())
+				cuadrado.agregar({x-i,y+i});
+		}
+		if(y-i>=limite_inferior.obtener_y()){
+			cuadrado.agregar({x,y-i});
+			if(x+i<limite_superior.obtener_x())
+				cuadrado.agregar({x+i,y-i});
+		}
+	}
+
+	return cuadrado;
+}
+
 int pedir_dato(string opciones_menu,string error,int inicio,int fin,char opcion_salir){
 
 	string respuesta;

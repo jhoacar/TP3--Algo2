@@ -88,8 +88,7 @@ void Floyd<Dato>::actualizar_matrices(){
     //Algoritmo, Recorro una cruz desde cada posicion de la diagonal principal luego obtengo el vertice de interseccion de cada coordenada de la cruz
     //Verfico si el peso que tiene esa interseccion es mayor a la suma que tiene en esa cruz 
     for(int i = 0 ; i < cantidad_vertices; i++){
-        Lista<Coordenada> cruz = obtener_cruz( {i,i} ,   cantidad_vertices-1 ,   {0,0}  ,    {cantidad_vertices,cantidad_vertices}   );
-        for(int j=0; j< cruz.obtener_tamano(); j++){
+        for(int j=i; j < cantidad_vertices; i++){
 
         }
     }

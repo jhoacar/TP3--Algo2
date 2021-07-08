@@ -63,6 +63,20 @@ class Objeto{
         void asignar_cuadrante(string cuadrante){
             this->cuadrante=cuadrante;
         }
+        /*
+        PRE: Un nombre a asignar
+        POST: Asigna el nombre al objeto
+        */
+        void asignar_nombre(char nombre){
+            this->nombre=nombre;
+        }
+        /*
+        PRE: Una posicion a asignar
+        POST: Asigna la posicion al objeto
+        */
+        void asignar_posicion(Coordenada posicion){
+            this->posicion=posicion;
+        }
 };
 
 #endif

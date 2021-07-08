@@ -267,7 +267,7 @@ void Datos::agregar_objeto(Objeto *objeto){
 	this->tablero->cargar_objeto(objeto);
 }
 
-bool Datos::eliminar_objeto(Coordenada posicion){
+bool Datos::eliminar_objeto(Coordenada posicion,const char nombre_objeto){
 
-	return this->objetos.borrar(buscar_objeto(posicion)) && this->tablero->eliminar_objeto(posicion);
+	return this->objetos.borrar(buscar_objeto(posicion)) && this->tablero->eliminar_objeto(posicion,nombre_objeto);
 }

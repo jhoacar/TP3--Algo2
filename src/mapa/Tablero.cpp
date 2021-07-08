@@ -153,7 +153,7 @@ bool Tablero::eliminar_objeto(Coordenada posicion,const char nombre_objeto){
     if(casilla==nullptr)
         return false;
 
-    return casilla->eliminar_objeto(0,nombre_objeto);
+    return casilla->eliminar_objeto(nombre_objeto);
     
 }
 
