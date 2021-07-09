@@ -5,7 +5,7 @@ using std::endl;
 Estaca::Estaca():Elemento(){
     
 }
-Estaca::Estaca(Coordenada posicion,char nombre,int cantidad):Elemento(posicion,nombre,cantidad)
+Estaca::Estaca(Casilla *casilla,char nombre,int cantidad):Elemento(casilla,nombre,cantidad)
 {
 }
 void Estaca::mostrar(){

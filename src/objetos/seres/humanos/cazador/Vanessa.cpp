@@ -5,7 +5,7 @@ using std::endl;
 Vanessa::Vanessa():Cazador(){
     
 }
-Vanessa::Vanessa(Coordenada posicion,char nombre):Cazador(posicion,nombre)
+Vanessa::Vanessa(Casilla *casilla,char nombre):Cazador(casilla,nombre)
 {
 }
 void Vanessa::mostrar(){

@@ -7,7 +7,7 @@ class Nosferatu : public Vampiro
 {
 	public:
 		Nosferatu();
-		Nosferatu(Coordenada posicion,char nombre);
+		Nosferatu(Casilla *casilla,char nombre);
 		void mostrar();
 		~Nosferatu();
 	protected:

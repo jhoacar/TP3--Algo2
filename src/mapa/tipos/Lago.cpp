@@ -24,3 +24,6 @@ int Lago::obtener_energia(int tipo_personaje){
         return NO_ENCONTRADO;
 }
 
+int Lago::obtener_color(){
+    return BG_CYAN_CLARO;
+}

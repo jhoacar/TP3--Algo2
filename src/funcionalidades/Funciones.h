@@ -2,14 +2,15 @@
 #define FUNCIONES_H
 
 #include "../constantes/Constantes.h"
-#include "Lista.h"
+#include "tda/Lista.h"
+#include "../mapa/Coordenada.h"
 
 #include <string>
 #include <iostream>
 
 using namespace std;
 
-
+int minimo(int A, int B);
 /*
 PRE: Un caracter a evaluar
 POST: Verdadero si es minuscula, falso caso contrario
@@ -56,11 +57,19 @@ POST: Limpia la consola
 */
 void limpiar_pantalla();
 /*
+PRE: Dos numeros enteros para la posicion de la pantalla
+POST: Coloca el cursor donde se escoga en la pantalla
+*/
+void gotoxy(int x, int y);
+/*
 PRE: Las opciones que se muestran al usuario, el error por si se equivoca, el inicio (mayor que 0) y el fin de las opciones a encontrar y una opcion de salir
 POST: Devuelve la opcion del dato elegido del string de opciones o NO_ENCONTRADO (-1) si la opcion fue salir
 */
 int pedir_dato(string opciones,string error,int inicio,int fin,char opcion_salir);
-
+/*
+PRE: Dos numeros referentes a un intervalo, tomando valor minimo y maximo
+POST: Devuelve un numero comprendido entre ambos, incluyendolos
+*/
 int obtener_numero_aleatorio(int min, int max);
 /*
 PRE: Un nombre del fichero a buscar
@@ -83,6 +92,17 @@ POST: Devuelve verdadero si es par
 */
 bool es_par(int numero);
 /*
+PRE: una posicion de referencia y una longitud
+POST: Devuelve una lista de coordenadas, positivas referentes a una cruz de esa longitud
+*/
+Lista<Coordenada> obtener_cruz(Coordenada centro , int longitud, Coordenada limite_inferior, Coordenada limite_superior);
+/*
+PRE: Una posicion de referencia y un tamano
+POST: Devueve una lista de coordenadas, positivas referentes a un cuadrado de ese tamano
+*/
+Lista<Coordenada> obtener_cuadrado(Coordenada centro, int tamano, Coordenada limite_inferior, Coordenada limite_superior);
+
+/*
 PRE: Un vector de datos, un tamaño especifico y un dato a buscar
 POST: Devuelve el indice donde se encontro el dato o NO_ENCONTRADO (-1) en caso contrario
 */
@@ -102,7 +122,5 @@ int buscar_dato(const Dato vector[],const size_t tope , Dato dato){
 	}
 	return encontrado? indice : NO_ENCONTRADO;
 }
-
-
 
 #endif

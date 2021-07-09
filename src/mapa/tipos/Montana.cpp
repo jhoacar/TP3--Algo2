@@ -24,3 +24,7 @@ int Montana::obtener_energia(int tipo_personaje){
         return NO_ENCONTRADO;
 }
 
+int Montana::obtener_color(){
+    return BG_GRIS;
+}
+

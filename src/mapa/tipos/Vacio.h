@@ -11,6 +11,7 @@ class Vacio: public Casilla{
         ~Vacio();
         char obtener_tipo();
         int obtener_energia(int tipo_personaje);
+        int obtener_color();
 };
 
 #endif

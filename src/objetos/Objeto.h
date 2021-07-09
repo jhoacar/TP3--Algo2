@@ -2,29 +2,26 @@
 #define OBJETO_H
 
 #include <string>
-#include "Coordenada.h"
 using std::string;
+
+class Casilla;
 
 class Objeto{
     protected:
         char nombre;
         string cuadrante;
-        Coordenada posicion;
+        Casilla *casilla;
     public:
         /*
         PRE:
         POST: 
         */
-        Objeto():cuadrante(),posicion(){
-            this->nombre=0;
-        }
+        Objeto();
         /*
         PRE: La posicion y el nombre 
         POST: Crea el objeto con la informacion brindad
         */
-        Objeto(Coordenada posicion,char nombre):nombre(nombre),posicion(posicion){
-            this->cuadrante="";        
-        }
+        Objeto(Casilla *casilla,char nombre);
         /*
         PRE:
         POST: Destruye por defecto cada objeto, destruyendo cada atributo
@@ -39,30 +36,33 @@ class Objeto{
         PRE:
         POST: Devuelve la posicion del objeto
         */
-        Coordenada obtener_posicion(){
-            return this->posicion;
-        }
+        Casilla* obtener_casilla();
         /*
         PRE:
         POST: Devuelve el cuadrante del objeto
         */
-        string obtener_cuadrante(){
-            return this->cuadrante;
-        }
+        string obtener_cuadrante();
         /*
         PRE:
         POST: Devuelve el nombre del objeto
         */
-        char obtener_nombre(){
-            return this->nombre;
-        }
+        char obtener_nombre();
         /*
         PRE: Un cuadrante a asignar
         POST: Asigna el cuadrante al objeto
         */
-        void asignar_cuadrante(string cuadrante){
-            this->cuadrante=cuadrante;
-        }
+        void asignar_cuadrante(string cuadrante);
+        /*
+        PRE: Un nombre a asignar
+        POST: Asigna el nombre al objeto
+        */
+        void asignar_nombre(char nombre);
+        /*
+        PRE: Una posicion a asignar
+        POST: Asigna la posicion al objeto
+        */
+        void asignar_casilla(Casilla *casilla);
 };
+
 
 #endif

@@ -34,7 +34,8 @@ OBJ 		:= obj
 TESTSDIR	:= tests
 TESTOBJDIRS	:= tests_obj
 NAME_TEST 	:= test_
-HEADERS		:= Lista.h Nodo.h Objeto.h Casilla.h Constantes.h
+#Los headers seran aquellos ficheros que si se llegasen a modificar, se compilara de nuevo todo el proyecto para detectar fallas
+HEADERS		:= Lista.h Nodo.h Constantes.h Floyd.h Grafo.h Diccionario.h
 TEST 		:= no_hay_test_todavia
 
 ###########################################################
@@ -87,7 +88,7 @@ $(foreach FICHERO,$(ALLCPPS),$(eval $(call COMPILACION,$(CPP),$(call TO_OBJ,$(FI
 
 
 ########################################################
-### CREANDO LOS SUBDIRECTORIOS ./obj
+### CREANDO LOS SUBDIRECTORIOS ./obj t ./test_obj
 $(OBJSUBDIRS):
 	$(MKDIR) $(OBJSUBDIRS)
 
@@ -97,7 +98,7 @@ $(TESTOBJDIRS):
 ########################################################
 
 ########################################################
-### ELIMINANDO TODA LA CARPETA ./obj
+### ELIMINANDO TODA LA CARPETA ./obj y ./tests_obj
 clean:
 	$(DELETE_FILES)$(OBJ)
 	$(DELETE_FILES)$(TESTOBJDIRS)
@@ -118,4 +119,4 @@ test: $(OBJSUBDIRS) $(ALLOBJECTS_TEST) $(TESTOBJDIRS)
 #PHONY es Util para que no sea dependiente y ejecute solo con instruccion. Ejemplo: make info
 .PHONY: info
 info:
-	$(info $(ALLTESTS))
+	$(info $(DIR_HEADERS))

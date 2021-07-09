@@ -7,7 +7,7 @@ class Ser : public Objeto
 {
 	public:
 		Ser();
-		Ser(Coordenada posicion,char nombre);
+		Ser(Casilla *casilla,char nombre);
 		~Ser();
 };
 

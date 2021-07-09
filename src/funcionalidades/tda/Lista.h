@@ -2,7 +2,7 @@
 #define LISTA_H
 
 #include "Nodo.h"
-#include "../constantes/Constantes.h"
+#include "../../constantes/Constantes.h"
 
 //Pre: Dos datos a comparar, con sobrecargas de los operadores "<,>,=="
 //Post: Compara y devuelve PEQUENO si A es menor que B, GRANDE si A es mayor que B y IGUAL caso contrario
@@ -33,8 +33,8 @@ void swap_datos(Dato &A, Dato &B){
 template <class Dato>
 class Lista
 {
-	  Nodo<Dato> *start;
-		Nodo<Dato> *end;
+	  Nodo<Dato> *inicio;
+		Nodo<Dato> *fin;
     Nodo<Dato> *actual;
 		unsigned long size;
     
@@ -95,31 +95,31 @@ class Lista
     
     //Pre: Un dato a evaluar su existencia
     //Post: Devuelve verdadero si se encontro en la lista dicho dato
-    bool existe(Dato data, int (*compare)(Dato A , Dato B)) const;
+    bool existe(Dato data, int (*compare)(Dato A , Dato B) = comparacion) const;
     
     //Pre: El comienzo de la busqueda (puede ser desde el origen: 0), el dato a buscar y una funcion donde me compara dos Datos A y B si son iguales
     //Post: Devuelve la posicion donde encontro dicho dato buscandolo desde el indice de comienzo
-    int buscar_dato(int start_search,const Dato data, int (*compare)(Dato A, Dato B)) const;
+    int buscar_dato(int inicio_search,const Dato data, int (*compare)(Dato A, Dato B) = comparacion) const;
     
     //Pre: Un indice a buscar en la lista
     //Post: Devuelve una referencia del dato que se encuentra en dicha posicion
-	Dato& operator[](const int index) const;
+	  Dato& operator[](const int index) const;
     
     //Pre: Una lista con la informacion a cargar
     //Post: Eliminimoa la informacion que se encontraba antes y copia la informacion de ahora de la lista
-	void operator=(Lista &list);
+	  void operator=(Lista list);
     
     //Pre: Una lista a unir
     //Post: Devuelve un puntero con la lista de la union, eliminimoando la informacion de la lista del parametro
-    Lista<Dato>* operator+(Lista &list);
+    Lista<Dato>* operator+(Lista list);
     
     //Pre: Una funcion que permita comparar dos datos
     //Post: Ordena de menor a mayor de acuerdo a la funcion del parametro
-    void ordenar(int (*compare)(const Dato a, const Dato b));
+    void ordenar(int (*compare)(const Dato a, const Dato b) = comparacion);
     
     //Pre: Esta lista, previamente ordenada y una funcion para la comparacion de datos
     //Post: Eliminimoa todas aquellas ocurrencias repetidas de la lista    
-    void limpiar(int (*compare)(const Dato a, const Dato b));
+    void limpiar(int (*compare)(const Dato a, const Dato b) = comparacion);
 
     //Pre: Dos posiciones de la lista
     //Post: Intercambia sus datos en la lista
@@ -127,7 +127,7 @@ class Lista
 
     //Pre: Una lista para unir
     //Post: Une esta lista con la del parametro, modificandose
-    void operator+=(Lista &list);
+    void operator+=(Lista list);
 
     //Pre: Una lista para unir
     //Post: Devuelve la union de esta lista con la del parametro, sin modificar esta
@@ -143,19 +143,24 @@ class Lista
 
     //Pre: Recibe una lista con la informacion y una funcion de comparacion entre dos datos (Este método devolvera -1 si A es menor que B; 1, si A es mayor que B; y 0 si son iguales.)
     //Post:se hace un mezclar entre las dos, modificando la original, que tiene que quedar ordenada  y  sin  elementos  repetidos.
-    void mezclar(Lista &list, int (*compare)(const Dato A, const Dato B));
+    void mezclar(Lista &list, int (*compare)(const Dato A, const Dato B) = comparacion);
 
     //Pre: Un dato a eliminimoar de la lista y una funcion de comparacion entre dos datos A y B
     //Post: Eliminimoa el dato si lo encontro en la lista basandose en el criterio de la funcion de comparacion
-    bool borrar_dato(const Dato data, int (*compare)(Dato A, Dato B));
+    bool borrar_dato(const Dato data, int (*compare)(Dato A, Dato B) = comparacion);
 
     //Pre: Un dato a eliminimoar de la lista y una funcion con el criterio de comparacion entre dos Datos A y B
     //Post: Eliminimoa todos las ocurrencias que encuentra del dato en la lista
-    bool borrar_toda_occurrencia(const Dato data, int (*compare)(Dato A, Dato B));
+    bool borrar_toda_occurrencia(const Dato data, int (*compare)(Dato A, Dato B) = comparacion);
+
+    //Pre: Un dato a buscar y una funcion con su criterio de comparacion
+    //Post: Devuelve la cantidad que exista de dicho dato en la lista o -1 en caso contrario
+    int obtener_cantidad_dato(const Dato data, int (*compare)(Dato A, Dato B) = comparacion);
+
 
     //Pre: Una lista cargada y una funcion que me permita comparar dos Datos, A y B
     //Post: Retorna una nueva lista con los datos de esta lista que no esta con la del parametro
-    Lista* obtener_diferencia(Lista list , int (*compare)(Dato A, Dato B) );
+    Lista* obtener_diferencia(Lista list , int (*compare)(Dato A, Dato B) = comparacion);
 
     //Pre:
     //Post: Pone el puntero a la primera posición o apuntando a NULL
@@ -171,35 +176,35 @@ class Lista
 
     //Pre: Una lista a analizar y una funcion con el criterio de comparacion
     //Post: Devuelve verdadero si encuentra alguna coincidencia de un dato con la lista del parametro, falso caso contrario
-    bool existe_alguno(Lista &lista, int(*compare)(Dato A, Dato B));
+    bool existe_alguno(Lista &lista, int(*compare)(Dato A, Dato B) = comparacion);
 
     //Pre: Una lista a analizar y una funcion con el criterio de comparacion
     //Post: Devuelve verdadero si encuentra toda coincidencia de los datos con la lista del parametro, falso caso contrario
-    bool existen_todos(Lista &lista, int(*compare)(Dato A, Dato B));
+    bool existen_todos(Lista &lista, int(*compare)(Dato A, Dato B) = comparacion);
 
     
     //Pre: Una funcion de comparacion de datos que devuelve IGUAL, GRANDE o PEQUENO
     //Post: Devuelve el menor elemento de la lista por dicha funcion
-    Dato minimo(int(*compare)(Dato A, Dato B));
+    Dato minimo(int(*compare)(Dato A, Dato B) = comparacion);
 
     //Pre: Una funcion de comparacion de datos que devuelve IGUAL, GRANDE o PEQUENO
     //Post: Devuelve el mayor elemento de la lista por dicha funcion
-    Dato maximo(int(*compare)(Dato A, Dato B));
+    Dato maximo(int(*compare)(Dato A, Dato B) = comparacion);
 };
 
 template <class Dato>
 Lista<Dato>::Lista(){
-  this->start = new Nodo<Dato>();
-  this->end=this->start;
-  this->actual=this->start;
+  this->inicio = new Nodo<Dato>();
+  this->fin=this->inicio;
+  this->actual=this->inicio;
   this->size=0;
 }
 
 template <class Dato>
 Lista<Dato>::Lista(Dato *datos, int tope){
-  this->start = new Nodo<Dato>();
-  this->end=this->start;
-  this->actual=this->start;
+  this->inicio = new Nodo<Dato>();
+  this->fin=this->inicio;
+  this->actual=this->inicio;
   this->size=0;
   Dato *final = datos + tope;
   while(datos < final){
@@ -220,7 +225,7 @@ Lista<Dato>::~Lista(){
 
 template <class Dato>
 void Lista<Dato>::imprimir(void (*imprimir_data)(const Dato dato)){
-  Nodo<Dato> *nodo = start;
+  Nodo<Dato> *nodo = inicio;
   for(int i=0 ; i < (int)size  ; i++){
       imprimir_data(*nodo->dato);
       nodo = nodo->siguiente;
@@ -229,9 +234,9 @@ void Lista<Dato>::imprimir(void (*imprimir_data)(const Dato dato)){
 
 template <class Dato>
 void Lista<Dato>::copiar_todo(const Lista &lista){
-  this->start = new Nodo<Dato>();
-  this->end=this->start;
-  this->actual=this->start;
+  this->inicio = new Nodo<Dato>();
+  this->fin=this->inicio;
+  this->actual=this->inicio;
   this->size=0;
   for(int i=0 ; i< lista.obtener_tamano(); i++)
     agregar(lista[i]);
@@ -239,9 +244,9 @@ void Lista<Dato>::copiar_todo(const Lista &lista){
 
 template <class Dato>
 void Lista<Dato>::agregar(Dato dato){
-  *(end->dato)=dato;
-  end->siguiente = new Nodo<Dato>();
-  end=end->siguiente;
+  *(fin->dato)=dato;
+  fin->siguiente = new Nodo<Dato>();
+  fin=fin->siguiente;
   size+=1;
 }
 
@@ -254,9 +259,9 @@ Lista<Dato>* Lista<Dato>::expulsar(Dato dato){
 template <class Dato>
 void Lista<Dato>::borrar_todo(){
   Nodo<Dato> *tmp;
-  while( start!=nullptr ){
-    tmp = start;
-    start = start->siguiente;
+  while( inicio!=nullptr ){
+    tmp = inicio;
+    inicio = inicio->siguiente;
     delete tmp;
   }
 }
@@ -272,10 +277,10 @@ bool Lista<Dato>::borrar(const int index){
   Nodo<Dato> *before = buscar_nodo(index-1);
 
   if(before==nullptr) // Si no tiene antecesor entonces se encuentra en el inicio
-    start = borrar_node->siguiente; //Se referencia al que sigue
+    inicio = borrar_node->siguiente; //Se referencia al que sigue
   else if(borrar_node->siguiente == nullptr){// Si en el que sigue no hay nada, se encuentra al final
-    end = before;
-    end->siguiente=nullptr;
+    fin = before;
+    fin->siguiente=nullptr;
   }
   else //Se deja de referenciar 
     before->siguiente = borrar_node->siguiente;
@@ -308,7 +313,7 @@ Nodo<Dato>* Lista<Dato>::buscar_nodo(const int index) const{
   if(!es_valido(index))
     return nullptr;
 
-  Nodo<Dato> *nodo = start;
+  Nodo<Dato> *nodo = inicio;
   for(int i=0 ; i < index  ; i++)
     nodo = nodo->siguiente; 	
   
@@ -316,22 +321,22 @@ Nodo<Dato>* Lista<Dato>::buscar_nodo(const int index) const{
 }
 
 template <class Dato>
-int Lista<Dato>::buscar_dato(int start_search,const Dato dato, int (*compare)(Dato A,Dato B)) const{
+int Lista<Dato>::buscar_dato(int inicio_search,const Dato dato, int (*compare)(Dato A,Dato B)) const{
 
-  Nodo<Dato> *nodo = buscar_nodo(start_search);
+  Nodo<Dato> *nodo = buscar_nodo(inicio_search);
   
   if(nodo==nullptr)
     return NO_ENCONTRADO;
 
   bool found = compare(*(nodo->dato) , dato) == IGUAL;
 
-  while(start_search < (int) size && !found){
+  while(inicio_search < (int) size && !found){
     nodo = nodo->siguiente;
     if(nodo!=nullptr)
       found = compare(*(nodo->dato) , dato) == IGUAL;
-    start_search++;
+    inicio_search++;
   } 	
-  return found ? start_search : NO_ENCONTRADO;
+  return found ? inicio_search : NO_ENCONTRADO;
 }
 
 template <class Dato>
@@ -341,13 +346,13 @@ Dato& Lista<Dato>::operator[](const int index) const{
 }
 
 template <class Dato>
-void Lista<Dato>::operator=(Lista &lista){
+void Lista<Dato>::operator=(Lista lista){
   borrar_todo();
   copiar_todo(lista);
 }
  
 template <class Dato>
-Lista<Dato>* Lista<Dato>::operator+(Lista &lista){
+Lista<Dato>* Lista<Dato>::operator+(Lista lista){
   *this+=lista;
   lista.borrar_todo();
   return this;
@@ -377,7 +382,7 @@ void Lista<Dato>::limpiar(int (*compare)(const Dato a, const Dato b)){
 template <class Dato>
 void Lista<Dato>::swap(const int index_a, const int index_b){
   
-  if(index_a == index_b) //Mejora el rendimiento de hacer busquedas innecesarias
+  if(index_a == index_b) //Mejora el rfinimiento de hacer busquedas innecesarias
     return;
   
   Nodo<Dato> *node_a = buscar_nodo(index_a);
@@ -392,7 +397,7 @@ void Lista<Dato>::swap(const int index_a, const int index_b){
 
 
 template <class Dato>
-void Lista<Dato>::operator+=(Lista &lista){
+void Lista<Dato>::operator+=(Lista lista){
   for( int i=0; i<lista.obtener_tamano(); i++)
     agregar(lista.siguiente_dato());
   lista.reiniciar();
@@ -436,14 +441,24 @@ bool Lista<Dato>::borrar_dato(const Dato dato, int (*compare)(Dato A, Dato B)){
 
 template <class Dato>
 bool Lista<Dato>::borrar_toda_occurrencia(const Dato dato, int (*compare)(Dato A, Dato B)){
-  int start = 0, borrados = -1;
+  int inicio = 0, borrados = -1;
   do{
-    start = buscar_dato(start,dato,compare);
-    borrar(start);
+    inicio = buscar_dato(inicio,dato,compare);
+    borrar(inicio);
     borrados++;
-  }while(start!= NO_ENCONTRADO);
+  }while(inicio!= NO_ENCONTRADO);
 
   return borrados ? true : false;
+}
+template <class Dato>
+int Lista<Dato>::obtener_cantidad_dato(const Dato dato, int (*compare)(Dato A, Dato B)){
+  int inicio = -1, encontrados = NO_ENCONTRADO;
+  do{
+    inicio = buscar_dato(inicio+1,dato,compare);
+    encontrados++;
+  }while(inicio!= NO_ENCONTRADO);
+
+  return encontrados;
 }
 
 template <class Dato>
@@ -460,7 +475,7 @@ Lista<Dato>* Lista<Dato>::obtener_diferencia(const Lista<Dato> lista, int (*comp
 
 template <class Dato>
 void Lista<Dato>::reiniciar(void){
-  actual=start;
+  actual=inicio;
 }
 
 template <class Dato>

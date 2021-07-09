@@ -13,9 +13,10 @@ int main(int argc, char *argv[]){
     if(argc>1)
         archivo = argv[1];
 
-    Datos dato(archivo);
-    cout<<dato.obtener_resumen();
-    dato.obtener_tablero()->mostrar_tablero();
+    cout<<"Hay que arreglar el tema de ficheros";
+    //Datos dato(archivo);
+    //cout<<dato.obtener_resumen();
+    //dato.obtener_tablero()->mostrar_tablero();
     pausa();
     return 0;
 }

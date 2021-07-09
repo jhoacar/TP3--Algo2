@@ -2,42 +2,38 @@
 #define CASILLA_H
 
 #include <string>
-#include "../objetos/Objeto.h"
-#include "../funcionalidades/Lista.h"
+#include "../funcionalidades/tda/Lista.h"
+#include "Coordenada.h"
 using std::string;
+
+class Objeto;
 
 class Casilla{
     protected:
         string cuadrante;
         Coordenada posicion;
         Lista<Objeto*> objetos;
+    private:    
+        Objeto* objeto_referencia; //Objeto manipulable para el uso de comparaciones en la clase lista
     public:
-        Casilla():cuadrante(),posicion(),objetos(){
-
-        }
-        Casilla(Coordenada pos):cuadrante(),posicion(pos),objetos(){
-
-        }
-        virtual ~Casilla()=default;
-        
+        Casilla();
+        Casilla(Coordenada posicion);
+        virtual ~Casilla();
         virtual char obtener_tipo()=0;
         virtual int obtener_energia(int tipo_personaje)=0;
+        virtual int obtener_color()=0;
+        string obtener_cuadrante();
+        void asignar_cuadrante(string cuadrante);
+        void agregar_objeto(Objeto *objeto);
+        Objeto *obtener_objeto(char nombre_objeto);
+        int obtener_cantidad_objetos(char nombre_objeto);
+        bool eliminar_objeto(char nombre_objeto);
+        bool eliminar_toda_ocurrencia(char nombre_objeto);
+        Lista<Objeto*> obtener_objetos();
+        Coordenada obtener_posicion();
+        int obtener_x();
+        int obtener_y();
 
-        string obtener_cuadrante(){
-            return cuadrante;
-        }
-        void asignar_cuadrante(string cuadrante){
-            this->cuadrante=cuadrante;
-        }
-        void agregar_objeto(Objeto *objeto){
-            this->objetos.agregar(objeto);
-        }
-        bool eliminar_objeto(Objeto *objeto){
-            return this->objetos.borrar_dato(objeto,comparacion);
-        }
-        Lista<Objeto*> obtener_objetos(){
-            return objetos;
-        }
 };
 
 
