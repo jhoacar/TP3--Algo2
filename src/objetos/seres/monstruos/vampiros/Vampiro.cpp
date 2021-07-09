@@ -5,7 +5,7 @@ using std::endl;
 Vampiro::Vampiro():Monstruo(){
     
 }
-Vampiro::Vampiro(Coordenada posicion,char nombre):Monstruo(posicion,nombre)
+Vampiro::Vampiro(Casilla *casilla,char nombre):Monstruo(casilla,nombre)
 {
 }
 void Vampiro::mostrar(){

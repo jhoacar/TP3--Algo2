@@ -3,24 +3,7 @@
 
 #include "../objetos/Objeto.h"
 #include "../mapa/Tablero.h"
-#include <string>
-using std::string;
-using std::type_info;
-
-const size_t MAX_NOMBRES = 12;
-
-const string CAZADOR = "CV";
-
-
-//Convencion usada para este proyecto en los nombre,cardinales,colores,etc... 
-//Con las variables enumeradas obtengo una equivalencia (int) en char y string del nombre del objeto que se desea
-
-const string NOMBRES_STRING[MAX_NOMBRES]=	{"agua","bala","cruz","estaca","escopeta","humano","humano CV","Vanesa","vampiro","Vampirella","Nosferatu","zombi"};
-
-const char NOMBRES_CHAR[MAX_NOMBRES]=	{'a',	'b',	'c',	'e',	'E',		'h',		'H',	'W',		'v',		'V',		'N',	'z'};
-
-enum {AGUA=0,BALA,CRUZ,ESTACA,ESCOPETA,HUMANO,HUMANO_CAZADOR,VANESA,VAMPIRO,VAMPIRELLA,NOSFERATU,ZOMBIE};
-
+#include "../constantes/Constantes.h"
 
 class Datos
 {
@@ -118,7 +101,7 @@ class Datos
 		PRE: Una posicion a buscar
 		POST: Devuelve verdadero si logro eliminar el objeto de la lista de objetos y del tablero, falso en caso contrario
 		*/
-		bool eliminar_objeto(Coordenada posicion);
+		bool eliminar_objeto(Coordenada posicion,const char nombre_objeto);
 		/*
 		PRE: Un indice para buscar en la lista de objetos
 		POST: Devuelve el puntero de objeto encontrado en el indice de la lista

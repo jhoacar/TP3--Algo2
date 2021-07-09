@@ -6,12 +6,11 @@ Ser::Ser():Objeto(){
 
 }
 
-Ser::Ser(Coordenada posicion,char nombre):Objeto(posicion,nombre){
-    this -> armadura = asignar_numero_random(VALORES_ARMADURA[TOPE_INFERIOR], VALORES_ARMADURA[TOPE_SUPERIOR]);
-    this -> vida = asignar_numero_random(VALORES_VIDA[TOPE_INFERIOR], VALORES_VIDA[TOPE_SUPERIOR]);
-    this -> energia = asignar_numero_random(VALORES_ENERGIA[TOPE_INFERIOR], VALORES_ENERGIA[TOPE_SUPERIOR]);
-    this -> fuerza = asignar_numero_random(VALORES_FUERZA[TOPE_INFERIOR], VALORES_FUERZA[TOPE_SUPERIOR]);
-
+Ser::Ser(Casilla *casilla,char nombre):Objeto(casilla,nombre){
+    this -> armadura = obtener_numero_aleatorio(VALORES_ARMADURA[TOPE_INFERIOR], VALORES_ARMADURA[TOPE_SUPERIOR]);
+    this -> vida     = obtener_numero_aleatorio(VALORES_VIDA[TOPE_INFERIOR], VALORES_VIDA[TOPE_SUPERIOR]);
+    this -> energia  = obtener_numero_aleatorio(VALORES_ENERGIA[TOPE_INFERIOR], VALORES_ENERGIA[TOPE_SUPERIOR]);
+    this -> fuerza   = obtener_numero_aleatorio(VALORES_FUERZA[TOPE_INFERIOR], VALORES_FUERZA[TOPE_SUPERIOR]);
 }
 Ser::~Ser(){
 }

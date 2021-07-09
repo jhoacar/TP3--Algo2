@@ -1,35 +1,16 @@
 #ifndef FUNCIONES_H
 #define FUNCIONES_H
 
-#include "Lista.h"
+#include "../constantes/Constantes.h"
+#include "tda/Lista.h"
+#include "../mapa/Coordenada.h"
 
 #include <string>
 #include <iostream>
-#include <time.h>
 
 using namespace std;
 
-const size_t CANTIDAD_COLORES = 8; 
-
-enum {ROJO=0,VERDE,AMARILLO,AZUL,VIOLETA,CYAN,BLANCO,RESET};
-
-const string ANSI_COLOR[CANTIDAD_COLORES] = {"\x1b[31m","\x1b[32m","\x1b[33m","\x1b[34m","\x1b[35m","\x1b[36m","\x1b[37m","\x1b[0m"};
-
-const int TOPE_INFERIOR = 0;
-
-const int TOPE_SUPERIOR = 1;
-
-const int VALORES = 2;
-
-const int VALORES_VIDA[VALORES] = {20, 100};
-
-const int VALORES_ARMADURA[VALORES] = {0, 2};
-
-const int VALORES_FUERZA[VALORES] = {10, 40};
-
-const int VALORES_ENERGIA[VALORES] = {0, 20};
-
-const int NO_ENCONTRADO = -1;
+int minimo(int A, int B);
 /*
 PRE: Un caracter a evaluar
 POST: Verdadero si es minuscula, falso caso contrario
@@ -76,10 +57,20 @@ POST: Limpia la consola
 */
 void limpiar_pantalla();
 /*
+PRE: Dos numeros enteros para la posicion de la pantalla
+POST: Coloca el cursor donde se escoga en la pantalla
+*/
+void gotoxy(int x, int y);
+/*
 PRE: Las opciones que se muestran al usuario, el error por si se equivoca, el inicio (mayor que 0) y el fin de las opciones a encontrar y una opcion de salir
 POST: Devuelve la opcion del dato elegido del string de opciones o NO_ENCONTRADO (-1) si la opcion fue salir
 */
 int pedir_dato(string opciones,string error,int inicio,int fin,char opcion_salir);
+/*
+PRE: Dos numeros referentes a un intervalo, tomando valor minimo y maximo
+POST: Devuelve un numero comprendido entre ambos, incluyendolos
+*/
+int obtener_numero_aleatorio(int min, int max);
 /*
 PRE: Un nombre del fichero a buscar
 POST: Muestra la informacion del fichero en pantalla, validando los caracteres especiales
@@ -101,6 +92,17 @@ POST: Devuelve verdadero si es par
 */
 bool es_par(int numero);
 /*
+PRE: una posicion de referencia y una longitud
+POST: Devuelve una lista de coordenadas, positivas referentes a una cruz de esa longitud
+*/
+Lista<Coordenada> obtener_cruz(Coordenada centro , int longitud, Coordenada limite_inferior, Coordenada limite_superior);
+/*
+PRE: Una posicion de referencia y un tamano
+POST: Devueve una lista de coordenadas, positivas referentes a un cuadrado de ese tamano
+*/
+Lista<Coordenada> obtener_cuadrado(Coordenada centro, int tamano, Coordenada limite_inferior, Coordenada limite_superior);
+
+/*
 PRE: Un vector de datos, un tamaño especifico y un dato a buscar
 POST: Devuelve el indice donde se encontro el dato o NO_ENCONTRADO (-1) en caso contrario
 */
@@ -120,11 +122,5 @@ int buscar_dato(const Dato vector[],const size_t tope , Dato dato){
 	}
 	return encontrado? indice : NO_ENCONTRADO;
 }
-
-//PRE: Recibe dos enteros como los topes
-//POST: Devuelve un numero random entre los topes
-int asignar_numero_random(int tope_inferior, int tope_superior);
-
-
 
 #endif

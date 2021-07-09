@@ -53,32 +53,33 @@ void Datos::crear_tablero(const string &dimensiones){
 Objeto* Datos::crear_objeto(const int tipo,const char nombre,Coordenada posicion, int cantidad){
 	
 	Objeto *objeto=nullptr;
+	Casilla *casilla = new Lago();
 
 	switch(tipo)
 	{
-		case AGUA: 			objeto= new Agua(posicion,nombre,cantidad); break;
+		case AGUA: 			objeto= new Agua(casilla,nombre,cantidad); break;
 
-		case BALA: 			objeto= new Bala(posicion,nombre,cantidad); break;
+		case BALA: 			objeto= new Bala(casilla,nombre,cantidad); break;
 
-		case CRUZ: 			objeto= new Cruz(posicion,nombre,cantidad); break;
+		case CRUZ: 			objeto= new Cruz(casilla,nombre,cantidad); break;
 
-		case ESTACA: 		objeto= new Estaca(posicion,nombre,cantidad); break;
+		case ESTACA: 		objeto= new Estaca(casilla,nombre,cantidad); break;
 
-		case ESCOPETA: 		objeto= new Escopeta(posicion,nombre,cantidad); break;
+		case ESCOPETA: 		objeto= new Escopeta(casilla,nombre,cantidad); break;
 
-		case HUMANO: 		objeto= new Humano(posicion,nombre); break;
+		case HUMANO: 		objeto= new Humano(casilla,nombre); break;
 
-		case HUMANO_CAZADOR:objeto= new Cazador(posicion,nombre); break;
+		case HUMANO_CAZADOR:objeto= new Cazador(casilla,nombre); break;
 
-		case VANESA: 		objeto= new Vanessa(posicion,nombre); break;
+		case VANESA: 		objeto= new Vanessa(casilla,nombre); break;
 
-		case VAMPIRO: 		objeto= new Vampiro(posicion,nombre); break;
+		case VAMPIRO: 		objeto= new Vampiro(casilla,nombre); break;
 
-		case VAMPIRELLA: 	objeto= new Vampirella(posicion,nombre); break;
+		case VAMPIRELLA: 	objeto= new Vampirella(casilla,nombre); break;
 
-		case NOSFERATU: 	objeto= new Nosferatu(posicion,nombre); break;
+		case NOSFERATU: 	objeto= new Nosferatu(casilla,nombre); break;
 
-		case ZOMBIE: 		objeto= new Zombie(posicion,nombre); break;	
+		case ZOMBIE: 		objeto= new Zombie(casilla,nombre); break;	
 
 		default: 			cout<<"No se ha encontrado el objeto de nombre: "<<nombre<<endl; break;
 	}
@@ -211,7 +212,7 @@ string Datos::obtener_datos(){
 	for( int i=0; i<(int)objetos.obtener_tamano(); i++){
 
 		datos+="\nObjeto: "+NOMBRES_STRING[buscar_dato(NOMBRES_CHAR,MAX_NOMBRES,objetos[i]->obtener_nombre())]+"\n";
-		datos+="Posicion: x = "+to_string(objetos[i]->obtener_posicion().obtener_x())+" y = "+to_string(objetos[i]->obtener_posicion().obtener_y())+"\n";
+		datos+="Posicion: x = "+to_string(objetos[i]->obtener_casilla()->obtener_x())+" y = "+to_string(objetos[i]->obtener_casilla()->obtener_y())+"\n";
 		datos+="Cuadrante: "+objetos[i]->obtener_cuadrante()+"\n";
 	}
 	return datos;
@@ -248,7 +249,7 @@ int Datos::buscar_objeto(Coordenada posicion){
 
 	while(!encontrado && indice <(int) objetos.obtener_tamano()){
 
-		if(objetos[indice]->obtener_posicion() == posicion)
+		if(objetos[indice]->obtener_casilla()->obtener_posicion() == posicion)
 			encontrado = true;
 		else
 			indice++;
@@ -267,7 +268,7 @@ void Datos::agregar_objeto(Objeto *objeto){
 	this->tablero->cargar_objeto(objeto);
 }
 
-bool Datos::eliminar_objeto(Coordenada posicion){
+bool Datos::eliminar_objeto(Coordenada posicion,const char nombre_objeto){
 
-	return this->objetos.borrar(buscar_objeto(posicion)) && this->tablero->eliminar_objeto(posicion);
+	return this->objetos.borrar(buscar_objeto(posicion)) && this->tablero->eliminar_objeto(posicion,nombre_objeto);
 }

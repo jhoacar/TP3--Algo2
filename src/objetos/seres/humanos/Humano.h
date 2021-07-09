@@ -7,7 +7,7 @@ class Humano : public Ser
 {
 	public:
 		Humano();
-		Humano(Coordenada posicion,char nombre);
+		Humano(Casilla *casilla,char nombre);
 		void mostrar();
 		~Humano();
 		void regenerar_energia();

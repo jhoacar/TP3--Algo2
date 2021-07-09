@@ -16,5 +16,11 @@
 #include "../objetos/seres/monstruos/vampiros/Vampirella.h"
 #include "../objetos/seres/monstruos/vampiros/Nosferatu.h"
 #include "../objetos/seres/monstruos/zombies/Zombie.h"
+#include "../mapa/tipos/Camino.h"
+#include "../mapa/tipos/Lago.h"
+#include "../mapa/tipos/Montana.h"
+#include "../mapa/tipos/Precipicio.h"
+#include "../mapa/tipos/Vacio.h"
+#include "../mapa/tipos/Volcan.h"
 
 #endif

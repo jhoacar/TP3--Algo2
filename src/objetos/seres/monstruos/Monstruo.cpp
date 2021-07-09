@@ -5,7 +5,7 @@ using std::endl;
 Monstruo::Monstruo():Ser(){
 
 }
-Monstruo::Monstruo(Coordenada posicion,char nombre):Ser(posicion,nombre)
+Monstruo::Monstruo(Casilla *casilla,char nombre):Ser(casilla,nombre)
 {
 }
 void Monstruo::mostrar(){

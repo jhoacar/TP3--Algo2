@@ -7,7 +7,7 @@ class Vanessa : public Cazador
 {
 	public:
 		Vanessa();
-		Vanessa(Coordenada posicion,char nombre);
+		Vanessa(Casilla *casilla,char nombre);
 		void mostrar();
 		void regenerar_energia();
 		~Vanessa();

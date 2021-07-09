@@ -12,7 +12,7 @@ class Ser : public Objeto
         Lista<Elemento *> inventario;
 	public:
 		Ser();
-		Ser(Coordenada posicion,char nombre);
+		Ser(Casilla *casilla,char nombre);
 		~Ser();
 		int devolver_armadura();
 		int devolver_vida();

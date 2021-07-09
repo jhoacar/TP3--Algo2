@@ -11,7 +11,7 @@ Tablero::Tablero(){
 
     this->columnas=0;
 
-    objetos=nullptr;
+    casillas=nullptr;
 
 }
 
@@ -22,18 +22,18 @@ Tablero::Tablero(int filas,int columnas)
 
     this->columnas=columnas;
 
-    objetos = new Objeto**[filas];
+    casillas = new Casilla**[filas];
 
     for(int i=0; i < filas; i++)
-        objetos[i] = new Objeto*[columnas];
+        casillas[i] = new Casilla*[columnas];
 
 
     for(int i=0; i < filas ;i++){
-
-        for(int j=0; j < columnas ;j++)
-            objetos[i][j]=nullptr;
+        for(int j=0; j < columnas ;j++){
+            casillas[i][j]=nullptr;
+            grafo.agregar_vertice({i,j});
+        }
     }
-
 }
 
 Tablero::~Tablero()
@@ -42,11 +42,11 @@ Tablero::~Tablero()
 
         for(int j=0; j < columnas ; j++){
 
-            if(objetos[i][j] != nullptr){
+            if(casillas[i][j] != nullptr){
 
-                delete objetos[i][j];
+                delete casillas[i][j];
 
-                objetos[i][j]=nullptr;
+                casillas[i][j]=nullptr;
 
             }
         }
@@ -54,41 +54,41 @@ Tablero::~Tablero()
 
     for(int i=0 ; i < filas ;i++){
     
-        delete[] objetos[i];
+        delete[] casillas[i];
     
-        objetos[i]=nullptr;
+        casillas[i]=nullptr;
     
     }
 
-    delete [] objetos;
+    delete [] casillas;
 
-    objetos=nullptr;
+    casillas=nullptr;
 }
 
 string Tablero::obtener_cuadrante(Coordenada posicion){
     
-    if(!posicion_valida(posicion))
+    if(!es_valida(posicion))
     
         return "";
 
     else if(posicion.obtener_x()<columnas/2 && posicion.obtener_y()<filas/2)
     
-        return CARDINALES[NO];
+        return CARDINALES[NOROESTE];
     
     else if(posicion.obtener_x()>columnas/2 && posicion.obtener_y()>filas/2)
     
-        return CARDINALES[SE];
+        return CARDINALES[SURESTE];
     
     else if(posicion.obtener_x()>=columnas/2 && posicion.obtener_y()<=filas/2)
     
-        return CARDINALES[NE];
+        return CARDINALES[NORESTE];
     
     else
     
-        return CARDINALES[SO];
+        return CARDINALES[SUROESTE];
 }
 
-bool Tablero::posicion_valida(Coordenada posicion){
+bool Tablero::es_valida(Coordenada posicion){
 
     Coordenada limite( columnas , filas );
 
@@ -99,16 +99,17 @@ void Tablero::cargar_objeto(Objeto *objeto){
     
     if(objeto!=nullptr){
 
-        Coordenada posicion = objeto->obtener_posicion();
+        Coordenada posicion = objeto->obtener_casilla()->obtener_posicion();
 
-        posicion-=1; //Le resto una posicion para guardarla correctamente en el tablero arrancando en (0,0)
+        //Le resto una posicion para guardarla correctamente en el tablero arrancando en (0,0)
+        int fila = posicion.obtener_y() - 1;
+        int columna = posicion.obtener_x() - 1;
 
-        if(posicion_valida(posicion)){
+        if(es_valida({fila,columna}) && casillas[ fila ][ columna ] != nullptr){
 
-            objeto->asignar_cuadrante( obtener_cuadrante ( posicion ) );
+            objeto->asignar_cuadrante( obtener_cuadrante ( {fila,columna} ) );
     
-            objetos[ posicion.obtener_y() ][ posicion.obtener_x() ] = objeto;
-    
+            casillas[ fila ][ columna ]->agregar_objeto(objeto);
         }
 
     }    
@@ -125,97 +126,94 @@ int Tablero::obtener_columnas(){
 
 }
 
-bool Tablero::eliminar_objeto(Coordenada posicion){
+Casilla* Tablero::obtener_casilla(Coordenada posicion){
+    
+    int fila = posicion.obtener_y();
+    int columna = posicion.obtener_x();
 
-    posicion-=1; //Le resto una posicion para eliminarlo correctamente en el tablero arrancando en (0,0)
 
-    if(posicion_valida(posicion)){
+    if(es_valida(posicion))
+        return casillas[fila][columna];        
+    else  
+        return nullptr;
+}
+
+void Tablero::asignar_casilla(Coordenada posicion, Casilla *casilla){
+
+    if(es_valida(posicion)){
+
+        int fila = posicion.obtener_y();
+        int columna = posicion.obtener_x();
+
+        casillas[fila][columna] = casilla;
+    }
+}
+
+void Tablero::asignar_casillas(Lista<Coordenada> posiciones, Lista<Casilla*> lista_casillas){
+
+    for( int i=0; i< posiciones.obtener_tamano(); i++)
+        asignar_casilla(posiciones[i],lista_casillas[i]);
+}
+
+Lista<Casilla*> Tablero::obtener_lista_casillas(Lista<Coordenada> posiciones){
+    
+    Lista<Casilla*> lista_casillas;
+    for(int i=0;i<posiciones.obtener_tamano(); i++)
+        if(es_valida(posiciones[i]))
+            lista_casillas.agregar(obtener_casilla(posiciones[i]));
+
+    return lista_casillas;
+}
+
+void Tablero::cargar_grafo(int tipo_personaje){
+
+    for(int i=0; i< filas; i++){
+        for(int j=0; j<columnas ; j++){
+
+            Lista<Coordenada> adyacentes = obtener_cruz({i,j},1,{0,0},{filas,columnas});
         
-        if(objetos[posicion.obtener_y()][posicion.obtener_x()]!=nullptr){
-            
-            delete objetos[posicion.obtener_y()][posicion.obtener_x()];
-            
-            objetos[posicion.obtener_y()][posicion.obtener_x()]=nullptr;
-            
-            return true;
+            for(int k=0;k<adyacentes.obtener_tamano(); k++){
+
+                int fila_adyacente    = adyacentes[k].obtener_y();
+                int columna_adyacente = adyacentes[k].obtener_x();
+
+                Casilla *casilla_adyacente = obtener_casilla(adyacentes[k]);
+
+                int peso = casilla_adyacente!=nullptr ? casilla_adyacente->obtener_energia(tipo_personaje) : INFINITO;
+                    
+                grafo.agregar_camino({i,j},{fila_adyacente,columna_adyacente},peso);
+
+            }
         }
     }
-    return false;
+
+}
+
+Lista<Casilla*> Tablero::obtener_camino_minimo(Coordenada origen, Coordenada destino, int tipo_personaje){
+
+    cargar_grafo(tipo_personaje);
+    Lista<Coordenada> camino_minimo = grafo.obtener_camino_minimo(origen,destino);
+    return obtener_lista_casillas(camino_minimo);
+}
+
+int Tablero::obtener_energia_total(Coordenada origen, Coordenada destino, int tipo_personaje){
+    
+    cargar_grafo(tipo_personaje);
+    return grafo.obtener_peso_minimo(origen,destino);
+}
+
+bool Tablero::eliminar_objeto(Coordenada posicion,const char nombre_objeto){
+    
+    Casilla *casilla = obtener_casilla(posicion);
+
+    if(casilla==nullptr)
+        return false;
+
+    return casilla->eliminar_objeto(nombre_objeto);
+    
 }
 
 void Tablero::mostrar_tablero(){
-
-	for(int i=0; i < filas ; i++){
-
-        if(i==0){
-            cout<<"    ";
-            for(int j=0; j < columnas; j++){
-                
-                if(j % (columnas/2) == 0 ){
-                    color(ROJO);
-                    cout<<" | ";
-                    color(RESET);
-                }
-                color(CYAN);
-                cout<<" "<<(j+1)<<" ";
-                color(RESET);
-            }
-
-            cout<<endl;
-        }
-
-
-        if(i % (filas/2) == 0 ){
-
-            for(int j=0; j < columnas + 3 ; j++){
-                
-                color(ROJO);
-                cout<<" _ ";
-                color(RESET);
-            }
-
-            cout<<endl;
-        }
-		
-        for(int j=-1; j < columnas ; j++){
-
-            if(j==-1){
-                color(CYAN);
-                cout<<" "<< (i < 9? " "+to_string(i+1) : to_string(i+1) )<<" ";
-                color(RESET);
-            }
-            else{
-                
-                if(j % (columnas/2) == 0 ){
-                    color(ROJO);
-                    cout<<" | ";
-                    color(RESET);
-                }    
-
-                if(objetos[i][j]!=nullptr){
-                    
-                    color(AMARILLO);
-                    cout<<" "<<objetos[i][j]->obtener_nombre()<<" ";
-                    color(RESET);
-                    
-                }
-                else{
-                    cout<<" * ";
-                }
-            }
-        }    
-        color(ROJO);
-        cout<<" | "<<endl;
-        color(RESET);
-	}
-
-    for(int j=0; j < columnas + 3 ; j++){
-
-        color(ROJO);
-        cout<<" - ";
-        color(RESET);
-    }
-    cout<<endl;
 
     mostrar_leyenda();
 }
@@ -225,13 +223,13 @@ void Tablero::mostrar_leyenda(){
 
     cout<<"\n\tCONVENCION USADA: "<<endl;
     cout<<"\n-*: vacio";
-    cout<<"\n- h: humano simple";
-    cout<<"\n- H: humano caza vampiros-zombis";
+    cout<<"\n- h: humaNOROESTE simple";
+    cout<<"\n- H: humaNOROESTE caza vampiros-zombis";
     cout<<"\n- W: Vanesa";
     cout<<"\n- z: zombi";
     cout<<"\n- v: vampiro";
     cout<<"\n- V: Vampirella"; 
-    cout<<"\n- N: Nosferatu ";
+    cout<<"\n- N: NOROESTEsferatu ";
     cout<<"\n- c: cruz ";
     cout<<"\n- a: agua bendita ";
     cout<<"\n- e: estaca ";
