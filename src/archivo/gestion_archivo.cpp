@@ -1,5 +1,6 @@
 #include "gestion_archivo.h"
 
+
 string Gestion_archivo::obtener_texto(const string nombre_fichero){
 
 	fstream archivo( nombre_fichero.c_str() , fstream::in );
@@ -41,6 +42,7 @@ string fichero = "src/interfaz/"+name+".txt";
     return mostrado;
 }
 
+//si se guarda los datos de partida en una lista, se guardan los datos
 void Gestion_archivo::guardar_partida(Lista<string>* lista){
     
     ofstream archivo;
