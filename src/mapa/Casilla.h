@@ -3,7 +3,6 @@
 
 #include <string>
 #include "../objetos/Objeto.h"
-#include "../objetos/seres/Ser.h"
 #include "../funcionalidades/tda/Lista.h"
 using std::string;
 

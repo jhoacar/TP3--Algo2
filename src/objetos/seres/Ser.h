@@ -9,7 +9,6 @@ class Ser : public Objeto
 		Ser();
 		Ser(Coordenada posicion,char nombre);
 		~Ser();
-		void mostrar();
 };
 
 #endif

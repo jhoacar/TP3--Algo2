@@ -38,7 +38,11 @@ public:
     //post: muestra el camino minimo entre el origen y el destino imprimiendo los vertices a visitar y su costo final
     Lista<Dato> camino_minimo(int origen, int destino);
 
+    int peso_minimo(int origen,int destino);
+
     void mostrar_matriz_camino(void (*imprimir)(Dato dato));
+    
+    void mostrar_matriz_pesos();
 };
 
 template<class Dato>
@@ -83,14 +87,30 @@ int ** Floyd<Dato>::crear_matriz_costos(int ** matriz_adyacencia){
     return costos;
 }
 
+void imprimir_coord(Coordenada c){
+    cout<<"("<<c.obtener_x()<<","<<c.obtener_y()<<")"<<endl;
+}
+
 template<class Dato>
 void Floyd<Dato>::actualizar_matrices(){
     //Algoritmo, Recorro una cruz desde cada posicion de la diagonal principal luego obtengo el vertice de interseccion de cada coordenada de la cruz
     //Verfico si el peso que tiene esa interseccion es mayor a la suma que tiene en esa cruz 
+    for (int k = 0; k < N; k++)
+        for (int i = 0; i < N; i++)
+            for (int j = 0; j < N; j++)
+                matriz_costos[i][j] = min(matriz_costos[i][j], matriz_costos[i][k] + matriz_costos[k][j]);
+    
     for(int i = 0 ; i < cantidad_vertices; i++){
-        for(int j=i; j < cantidad_vertices; i++){
+        Lista<Coordenada> cruz = obtener_cruz({i,i},cantidad_vertices,{0,0},{cantidad_vertices,cantidad_vertices});
+        for(int i = 0 ; i < cruz.obtener_tamano(); i++){
 
         }
+        
+        
+        cout<<endl;
+        cruz.imprimir(imprimir_coord);
+        cout<<endl;
+        pausa();
     }
 }
 
@@ -100,13 +120,7 @@ void Floyd<Dato>::calcular_matrices(int ** matriz_adyacencia) {
     cantidad_vertices = vertices->obtener_tamano();
     matriz_costos = crear_matriz_costos(matriz_adyacencia);
     matriz_caminos = crear_matriz_caminos();
-    actualizacion_matrices();
-  //implementar la actualizacion de matrices para poder obtener el camino minimo con el metodo de Floyd
-    /* este codigo se puede agregar al final del primer if para poder ir siguiendo el avance de las matrices.
-    cout << endl << "Iteracion numero: " << verticeIntermedio << endl;
-    mostrar_matrices();
-    */
-
+    actualizar_matrices();
 }
 
 template<class Dato>
@@ -118,6 +132,10 @@ Lista<Dato> Floyd<Dato>::camino_minimo(int origen, int destino) {
         camino_minimo.agregar((*vertices)[origen+1]);
     }while(origen != destino);
     return camino_minimo;
+}
+template<class Dato>
+int Floyd<Dato>::peso_minimo(int origen, int destino) {
+    return matriz_costos[origen][destino];
 }
 
 template<class Dato>
@@ -153,6 +171,15 @@ void Floyd<Dato>::mostrar_matriz_camino(void (*imprimir)(Dato dato)){
     }
 }
 
+template<class Dato>
+void Floyd<Dato>::mostrar_matriz_pesos(){
+    cout << " Matriz de pesos:" << endl;
+    for(int i=0; i< cantidad_vertices; i++){
+        for(int j=0; j<cantidad_vertices; j++)
+            cout<<" "<<matriz_costos[i][j]<<" ";
+        cout<<endl;
+    }
+}
 
 
 #endif //GRAFOS_FLOYD_H

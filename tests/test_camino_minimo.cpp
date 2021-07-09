@@ -17,20 +17,20 @@ int main() {
     grafo.agregar_vertice({1,0});
     grafo.agregar_vertice({0,1});
     grafo.agregar_vertice({1,1});
-    grafo.agregar_vertice({1,2});
-    grafo.agregar_vertice({2,2});
-    grafo.agregar_vertice({2,1});
-    grafo.agregar_vertice({2,2});
-    grafo.agregar_vertice({2,0});
-    grafo.agregar_vertice({0,2});
+    //grafo.agregar_vertice({1,2});
+    //grafo.agregar_vertice({2,2});
+    //grafo.agregar_vertice({2,1});
+    //grafo.agregar_vertice({2,2});
+    //grafo.agregar_vertice({2,0});
+    //grafo.agregar_vertice({0,2});
 
-    grafo.agregar_camino({0,0},{1,0},2);
-    grafo.agregar_camino({1,0},{2,0},1);
-    grafo.agregar_camino({2,0},{2,2},3);
+    //grafo.agregar_camino({0,0},{1,0},2);
+    //grafo.agregar_camino({1,0},{2,0},1);
+    //grafo.agregar_camino({2,0},{2,2},3);
     
-    grafo.agregar_camino({0,0},{0,1},3);
-    grafo.agregar_camino({0,1},{1,1},4);
-    grafo.agregar_camino({1,1},{2,2},3);
+    //grafo.agregar_camino({0,0},{0,1},3);
+    //grafo.agregar_camino({0,1},{1,1},4);
+    //grafo.agregar_camino({1,1},{2,2},3);
 
     grafo.calcular_matrices_Floyd();
     

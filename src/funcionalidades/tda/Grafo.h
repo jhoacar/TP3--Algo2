@@ -105,11 +105,22 @@ Lista<Dato> Grafo<Dato>::obtener_camino_minimo(Dato origen, Dato destino, int (*
     camino.agregar(origen);
 
     if(posicion_origen!=NO_ENCONTRADO && posicion_destino!=NO_ENCONTRADO)
-        camino+=camino_minimo(posicion_origen, posicion_destino,peso);
+        camino+=camino_minimo(posicion_origen, posicion_destino);
     
     camino.agregar(destino);
 
     return camino;
+}
+template <class Dato>
+int Grafo<Dato>::obtener_peso_minimo(Dato origen, Dato destino, int (*compare)(Dato A , Dato B)) {
+    
+    int posicion_origen = vertices->buscar_dato(0,origen);
+    int posicion_destino = vertices->buscar_dato(0,destino);
+
+    if(posicion_origen==NO_ENCONTRADO || posicion_destino==NO_ENCONTRADO)
+        return NO_ENCONTRADO;
+    else
+        return floyd->peso_minimo(posicion_origen,posicion_destino);
 }
 template <class Dato>
 void Grafo<Dato>::agrandar_matriz_adyacencia() {
