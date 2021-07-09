@@ -14,3 +14,8 @@ void Vampirella::mostrar(){
 Vampirella::~Vampirella()
 {
 }
+
+void Vampirella::regenerar_energia() {
+    this -> energia += 6;
+}
+

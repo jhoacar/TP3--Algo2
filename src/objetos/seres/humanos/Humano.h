@@ -10,6 +10,8 @@ class Humano : public Ser
 		Humano(Coordenada posicion,char nombre);
 		void mostrar();
 		~Humano();
+		void regenerar_energia();
+		void encuentro_con_elemento();
 	protected:
 };
 

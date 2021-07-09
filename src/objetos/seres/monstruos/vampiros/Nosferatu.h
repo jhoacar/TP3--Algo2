@@ -9,6 +9,7 @@ class Nosferatu : public Vampiro
 		Nosferatu();
 		Nosferatu(Coordenada posicion,char nombre);
 		void mostrar();
+		void regnerar_energia();
 		~Nosferatu();
 	protected:
 };

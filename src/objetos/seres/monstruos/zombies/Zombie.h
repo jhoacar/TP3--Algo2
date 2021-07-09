@@ -9,6 +9,8 @@ class Zombie : public Monstruo
 		Zombie();
 		Zombie(Coordenada posicion,char nombre);
 		void mostrar();
+		void regenerar_energia();
+		void encuentro_con_elemento();
 		~Zombie();
 	protected:
 };

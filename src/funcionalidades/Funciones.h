@@ -5,6 +5,7 @@
 
 #include <string>
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 
@@ -13,6 +14,20 @@ const size_t CANTIDAD_COLORES = 8;
 enum {ROJO=0,VERDE,AMARILLO,AZUL,VIOLETA,CYAN,BLANCO,RESET};
 
 const string ANSI_COLOR[CANTIDAD_COLORES] = {"\x1b[31m","\x1b[32m","\x1b[33m","\x1b[34m","\x1b[35m","\x1b[36m","\x1b[37m","\x1b[0m"};
+
+const int TOPE_INFERIOR = 0;
+
+const int TOPE_SUPERIOR = 1;
+
+const int VALORES = 2;
+
+const int VALORES_VIDA[VALORES] = {20, 100};
+
+const int VALORES_ARMADURA[VALORES] = {0, 2};
+
+const int VALORES_FUERZA[VALORES] = {10, 40};
+
+const int VALORES_ENERGIA[VALORES] = {0, 20};
 
 const int NO_ENCONTRADO = -1;
 /*
@@ -105,6 +120,10 @@ int buscar_dato(const Dato vector[],const size_t tope , Dato dato){
 	}
 	return encontrado? indice : NO_ENCONTRADO;
 }
+
+//PRE: Recibe dos enteros como los topes
+//POST: Devuelve un numero random entre los topes
+int asignar_numero_random(int tope_inferior, int tope_superior);
 
 
 

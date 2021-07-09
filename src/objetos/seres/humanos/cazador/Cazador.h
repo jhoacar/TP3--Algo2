@@ -9,6 +9,7 @@ class Cazador : public Humano
 		Cazador();
 		Cazador(Coordenada posicion,char nombre);
 		void mostrar();
+		void regenerar_energia();
 		~Cazador();
 	protected:
 };

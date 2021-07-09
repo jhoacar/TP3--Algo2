@@ -13,3 +13,7 @@ void Cazador::mostrar(){
 Cazador::~Cazador()
 {
 }
+
+void Cazador::regenerar_energia() {
+    this -> energia += 8;
+}

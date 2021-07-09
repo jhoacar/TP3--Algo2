@@ -9,6 +9,7 @@ class Vampirella : public Vampiro
 		Vampirella();
 		Vampirella(Coordenada posicion,char nombre);
 		void mostrar();
+		void regenerar_energia();
 		~Vampirella();
 	protected:
 };

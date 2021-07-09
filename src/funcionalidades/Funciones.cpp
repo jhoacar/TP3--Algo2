@@ -10,6 +10,7 @@ using std::cin;
 const string NO_NUMERO = "-1";
 
 
+
 #ifdef __linux__
 #define LIMPIAR "clear"
 void pausa(){
@@ -175,3 +176,9 @@ bool es_par(int numero){
   return numero%2==0;
 
 }
+
+int asignar_numero_random(int tope_inferior, int tope_superior){
+    srand((unsigned int)time(nullptr));
+    return rand() % (tope_superior - tope_inferior + 1) + tope_inferior;
+}
+

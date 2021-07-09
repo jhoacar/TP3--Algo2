@@ -14,3 +14,7 @@ void Nosferatu::mostrar(){
 Nosferatu::~Nosferatu()
 {
 }
+
+void Nosferatu::regnerar_energia() {
+    this -> energia += 10;
+}
