@@ -2,6 +2,7 @@
 #define TABLERO_H
 
 #include "../constantes/Constantes.h"
+#include "../funcionalidades/tda/Grafo.h"
 #include "../objetos/Objeto.h"
 #include "Casilla.h"
 
@@ -9,8 +10,12 @@
 class Tablero
 {
 	Casilla ***casillas;
+	Grafo<Coordenada> grafo;
 	int filas;
     int columnas;
+	
+	void cargar_grafo(int tipo_personaje);
+
 	public:
 		/*
 		PRE: 
@@ -48,10 +53,31 @@ class Tablero
 		*/
 		string obtener_cuadrante(Coordenada posicion);
 		/*
+		
+		*/
+		void asignar_casilla(Coordenada posicion, Casilla *casilla);
+		/*
+		
+		*/
+		void asignar_casillas(Lista<Coordenada> posiciones, Lista<Casilla*> casillas);
+		
+		/*
 		PRE:
 		POST: Devuelve la casilla en la posicion indicada
 		*/
 		Casilla* obtener_casilla(Coordenada posicion);
+		/*
+		
+		*/
+		Lista<Casilla *> obtener_lista_casillas(Lista<Coordenada> posiciones);
+		/*
+		
+		*/
+		Lista<Casilla*> obtener_camino_minimo(Coordenada origen, Coordenada destino, int tipo_personaje);
+		/*
+		
+		*/
+		int obtener_energia_total(Coordenada origen, Coordenada destino, int tipo_personaje);
 		/*
 		PRE: Un objeto previamente cargado
 		POST: Carga al tablero la informacion del objeto

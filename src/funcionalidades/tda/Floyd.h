@@ -25,7 +25,9 @@ private:
    //post: libera la memoria de las matrices de costos y caminos
     void liberar_matrices();
 
+    //post: carga correctamente la informacion de los pesos minimos y caminos en las matrices de costos y caminos
     void actualizar_matrices();
+
 public:
     Floyd(Lista<Dato> *vertices);
 
@@ -87,30 +89,20 @@ int ** Floyd<Dato>::crear_matriz_costos(int ** matriz_adyacencia){
     return costos;
 }
 
-void imprimir_coord(Coordenada c){
-    cout<<"("<<c.obtener_x()<<","<<c.obtener_y()<<")"<<endl;
-}
-
 template<class Dato>
 void Floyd<Dato>::actualizar_matrices(){
-    //Algoritmo, Recorro una cruz desde cada posicion de la diagonal principal luego obtengo el vertice de interseccion de cada coordenada de la cruz
-    //Verfico si el peso que tiene esa interseccion es mayor a la suma que tiene en esa cruz 
-    for (int k = 0; k < N; k++)
-        for (int i = 0; i < N; i++)
-            for (int j = 0; j < N; j++)
-                matriz_costos[i][j] = min(matriz_costos[i][j], matriz_costos[i][k] + matriz_costos[k][j]);
     
-    for(int i = 0 ; i < cantidad_vertices; i++){
-        Lista<Coordenada> cruz = obtener_cruz({i,i},cantidad_vertices,{0,0},{cantidad_vertices,cantidad_vertices});
-        for(int i = 0 ; i < cruz.obtener_tamano(); i++){
-
+    for (int k = 0; k < cantidad_vertices; k++){
+        for (int i = 0; i < cantidad_vertices; i++){
+            for (int j = 0; j < cantidad_vertices; j++){
+                if (matriz_costos[i][k] + matriz_costos[k][j] < matriz_costos[i][j]){
+                    matriz_costos[i][j] = matriz_costos[i][k]+matriz_costos[k][j];
+                    matriz_caminos[i][j] = k;
+                }
+                else if (matriz_costos[i][k] + matriz_costos[k][j] == matriz_costos[i][j] && matriz_costos[i][j] != INFINITO && k != j && k != i )
+                    matriz_caminos[i][j]=k;
+            }
         }
-        
-        
-        cout<<endl;
-        cruz.imprimir(imprimir_coord);
-        cout<<endl;
-        pausa();
     }
 }
 
@@ -129,7 +121,7 @@ Lista<Dato> Floyd<Dato>::camino_minimo(int origen, int destino) {
     Lista<Dato> camino_minimo;
     do{
         origen = matriz_caminos[origen][destino];
-        camino_minimo.agregar((*vertices)[origen+1]);
+        camino_minimo.agregar((*vertices)[origen]);
     }while(origen != destino);
     return camino_minimo;
 }
@@ -164,6 +156,7 @@ void Floyd<Dato>::mostrar_matriz_camino(void (*imprimir)(Dato dato)){
             cout<<" "<<matriz_caminos[i][j]<<" ";
         cout<<endl;
     }
+    cout<<endl;
     for(int i=0; i< cantidad_vertices; i++){
         for(int j=0; j<cantidad_vertices; j++)
             imprimir((*vertices)[matriz_caminos[i][j]]);

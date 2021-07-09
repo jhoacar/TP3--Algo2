@@ -2,9 +2,11 @@
 #define CASILLA_H
 
 #include <string>
-#include "../objetos/Objeto.h"
 #include "../funcionalidades/tda/Lista.h"
+#include "Coordenada.h"
 using std::string;
+
+class Objeto;
 
 class Casilla{
     protected:
@@ -28,6 +30,10 @@ class Casilla{
         bool eliminar_objeto(char nombre_objeto);
         bool eliminar_toda_ocurrencia(char nombre_objeto);
         Lista<Objeto*> obtener_objetos();
+        Coordenada obtener_posicion();
+        int obtener_x();
+        int obtener_y();
+
 };
 
 

@@ -81,6 +81,7 @@ void Grafo<Dato>::mostrar_grafo(void (*imprimir)(Dato dato)) {
     cout<<endl;
     mostrar_matriz_adyacencia();
     floyd->mostrar_matriz_camino(imprimir);
+    floyd->mostrar_matriz_pesos();
 }
 
 template <class Dato>
@@ -106,9 +107,7 @@ Lista<Dato> Grafo<Dato>::obtener_camino_minimo(Dato origen, Dato destino, int (*
 
     if(posicion_origen!=NO_ENCONTRADO && posicion_destino!=NO_ENCONTRADO)
         camino+=camino_minimo(posicion_origen, posicion_destino);
-    
-    camino.agregar(destino);
-
+        
     return camino;
 }
 template <class Dato>

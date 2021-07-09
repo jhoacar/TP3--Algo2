@@ -5,7 +5,7 @@ using std::endl;
 Cazador::Cazador():Humano(){
 
 }
-Cazador::Cazador(Coordenada posicion,char nombre):Humano(posicion,nombre){
+Cazador::Cazador(Casilla *casilla,char nombre):Humano(casilla,nombre){
 }
 void Cazador::mostrar(){
     cout<<"Objeto: Cazador"<<endl;

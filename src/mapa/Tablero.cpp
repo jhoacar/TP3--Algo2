@@ -29,11 +29,11 @@ Tablero::Tablero(int filas,int columnas)
 
 
     for(int i=0; i < filas ;i++){
-
-        for(int j=0; j < columnas ;j++)
+        for(int j=0; j < columnas ;j++){
             casillas[i][j]=nullptr;
+            grafo.agregar_vertice({i,j});
+        }
     }
-
 }
 
 Tablero::~Tablero()
@@ -99,16 +99,17 @@ void Tablero::cargar_objeto(Objeto *objeto){
     
     if(objeto!=nullptr){
 
-        Coordenada posicion = objeto->obtener_posicion();
+        Coordenada posicion = objeto->obtener_casilla()->obtener_posicion();
 
-        posicion-=1; //Le resto una posicion para guardarla correctamente en el tablero arrancando en (0,0)
+        //Le resto una posicion para guardarla correctamente en el tablero arrancando en (0,0)
+        int fila = posicion.obtener_y() - 1;
+        int columna = posicion.obtener_x() - 1;
 
-        if(es_valida(posicion)){
+        if(es_valida({fila,columna}) && casillas[ fila ][ columna ] != nullptr){
 
-            objeto->asignar_cuadrante( obtener_cuadrante ( posicion ) );
+            objeto->asignar_cuadrante( obtener_cuadrante ( {fila,columna} ) );
     
-            casillas[ posicion.obtener_y() ][ posicion.obtener_x() ]->agregar_objeto(objeto);
-    
+            casillas[ fila ][ columna ]->agregar_objeto(objeto);
         }
 
     }    
@@ -124,26 +125,81 @@ int Tablero::obtener_columnas(){
     return this->columnas;
 
 }
+
 Casilla* Tablero::obtener_casilla(Coordenada posicion){
     
+    int fila = posicion.obtener_y();
+    int columna = posicion.obtener_x();
+
+
     if(es_valida(posicion))
-        return casillas[posicion.obtener_y()][posicion.obtener_x()];        
+        return casillas[fila][columna];        
     else  
         return nullptr;
 }
 
-bool Tablero::eliminar_objeto(Objeto *objeto){
+void Tablero::asignar_casilla(Coordenada posicion, Casilla *casilla){
 
-    //if(es_valida(objeto->obtener_posicion())){
+    if(es_valida(posicion)){
+
+        int fila = posicion.obtener_y();
+        int columna = posicion.obtener_x();
+
+        casillas[fila][columna] = casilla;
+    }
+}
+
+void Tablero::asignar_casillas(Lista<Coordenada> posiciones, Lista<Casilla*> lista_casillas){
+
+    for( int i=0; i< posiciones.obtener_tamano(); i++)
+        asignar_casilla(posiciones[i],lista_casillas[i]);
+}
+
+Lista<Casilla*> Tablero::obtener_lista_casillas(Lista<Coordenada> posiciones){
+    
+    Lista<Casilla*> lista_casillas;
+    for(int i=0;i<posiciones.obtener_tamano(); i++)
+        if(es_valida(posiciones[i]))
+            lista_casillas.agregar(obtener_casilla(posiciones[i]));
+
+    return lista_casillas;
+}
+
+void Tablero::cargar_grafo(int tipo_personaje){
+
+    for(int i=0; i< filas; i++){
+        for(int j=0; j<columnas ; j++){
+
+            Lista<Coordenada> adyacentes = obtener_cruz({i,j},1,{0,0},{filas,columnas});
         
-        //if(casillas[posicion.obtener_y()][posicion.obtener_x()]!=nullptr){
-            
-        //    casillas[posicion.obtener_y()][posicion.obtener_x()]->eliminar_objeto(objeto);
-            
-        //   return true;
-        //}
-    //}
-    return false;
+            for(int k=0;k<adyacentes.obtener_tamano(); k++){
+
+                int fila_adyacente    = adyacentes[k].obtener_y();
+                int columna_adyacente = adyacentes[k].obtener_x();
+
+                Casilla *casilla_adyacente = obtener_casilla(adyacentes[k]);
+
+                int peso = casilla_adyacente!=nullptr ? casilla_adyacente->obtener_energia(tipo_personaje) : INFINITO;
+                    
+                grafo.agregar_camino({i,j},{fila_adyacente,columna_adyacente},peso);
+
+            }
+        }
+    }
+
+}
+
+Lista<Casilla*> Tablero::obtener_camino_minimo(Coordenada origen, Coordenada destino, int tipo_personaje){
+
+    cargar_grafo(tipo_personaje);
+    Lista<Coordenada> camino_minimo = grafo.obtener_camino_minimo(origen,destino);
+    return obtener_lista_casillas(camino_minimo);
+}
+
+int Tablero::obtener_energia_total(Coordenada origen, Coordenada destino, int tipo_personaje){
+    
+    cargar_grafo(tipo_personaje);
+    return grafo.obtener_peso_minimo(origen,destino);
 }
 
 bool Tablero::eliminar_objeto(Coordenada posicion,const char nombre_objeto){
@@ -158,7 +214,6 @@ bool Tablero::eliminar_objeto(Coordenada posicion,const char nombre_objeto){
 }
 
 void Tablero::mostrar_tablero(){
-
 
     mostrar_leyenda();
 }

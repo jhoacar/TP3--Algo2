@@ -7,7 +7,7 @@ class Elemento : public Objeto
 {
 	public:
 		Elemento();
-		Elemento(Coordenada posicion,char nombre,int cantidad);
+		Elemento(Casilla *casilla,char nombre,int cantidad);
 		/*
 		PRE:
 		POST: Devuelve la cantidad del elemento

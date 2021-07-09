@@ -1,4 +1,5 @@
 #include "Casilla.h"
+#include "../objetos/Objeto.h"
 #include "../objetos/seres/humanos/Humano.h"
 
 int comparacion_por_nombre(Objeto *A, Objeto *B){
@@ -14,12 +15,20 @@ Casilla::Casilla():cuadrante(),posicion(),objetos(){
     objeto_referencia = new Humano();
 }
 Casilla::Casilla(Coordenada pos):cuadrante(),posicion(pos),objetos(){
-    objeto_referencia = new Humano({0,0},0);
+    objeto_referencia = new Humano(nullptr,0);
 }
 Casilla::~Casilla(){
     delete objeto_referencia;
 }
-
+int Casilla::obtener_x(){
+    return this->posicion.obtener_x();
+}
+int Casilla::obtener_y(){
+    return this->posicion.obtener_y();
+}
+Coordenada Casilla::obtener_posicion(){
+    return this->posicion;
+}
 string Casilla::obtener_cuadrante(){
     return cuadrante;
 }

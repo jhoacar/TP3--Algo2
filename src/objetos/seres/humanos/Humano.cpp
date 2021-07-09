@@ -5,7 +5,7 @@ using std::endl;
 Humano::Humano():Ser(){
 
 }
-Humano::Humano(Coordenada posicion,char nombre):Ser(posicion,nombre)
+Humano::Humano(Casilla *casilla,char nombre):Ser(casilla,nombre)
 {
 }
 void Humano::mostrar(){

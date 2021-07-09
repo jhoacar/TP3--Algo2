@@ -7,7 +7,7 @@ class Zombie : public Monstruo
 {
 	public:
 		Zombie();
-		Zombie(Coordenada posicion,char nombre);
+		Zombie(Casilla *Casilla,char nombre);
 		void mostrar();
 		~Zombie();
 	protected:

@@ -131,6 +131,9 @@ int convertir_entero(string cadena){
 	return stoi(solo_numeros(cadena));
 
 }
+int minimo(int A, int B){
+	return A < B ?  A : B;
+}
 
 Lista<Coordenada> obtener_cruz(Coordenada centro, int longitud,Coordenada limite_inferior, Coordenada limite_superior){
 	Lista<Coordenada> cruz;

@@ -3,14 +3,14 @@
 
 #include "../constantes/Constantes.h"
 #include "tda/Lista.h"
-#include "../objetos/Coordenada.h"
+#include "../mapa/Coordenada.h"
 
 #include <string>
 #include <iostream>
 
 using namespace std;
 
-
+int minimo(int A, int B);
 /*
 PRE: Un caracter a evaluar
 POST: Verdadero si es minuscula, falso caso contrario
