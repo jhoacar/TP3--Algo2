@@ -20,11 +20,18 @@ void Vampiro::regenerar_energia() {
 }
 
 void Vampiro::encuentro_con_elemento() {
-    cout << "encuentro de vampiro" << endl;
-    /*
-     * Por ahora este metodo va a estar vacio ya que va a depender del camino que tome el ser, y en el caso
-     * que se cruce con un elemento tomarlo si puede hacerlo, y el camino se va a decidir con la implementacion
-     * de caminos minimos. Asi que se va a esperar a eso, para despues implementar esa
-     * PD: solo vampiro implementa este metodo ya que vampirella y nosferatu hacen lo mismo
-      */
+    Lista<Objeto*> objetos_casilla;
+    Objeto* objeto_para_agregar = nullptr;
+
+    objetos_casilla = this -> casilla -> obtener_objetos();
+
+    objetos_casilla.reiniciar();
+    while (objetos_casilla.existe_siguiente()){
+        objeto_para_agregar = objetos_casilla.siguiente_dato();
+
+        if (objeto_para_agregar ->obtener_nombre() == NOMBRES_CHAR[ESTACA]){ //los zombies solo pueden agarrar agua bendita
+            this -> casilla -> eliminar_objeto(objeto_para_agregar ->obtener_nombre());
+            cout << "Un vampiro ha eliminado una estaca del tablero" << endl;
+        }
+    }
 }

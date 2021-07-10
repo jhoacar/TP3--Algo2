@@ -238,4 +238,12 @@ bool es_par(int numero){
 
 }
 
+string nombre_del_objeto(char nombre_char){
+    string nombre_objeto;
+    for (int i = 0; i < ((int)MAX_NOMBRES); i++){
+        if (NOMBRES_CHAR[i] == nombre_char)
+            nombre_objeto = NOMBRES_STRING[i];
+    }
+    return nombre_objeto;
+}
 

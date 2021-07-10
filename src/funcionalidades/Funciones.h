@@ -123,4 +123,6 @@ int buscar_dato(const Dato vector[],const size_t tope , Dato dato){
 	return encontrado? indice : NO_ENCONTRADO;
 }
 
+string nombre_del_objeto(char nombre_char);
+
 #endif
