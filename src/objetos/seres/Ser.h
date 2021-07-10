@@ -22,7 +22,7 @@ class Ser : public Objeto
 		int devolver_fuerza();
 		virtual void regenerar_energia()=0;
 		virtual void encuentro_con_elemento()=0;
-		bool comprobar_es_elemento(Objeto* objeto_a_comprobar);
+		int comprobar_es_elemento(Objeto* objeto_a_comprobar);
 };
 
 #endif

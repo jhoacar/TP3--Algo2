@@ -21,6 +21,7 @@ void Humano::regenerar_energia() {
 }
 
 void Humano::encuentro_con_elemento() {
+    
     Lista<Objeto*> objetos_casilla;
     Objeto* objeto_para_agregar = nullptr;
 
