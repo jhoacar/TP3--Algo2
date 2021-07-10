@@ -5,6 +5,7 @@
 #include "../elementos/Elemento.h"
 #include "../../constantes/Constantes.h"
 #include "../../funcionalidades/Funciones.h"
+#include "../../mapa/Casilla.h"
 
 class Ser : public Objeto
 {
