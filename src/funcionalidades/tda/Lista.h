@@ -101,6 +101,14 @@ class Lista
     //Post: Devuelve la posicion donde encontro dicho dato buscandolo desde el indice de comienzo
     int buscar_dato(int inicio_busqueda,const Dato data, int (*compare)(Dato A, Dato B) = comparacion) const;
     
+    //Pre: El comienzo de la busqueda (puede ser desde el origen: 0), el dato a buscar y una funcion donde me compara dos Datos A y B si son iguales
+    //Post: Devuelve la posicion donde encontro dicho dato buscandolo desde el indice de comienzo
+    Lista<Dato> buscar_todo_dato(const Dato data, int (*compare)(Dato A, Dato B) = comparacion) const;
+    
+    //Pre:
+    //Post
+    Lista<Dato> filtrar_datos(int inicio_busqueda, bool (*filtro)(Dato A)) const;
+    
     //Pre: Un indice a buscar en la lista
     //Post: Devuelve una referencia del dato que se encuentra en dicha posicion
 	  Dato& operator[](const int index) const;
@@ -338,6 +346,44 @@ int Lista<Dato>::buscar_dato(int inicio_busqueda,const Dato dato, int (*compare)
   } 	
   return found ? inicio_busqueda : NO_ENCONTRADO;
 }
+
+template <class Dato>
+Lista<Dato> Lista<Dato>::buscar_todo_dato(const Dato dato,int (*compare)(Dato A,Dato B)) const{
+
+  int inicio = -1;
+  Lista<Dato> datos_encontrados;
+  do{
+      inicio = buscar_dato(inicio+1,dato,compare);
+      if(inicio!=NO_ENCONTRADO)
+        datos_encontrados.agregar(*(buscar_nodo(inicio)->dato));
+    }while(inicio!= NO_ENCONTRADO);
+
+  return datos_encontrados;
+}
+
+template <class Dato>
+Lista<Dato> Lista<Dato>::filtrar_datos(int inicio_busqueda,bool (*filtro)(Dato A)) const{
+
+  Lista<Dato> encontrados;
+
+  Nodo<Dato> *nodo = buscar_nodo(inicio_busqueda);
+  
+  if(nodo==nullptr)
+    return encontrados;
+
+  while(inicio_busqueda < (int) tamano ){
+
+    if(nodo != nullptr && inicio_busqueda < (int) tamano-1 && filtro(*(nodo->dato) ) )
+      encontrados.agregar(*(nodo->dato));
+    nodo = nodo->siguiente;  
+    inicio_busqueda++;
+  } 	
+  return encontrados;
+}
+
+
+
+
 
 template <class Dato>
 Dato& Lista<Dato>::operator[](const int index) const{
