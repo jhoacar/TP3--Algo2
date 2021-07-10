@@ -7,7 +7,7 @@ class Zombie : public Monstruo
 {
 	public:
 		Zombie();
-		Zombie(Casilla *casilla,char nombre);
+		Zombie(Casilla *casilla,char nombre,string ID);
 		void mostrar();
 		void regenerar_energia();
 		void encuentro_con_elemento();

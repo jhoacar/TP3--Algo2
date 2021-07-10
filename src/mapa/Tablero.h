@@ -84,6 +84,10 @@ class Tablero
 		*/
 		void cargar_objeto(Objeto *objeto);
 		/*
+		
+		*/
+		void cargar_lista_objetos(Lista<Objeto *>objeto);
+		/*
 		PRE: Una posicion a buscar
 		POST: Devuelve verdadero si logro eliminar el objeto, falso en caso contrario
 		*/

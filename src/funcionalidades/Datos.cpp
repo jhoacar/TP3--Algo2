@@ -53,33 +53,33 @@ void Datos::crear_tablero(const string &dimensiones){
 Objeto* Datos::crear_objeto(const int tipo,const char nombre,Coordenada posicion, int cantidad){
 	
 	Objeto *objeto=nullptr;
-	Casilla *casilla = new Lago();
+	Casilla *casilla = new Lago(posicion);
 
 	switch(tipo)
 	{
-		case AGUA: 			objeto= new Agua(casilla,nombre,cantidad); break;
+		case AGUA: 			objeto= new Agua(casilla,nombre,cantidad,""); break;
 
-		case BALA: 			objeto= new Bala(casilla,nombre,cantidad); break;
+		case BALA: 			objeto= new Bala(casilla,nombre,cantidad,""); break;
 
-		case CRUZ: 			objeto= new Cruz(casilla,nombre,cantidad); break;
+		case CRUZ: 			objeto= new Cruz(casilla,nombre,cantidad,""); break;
 
-		case ESTACA: 		objeto= new Estaca(casilla,nombre,cantidad); break;
+		case ESTACA: 		objeto= new Estaca(casilla,nombre,cantidad,""); break;
 
-		case ESCOPETA: 		objeto= new Escopeta(casilla,nombre,cantidad); break;
+		case ESCOPETA: 		objeto= new Escopeta(casilla,nombre,cantidad,""); break;
 
-		case HUMANO: 		objeto= new Humano(casilla,nombre); break;
+		case HUMANO: 		objeto= new Humano(casilla,nombre,""); break;
 
-		case HUMANO_CAZADOR:objeto= new Cazador(casilla,nombre); break;
+		case HUMANO_CAZADOR:objeto= new Cazador(casilla,nombre,""); break;
 
-		case VANESA: 		objeto= new Vanessa(casilla,nombre); break;
+		case VANESA: 		objeto= new Vanessa(casilla,nombre,""); break;
 
-		case VAMPIRO: 		objeto= new Vampiro(casilla,nombre); break;
+		case VAMPIRO: 		objeto= new Vampiro(casilla,nombre,""); break;
 
-		case VAMPIRELLA: 	objeto= new Vampirella(casilla,nombre); break;
+		case VAMPIRELLA: 	objeto= new Vampirella(casilla,nombre,""); break;
 
-		case NOSFERATU: 	objeto= new Nosferatu(casilla,nombre); break;
+		case NOSFERATU: 	objeto= new Nosferatu(casilla,nombre,""); break;
 
-		case ZOMBIE: 		objeto= new Zombie(casilla,nombre); break;	
+		case ZOMBIE: 		objeto= new Zombie(casilla,nombre,""); break;	
 
 		default: 			cout<<"No se ha encontrado el objeto de nombre: "<<nombre<<endl; break;
 	}

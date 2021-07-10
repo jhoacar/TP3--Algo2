@@ -7,7 +7,7 @@ class Agua : public Elemento
 {
 	public:
 		Agua();
-		Agua(Casilla *casilla,char nombre,int cantidad);
+		Agua(Casilla *casilla,char nombre,int cantidad,string ID);
 		void mostrar();
 		~Agua();
 	protected:

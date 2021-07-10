@@ -6,7 +6,7 @@ using std::endl;
 Humano::Humano():Ser(){
 
 }
-Humano::Humano(Casilla *casilla,char nombre):Ser(casilla,nombre)
+Humano::Humano(Casilla *casilla,char nombre,string ID):Ser(casilla,nombre,ID)
 {
 }
 void Humano::mostrar(){
@@ -34,7 +34,7 @@ void Humano::encuentro_con_elemento() {
             this -> casilla ->eliminar_objeto(objeto_para_agregar ->obtener_nombre());
             this->inventario.agregar(objeto_para_agregar); //Agrega los objetos si es que son elementos
 
-            cout << "Se agrego un " << nombre_del_objeto(objeto_para_agregar -> obtener_nombre()) << " al inventario" << endl;
+            cout << "Se agrego un " << obtener_nombre_del_objeto(objeto_para_agregar -> obtener_nombre()) << " al inventario" << endl;
         }
     }
     cout << "Se ejecuto el metodo encuentro con elemento" << endl;

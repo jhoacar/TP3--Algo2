@@ -5,7 +5,7 @@ Elemento::Elemento():Objeto(){
 
 }
 
-Elemento::Elemento(Casilla *casilla, char nombre ,int cantidad):Objeto(casilla,nombre){
+Elemento::Elemento(Casilla *casilla, char nombre ,int cantidad,string ID):Objeto(casilla,nombre,ID){
 	this->cantidad=cantidad;
 }
 

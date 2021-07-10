@@ -115,6 +115,14 @@ void Tablero::cargar_objeto(Objeto *objeto){
     }    
 }
 
+void Tablero::cargar_lista_objetos(Lista<Objeto *>objeto){
+    
+    for(int i=0;i<objeto.obtener_tamano(); i++){
+        cargar_objeto(objeto[i]);
+    }
+}
+
+
 int Tablero::obtener_filas(){
     
     return this->filas;

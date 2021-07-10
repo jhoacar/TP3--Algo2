@@ -6,7 +6,7 @@ Ser::Ser():Objeto(){
 
 }
 
-Ser::Ser(Casilla *casilla,char nombre):Objeto(casilla,nombre){
+Ser::Ser(Casilla *casilla,char nombre, string ID):Objeto(casilla,nombre,ID){
     this -> armadura = obtener_numero_aleatorio(ARMADURA_MINIMA, ARMADURA_MAXIMA);
     this -> vida     = obtener_numero_aleatorio(VIDA_MINIMA, VIDA_MAXIMA);
     this -> energia  = obtener_numero_aleatorio(ENERGIA_MINIMA, ENERGIA_MAXIMA);

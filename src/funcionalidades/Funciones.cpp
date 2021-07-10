@@ -238,12 +238,10 @@ bool es_par(int numero){
 
 }
 
-string nombre_del_objeto(char nombre_char){
-    string nombre_objeto;
-    for (int i = 0; i < ((int)MAX_NOMBRES); i++){
-        if (NOMBRES_CHAR[i] == nombre_char)
-            nombre_objeto = NOMBRES_STRING[i];
-    }
-    return nombre_objeto;
+string obtener_nombre_del_objeto(char nombre_char){
+	
+	int indice = buscar_dato(NOMBRES_CHAR,MAX_NOMBRES,nombre_char);
+	
+	return indice!=NO_ENCONTRADO ? NOMBRES_STRING[indice] : "";
 }
 

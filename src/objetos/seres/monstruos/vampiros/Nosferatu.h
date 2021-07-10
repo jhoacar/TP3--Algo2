@@ -7,7 +7,7 @@ class Nosferatu : public Vampiro
 {
 	public:
 		Nosferatu();
-		Nosferatu(Casilla *casilla,char nombre);
+		Nosferatu(Casilla *casilla,char nombre,string ID);
 		void mostrar();
 		void regnerar_energia();
 		~Nosferatu();

@@ -36,7 +36,7 @@ class Lista
 	  Nodo<Dato> *inicio;
 		Nodo<Dato> *fin;
     Nodo<Dato> *actual;
-		unsigned long size;
+		unsigned long tamano;
     
     //Pre: Esta lista actual previamente vacia y una lista por parametro con la informacion a copiar 
     //Post: Carga toda la informacion de la lista del parametro a esta lista actual 
@@ -99,7 +99,7 @@ class Lista
     
     //Pre: El comienzo de la busqueda (puede ser desde el origen: 0), el dato a buscar y una funcion donde me compara dos Datos A y B si son iguales
     //Post: Devuelve la posicion donde encontro dicho dato buscandolo desde el indice de comienzo
-    int buscar_dato(int inicio_search,const Dato data, int (*compare)(Dato A, Dato B) = comparacion) const;
+    int buscar_dato(int inicio_busqueda,const Dato data, int (*compare)(Dato A, Dato B) = comparacion) const;
     
     //Pre: Un indice a buscar en la lista
     //Post: Devuelve una referencia del dato que se encuentra en dicha posicion
@@ -197,7 +197,7 @@ Lista<Dato>::Lista(){
   this->inicio = new Nodo<Dato>();
   this->fin=this->inicio;
   this->actual=this->inicio;
-  this->size=0;
+  this->tamano=0;
 }
 
 template <class Dato>
@@ -205,7 +205,7 @@ Lista<Dato>::Lista(Dato *datos, int tope){
   this->inicio = new Nodo<Dato>();
   this->fin=this->inicio;
   this->actual=this->inicio;
-  this->size=0;
+  this->tamano=0;
   Dato *final = datos + tope;
   while(datos < final){
     agregar(*datos);
@@ -226,7 +226,7 @@ Lista<Dato>::~Lista(){
 template <class Dato>
 void Lista<Dato>::imprimir(void (*imprimir_data)(const Dato dato)){
   Nodo<Dato> *nodo = inicio;
-  for(int i=0 ; i < (int)size  ; i++){
+  for(int i=0 ; i < (int)tamano  ; i++){
       imprimir_data(*nodo->dato);
       nodo = nodo->siguiente;
   }
@@ -237,7 +237,7 @@ void Lista<Dato>::copiar_todo(const Lista &lista){
   this->inicio = new Nodo<Dato>();
   this->fin=this->inicio;
   this->actual=this->inicio;
-  this->size=0;
+  this->tamano=0;
   for(int i=0 ; i< lista.obtener_tamano(); i++)
     agregar(lista[i]);
 }
@@ -247,7 +247,7 @@ void Lista<Dato>::agregar(Dato dato){
   *(fin->dato)=dato;
   fin->siguiente = new Nodo<Dato>();
   fin=fin->siguiente;
-  size+=1;
+  tamano+=1;
 }
 
 template <class Dato>
@@ -287,18 +287,18 @@ bool Lista<Dato>::borrar(const int index){
 
   delete borrar_node;
   
-  size--;
+  tamano--;
   return true;
 }
 
 template <class Dato>
 int Lista<Dato>::obtener_tamano() const{
-  return (int)size;
+  return (int)tamano;
 }
 
 template <class Dato>
 bool Lista<Dato>::es_valido(const int index) const{
-  return index>=0 && index<= (int) size;
+  return index>=0 && index<= (int) tamano;
 }
 
 template <class Dato>
@@ -321,22 +321,22 @@ Nodo<Dato>* Lista<Dato>::buscar_nodo(const int index) const{
 }
 
 template <class Dato>
-int Lista<Dato>::buscar_dato(int inicio_search,const Dato dato, int (*compare)(Dato A,Dato B)) const{
+int Lista<Dato>::buscar_dato(int inicio_busqueda,const Dato dato, int (*compare)(Dato A,Dato B)) const{
 
-  Nodo<Dato> *nodo = buscar_nodo(inicio_search);
+  Nodo<Dato> *nodo = buscar_nodo(inicio_busqueda);
   
   if(nodo==nullptr)
     return NO_ENCONTRADO;
 
   bool found = compare(*(nodo->dato) , dato) == IGUAL;
 
-  while(inicio_search < (int) size && !found){
+  while(inicio_busqueda < (int) tamano && !found){
     nodo = nodo->siguiente;
-    if(nodo!=nullptr)
+    if(nodo!=nullptr && inicio_busqueda < (int) tamano-1)
       found = compare(*(nodo->dato) , dato) == IGUAL;
-    inicio_search++;
+    inicio_busqueda++;
   } 	
-  return found ? inicio_search : NO_ENCONTRADO;
+  return found ? inicio_busqueda : NO_ENCONTRADO;
 }
 
 template <class Dato>
@@ -410,14 +410,14 @@ Lista<Dato>* Lista<Dato>::obtener_union(Lista &lista){
   return nueva;
 }
 
-//Complejidad O( SIZE/2:"ciclo for" + (SIZE^2)/2:"swaps") = O(SIZE^2)
+//Complejidad O( tamano/2:"ciclo for" + (tamano^2)/2:"swaps") = O(tamano^2)
 template <class Dato>
 void Lista<Dato>::revertir(){
 
-  int middle = int(size/2) - (((int)size % 2) == 0 );
+  int middle = int(tamano/2) - (((int)tamano % 2) == 0 );
   
   for(int i = 0 ; i<= middle ; i++)
-    swap( i , (int)size - i - 1 );
+    swap( i , (int)tamano - i - 1 );
 }
 
 template <class Dato>

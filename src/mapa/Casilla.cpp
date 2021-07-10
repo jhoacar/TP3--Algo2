@@ -15,7 +15,7 @@ Casilla::Casilla():cuadrante(),posicion(),objetos(){
     objeto_referencia = new Humano();
 }
 Casilla::Casilla(Coordenada pos):cuadrante(),posicion(pos),objetos(){
-    objeto_referencia = new Humano(nullptr,0);
+    objeto_referencia = new Humano();
 }
 Casilla::~Casilla(){
     delete objeto_referencia;

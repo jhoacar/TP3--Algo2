@@ -5,7 +5,7 @@ using std::endl;
 Vampirella::Vampirella():Vampiro(){
 
 }
-Vampirella::Vampirella(Casilla *casilla,char nombre):Vampiro(casilla,nombre)
+Vampirella::Vampirella(Casilla *casilla,char nombre,string ID):Vampiro(casilla,nombre,ID)
 {
 }
 void Vampirella::mostrar(){

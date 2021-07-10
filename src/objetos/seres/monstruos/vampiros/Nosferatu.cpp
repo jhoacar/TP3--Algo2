@@ -5,7 +5,7 @@ using std::endl;
 Nosferatu::Nosferatu():Vampiro(){
 
 }
-Nosferatu::Nosferatu(Casilla *casilla,char nombre):Vampiro(casilla,nombre)
+Nosferatu::Nosferatu(Casilla *casilla,char nombre,string ID):Vampiro(casilla,nombre,ID)
 {
 }
 void Nosferatu::mostrar(){

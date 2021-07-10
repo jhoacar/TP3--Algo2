@@ -6,10 +6,6 @@
 #include "../../constantes/Constantes.h"
 #include "../../funcionalidades/Funciones.h"
 #include "../../mapa/Casilla.h"
-<<<<<<< HEAD
-
-=======
->>>>>>> Agustin
 
 class Ser : public Objeto
 {
@@ -18,7 +14,7 @@ class Ser : public Objeto
         Lista<Objeto*> inventario;
 	public:
 		Ser();
-		Ser(Casilla *casilla,char nombre);
+		Ser(Casilla *casilla,char nombre,string ID);
 		~Ser();
 		int devolver_armadura();
 		int devolver_vida();

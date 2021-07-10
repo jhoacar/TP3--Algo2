@@ -103,6 +103,11 @@ POST: Devueve una lista de coordenadas, positivas referentes a un cuadrado de es
 Lista<Coordenada> obtener_cuadrado(Coordenada centro, int tamano, Coordenada limite_inferior, Coordenada limite_superior);
 
 /*
+
+*/
+string obtener_nombre_del_objeto(char nombre_char);
+
+/*
 PRE: Un vector de datos, un tamaño especifico y un dato a buscar
 POST: Devuelve el indice donde se encontro el dato o NO_ENCONTRADO (-1) en caso contrario
 */
@@ -122,7 +127,5 @@ int buscar_dato(const Dato vector[],const size_t tope , Dato dato){
 	}
 	return encontrado? indice : NO_ENCONTRADO;
 }
-
-string nombre_del_objeto(char nombre_char);
 
 #endif
