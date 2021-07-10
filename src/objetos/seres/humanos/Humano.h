@@ -2,6 +2,7 @@
 #define HUMANO_H
 
 #include "../Ser.h"
+#include "../../../mapa/Casilla.h"
 
 class Humano : public Ser
 {

@@ -72,19 +72,21 @@ const string ANSI_COLOR[CANTIDAD_COLORES] ={"\x1b[0m",
                                             "\x1b[100m","\x1b[101m","\x1b[102m","\x1b[103m","\x1b[104m","\x1b[105m","\x1b[106m"
                                             };
 
-const int TOPE_INFERIOR = 0;
+const int VIDA_MINIMA = 20;
 
-const int TOPE_SUPERIOR = 1;
+const int VIDA_MAXIMA = 100;
 
-const int VALORES = 2;
+const int ARMADURA_MINIMA = 0;
 
-const int VALORES_VIDA[VALORES] = {20, 100};
+const int ARMADURA_MAXIMA = 2;
 
-const int VALORES_ARMADURA[VALORES] = {0, 2};
+const int FUERZA_MINIMA = 10;
 
-const int VALORES_FUERZA[VALORES] = {10, 40};
+const int FUERZA_MAXIMA = 40;
 
-const int VALORES_ENERGIA[VALORES] = {0, 20};
+const int ENERGIA_MINIMA = 0;
+
+const int ENERGIA_MAXIMA = 20;
 
 
 //Constantes de uso para convencion de no encontrar un dato

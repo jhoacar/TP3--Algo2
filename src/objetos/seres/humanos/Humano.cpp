@@ -21,11 +21,21 @@ void Humano::regenerar_energia() {
 }
 
 void Humano::encuentro_con_elemento() {
-    cout << "encuentro de humano" << endl;
-    /*
-     * Por ahora este metodo va a estar vacio ya que va a depender del camino que tome el ser, y en el caso
-     * que se cruce con un elemento tomarlo si puede hacerlo, y el camino se va a decidir con la implementacion
-     * de caminos minimos. Asi que se va a esperar a eso, para despues implementar esa
-     * PD: Este metodo solo esta implementado en Humanos porque Vanessa y cazador hacen lo mismo que humano simple
-      */
+    Lista<Objeto*> objetos_casilla;
+    Objeto* objeto_para_agregar = nullptr;
+
+    objetos_casilla = this -> casilla ->obtener_objetos();
+
+    objetos_casilla.reiniciar();
+    while (objetos_casilla.existe_siguiente()){
+        objeto_para_agregar = objetos_casilla.siguiente_dato();
+
+        if (this ->comprobar_es_elemento(objeto_para_agregar)){
+            this -> casilla ->eliminar_objeto(objeto_para_agregar ->obtener_nombre());
+            this->inventario.agregar(objeto_para_agregar); //Agrega los objetos si es que son elementos
+
+            cout << "Se agrego un " << nombre_del_objeto(objeto_para_agregar -> obtener_nombre()) << " al inventario" << endl;
+        }
+    }
+    cout << "Se ejecuto el metodo encuentro con elemento" << endl;
 }
