@@ -4,6 +4,8 @@
 #include "../Objeto.h"
 #include "../elementos/Elemento.h"
 #include "../../funcionalidades/Funciones.h"
+#include "../../mapa/Casilla.h"
+
 
 class Ser : public Objeto
 {
