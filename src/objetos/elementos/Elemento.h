@@ -2,6 +2,7 @@
 #define ELEMENTO_H
 
 #include "../Objeto.h"
+#include "../../mapa/Casilla.h"
 
 class Elemento : public Objeto
 {

@@ -24,8 +24,7 @@ void Humano::encuentro_con_elemento() {
     Lista<Objeto*> objetos_casilla;
     Objeto* objeto_para_agregar = nullptr;
 
-    objetos_casilla = this -> casilla ->obtener_objetos();
-
+    objetos_casilla = this -> casilla ->obtener_objetos() ->
     objetos_casilla.reiniciar();
     while (objetos_casilla.existe_siguiente()){
         objeto_para_agregar = objetos_casilla.siguiente_dato();

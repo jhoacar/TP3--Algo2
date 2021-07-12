@@ -13,15 +13,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e85d939b-2f59-41d7-bbf2-19742a8bcaa5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/constantes/Constantes.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/constantes/Constantes.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/Funciones.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/funcionalidades/Funciones.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/Funciones.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/funcionalidades/Funciones.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/Ser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/Ser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objetos/elementos/Elemento.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/elementos/Elemento.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objetos/seres/Ser.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/Ser.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objetos/seres/humanos/Humano.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/humanos/Humano.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/humanos/Humano.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/humanos/Humano.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampiro.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampiro.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/zombies/Zombie.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/zombies/Zombie.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +89,8 @@
       <workItem from="1625692791367" duration="2619000" />
       <workItem from="1625769212781" duration="16146000" />
       <workItem from="1625858012580" duration="10633000" />
-      <workItem from="1625876161040" duration="1081000" />
+      <workItem from="1625876161040" duration="2025000" />
+      <workItem from="1626101553570" duration="1658000" />
     </task>
     <servers />
   </component>
