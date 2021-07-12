@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "../funcionalidades/Lista.h"
+#include "../funcionalidades/tda/Lista.h"
 
 using std::fstream;
 using namespace std;
