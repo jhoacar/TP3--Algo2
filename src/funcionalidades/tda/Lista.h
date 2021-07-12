@@ -5,7 +5,7 @@
 #include "../../constantes/Constantes.h"
 
 //Pre: Dos datos a comparar, con sobrecargas de los operadores "<,>,=="
-//Post: Compara y devuelve PEQUENO si A es menor que B, GRANDE si A es mayor que B y IGUAL caso contrario
+//Post: Compara y devuelve PEQUENO si A es menor que B, GRANDE si A es mayor que B e IGUAL caso contrario
 template<class Dato>
 int comparacion(Dato A, Dato B){
     if(A==B)
@@ -42,8 +42,8 @@ class Lista
     //Post: Carga toda la informacion de la lista del parametro a esta lista actual 
     void copiar_todo(const Lista &list);
     
-    //Pre: Lista con datos previamente, para ser eliminimoados.
-    //Post: Eliminimoa toda la informacion de la lista, liberando toda la memoria reservada
+    //Pre: Lista con datos previamente, para ser eliminados.
+    //Post: Elimina toda la informacion de la lista, liberando toda la memoria reservada
     void borrar_todo();
 
     //Pre: Un indice a buscar en la lista
@@ -66,7 +66,7 @@ class Lista
     Lista(Dato *datos, int tope);
     
     //Pre: 
-    //Post: Eliminimoa toda la lista
+    //Post: Elimina toda la lista
     ~Lista();
 		
     //Pre: Una funcion que permita imprimir el tipo de dato de la lista
@@ -81,8 +81,8 @@ class Lista
     //Post: Devuelve un puntero con la referencia de la lista con dicho dato agregado al final
     Lista<Dato>* expulsar(Dato data);
     
-    //Pre: Un indice a eliminimoar de la lista
-    //Post: Devuelve verdadero si fue eliminimoado de la lista, falso caso contrario
+    //Pre: Un indice a eliminar de la lista
+    //Post: Devuelve verdadero si fue eliminado de la lista, falso caso contrario
     bool borrar(const int index);
     
     //Pre: 
@@ -93,20 +93,33 @@ class Lista
     //Post: Devuelve verdadero si puede estar en la lista, falso caso contrario
     bool es_valido(const int index) const;
     
-    //Pre: Un dato a evaluar su existencia
+    //Pre: Un dato a evaluar su existencia, y una funcion para la comparacion de dos tipos de datos
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo 
     //Post: Devuelve verdadero si se encontro en la lista dicho dato
     bool existe(Dato data, int (*compare)(Dato A , Dato B) = comparacion) const;
     
-    //Pre: El comienzo de la busqueda (puede ser desde el origen: 0), el dato a buscar y una funcion donde me compara dos Datos A y B si son iguales
+    //Pre: El comienzo de la busqueda (puede ser desde el origen: 0), el dato a buscar y una funcion donde me compara dos datos
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo 
     //Post: Devuelve la posicion donde encontro dicho dato buscandolo desde el indice de comienzo
     int buscar_dato(int inicio_busqueda,const Dato data, int (*compare)(Dato A, Dato B) = comparacion) const;
     
-    //Pre: El comienzo de la busqueda (puede ser desde el origen: 0), el dato a buscar y una funcion donde me compara dos Datos A y B si son iguales
-    //Post: Devuelve la posicion donde encontro dicho dato buscandolo desde el indice de comienzo
-    Lista<Dato> buscar_todo_dato(const Dato data, int (*compare)(Dato A, Dato B) = comparacion) const;
+    //Pre: El dato a buscar y una funcion donde me compara dos Datos A y B si son iguales
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo 
+    //Post: Devuelve una lista de indices donde se encontro dicho dato
+    Lista<int> buscar_todo_dato(const Dato data, int (*compare)(Dato A, Dato B) = comparacion) const;
     
-    //Pre:
-    //Post
+    //Pre: El comienzo de la busqueda (puede ser desde el origen: 0), y una funcion de filtro
+    //Esta funcion debe devolver un booleano que represente si pasa el filtro o no
+    //Post: Devuelve una sublista de datos, con aquellos que fueron verdadero con la funcion del parametro
     Lista<Dato> filtrar_datos(int inicio_busqueda, bool (*filtro)(Dato A)) const;
     
     //Pre: Un indice a buscar en la lista
@@ -114,19 +127,27 @@ class Lista
 	  Dato& operator[](const int index) const;
     
     //Pre: Una lista con la informacion a cargar
-    //Post: Eliminimoa la informacion que se encontraba antes y copia la informacion de ahora de la lista
+    //Post: Elimina la informacion que se encontraba antes y copia toda la informacion de la lista del parametro
 	  void operator=(Lista list);
     
     //Pre: Una lista a unir
-    //Post: Devuelve un puntero con la lista de la union, eliminimoando la informacion de la lista del parametro
+    //Post: Devuelve un puntero de una nueva lista con la union de ambas
     Lista<Dato>* operator+(Lista list);
     
     //Pre: Una funcion que permita comparar dos datos
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo 
     //Post: Ordena de menor a mayor de acuerdo a la funcion del parametro
     void ordenar(int (*compare)(const Dato a, const Dato b) = comparacion);
     
     //Pre: Esta lista, previamente ordenada y una funcion para la comparacion de datos
-    //Post: Eliminimoa todas aquellas ocurrencias repetidas de la lista    
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo 
+    //Post: Elimina todas aquellas ocurrencias repetidas de la lista con la comparacion que se pida   
     void limpiar(int (*compare)(const Dato a, const Dato b) = comparacion);
 
     //Pre: Dos posiciones de la lista
@@ -138,7 +159,7 @@ class Lista
     void operator+=(Lista list);
 
     //Pre: Una lista para unir
-    //Post: Devuelve la union de esta lista con la del parametro, sin modificar esta
+    //Post: Devuelve la union de esta lista con la del parametro, sin modificarla
     Lista* obtener_union(Lista &lista);
 		
     //Pre:
@@ -146,27 +167,55 @@ class Lista
     void revertir();
 
     //Pre:
-    //Post: Devuelve un puntero con esta lista revertida, sin modificar esta
+    //Post: Devuelve un puntero con esta lista revertida, sin modificarla
     Lista *obtener_revertir();
 
-    //Pre: Recibe una lista con la informacion y una funcion de comparacion entre dos datos (Este método devolvera -1 si A es menor que B; 1, si A es mayor que B; y 0 si son iguales.)
-    //Post:se hace un mezclar entre las dos, modificando la original, que tiene que quedar ordenada  y  sin  elementos  repetidos.
+    //Pre: Recibe una lista con la informacion y una funcion de comparacion entre dos datos 
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo 
+    //Post: Se hace un mezclar entre las dos, modificando la original, que tiene que quedar ordenada  y  sin  elementos  repetidos.
     void mezclar(Lista &list, int (*compare)(const Dato A, const Dato B) = comparacion);
 
-    //Pre: Un dato a eliminimoar de la lista y una funcion de comparacion entre dos datos A y B
-    //Post: Eliminimoa el dato si lo encontro en la lista basandose en el criterio de la funcion de comparacion
+    //Pre: Un dato a eliminar de la lista y una funcion de comparacion entre dos datos
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo 
+    //Post: Elimina la primera ocurrencia del dato si lo encontro en la lista, devolviendo verdadero si lo borra, falso caso contrario
     bool borrar_dato(const Dato data, int (*compare)(Dato A, Dato B) = comparacion);
 
-    //Pre: Un dato a eliminimoar de la lista y una funcion con el criterio de comparacion entre dos Datos A y B
-    //Post: Eliminimoa todos las ocurrencias que encuentra del dato en la lista
-    bool borrar_toda_occurrencia(const Dato data, int (*compare)(Dato A, Dato B) = comparacion);
+    //Pre: Un dato a eliminar de la lista, la cantidad para borrar de dicho dato y una funcion de comparacion entre dos datos
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo 
+    //Post: Elimina la cantidad de ocurrencias del dato encontrados en la lista, devolviendo la cantidad borradas
+    int borrar_cantidad_dato(const Dato data, int cantidad, int (*compare)(Dato A, Dato B) = comparacion);
 
-    //Pre: Un dato a buscar y una funcion con su criterio de comparacion
+    //Pre: Un dato a eliminar de la lista y una funcion con el criterio de comparacion entre dos datos
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo 
+    //Post: Elimina todas las ocurrencias que encuentra del dato en la lista, devolviendo la cantidad que fueron eliminados
+    int borrar_toda_occurrencia(const Dato data, int (*compare)(Dato A, Dato B) = comparacion);
+
+    //Pre: Un dato a buscar y una funcion con su criterio de comparacion entre dos datos
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo 
     //Post: Devuelve la cantidad que exista de dicho dato en la lista o -1 en caso contrario
     int obtener_cantidad_dato(const Dato data, int (*compare)(Dato A, Dato B) = comparacion);
 
 
-    //Pre: Una lista cargada y una funcion que me permita comparar dos Datos, A y B
+    //Pre: Una lista cargada y una funcion que me permita comparar dos datos
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo 
     //Post: Retorna una nueva lista con los datos de esta lista que no esta con la del parametro
     Lista* obtener_diferencia(Lista list , int (*compare)(Dato A, Dato B) = comparacion);
 
@@ -175,29 +224,45 @@ class Lista
     void reiniciar(void);
     
     //Pre:
-    //Post: devuelve true si el actual no apunta a NULL, false de lo contrario
+    //Post: Devuelve verdadero si el nodo actual no apunta a NULL, falso de lo contrario
     bool existe_siguiente(void) const;
     
-    //Pre: hay_siguiente tiene que haber devuelto true previamente
-    //Post: devuelve el elemento actual y avanza
+    //Pre: hay_siguiente tiene que haber devuelto verdadero previamente
+    //Post: Devuelve el dato actual y avanza
     Dato siguiente_dato(void);
 
     //Pre: Una lista a analizar y una funcion con el criterio de comparacion
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo 
     //Post: Devuelve verdadero si encuentra alguna coincidencia de un dato con la lista del parametro, falso caso contrario
     bool existe_alguno(Lista &lista, int(*compare)(Dato A, Dato B) = comparacion);
 
     //Pre: Una lista a analizar y una funcion con el criterio de comparacion
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo 
     //Post: Devuelve verdadero si encuentra toda coincidencia de los datos con la lista del parametro, falso caso contrario
     bool existen_todos(Lista &lista, int(*compare)(Dato A, Dato B) = comparacion);
-
-    
-    //Pre: Una funcion de comparacion de datos que devuelve IGUAL, GRANDE o PEQUENO
+  
+    //Pre: Una funcion de comparacion de datos 
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo 
     //Post: Devuelve el menor elemento de la lista por dicha funcion
     Dato minimo(int(*compare)(Dato A, Dato B) = comparacion);
 
-    //Pre: Una funcion de comparacion de datos que devuelve IGUAL, GRANDE o PEQUENO
+    //Pre: Una funcion de comparacion de datos
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo  IGUAL, GRANDE o PEQUENO
     //Post: Devuelve el mayor elemento de la lista por dicha funcion
     Dato maximo(int(*compare)(Dato A, Dato B) = comparacion);
+
 };
 
 template <class Dato>
@@ -348,17 +413,17 @@ int Lista<Dato>::buscar_dato(int inicio_busqueda,const Dato dato, int (*compare)
 }
 
 template <class Dato>
-Lista<Dato> Lista<Dato>::buscar_todo_dato(const Dato dato,int (*compare)(Dato A,Dato B)) const{
+Lista<int> Lista<Dato>::buscar_todo_dato(const Dato dato,int (*compare)(Dato A,Dato B)) const{
 
   int inicio = -1;
-  Lista<Dato> datos_encontrados;
+  Lista<int> indices;
   do{
       inicio = buscar_dato(inicio+1,dato,compare);
       if(inicio!=NO_ENCONTRADO)
-        datos_encontrados.agregar(*(buscar_nodo(inicio)->dato));
+        indices.agregar(inicio);
     }while(inicio!= NO_ENCONTRADO);
 
-  return datos_encontrados;
+  return indices;
 }
 
 template <class Dato>
@@ -381,10 +446,6 @@ Lista<Dato> Lista<Dato>::filtrar_datos(int inicio_busqueda,bool (*filtro)(Dato A
   return encontrados;
 }
 
-
-
-
-
 template <class Dato>
 Dato& Lista<Dato>::operator[](const int index) const{
   Nodo<Dato> *nodo = buscar_nodo(index);
@@ -399,9 +460,9 @@ void Lista<Dato>::operator=(Lista lista){
  
 template <class Dato>
 Lista<Dato>* Lista<Dato>::operator+(Lista lista){
-  *this+=lista;
-  lista.borrar_todo();
-  return this;
+  Lista<Dato> *nueva = new Lista<Dato>(*this);
+  (*nueva)+=lista;
+  return nueva;
 }
 
 template <class Dato>
@@ -415,6 +476,8 @@ void Lista<Dato>::ordenar(int (*compare)(const Dato a, const Dato b)){
 
 template <class Dato>
 void Lista<Dato>::limpiar(int (*compare)(const Dato a, const Dato b)){
+  
+  ordenar(compare);
   Lista nueva;
   while(existe_siguiente()){
     Dato dato = siguiente_dato();
@@ -444,6 +507,7 @@ void Lista<Dato>::swap(const int index_a, const int index_b){
 
 template <class Dato>
 void Lista<Dato>::operator+=(Lista lista){
+  lista.reiniciar();
   for( int i=0; i<lista.obtener_tamano(); i++)
     agregar(lista.siguiente_dato());
   lista.reiniciar();
@@ -486,19 +550,27 @@ bool Lista<Dato>::borrar_dato(const Dato dato, int (*compare)(Dato A, Dato B)){
 }
 
 template <class Dato>
-bool Lista<Dato>::borrar_toda_occurrencia(const Dato dato, int (*compare)(Dato A, Dato B)){
-  int inicio = 0, borrados = -1;
-  do{
-    inicio = buscar_dato(inicio,dato,compare);
-    borrar(inicio);
-    borrados++;
-  }while(inicio!= NO_ENCONTRADO);
+int Lista<Dato>::borrar_cantidad_dato(const Dato dato, int cantidad ,int (*compare)(Dato A, Dato B)){
+  int borrados=0;
+  Lista<int> indices = buscar_todo_dato(0,dato,compare);
+  for(int i=0 ; i < minimo( cantidad, indices.obtener_tamano() ) ; i++ )
+    borrados += borrar(indices[i]);
+  return borrados;
+}
 
-  return borrados ? true : false;
+template <class Dato>
+int Lista<Dato>::borrar_toda_occurrencia(const Dato dato, int (*compare)(Dato A, Dato B)){
+  int borrados = 0;
+  Lista<int> indices = buscar_todo_dato(0,dato,compare);
+  for(int i=0;i<indices.obtener_tamano(); i++)
+    borrados += borrar(indices[i]);
+  return borrados;
 }
 template <class Dato>
 int Lista<Dato>::obtener_cantidad_dato(const Dato dato, int (*compare)(Dato A, Dato B)){
+  
   int inicio = -1, encontrados = NO_ENCONTRADO;
+  
   do{
     inicio = buscar_dato(inicio+1,dato,compare);
     encontrados++;

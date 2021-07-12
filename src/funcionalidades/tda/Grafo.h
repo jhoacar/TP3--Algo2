@@ -16,24 +16,24 @@ private:
     Lista<Dato>  * vertices;
     Floyd<Dato> * floyd;
 
-    //pre: tienen que existir tanto el origen como el destino. Ademas se deben haber calculado las matrices de Floyd
-    //post: muestra el camino minimo entre el origen y el destino
-    Lista<Dato> camino_minimo(int origen, int destino,int (*compare)(Dato A, Dato B)=comparacion);
+    //Pre: Tienen que existir tanto el origen como el destino. Ademas se deben haber calculado las matrices de Floyd
+    //Post: Retorna una lista con los datos que debe seguir desde el origen hasta el destino
+    Lista<Dato> camino_minimo(int origen, int destino);
 
-    //post: agranda dinamicamente la matriz de adyacencia
+    //Post: Agranda dinamicamente la matriz de adyacencia
     void agrandar_matriz_adyacencia();
 
-    //pre: la matriz que se le envie ya debe tener memoria reservada
-    //post: copia la matriz de adyacencia en la nueva matriz
+    //Pre: La matriz que se le envie ya debe tener memoria reservada
+    //Post: Copia la matriz de adyacencia en la nueva matriz
     void copiar_matriz_adyacente(int** nueva_adyacente);
 
-    //post inicializa un nuevo vertice en la matriz de adyacencia con un valor de infinito
+    //Post: Inicializa un nuevo vertice en la matriz de adyacencia con un valor de infinito
     void inicializar_nuevo_vertice(int** nueva_adyacente);
 
-    //post libera la memoria de la matriz de adyacencia
+    //Post: Libera la memoria de la matriz de adyacencia
     void liberar_matriz_adyacencia();
 
-    //post: imprime por pantalla la matriz de adyacencia
+    //Post: Imprime por pantalla la matriz de adyacencia
     void mostrar_matriz_adyacencia();
 
 public:
@@ -41,23 +41,36 @@ public:
     Grafo();
 
     ~Grafo();
-    //PRE: No hay vertices repetidos en nombre
-    //post: agrega un nuevo vertice al grafo
+
+    //Pre: Un tipo de dato cargado
+    //Post: Agrega un nuevo vertice al grafo
     void agregar_vertice(Dato nuevo_vertice);
 
-    //Post: muestra por terminal el camino mínimo desde un origen a un destino
+    //Pre: Un dato de origen y un dato del destino y una funcion de comparacion dicho tipo de dato
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo 
+    //Post: Devuelve una lista con los datos del camino desde el origen hasta el destino
     Lista<Dato> obtener_camino_minimo(Dato origen, Dato destino, int (*compare)(Dato A, Dato B)=comparacion);
 
+    //Pre: Un dato de origen y un dato del destino y una funcion de comparacion dicho tipo de dato
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo 
+    //Post: Devuelve un entero con el peso minimo del camino desde el origen al destino
     int obtener_peso_minimo(Dato origen, Dato destino, int (*compare)(Dato A, Dato B)=comparacion);
 
-    //pre: el peso es un valor positivo
-    //post: Ajusta la matriz de adyacencia con el peso ingresado
+    //Pre: El peso es un valor positivo
+    //Post: Ajusta la matriz de adyacencia con el peso ingresado
     void agregar_camino(Dato origen, Dato destino, int peso);
 
-    //post: imprime por pantalla el grafo
+    //Pre: Una funcion que me permita imprimir cada vertice
+    //Post: imprime por pantalla el grafo
     void mostrar_grafo(void (*imprimir)(Dato dato));
 
-    //post: calcula la matrices que requiere el metodo de floyd para funcionar
+    //Post: Calcula la matrices que requiere el metodo de floyd para funcionar
     void calcular_matrices_Floyd();
 };
 
@@ -196,7 +209,7 @@ void Grafo<Dato>::calcular_matrices_Floyd() {
 }
 
 template <class Dato>
-Lista<Dato> Grafo<Dato>::camino_minimo(int origen, int destino, int (*compare)(Dato A, Dato B)) {
+Lista<Dato> Grafo<Dato>::camino_minimo(int origen, int destino) {
     return floyd->camino_minimo(origen,destino);
 }
 

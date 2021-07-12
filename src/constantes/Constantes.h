@@ -17,7 +17,7 @@ enum {AGUA=0,BALA,CRUZ,ESTACA,ESCOPETA,HUMANO,HUMANO_CAZADOR,VANESA,VAMPIRO,VAMP
 //Con las variables enumeradas obtengo una equivalencia (int) en char y string del nombre del mapa que se desea
 const size_t MAX_TIPOS_MAPA = 6;
 const string TIPO_MAPA_STRING[MAX_TIPOS_MAPA]=	{"montana","precipicio","lago","volcan","camino","vacio"};
-const char TIPO_MAPA_CHAR[MAX_TIPOS_MAPA]=	{'m',	'p',	'l',	'v',	'c',		'V'};
+const char TIPO_MAPA_CHAR[MAX_TIPOS_MAPA]=	{'M',	'P',	'L',	'V',	'C',		'O'};
 enum {MONTANA=0,PRECIPICIO,LAGO,VOLCAN,CAMINO,VACIO};
 
 
@@ -72,22 +72,63 @@ const string ANSI_COLOR[CANTIDAD_COLORES] ={"\x1b[0m",
                                             "\x1b[100m","\x1b[101m","\x1b[102m","\x1b[103m","\x1b[104m","\x1b[105m","\x1b[106m"
                                             };
 
-const int VIDA_MINIMA = 20;
 
+//Rangos del Jugador
+const int VIDA_MINIMA = 20;
 const int VIDA_MAXIMA = 100;
 
 const int ARMADURA_MINIMA = 0;
-
 const int ARMADURA_MAXIMA = 2;
 
 const int FUERZA_MINIMA = 10;
-
 const int FUERZA_MAXIMA = 40;
 
 const int ENERGIA_MINIMA = 0;
-
 const int ENERGIA_MAXIMA = 20;
 
+//Rangos de ID
+
+/*
+001-049 humanos simples
+050-099 cazadores
+100-199 zombis
+200 Nosferatu
+201 Vampirella
+202-299 Vampiros simples
+300-319 Agua bendita
+320-339 Cruces
+340-359 Escopetas
+360-379 Balas
+380 – 999 Estacas.
+*/
+const string ID_Vanesa                    = "000";
+const string ID_minimo_humano_simple      = "001";
+const string ID_maximo_humano_simple      = "049";
+const string ID_minimo_cazador            = "050";
+const string ID_maximo_cazador            = "099";
+
+const string ID_minimo_zombie             = "100";
+const string ID_maximo_zombie             = "199";
+
+const string ID_Nosferatu                 = "200";
+const string ID_Vampirella                = "201";
+const string ID_minimo_vampiro_simple     = "202";
+const string ID_maximo_vampiro_simple     = "299";
+
+const string ID_minimo_agua               = "300";
+const string ID_maximo_agua               = "319";
+
+const string ID_minimo_cruces             = "320";
+const string ID_maximo_cruces             = "339";
+
+const string ID_minimo_escopetas          = "340";
+const string ID_maximo_escopetas          = "359";
+
+const string ID_minimo_balas              = "360";
+const string ID_maximo_balas              = "379";
+
+const string ID_minimo_estacas            = "380";
+const string ID_maximo_estacas            = "999";
 
 //Constantes de uso para convencion de no encontrar un dato
 const int NO_ENCONTRADO = -1;
