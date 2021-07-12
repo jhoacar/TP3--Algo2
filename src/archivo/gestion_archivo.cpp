@@ -42,8 +42,8 @@ string fichero = "src/interfaz/"+name+".txt";
     return mostrado;
 }
 
-//si se guarda los datos de partida en una lista, se guardan los datos
-void Gestion_archivo::guardar_partida(Lista<string>* lista){
+//si se guarda los datos de partida en una lista.
+void Gestion_archivo::guardar_partida(Lista<string>* datos_juego){
     
     ofstream archivo;
     archivo.open( "d://TP3--Algo2//partida.txt", ios::out );
@@ -53,12 +53,32 @@ void Gestion_archivo::guardar_partida(Lista<string>* lista){
     }
     else{
         int i = 0;
-        int tam = lista->obtener_tamano();
+        int tam = datos_juego->obtener_tamano();
         while(i < tam){
-        archivo << lista->operator[](i);  
+        archivo << datos_juego->operator[](i);  
         i++;
         }
     }   
     archivo.close();
 }
 
+
+Lista<string>* Gestion_archivo::obtener_datos_de_partida(){
+    Lista<string>* datos_ptr = nullptr;
+    fstream archivo( "partida.txt" , fstream::in );
+
+	if(!archivo){
+	
+		cout << "No se encontro una partida guardada." << endl;
+
+	}else{
+        datos_ptr = new Lista<string>;
+        string linea;
+        while(!archivo.eof()){
+            archivo >> linea;
+            datos_ptr->agregar(linea);
+        }
+    }
+
+    return datos_ptr;            
+}

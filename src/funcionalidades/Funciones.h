@@ -29,11 +29,6 @@ string cadena_mayuscula(string cadena);
 PRE: Un nombre del fichero de texto
 POST: Un string con toda la informacion del fichero, o un string vacio si ocurre un error
 */
-string obtener_texto(const string nombre_fichero);
-/*
-PRE: Un texto y un delimitador del texto
-POST: Una lista de string donde cada dato es el separado por el delimitador
-*/
 Lista<string> dividir_texto(const string texto,const char delim);
 /*
 PRE: Una cadena a evaluar
@@ -62,10 +57,6 @@ POST: Devuelve la opcion del dato elegido del string de opciones o NO_ENCONTRADO
 int pedir_dato(string opciones,string error,int inicio,int fin,char opcion_salir);
 
 int obtener_numero_aleatorio(int min, int max);
-/*
-PRE: Un nombre del fichero a buscar
-POST: Muestra la informacion del fichero en pantalla, validando los caracteres especiales
-*/
 bool mostrar_fichero(string name);
 /*
 PRE: Un color comprendido en las constantes de colores
