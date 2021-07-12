@@ -561,7 +561,7 @@ int Lista<Dato>::borrar_cantidad_dato(const Dato dato, int cantidad ,int (*compa
 template <class Dato>
 int Lista<Dato>::borrar_toda_occurrencia(const Dato dato, int (*compare)(Dato A, Dato B)){
   int borrados = 0;
-  Lista<int> indices = buscar_todo_dato(0,dato,compare);
+  Lista<int> indices = buscar_todo_dato(dato,compare);
   for(int i=0;i<indices.obtener_tamano(); i++)
     borrados += borrar(indices[i]);
   return borrados;
