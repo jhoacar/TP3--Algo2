@@ -31,7 +31,7 @@ void Humano::encuentro_con_elemento() {
     while (objetos_casilla.existe_siguiente()){
         objeto_para_agregar = objetos_casilla.siguiente_dato();
 
-        if (this ->comprobar_es_elemento(objeto_para_agregar)){
+        if (this ->es_elemento(objeto_para_agregar)){
             this -> casilla ->eliminar_objeto(objeto_para_agregar ->obtener_nombre());
             this->inventario.agregar(objeto_para_agregar); //Agrega los objetos si es que son elementos
 
