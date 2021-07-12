@@ -108,9 +108,9 @@ string obtener_nombre_del_objeto(char nombre_char);
 //Pre: Un vector de datos, un tamaño especifico y un dato a buscar
 //Post: Devuelve el indice donde se encontro el dato o NO_ENCONTRADO (-1) en caso contrario
 template <class Dato>
-int buscar_dato(const Dato vector[],const size_t tope , Dato dato){
+int buscar_dato(const Dato vector[],const size_t tope , Dato dato, int inicio_busqueda = 0){
 	
-	int indice = 0;
+	int indice = inicio_busqueda;
 	
 	bool encontrado=false;
 	
