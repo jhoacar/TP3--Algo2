@@ -62,6 +62,26 @@ void Gestion_archivo::guardar_partida(Lista<string>* datos_juego){
     archivo.close();
 }
 
+Lista<string>* Gestion_archivo::obtener_datos_de_mapa(){
+    Lista<string>* mapa_ptr = nullptr;
+    fstream archivo( "tablero.txt" , fstream::in );
+
+	if(!archivo){
+	
+		cout << "No se pudo abrir el fichero tablero.txt" << endl;
+
+	}else{
+        mapa_ptr = new Lista<string>;
+        string linea;
+        archivo >> linea;
+        while(!archivo.eof()){
+            archivo >> linea;
+            mapa_ptr->agregar(linea);
+        }
+    }
+
+    return mapa_ptr;            
+}
 
 Lista<string>* Gestion_archivo::obtener_datos_de_partida(){
     Lista<string>* datos_ptr = nullptr;
