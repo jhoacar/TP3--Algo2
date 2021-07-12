@@ -24,3 +24,6 @@ int Vacio::obtener_energia(int tipo_personaje){
         return NO_ENCONTRADO;
 }
 
+int Vacio::obtener_color(){
+    return BG_MAGENTA_CLARO;
+}

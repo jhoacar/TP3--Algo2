@@ -7,8 +7,9 @@ class Cazador : public Humano
 {
 	public:
 		Cazador();
-		Cazador(Coordenada posicion,char nombre);
+		Cazador(Casilla *casilla,char nombre,string ID);
 		void mostrar();
+		void regenerar_energia();
 		~Cazador();
 	protected:
 };

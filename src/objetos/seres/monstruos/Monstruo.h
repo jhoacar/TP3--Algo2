@@ -7,7 +7,7 @@ class Monstruo : public Ser
 {
 	public:
 		Monstruo();
-		Monstruo(Coordenada posicion,char nombre);
+		Monstruo(Casilla *casilla,char nombre,string ID);
 		~Monstruo();
 		void mostrar();
 	protected:

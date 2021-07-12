@@ -24,3 +24,7 @@ int Precipicio::obtener_energia(int tipo_personaje){
         return NO_ENCONTRADO;
 }
 
+int Precipicio::obtener_color(){
+    return BG_BLANCO;
+}
+

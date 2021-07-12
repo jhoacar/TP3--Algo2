@@ -24,3 +24,6 @@ int Volcan::obtener_energia(int tipo_personaje){
         return NO_ENCONTRADO;
 }
 
+int Volcan::obtener_color(){
+    return BG_ROJO_CLARO;
+}

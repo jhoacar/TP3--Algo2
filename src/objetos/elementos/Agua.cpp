@@ -6,7 +6,7 @@ using std::endl;
 Agua::Agua():Elemento(){
 
 }
-Agua::Agua(Coordenada posicion,char nombre,int cantidad):Elemento(posicion,nombre,cantidad)
+Agua::Agua(Casilla *casilla,char nombre,int cantidad,string ID):Elemento(casilla,nombre,cantidad,ID)
 {
 }
 

@@ -102,7 +102,7 @@ class Datos: Gestion_archivo
 		PRE: Una posicion a buscar
 		POST: Devuelve verdadero si logro eliminar el objeto de la lista de objetos y del tablero, falso en caso contrario
 		*/
-		bool eliminar_objeto(Coordenada posicion);
+		bool eliminar_objeto(Coordenada posicion,const char nombre_objeto);
 		/*
 		PRE: Un indice para buscar en la lista de objetos
 		POST: Devuelve el puntero de objeto encontrado en el indice de la lista

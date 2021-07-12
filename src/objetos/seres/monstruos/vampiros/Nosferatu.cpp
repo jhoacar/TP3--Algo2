@@ -5,7 +5,7 @@ using std::endl;
 Nosferatu::Nosferatu():Vampiro(){
 
 }
-Nosferatu::Nosferatu(Coordenada posicion,char nombre):Vampiro(posicion,nombre)
+Nosferatu::Nosferatu(Casilla *casilla,char nombre,string ID):Vampiro(casilla,nombre,ID)
 {
 }
 void Nosferatu::mostrar(){
@@ -13,4 +13,8 @@ void Nosferatu::mostrar(){
 }
 Nosferatu::~Nosferatu()
 {
+}
+
+void Nosferatu::regnerar_energia() {
+    this -> energia += 10;
 }
