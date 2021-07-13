@@ -1,5 +1,5 @@
-#ifndef GESTION_ARCHIVO_H
-#define GESTION_ARCHIVO_H
+#ifndef Archivo_OBJETOS_H
+#define Archivo_OBJETOS_H
 
 #include <string>
 #include <iostream>
@@ -10,7 +10,7 @@
 using std::fstream;
 using namespace std;
 
-class Gestion_archivo {
+class Archivo_objetos {
 
 public:
 

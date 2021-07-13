@@ -1,7 +1,7 @@
-#include "gestion_archivo.h"
+#include "Archivo_objetos.h"
 
 
-string Gestion_archivo::obtener_texto(const string nombre_fichero){
+string Archivo_objetos::obtener_texto(const string nombre_fichero){
 
 	fstream archivo( nombre_fichero.c_str() , fstream::in );
 
@@ -22,7 +22,7 @@ string Gestion_archivo::obtener_texto(const string nombre_fichero){
   	return datos_texto;
 }
 
-bool Gestion_archivo::mostrar_fichero(string name){
+bool Archivo_objetos::mostrar_fichero(string name){
 
 bool mostrado = false;
 
@@ -43,7 +43,7 @@ string fichero = "src/interfaz/"+name+".txt";
 }
 
 //si se guarda los datos de partida en una lista.
-void Gestion_archivo::guardar_partida(Lista<string>* datos_juego){
+void Archivo_objetos::guardar_partida(Lista<string>* datos_juego){
     
     ofstream archivo;
     archivo.open( "d://TP3--Algo2//partida.txt", ios::out );
@@ -62,7 +62,7 @@ void Gestion_archivo::guardar_partida(Lista<string>* datos_juego){
     archivo.close();
 }
 
-Lista<string>* Gestion_archivo::obtener_datos_de_mapa(){
+Lista<string>* Archivo_objetos::obtener_datos_de_mapa(){
     Lista<string>* mapa_ptr = nullptr;
     fstream archivo( "tablero.txt" , fstream::in );
 
@@ -83,7 +83,7 @@ Lista<string>* Gestion_archivo::obtener_datos_de_mapa(){
     return mapa_ptr;            
 }
 
-Lista<string>* Gestion_archivo::obtener_datos_de_partida(){
+Lista<string>* Archivo_objetos::obtener_datos_de_partida(){
     Lista<string>* datos_ptr = nullptr;
     fstream archivo( "partida.txt" , fstream::in );
 
