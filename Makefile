@@ -107,7 +107,7 @@ clean:
 
 ########################################################
 ### USO DE LA API VALGRIND PARA EJECUTAR PROYECTO
-valgrind:
+valgrind: $(APP)
 	$(VALGRIND) ./$(APP)
 ########################################################
 
