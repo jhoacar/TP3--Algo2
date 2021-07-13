@@ -11,8 +11,7 @@ int main(int argc, char *argv[]){
 	color(AMARILLO);
 	limpiar_pantalla();
 	pausa();
-	
-    
 
+    system("git status");
     return 0;
 }

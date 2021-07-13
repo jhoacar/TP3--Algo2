@@ -1,4 +1,4 @@
-#include "jugador.h"
+#include "Jugador.h"
 
 Jugador::Jugador(string bando){
 

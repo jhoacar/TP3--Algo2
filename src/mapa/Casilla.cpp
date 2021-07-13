@@ -35,11 +35,11 @@ Casilla::Casilla(Coordenada pos):cuadrante(),posicion(pos),objetos(){
 Casilla::~Casilla(){
     delete objeto_referencia;
 }
-int Casilla::obtener_x(){
-    return this->posicion.obtener_x();
+int Casilla::obtener_fila(){
+    return this->posicion.obtener_fila();
 }
-int Casilla::obtener_y(){
-    return this->posicion.obtener_y();
+int Casilla::obtener_columna(){
+    return this->posicion.obtener_columna();
 }
 Coordenada Casilla::obtener_posicion(){
     return this->posicion;

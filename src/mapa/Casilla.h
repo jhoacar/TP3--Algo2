@@ -51,10 +51,10 @@ class Casilla{
         Coordenada obtener_posicion();
         
         //Post: Devuelve la abscisa que se le ha asignado
-        int obtener_x();
+        int obtener_fila();
         
         //Post: Devuelve la ordenada que se le ha asignado
-        int obtener_y();
+        int obtener_columna();
         
         //Pre: Un cuadrante a asignar
         //Post: Asigna el cuadrante al objeto

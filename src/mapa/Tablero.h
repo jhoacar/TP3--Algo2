@@ -25,51 +25,61 @@ class Tablero
 
 	public:
 		
-		//Post: Construye un tablero sin ningun dato 
-        Tablero();
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
+		//Post: Construye un tablero sin ningun dato}
+		Tablero();
 
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Pre:  Dimensiones del tablero, filas y columnas
 		//Post: Construye un tablero reservando memoria dinamica para cada casilla
 		Tablero(int filas,int columnas);
 		
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Post: Destruye la memoria reservada previamente
 		~Tablero();
 		
-		//Pre:  Una posicion a evaluar
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
+		//Pre:  Una posicion a evaluar, comenzando desde fila=0, columna=0
 		//Post: Devuelve si se encuentra adentro del tablero
-		bool es_valida(Coordenada posicion);
+	 	bool es_valida(Coordenada posicion);
 		
-		//Pre: 
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Post: Devuelve el numero de filas
 		int obtener_filas();
 
-		//Pre: 
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Post: Devuelve el numero de columnas
 		int obtener_columnas();
 
-		//Pre:  Una posicion a buscar
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
+		//Pre:  Una posicion a buscar, comenzando desde fila=0, columna=0
 		//Post: Devuelve un string con el cuadrante donde pertenece
 		string obtener_cuadrante(Coordenada posicion);
 		
-		
-		//Pre: Una casilla previamente bien cargada, con sus posiciones.
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
+		//Pre: Una casilla previamente bien cargada, con sus posiciones, comenzando desde fila=0, columna=0
 		//Post: Carga al tablero en la posicion de la casilla dicha casilla
 		void asignar_casilla(Casilla *casilla);
 		
-		
-		//Pre: Una lista de casillas previamente bien cargadas, con sus posiciones
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
+		//Pre: Una lista de casillas previamente bien cargadas, con sus posiciones, comenzando desde fila=0, columna=0
 		//Post: Carga al tablero en la posicion de cada casilla, todas las casillas de la lista
 		void asignar_casillas(Lista<Casilla*> casillas);
 		
-		//Pre: Una posicion del tablero
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
+		//Pre: Una posicion del tablero, comenzando desde fila=0, columna=0
 		//Post: Devuelve la casilla en la posicion indicada
 		Casilla* obtener_casilla(Coordenada posicion);
 		
-		//Pre: Una lista de posiciones del tablero
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
+		//Pre: Una lista de posiciones del tablero, comenzando desde fila=0, columna=0
 		//Post: Devuelve una lista de casillas encontradas en cada posicion
 		Lista<Casilla *> obtener_lista_casillas(Lista<Coordenada> posiciones);
 		
-		//Pre: Una coordenada de origen y una coordenada del destino y el tipo de personaje que realizara en el camino
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
+		//Pre: Una coordenada de origen, comenzando desde fila=0, columna=0
+		// Una coordenada del destino, comenzando desde fila=0, columna=0
+		// y el tipo de personaje que realizara en el camino
 		//Dicho tipo de personaje podra ser
 		//TIPO_CAZADOR: 0
 		//TIPO_HUMANO:  1
@@ -78,8 +88,10 @@ class Tablero
 		//Post: Devuelve una lista con las coordenadas donde se encuentra el camino minimo para ir desde el origen hasta el destino
 		Lista<Casilla*> obtener_camino_minimo(Coordenada origen, Coordenada destino, int tipo_personaje);
 		
-		//Pre: Una coordenada de origen y una coordenada del destino y el tipo de personaje que realizara en el camino
-		//Dicho tipo de personaje podra ser
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
+		//Pre: Una coordenada de origen, comenzando desde fila=0, columna=0
+		// Una coordenada del destino, comenzando desde fila=0, columna=0
+		// y el tipo de personaje que realizara en el camino
 		//TIPO_CAZADOR: 0
 		//TIPO_HUMANO:  1
 		//TIPO_VAMPIRO: 2
@@ -87,26 +99,32 @@ class Tablero
 		//Post: Devuelve un entero con la energia desde el origen hasta el destino
 		int obtener_energia_total(Coordenada origen, Coordenada destino, int tipo_personaje);
 
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Pre: Un objeto previamente cargado con su casilla
-		//Post: Carga al tablero en la casilla de la posicion del objeto, dicho objeto
+		//Post: Carga al tablero en la casilla de la posicion del objeto, comenzando desde fila=0, columna=0, dicho objeto
 		void cargar_objeto(Objeto *objeto);
 		
-		//Pre: Una lista de objetos previamente cargados cada uno con su casilla
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
+		//Pre: Una lista de objetos previamente cargados cada uno con su casilla, comenzando desde fila=0, columna=0
 		//Post: Carga al tablero en la casilla de la posicion de cada objeto objeto, todos los objetos de la lista
 		void cargar_lista_objetos(Lista<Objeto *>objeto);
 
-		//Pre:  Una posicion a buscar y un char representando el nombre del objeto
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
+		//Pre:  Una posicion a buscar, comenzando desde fila=0, columna=0 y un char representando el nombre del objeto
 		//Post: Devuelve verdadero si logro eliminar el objeto de la casilla, falso en caso contrario		
 		bool eliminar_objeto(Coordenada posicion,const char nombre_objeto);
+		
 
-		//Pre:  Una posicion a buscar y un ID representando el ID del objeto
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
+		//Pre:  Una posicion a buscar, comenzando desde fila=0, columna=0 y un ID representando el ID del objeto
 		//Post: Devuelve verdadero si logro eliminar el objeto de la casilla, falso en caso contrario		
 		bool eliminar_objeto(Coordenada posicion,const string ID);
 
-		//Pre:  
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Post: Muestra el tablero con un formato especifico
 		void mostrar_tablero();
 		
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Pre: 
 		//Post: Muestra en la pantalla la convencion de letras para el tablero y sus personajes
 		void mostrar_leyenda();
