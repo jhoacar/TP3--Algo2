@@ -7,20 +7,20 @@ using namespace std;
 
 Tablero::Tablero(){
 
-    this->filas=0;
+    this->filas = 0;
 
-    this->columnas=0;
+    this->columnas = 0;
 
-    casillas=nullptr;
+    casillas = nullptr;
 
 }
 
 Tablero::Tablero(int filas,int columnas)
 {
 
-    this->filas=filas;
+    this->filas = filas;
 
-    this->columnas=columnas;
+    this->columnas = columnas;
 
     casillas = new Casilla**[filas];
 
@@ -28,41 +28,48 @@ Tablero::Tablero(int filas,int columnas)
         casillas[i] = new Casilla*[columnas];
 
 
+<<<<<<< HEAD
+    for(int i = 0; i < filas ;i++){
+
+        for(int j = 0; j < columnas ;j++)
+            casillas[i][j] = nullptr;
+=======
     for(int i=0; i < filas ;i++){
         for(int j=0; j < columnas ;j++){
             casillas[i][j]=nullptr;
             grafo.agregar_vertice({i,j});
         }
+>>>>>>> 1a1fbf920d772274e7d223ce8c51d7a0df2eef63
     }
 }
 
 Tablero::~Tablero()
 {
-    for(int i=0; i < filas ; i++){
+    for(int i = 0; i < filas ; i++){
 
-        for(int j=0; j < columnas ; j++){
+        for(int j = 0; j < columnas ; j++){
 
             if(casillas[i][j] != nullptr){
 
                 delete casillas[i][j];
 
-                casillas[i][j]=nullptr;
+                casillas[i][j] = nullptr;
 
             }
         }
     }
 
-    for(int i=0 ; i < filas ;i++){
+    for(int i = 0 ; i < filas ;i++){
     
         delete[] casillas[i];
     
-        casillas[i]=nullptr;
+        casillas[i] = nullptr;
     
     }
 
     delete [] casillas;
 
-    casillas=nullptr;
+    casillas = nullptr;
 }
 
 string Tablero::obtener_cuadrante(Coordenada posicion){
@@ -92,18 +99,22 @@ bool Tablero::es_valida(Coordenada posicion){
 
     Coordenada limite( columnas , filas );
 
-    return posicion<limite;
+    return (posicion < limite);
 
 }
 void Tablero::cargar_objeto(Objeto *objeto){
     
-    if(objeto!=nullptr){
+    if(objeto){
 
         Coordenada posicion = objeto->obtener_casilla()->obtener_posicion();
 
+<<<<<<< HEAD
+        posicion -= 1; //Le resto una posicion para guardarla correctamente en el tablero arrancando en (0,0)
+=======
         //Le resto una posicion para guardarla correctamente en el tablero arrancando en (0,0)
         int fila = posicion.obtener_y() - 1;
         int columna = posicion.obtener_x() - 1;
+>>>>>>> 1a1fbf920d772274e7d223ce8c51d7a0df2eef63
 
         if(es_valida({fila,columna}) && casillas[ fila ][ columna ] != nullptr){
 
@@ -139,6 +150,10 @@ Casilla* Tablero::obtener_casilla(Coordenada posicion){
     int fila = posicion.obtener_y();
     int columna = posicion.obtener_x();
 
+<<<<<<< HEAD
+    posicion -= 1; //Le resto una posicion para eliminarlo correctamente en el tablero arrancando en (0,0)
+=======
+>>>>>>> 1a1fbf920d772274e7d223ce8c51d7a0df2eef63
 
     if(es_valida(posicion))
         return casillas[fila][columna];        
@@ -159,6 +174,26 @@ void Tablero::asignar_casilla(Casilla *casilla){
 
 void Tablero::asignar_casillas( Lista<Casilla*> lista_casillas){
 
+<<<<<<< HEAD
+	for(int i = 0; i < filas ; i++){
+
+        if(i == 0){
+            cout << "    ";
+            for(int j = 0; j < columnas; j++){
+                
+                if(j % (columnas/2) == 0 ){
+                    color(ROJO);
+                    cout << " | ";
+                    color(RESET);
+                }
+                color(CYAN);
+                cout << " " << (j+1) << " ";
+                color(RESET);
+            }
+
+            cout << endl;
+        }
+=======
     for( int i=0; i< lista_casillas.obtener_tamano(); i++)
         asignar_casilla(lista_casillas[i]);
 }
@@ -169,12 +204,64 @@ Lista<Casilla*> Tablero::obtener_lista_casillas(Lista<Coordenada> posiciones){
     for(int i=0;i<posiciones.obtener_tamano(); i++)
         if(es_valida(posiciones[i]))
             lista_casillas.agregar(obtener_casilla(posiciones[i]));
+>>>>>>> 1a1fbf920d772274e7d223ce8c51d7a0df2eef63
 
     return lista_casillas;
 }
 
 void Tablero::cargar_grafo(int tipo_personaje){
 
+<<<<<<< HEAD
+            for(int j = 0; j < columnas + 3 ; j++){
+                
+                color(ROJO);
+                cout << " _ ";
+                color(RESET);
+            }
+
+            cout << endl;
+        }
+		
+        for(int j =- 1; j < columnas ; j++){
+
+            if(j == -1){
+                color(CYAN);
+                cout << " " << (i < 9? " "+to_string(i+1) : to_string(i+1) ) << " ";
+                color(RESET);
+            }
+            else{
+                
+                if(j % (columnas/2) == 0 ){
+                    color(ROJO);
+                    cout << " | ";
+                    color(RESET);
+                }    
+
+                if(casillas[i][j]){
+                    
+                    color(AMARILLO);
+                    //cout << " " << casillas[i][j]->obtener_nombre()<<" ";
+                    color(RESET);
+                    
+                }
+                else{
+                    cout << " * ";
+                }
+            }
+        }    
+        color(ROJO);
+        cout << " | " << endl;
+        color(RESET);
+	}
+
+    for(int j = 0; j < columnas + 3 ; j++){
+
+        color(ROJO);
+        cout << " - ";
+        color(RESET);
+    }
+    cout << endl;
+=======
     for(int i=0; i< filas; i++){
         for(int j=0; j<columnas ; j++){
 
@@ -231,6 +318,7 @@ bool Tablero::eliminar_objeto(Coordenada posicion,const string ID){
 }
 
 void Tablero::mostrar_tablero(){
+>>>>>>> 1a1fbf920d772274e7d223ce8c51d7a0df2eef63
 
     mostrar_leyenda();
 }
@@ -238,18 +326,18 @@ void Tablero::mostrar_tablero(){
 
 void Tablero::mostrar_leyenda(){
 
-    cout<<"\n\tCONVENCION USADA: "<<endl;
-    cout<<"\n-*: vacio";
-    cout<<"\n- h: humaNOROESTE simple";
-    cout<<"\n- H: humaNOROESTE caza vampiros-zombis";
-    cout<<"\n- W: Vanesa";
-    cout<<"\n- z: zombi";
-    cout<<"\n- v: vampiro";
-    cout<<"\n- V: Vampirella"; 
-    cout<<"\n- N: NOROESTEsferatu ";
-    cout<<"\n- c: cruz ";
-    cout<<"\n- a: agua bendita ";
-    cout<<"\n- e: estaca ";
-    cout<<"\n- E: escopeta ";
-    cout<<"\n- b: balas"<<endl;
+    cout << "\n\tCONVENCION USADA: " << endl;
+    cout << "\n-*: vacio";
+    cout << "\n- h: humaNOROESTE simple";
+    cout << "\n- H: humaNOROESTE caza vampiros-zombis";
+    cout << "\n- W: Vanesa";
+    cout << "\n- z: zombi";
+    cout << "\n- v: vampiro";
+    cout << "\n- V: Vampirella"; 
+    cout << "\n- N: NOROESTEsferatu ";
+    cout << "\n- c: cruz ";
+    cout << "\n- a: agua bendita ";
+    cout << "\n- e: estaca ";
+    cout << "\n- E: escopeta ";
+    cout << "\n- b: balas" << endl;
 }

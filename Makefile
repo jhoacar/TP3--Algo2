@@ -35,7 +35,11 @@ TESTSDIR	:= tests
 TESTOBJDIRS	:= tests_obj
 NAME_TEST 	:= test_
 #Los headers seran aquellos ficheros que si se llegasen a modificar, se compilara de nuevo todo el proyecto para detectar fallas
+<<<<<<< HEAD
+HEADERS		:= Lista.h Nodo.h Objeto.h Constantes.h Floyd.h Grafo.h
+=======
 HEADERS		:= Lista.h Nodo.h Constantes.h Floyd.h Grafo.h Diccionario.h
+>>>>>>> 1a1fbf920d772274e7d223ce8c51d7a0df2eef63
 TEST 		:= no_hay_test_todavia
 
 ###########################################################

@@ -72,27 +72,6 @@ string cadena_mayuscula(string cadena){
 	return cadena;
 }
 
-string obtener_texto(const string nombre_fichero){
-
-	fstream archivo( nombre_fichero.c_str() , fstream::in );
-
-	if(!archivo){
-	
-		cout<<"No se pudo abrir el fichero "<<nombre_fichero<<endl;
-	
-		return "";
-	
-	}
-  	
-	string datos_texto;
-  	
-	getline(archivo,datos_texto,'\0');
-  	
-	archivo.close();
-
-  	return datos_texto;
-}
-
 Lista<string> dividir_texto(const string texto,const char delim){
 
 	stringstream buffer_texto(texto);
@@ -212,24 +191,6 @@ int pedir_dato(string opciones_menu,string error,int inicio,int fin,char opcion_
 		}
 	}
 	return convertir_entero(respuesta);
-}
-
-bool mostrar_fichero(string name){
-    
-    string fichero = "src/interfaz/"+name+".txt";
-
-    string mostrar = obtener_texto(fichero);
-    
-    if(mostrar.length()>0){
-
-        mostrar.replace(mostrar.find("\\"),1,"\\\\");
-
-        cout<<mostrar;
-		
-        return true;
-    }
-    else
-        return false;
 }
 
 bool es_par(int numero){
