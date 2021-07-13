@@ -25,20 +25,9 @@ char caracter_mayuscula(char caracter);
 //Pre: Una cadena a cambiar
 //Post: Devuelve la cadena transformada a mayusculas
 string cadena_mayuscula(string cadena);
-<<<<<<< HEAD
-/*
-PRE: Un nombre del fichero de texto
-POST: Un string con toda la informacion del fichero, o un string vacio si ocurre un error
-*/
-=======
-
-//Pre: Un nombre del fichero de texto
-//Post: Un string con toda la informacion del fichero, o un string vacio si ocurre un error
-string obtener_texto(const string nombre_fichero);
 
 //Pre: Un texto y un delimitador del texto
 //Post: Una lista de string donde cada dato fue separado del string por el delimitador
->>>>>>> 1a1fbf920d772274e7d223ce8c51d7a0df2eef63
 Lista<string> dividir_texto(const string texto,const char delim);
 
 //Pre: Una cadena a evaluar
@@ -61,28 +50,11 @@ void limpiar_pantalla();
 //Post: Coloca el cursor donde se escoga en la pantalla
 void gotoxy(int x, int y);
 
-//Pre: Las opciones que se muestran al usuario, el error por si se equivoca, el inicio (mayor que 0) y el fin de las opciones a encontrar y una opcion de salir
-//Post: Devuelve la opcion del dato elegido del string de opciones o NO_ENCONTRADO (-1) si la opcion fue salir
-int pedir_dato(string opciones,string error,int inicio,int fin,char opcion_salir);
-
-<<<<<<< HEAD
-int obtener_numero_aleatorio(int min, int max);
-bool mostrar_fichero(string name);
-/*
-PRE: Un color comprendido en las constantes de colores
-POST: Cambia en la consola el formato de impresion al color de correspondiente
-*/
-=======
 //Pre: Dos numeros referentes a un intervalo, tomando valor minimo y maximo
 //Post: Devuelve un numero comprendido entre ambos, incluyendolos
 int obtener_numero_aleatorio(int minimo, int maximo);
 
-//Pre: Un nombre del fichero a buscar
-//Post: Muestra la informacion del fichero en pantalla, validando los caracteres especiales
-bool mostrar_fichero(string nombre_fichero);
-
 //Post: Permite la impresion de color en consola al igual que posicionamientos
->>>>>>> 1a1fbf920d772274e7d223ce8c51d7a0df2eef63
 void activar_color(void);
 
 //Pre: Un color comprendido en las constantes de colores
