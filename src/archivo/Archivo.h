@@ -7,11 +7,7 @@
 #include <sstream>
 #include "../funcionalidades/tda/Lista.h"
 
-using std::cout;
-using std::cin;
-using std::endl;
-using std::fstream;
-using std::string;
+using namespace std;
 
 class Archivo{
 

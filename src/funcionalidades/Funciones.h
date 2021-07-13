@@ -7,6 +7,7 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -65,17 +66,13 @@ void color(int color);
 //Post: Devuelve verdadero si es par
 bool es_par(int numero);
 
-//Pre: Una posicion de referencia y una longitud
-//Post: Devuelve una lista de coordenadas, positivas referentes a una cruz de esa longitud
-Lista<Coordenada> obtener_cruz(Coordenada centro , int longitud, Coordenada limite_inferior, Coordenada limite_superior);
-
-//Pre: Una posicion de referencia y un tamano
-//Post: Devueve una lista de coordenadas, positivas referentes a un cuadrado de ese tamano
-Lista<Coordenada> obtener_cuadrado(Coordenada centro, int tamano, Coordenada limite_inferior, Coordenada limite_superior);
-
 //Pre: Un nombre encontrado en el vector de objetos
 //Post: Obtiene la conversion en string del nombre del objeto
 string obtener_nombre_del_objeto(char nombre_char);
+
+//Pre: Una posicion de referencia y una longitud
+//Post: Devuelve una lista de coordenadas, positivas referentes a una cruz de esa longitud
+Lista<Coordenada> obtener_cruz(Coordenada centro , int longitud, Coordenada limite_inferior, Coordenada limite_superior);
 
 //Pre: Un vector de datos, un tamaño especifico y un dato a buscar
 //Post: Devuelve el indice donde se encontro el dato o NO_ENCONTRADO (-1) en caso contrario
