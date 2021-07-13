@@ -127,6 +127,10 @@ bool Casilla::eliminar_objeto(string ID){
     
     return objetos.borrar_dato(objeto_referencia,comparacion_por_ID);
 }
+bool Casilla::eliminar_objeto(Objeto *objeto){
+
+    return objetos.borrar_dato(objeto);
+}
 
 int Casilla::eliminar_objetos(Lista<string> IDs){
 
@@ -136,6 +140,12 @@ int Casilla::eliminar_objetos(Lista<string> IDs){
         borrados+=eliminar_objeto(IDs[i]);
 
     return borrados;
+}
+
+int Casilla::eliminar_objetos(Lista<Objeto*> objetos){
+
+    this->objetos-=objetos;
+    return this->objetos.obtener_tamano();
 }
 
 int Casilla::eliminar_toda_ocurrencia(char nombre_objeto){

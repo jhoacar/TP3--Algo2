@@ -96,9 +96,17 @@ class Casilla{
         //Post: Elimina de la lista el objeto con el ID, devolviendo verdadero si lo elimina, falso caso contrario
         bool eliminar_objeto(string ID);
 
+        //Pre: Un puntero del objeto
+        //Post: Elimina de la lista el objeto, devolviendo verdadero si lo elimina, falso caso contrario
+        bool eliminar_objeto(Objeto *objeto);
+
         //Pre: Una lista de IDs unicos de cada objeto
         //Post: Elimina de la lista de objetos cada objeto que tenga el mismo ID, devolviendo la cantidad de objetos eliminados
         int eliminar_objetos(Lista<string> IDs);
+
+        //Pre: Una lista de punteros de Objetos
+        //Post: Elimina de la lista de objetos cada objeto, devolviendo la cantidad de objetos eliminados
+        int eliminar_objetos(Lista<Objeto*> objetos);
         
         //Pre: Un caracter representativo al nombre del objeto
         //Post: Elimina de la lista todas las ocurrencia de dicho objeto, devolviendo la cantidad de objetos eliminados
