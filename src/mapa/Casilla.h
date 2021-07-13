@@ -6,6 +6,28 @@
 #include "Coordenada.h"
 using std::string;
 
+
+int comparacion_por_nombre(Objeto *A, Objeto *B){
+    
+    if(A->obtener_nombre()==B->obtener_nombre())
+        return IGUAL;
+    else if(A->obtener_nombre() > B->obtener_nombre())
+        return GRANDE;
+    else   
+        return PEQUENO;
+}
+
+int comparacion_por_ID(Objeto *A, Objeto *B){
+    
+    if(A->obtener_ID()==B->obtener_ID())
+        return IGUAL;
+    else if(A->obtener_ID() > B->obtener_ID())
+        return GRANDE;
+    else   
+        return PEQUENO;
+}
+
+
 class Objeto;
 
 class Casilla{
