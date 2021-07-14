@@ -6,7 +6,7 @@ Ser::Ser():Objeto(){
 
 }
 
-Ser::Ser(Casilla *casilla,char nombre):Objeto(casilla,nombre){
+Ser::Ser(Casilla *casilla,char nombre, string ID):Objeto(casilla,nombre,ID){
     this -> armadura = obtener_numero_aleatorio(ARMADURA_MINIMA, ARMADURA_MAXIMA);
     this -> vida     = obtener_numero_aleatorio(VIDA_MINIMA, VIDA_MAXIMA);
     this -> energia  = obtener_numero_aleatorio(ENERGIA_MINIMA, ENERGIA_MAXIMA);
@@ -31,11 +31,7 @@ int Ser::devolver_vida(){
     return this -> vida;
 }
 
-bool Ser::comprobar_es_elemento(Objeto* objeto_a_comprobar) {
-    bool es_elemento = true;
-    for (int i = HUMANO; i < ((int)MAX_NOMBRES); i++){
-        if (objeto_a_comprobar ->obtener_nombre() == NOMBRES_CHAR[i])
-            es_elemento = false;
-    }
-    return es_elemento;
+bool es_elemento(Objeto* objeto_a_comprobar) {
+
+    return buscar_dato(NOMBRES_CHAR, MAX_NOMBRES,objeto_a_comprobar->obtener_nombre(),HUMANO) == NO_ENCONTRADO;
 }

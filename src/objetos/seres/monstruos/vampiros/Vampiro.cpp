@@ -1,11 +1,13 @@
 #include "Vampiro.h"
 #include <iostream>
+
 using std::cout;
 using std::endl;
+
 Vampiro::Vampiro():Monstruo(){
     
 }
-Vampiro::Vampiro(Casilla *casilla,char nombre):Monstruo(casilla,nombre)
+Vampiro::Vampiro(Casilla *casilla,char nombre,string ID):Monstruo(casilla,nombre,ID)
 {
 }
 void Vampiro::mostrar(){
@@ -20,18 +22,7 @@ void Vampiro::regenerar_energia() {
 }
 
 void Vampiro::encuentro_con_elemento() {
-    Lista<Objeto*> objetos_casilla;
-    Objeto* objeto_para_agregar = nullptr;
 
-    objetos_casilla = this -> casilla -> obtener_objetos();
-
-    objetos_casilla.reiniciar();
-    while (objetos_casilla.existe_siguiente()){
-        objeto_para_agregar = objetos_casilla.siguiente_dato();
-
-        if (objeto_para_agregar ->obtener_nombre() == NOMBRES_CHAR[ESTACA]){ //los zombies solo pueden agarrar agua bendita
-            this -> casilla -> eliminar_objeto(objeto_para_agregar ->obtener_nombre());
-            cout << "Un vampiro ha eliminado una estaca del tablero" << endl;
-        }
-    }
+    if(casilla->eliminar_objeto(NOMBRES_CHAR[ESTACA]))
+        cout << "Un vampiro ha eliminado una estaca del tablero" << endl;
 }

@@ -7,7 +7,7 @@ class Escopeta : public Elemento
 {
 	public:
 		Escopeta();
-		Escopeta(Casilla *casilla,char nombre,int cantidad);
+		Escopeta(Casilla *casilla,char nombre,int cantidad,string ID);
 		void mostrar();
 		~Escopeta();
 	protected:

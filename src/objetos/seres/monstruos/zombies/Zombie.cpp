@@ -5,7 +5,7 @@ using std::endl;
 Zombie::Zombie():Monstruo(){
     
 }
-Zombie::Zombie(Casilla *Casilla,char nombre):Monstruo(casilla,nombre)
+Zombie::Zombie(Casilla *casilla,char nombre,string ID):Monstruo(casilla,nombre,ID)
 {
 }
 void Zombie::mostrar(){

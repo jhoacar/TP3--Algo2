@@ -4,8 +4,8 @@
 
 int main(){
     Coordenada posicion(3, 5);
-    Casilla casilla(posicion);
-    Objeto* humano_prueba = new Humano(casilla, 'h');
+    Casilla *lago = new Lago(posicion);
+    Objeto* humano_prueba = new Humano(lago, 'h', "312");
     ((Ser *)humano_prueba)->encuentro_con_elemento();
-    retunr 0;
+    return 0;
 }

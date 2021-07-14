@@ -45,7 +45,7 @@ ifeq ($(OS),Windows_NT) #WINDOWS ...
 ### SHELL SCRIPT WINDOWS
 SEARCH_FILES := dir /s/b
 SEARCH_DIRS  := dir $(SRC) /ad /b /s
-DELETE_FILES := rmdir /Q /S
+DELETE_FILES := rmdir /Q /S 
 MKDIR 		 := mkdir
 ##########################################################
 else #LINUX ...

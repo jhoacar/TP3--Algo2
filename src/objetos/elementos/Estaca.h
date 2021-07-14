@@ -6,7 +6,7 @@
 class Estaca : public Elemento{
 	public:
 		Estaca();
-		Estaca(Casilla *casilla,char nombre,int cantidad);
+		Estaca(Casilla *casilla,char nombre,int cantidad,string ID);
 		void mostrar();
 		~Estaca();
 	protected:

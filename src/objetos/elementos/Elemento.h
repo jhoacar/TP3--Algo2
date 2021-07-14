@@ -8,7 +8,7 @@ class Elemento : public Objeto
 {
 	public:
 		Elemento();
-		Elemento(Casilla *casilla,char nombre,int cantidad);
+		Elemento(Casilla *casilla,char nombre,int cantidad,string ID);
 		/*
 		PRE:
 		POST: Devuelve la cantidad del elemento

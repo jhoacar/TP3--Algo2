@@ -115,6 +115,14 @@ void Tablero::cargar_objeto(Objeto *objeto){
     }    
 }
 
+void Tablero::cargar_lista_objetos(Lista<Objeto *>objeto){
+    
+    for(int i=0;i<objeto.obtener_tamano(); i++){
+        cargar_objeto(objeto[i]);
+    }
+}
+
+
 int Tablero::obtener_filas(){
     
     return this->filas;
@@ -138,21 +146,21 @@ Casilla* Tablero::obtener_casilla(Coordenada posicion){
         return nullptr;
 }
 
-void Tablero::asignar_casilla(Coordenada posicion, Casilla *casilla){
+void Tablero::asignar_casilla(Casilla *casilla){
 
-    if(es_valida(posicion)){
+    if(casilla!=nullptr && es_valida(casilla->obtener_posicion())){
 
-        int fila = posicion.obtener_y();
-        int columna = posicion.obtener_x();
+        int fila = casilla->obtener_posicion().obtener_y();
+        int columna = casilla->obtener_posicion().obtener_x();
 
         casillas[fila][columna] = casilla;
     }
 }
 
-void Tablero::asignar_casillas(Lista<Coordenada> posiciones, Lista<Casilla*> lista_casillas){
+void Tablero::asignar_casillas( Lista<Casilla*> lista_casillas){
 
-    for( int i=0; i< posiciones.obtener_tamano(); i++)
-        asignar_casilla(posiciones[i],lista_casillas[i]);
+    for( int i=0; i< lista_casillas.obtener_tamano(); i++)
+        asignar_casilla(lista_casillas[i]);
 }
 
 Lista<Casilla*> Tablero::obtener_lista_casillas(Lista<Coordenada> posiciones){
@@ -209,8 +217,17 @@ bool Tablero::eliminar_objeto(Coordenada posicion,const char nombre_objeto){
     if(casilla==nullptr)
         return false;
 
-    return casilla->eliminar_objeto(nombre_objeto);
+    return casilla->eliminar_objeto(nombre_objeto);   
+}
+
+bool Tablero::eliminar_objeto(Coordenada posicion,const string ID){
     
+    Casilla *casilla = obtener_casilla(posicion);
+
+    if(casilla==nullptr)
+        return false;
+
+    return casilla->eliminar_objeto(ID);   
 }
 
 void Tablero::mostrar_tablero(){

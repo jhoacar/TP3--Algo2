@@ -5,7 +5,7 @@ using std::endl;
 Escopeta::Escopeta():Elemento(){
     
 }
-Escopeta::Escopeta(Casilla *casilla,char nombre,int cantidad):Elemento(casilla,nombre,cantidad)
+Escopeta::Escopeta(Casilla *casilla,char nombre,int cantidad,string ID):Elemento(casilla,nombre,cantidad,ID)
 {
 }
 void Escopeta::mostrar(){

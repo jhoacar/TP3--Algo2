@@ -6,7 +6,7 @@ using std::endl;
 Bala::Bala():Elemento(){
 
 }
-Bala::Bala(Casilla *casilla,char nombre,int cantidad):Elemento(casilla,nombre,cantidad)
+Bala::Bala(Casilla *casilla,char nombre,int cantidad,string ID):Elemento(casilla,nombre,cantidad,ID)
 {
 }
 void Bala::mostrar(){

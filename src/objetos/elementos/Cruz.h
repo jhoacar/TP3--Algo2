@@ -7,7 +7,7 @@ class Cruz : public Elemento
 {
 	public:
 		Cruz();
-		Cruz(Casilla *casilla,char nombre,int cantidad);
+		Cruz(Casilla *casilla,char nombre,int cantidad,string ID);
 		void mostrar();
 		~Cruz();
 	protected:

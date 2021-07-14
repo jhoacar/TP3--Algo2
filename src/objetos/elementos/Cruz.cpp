@@ -6,7 +6,7 @@ using std::endl;
 Cruz::Cruz():Elemento(){
 
 }
-Cruz::Cruz(Casilla *casilla,char nombre,int cantidad):Elemento(casilla,nombre,cantidad)
+Cruz::Cruz(Casilla *casilla,char nombre,int cantidad,string ID):Elemento(casilla,nombre,cantidad,ID)
 {
 }
 

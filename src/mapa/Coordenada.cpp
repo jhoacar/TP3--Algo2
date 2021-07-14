@@ -10,10 +10,6 @@ Coordenada::Coordenada(int x, int y){
 	this->y=y;	
 }
 
-Coordenada::~Coordenada(){
-	
-}
-
 Coordenada& Coordenada::operator =(Coordenada coordenada){
 	this->x=coordenada.x;
 	this->y=coordenada.y;

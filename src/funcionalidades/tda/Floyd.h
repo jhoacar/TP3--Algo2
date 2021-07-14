@@ -15,35 +15,44 @@ private:
     int cantidad_vertices;
     Lista<Dato> *vertices;
 
-    //pre: requiere una matriz de adyacencia bien cargada
-    //post: crea la matriz costo inicializandola con los valores de la matriz de adyacencia
+    //Pre: Requiere una matriz de adyacencia bien cargada
+    //Post: Crea la matriz costo inicializandola con los valores de la matriz de adyacencia
     int ** crear_matriz_costos(int ** matriz_adyacencia);
 
-    //post: crea una matriz de caminos
+    //Post: crea una matriz de caminos
     int ** crear_matriz_caminos();
 
-   //post: libera la memoria de las matrices de costos y caminos
+   //Post: libera la memoria de las matrices de costos y caminos
     void liberar_matrices();
 
-    //post: carga correctamente la informacion de los pesos minimos y caminos en las matrices de costos y caminos
+    //Post: carga correctamente la informacion de los pesos minimos y caminos en las matrices de costos y caminos
     void actualizar_matrices();
 
 public:
+    //Pre: Una lista de vertices para cargar a las matrices
+    //Post: Asigna los vertices de la clase al del parametro
     Floyd(Lista<Dato> *vertices);
 
-    //post: libera la memoria pedida
+    //Post: Libera la memoria pedida
     ~Floyd();
 
-    //post:calcula las matrices de costos y caminos.
+    //Pre: Una matriz de adyacencia bien cargada
+    //Post: Calcula las matrices de costos y caminos.
     void calcular_matrices(int ** matriz_adyacencia);
 
-    //post: muestra el camino minimo entre el origen y el destino imprimiendo los vertices a visitar y su costo final
+    //Pre: Un origen y un destino representado por numeros enteros del vertice
+    //Post: Devuelve una lista de datos con el camino desde el origen hasta el destino
     Lista<Dato> camino_minimo(int origen, int destino);
 
+    //Pre: Un origen y un destino representado por numeros enteros del vertice
+    //Post: Devuelve un entero con el peso minimo del camino desde el origen hasta el destino
     int peso_minimo(int origen,int destino);
 
+    //Pre: Una funcion que me permita imprimir el dato del vertice
+    //Post: Imprime cada elemento de la matriz de camino como con su correspondiente vertice
     void mostrar_matriz_camino(void (*imprimir)(Dato dato));
     
+    //Post: Muestra la matriz de pesos en consola
     void mostrar_matriz_pesos();
 };
 
