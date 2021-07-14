@@ -2,6 +2,27 @@
 #include "../objetos/Objeto.h"
 #include "../objetos/seres/humanos/Humano.h"
 
+int comparacion_por_nombre(Objeto *A, Objeto *B){
+    
+    if(A->obtener_nombre()==B->obtener_nombre())
+        return IGUAL;
+    else if(A->obtener_nombre() > B->obtener_nombre())
+        return GRANDE;
+    else   
+        return PEQUENO;
+}
+
+int comparacion_por_ID(Objeto *A, Objeto *B){
+    
+    if(A->obtener_ID()==B->obtener_ID())
+        return IGUAL;
+    else if(A->obtener_ID() > B->obtener_ID())
+        return GRANDE;
+    else   
+        return PEQUENO;
+}
+
+
 Casilla::Casilla():cuadrante(),posicion(),objetos(){
     objeto_referencia = new Humano(); 
     //Lo iniciamos con Humano, pero puede ser cualquier objeto, solo me interesa sus atributos

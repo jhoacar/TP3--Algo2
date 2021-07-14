@@ -9,7 +9,11 @@ class Vertice{
     Vertice *padre;
     public:
         //Usado para poder acceder a estos miembros desde la clase Arbol
-        template <class> friend class Arbol;
+        template <class> friend class Arbol_B;
+        Vertice(Dato dato){
+            this->dato = new Dato;
+            *(this->dato) = dato;
+        }
         Vertice(Vertice *padre){
             dato = new Dato;
             derecho=nullptr;
