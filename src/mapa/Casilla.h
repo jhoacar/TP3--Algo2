@@ -8,8 +8,13 @@ using std::string;
 
 class Objeto;
 
+
+//Pre: Dos objetos a comparar, con el atributo del nombre cargado
+//Post: Retorna 0 si son de igual nombre, -1 Si el objeto A es de menor nombre que el objeto B y 1 en caso contrario
 int comparacion_por_nombre(Objeto *A, Objeto *B);
 
+//Pre: Dos objetos a comparar, con el atributo del ID cargado
+//Post: Retorna 0 si son de igual ID, -1 Si el objeto A es de menor ID que el objeto B y 1 en caso contrario
 int comparacion_por_ID(Objeto *A, Objeto *B);
 
 class Casilla{
