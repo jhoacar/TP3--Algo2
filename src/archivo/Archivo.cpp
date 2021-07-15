@@ -15,7 +15,7 @@ string Archivo::obtener_texto(const string nombre_fichero){
 
 	if(!archivo){
 	
-		cout << "No se pudo abrir el fichero " << nombre_fichero << endl;
+		std::cout << "No se pudo abrir el fichero " << nombre_fichero << endl;
 	
 		return "";
 	
@@ -39,7 +39,7 @@ bool Archivo::mostrar_contenido(){
 
         contenido.replace(contenido.find("\\"),1,"\\\\");
 
-        cout << contenido;
+        std::cout << contenido;
         
         mostrado = true;
     }

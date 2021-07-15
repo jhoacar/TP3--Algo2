@@ -3,11 +3,11 @@
 
 void Archivo_partida::guardar_partida(Lista<string>* datos_juego){
     
-    ofstream archivo;
-    archivo.open( RUTA_GUARDADO_PARTIDA, ios::out );
+    std::ofstream archivo;
+    archivo.open( RUTA_GUARDADO_PARTIDA, std::ios::out );
     
     if(archivo.fail()){
-        cout << "No se pudo guardar partida";
+        std::cout << "No se pudo guardar partida";
         exit(1);
     }
     else{
@@ -27,7 +27,7 @@ Lista<string>* Archivo_partida::obtener_datos_de_partida(){
 
 	if(!archivo){
 	
-		cout << "No se encontro una partida guardada." << endl;
+		std::cout << "No se encontro una partida guardada." << endl;
 
 	}else{
         datos_ptr = new Lista<string>;
