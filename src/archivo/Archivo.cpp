@@ -6,6 +6,7 @@ Archivo::Archivo():contenido(){
 Archivo::Archivo(const string nombre_fichero){
 
     contenido = obtener_texto(nombre_fichero);
+
 }
 
 string Archivo::obtener_texto(const string nombre_fichero){

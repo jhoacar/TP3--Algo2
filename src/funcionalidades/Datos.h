@@ -4,9 +4,9 @@
 #include "../objetos/Objeto.h"
 #include "../mapa/Tablero.h"
 #include "../constantes/Constantes.h"
-#include "../archivo/Archivo_objetos.h"
+#include "../archivo/Archivo.h"
 
-class Datos: Archivo_objetos
+class Datos: Archivo
 {
 	Lista<Objeto *> objetos;
 	Tablero *tablero;

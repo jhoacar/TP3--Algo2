@@ -1,13 +1,13 @@
 
 #include "Archivo_partida.h"
 
-//si se guarda los datos de partida en una lista.
 void Archivo_partida::guardar_partida(Lista<string>* datos_juego){
     
     ofstream archivo;
-    archivo.open( "d://TP3--Algo2//partida.txt", ios::out );
+    archivo.open( RUTA_GUARDADO_PARTIDA, ios::out );
+    
     if(archivo.fail()){
-        cout << "no se pudo guardar partida";
+        cout << "No se pudo guardar partida";
         exit(1);
     }
     else{
@@ -21,30 +21,9 @@ void Archivo_partida::guardar_partida(Lista<string>* datos_juego){
     archivo.close();
 }
 
-Lista<string>* Archivo_partida::obtener_datos_de_mapa(){
-    Lista<string>* mapa_ptr = nullptr;
-    fstream archivo( "tablero.txt" , fstream::in );
-
-	if(!archivo){
-	
-		cout << "No se pudo abrir el fichero tablero.txt" << endl;
-
-	}else{
-        mapa_ptr = new Lista<string>;
-        string linea;
-        archivo >> linea;
-        while(!archivo.eof()){
-            archivo >> linea;
-            mapa_ptr->agregar(linea);
-        }
-    }
-
-    return mapa_ptr;            
-}
-
 Lista<string>* Archivo_partida::obtener_datos_de_partida(){
     Lista<string>* datos_ptr = nullptr;
-    fstream archivo( "partida.txt" , fstream::in );
+    fstream archivo( FICHERO_PARTIDA , fstream::in );
 
 	if(!archivo){
 	
