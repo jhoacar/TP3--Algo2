@@ -4,25 +4,24 @@
 
 
 int comparacion_por_nombre(Objeto *A, Objeto *B){
-    
+
     if(A->obtener_nombre()==B->obtener_nombre())
         return IGUAL;
     else if(A->obtener_nombre() > B->obtener_nombre())
         return GRANDE;
-    else   
+    else
         return PEQUENO;
 }
 
 int comparacion_por_ID(Objeto *A, Objeto *B){
-    
+
     if(A->obtener_ID()==B->obtener_ID())
         return IGUAL;
     else if(A->obtener_ID() > B->obtener_ID())
         return GRANDE;
-    else   
+    else
         return PEQUENO;
 }
-
 
 Casilla::Casilla():cuadrante(),posicion(),objetos(){
     objeto_referencia = new Humano(); 
@@ -35,11 +34,11 @@ Casilla::Casilla(Coordenada pos):cuadrante(),posicion(pos),objetos(){
 Casilla::~Casilla(){
     delete objeto_referencia;
 }
-int Casilla::obtener_x(){
-    return this->posicion.obtener_x();
+int Casilla::obtener_fila(){
+    return this->posicion.obtener_fila();
 }
-int Casilla::obtener_y(){
-    return this->posicion.obtener_y();
+int Casilla::obtener_columna(){
+    return this->posicion.obtener_columna();
 }
 Coordenada Casilla::obtener_posicion(){
     return this->posicion;
@@ -128,6 +127,11 @@ bool Casilla::eliminar_objeto(string ID){
     return objetos.borrar_dato(objeto_referencia,comparacion_por_ID);
 }
 
+bool Casilla::eliminar_objeto(Objeto *objeto){
+
+    return objetos.borrar_dato(objeto);
+}
+
 int Casilla::eliminar_objetos(Lista<string> IDs){
 
     int borrados=0;
@@ -136,6 +140,12 @@ int Casilla::eliminar_objetos(Lista<string> IDs){
         borrados+=eliminar_objeto(IDs[i]);
 
     return borrados;
+}
+
+int Casilla::eliminar_objetos(Lista<Objeto*> objetos){
+
+    this->objetos-=objetos;
+    return this->objetos.obtener_tamano();
 }
 
 int Casilla::eliminar_toda_ocurrencia(char nombre_objeto){

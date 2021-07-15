@@ -6,7 +6,14 @@
 #include "Coordenada.h"
 using std::string;
 
+
+
 class Objeto;
+
+int comparacion_por_nombre(Objeto *A, Objeto *B);
+
+int comparacion_por_ID(Objeto *A, Objeto *B);
+
 
 class Casilla{
     protected:
@@ -51,10 +58,10 @@ class Casilla{
         Coordenada obtener_posicion();
         
         //Post: Devuelve la abscisa que se le ha asignado
-        int obtener_x();
+        int obtener_fila();
         
         //Post: Devuelve la ordenada que se le ha asignado
-        int obtener_y();
+        int obtener_columna();
         
         //Pre: Un cuadrante a asignar
         //Post: Asigna el cuadrante al objeto
@@ -87,23 +94,30 @@ class Casilla{
         //Pre: Un caracter representativo al nombre del objeto
         //Post: Devuelve la cantidad de veces que se encuentra dicho objeto en la lista
         int obtener_cantidad_objetos(char nombre_objeto);
-        
-        //Pre: Un caracter representativo al nombre del objeto
-        //Post: Elimina de la lista la primera ocurrencia de dicho objeto, devolviendo verdadero si lo elimina, falso caso contrario
+
+        //Pre: Un puntero del objeto
+        //Post: Elimina de la lista el objeto, devolviendo verdadero si lo elimina, falso caso contrario
+        bool eliminar_objeto(Objeto *objeto);
+
         bool eliminar_objeto(char nombre_objeto);
-        
-        //Pre: Un ID unico del objeto
-        //Post: Elimina de la lista el objeto con el ID, devolviendo verdadero si lo elimina, falso caso contrario
+
         bool eliminar_objeto(string ID);
 
         //Pre: Una lista de IDs unicos de cada objeto
         //Post: Elimina de la lista de objetos cada objeto que tenga el mismo ID, devolviendo la cantidad de objetos eliminados
         int eliminar_objetos(Lista<string> IDs);
-        
+
+        //Pre: Una lista de punteros de Objetos
+        //Post: Elimina de la lista de objetos cada objeto, devolviendo la cantidad de objetos eliminados
+        int eliminar_objetos(Lista<Objeto*> objetos);
+
         //Pre: Un caracter representativo al nombre del objeto
         //Post: Elimina de la lista todas las ocurrencia de dicho objeto, devolviendo la cantidad de objetos eliminados
-        int eliminar_toda_ocurrencia(char nombre_objeto);  
-        
+        int eliminar_toda_ocurrencia(char nombre_objeto);
+
 };
+
+
+
 
 #endif

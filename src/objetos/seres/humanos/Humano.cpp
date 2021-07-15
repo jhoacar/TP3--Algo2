@@ -33,28 +33,4 @@ void Humano::encuentro_con_elemento() {
 
     for (int i = 0; i < solo_elementos . obtener_tamano(); i++)
         this ->casilla -> eliminar_objeto(solo_elementos[i]->obtener_ID());
-
-
-
-
-
-
-
-
-
-    /*
-    objetos_casilla.reiniciar();
-    while (objetos_casilla.existe_siguiente()){
-        objeto_para_agregar = objetos_casilla.siguiente_dato();
-
-        if (this ->es_elemento(objeto_para_agregar)){
-            this -> casilla ->eliminar_objeto(objeto_para_agregar ->obtener_nombre());
-            this->inventario.agregar(objeto_para_agregar); //Agrega los objetos si es que son elementos
-
-            cout << "Se agrego un " << obtener_nombre_del_objeto(objeto_para_agregar -> obtener_nombre()) << " al inventario" << endl;
-        }
-    }
-    cout << "Se ejecuto el metodo encuentro con elemento" << endl;
-
-     */
 }

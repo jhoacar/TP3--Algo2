@@ -31,6 +31,7 @@ int Ser::devolver_vida(){
     return this -> vida;
 }
 
+
 bool es_elemento(Objeto* objeto_a_comprobar) {
 
     return buscar_dato(NOMBRES_CHAR, MAX_NOMBRES,objeto_a_comprobar->obtener_nombre(),HUMANO) == NO_ENCONTRADO;

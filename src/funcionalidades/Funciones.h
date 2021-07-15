@@ -7,6 +7,7 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -25,10 +26,6 @@ char caracter_mayuscula(char caracter);
 //Pre: Una cadena a cambiar
 //Post: Devuelve la cadena transformada a mayusculas
 string cadena_mayuscula(string cadena);
-
-//Pre: Un nombre del fichero de texto
-//Post: Un string con toda la informacion del fichero, o un string vacio si ocurre un error
-string obtener_texto(const string nombre_fichero);
 
 //Pre: Un texto y un delimitador del texto
 //Post: Una lista de string donde cada dato fue separado del string por el delimitador
@@ -54,17 +51,10 @@ void limpiar_pantalla();
 //Post: Coloca el cursor donde se escoga en la pantalla
 void gotoxy(int x, int y);
 
-//Pre: Las opciones que se muestran al usuario, el error por si se equivoca, el inicio (mayor que 0) y el fin de las opciones a encontrar y una opcion de salir
-//Post: Devuelve la opcion del dato elegido del string de opciones o NO_ENCONTRADO (-1) si la opcion fue salir
-int pedir_dato(string opciones,string error,int inicio,int fin,char opcion_salir);
 
 //Pre: Dos numeros referentes a un intervalo, tomando valor minimo y maximo
 //Post: Devuelve un numero comprendido entre ambos, incluyendolos
 int obtener_numero_aleatorio(int minimo, int maximo);
-
-//Pre: Un nombre del fichero a buscar
-//Post: Muestra la informacion del fichero en pantalla, validando los caracteres especiales
-bool mostrar_fichero(string nombre_fichero);
 
 //Post: Permite la impresion de color en consola al igual que posicionamientos
 void activar_color(void);
@@ -80,14 +70,6 @@ bool es_par(int numero);
 //Pre: Una posicion de referencia y una longitud
 //Post: Devuelve una lista de coordenadas, positivas referentes a una cruz de esa longitud
 Lista<Coordenada> obtener_cruz(Coordenada centro , int longitud, Coordenada limite_inferior, Coordenada limite_superior);
-
-//Pre: Una posicion de referencia y un tamano
-//Post: Devueve una lista de coordenadas, positivas referentes a un cuadrado de ese tamano
-Lista<Coordenada> obtener_cuadrado(Coordenada centro, int tamano, Coordenada limite_inferior, Coordenada limite_superior);
-
-//Pre: Un nombre encontrado en el vector de objetos
-//Post: Obtiene la conversion en string del nombre del objeto
-string obtener_nombre_del_objeto(char nombre_char);
 
 //Pre: Un vector de datos, un tamaño especifico y un dato a buscar
 //Post: Devuelve el indice donde se encontro el dato o NO_ENCONTRADO (-1) en caso contrario

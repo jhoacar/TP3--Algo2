@@ -21,18 +21,14 @@ void Zombie::regenerar_energia() {
 
 void Zombie::encuentro_con_elemento() {
     Lista<Objeto*> objetos_casilla;
-    Objeto* objeto_para_agregar = nullptr;
+    Lista<Objeto*> solo_agua;
 
     objetos_casilla = this -> casilla ->obtener_objetos();
+    solo_agua = objetos_casilla.filtrar_datos(0, es_agua);
 
-    objetos_casilla.reiniciar();
-    while (objetos_casilla.existe_siguiente()){
-        objeto_para_agregar = objetos_casilla.siguiente_dato();
+    this ->inventario += solo_agua;
+    cout << "Se agregaro con exito el agua al inventario" << endl;
 
-        if (objeto_para_agregar ->obtener_nombre() == NOMBRES_CHAR[AGUA]){ //los zombies solo pueden agarrar agua bendita
-            this -> casilla ->eliminar_objeto(objeto_para_agregar ->obtener_nombre());
-            this -> inventario.agregar(objeto_para_agregar);
-            cout << "Se agrego agua bendita al inventario" << endl;
-        }
-    }
+    for (int i = 0; i < solo_agua . obtener_tamano(); i++)
+        this -> casilla -> eliminar_objeto(solo_agua[i]->obtener_ID());
 }

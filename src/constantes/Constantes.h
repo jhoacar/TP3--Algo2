@@ -6,6 +6,11 @@ using std::string;
 
 const string CAZADOR = "CV";
 
+const string FICHERO_OBJETOS = "estado.txt";
+const string FICHERO_TABLERO = "tablero.txt";
+const string FICHERO_PARTIDA = "Partida.txt";
+
+
 //Convencion usada para este proyecto en los nombre,cardinales,colores,etc... 
 
 //Con las variables enumeradas obtengo una equivalencia (int) en char y string del nombre del objeto que se desea

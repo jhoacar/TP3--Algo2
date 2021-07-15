@@ -120,7 +120,13 @@ class Lista
     //Pre: El comienzo de la busqueda (puede ser desde el origen: 0), y una funcion de filtro
     //Esta funcion debe devolver un booleano que represente si pasa el filtro o no
     //Post: Devuelve una sublista de datos, con aquellos que fueron verdadero con la funcion del parametro
-    Lista<Dato> filtrar_datos(int inicio_busqueda, bool (*filtro)(Dato A)) const;
+    Lista filtrar_datos(int inicio_filtro, bool (*filtro)(Dato A)) const;
+    
+    //Pre: El comienzo de la busqueda (puede ser desde el origen: 0), y una funcion de mapeo
+    //Esta funcion debe devolver un tipo de dato de mapeo que transforme cada dato en otro
+    //Post: Devuelve la misma lista pero con cada dato con otro tipo de dato
+    template <class Dato_Map>
+    Lista<Dato_Map> mapear_datos(int inicio_mapeo, Dato_Map (*map)(Dato A)) const;
     
     //Pre: Un indice a buscar en la lista
     //Post: Devuelve una referencia del dato que se encuentra en dicha posicion
@@ -131,9 +137,14 @@ class Lista
 	  void operator=(Lista list);
     
     //Pre: Una lista a unir
-    //Post: Devuelve un puntero de una nueva lista con la union de ambas
-    Lista<Dato>* operator+(Lista list);
+    //Post: Devuelve una nueva lista con la union de ambas
+    Lista operator+(Lista list);
     
+    //Pre: Una lista a sacar
+    //Post: Devuelve una lista con la diferencia de la del parametro, sacando elementos que se encuentran en esta
+    Lista operator-(Lista list);
+
+
     //Pre: Una funcion que permita comparar dos datos
     //Esta funcion debe devolver un numero entero que representa
     // 0 : son iguales
@@ -157,6 +168,10 @@ class Lista
     //Pre: Una lista para unir
     //Post: Une esta lista con la del parametro, modificandose
     void operator+=(Lista list);
+
+    //Pre: Una lista para restar
+    //Post: Realiza una diferencia de esta lista con la del parametro, modificandose, elimina aquellos datos de la lista del parametro
+    void operator-=(Lista list);
 
     //Pre: Una lista para unir
     //Post: Devuelve la union de esta lista con la del parametro, sin modificarla
@@ -209,15 +224,6 @@ class Lista
     // -1: si el primer argumento es menor al segundo 
     //Post: Devuelve la cantidad que exista de dicho dato en la lista o -1 en caso contrario
     int obtener_cantidad_dato(const Dato data, int (*compare)(Dato A, Dato B) = comparacion);
-
-
-    //Pre: Una lista cargada y una funcion que me permita comparar dos datos
-    //Esta funcion debe devolver un numero entero que representa
-    // 0 : son iguales
-    // 1 : si el primer argumento es mayor al segundo
-    // -1: si el primer argumento es menor al segundo 
-    //Post: Retorna una nueva lista con los datos de esta lista que no esta con la del parametro
-    Lista* obtener_diferencia(Lista list , int (*compare)(Dato A, Dato B) = comparacion);
 
     //Pre:
     //Post: Pone el puntero a la primera posición o apuntando a NULL
@@ -446,6 +452,30 @@ Lista<Dato> Lista<Dato>::filtrar_datos(int inicio_busqueda,bool (*filtro)(Dato A
   return encontrados;
 }
 
+
+template <class Dato>
+template <class Dato_Map>
+Lista<Dato_Map> Lista<Dato>::mapear_datos(int inicio_mapeo, Dato_Map (*map)(Dato A)) const{
+    
+  Lista<Dato_Map> mapeados;
+
+  Nodo<Dato> *nodo = buscar_nodo(inicio_mapeo);
+  
+  if(nodo==nullptr)
+    return mapeados;
+
+  while(inicio_mapeo < (int) tamano ){
+
+    if(nodo != nullptr && inicio_mapeo < (int) tamano)
+      mapeados.agregar(map(*(nodo->dato)));
+    nodo = nodo->siguiente;  
+    inicio_mapeo++;
+  } 	
+  return mapeados;
+}
+
+
+
 template <class Dato>
 Dato& Lista<Dato>::operator[](const int index) const{
   Nodo<Dato> *nodo = buscar_nodo(index);
@@ -459,19 +489,19 @@ void Lista<Dato>::operator=(Lista lista){
 }
  
 template <class Dato>
-Lista<Dato>* Lista<Dato>::operator+(Lista lista){
-  Lista<Dato> *nueva = new Lista<Dato>(*this);
-  (*nueva)+=lista;
+Lista<Dato> Lista<Dato>::operator+(Lista lista){
+  Lista<Dato> nueva = new Lista<Dato>(*this);
+  nueva+=lista;
   return nueva;
 }
 
 template <class Dato>
 void Lista<Dato>::ordenar(int (*compare)(const Dato a, const Dato b)){
-    Lista *ordenared_list = selection_ordenar(*this,compare);
+    Lista *lista_ordenada = selection_ordenar(*this,compare);
     //selection_ordenar
     //quick_ordenar (Desbordamiento de memoria)
-    *this=*ordenared_list;
-    delete ordenared_list;
+    *this=*lista_ordenada;
+    delete lista_ordenada;
 }
 
 template <class Dato>
@@ -513,6 +543,7 @@ void Lista<Dato>::operator+=(Lista lista){
   lista.reiniciar();
 }
 
+
 template <class Dato>
 Lista<Dato>* Lista<Dato>::obtener_union(Lista &lista){
   Lista *nueva = new Lista(*this);
@@ -553,8 +584,11 @@ template <class Dato>
 int Lista<Dato>::borrar_cantidad_dato(const Dato dato, int cantidad ,int (*compare)(Dato A, Dato B)){
   int borrados=0;
   Lista<int> indices = buscar_todo_dato(0,dato,compare);
-  for(int i=0 ; i < minimo( cantidad, indices.obtener_tamano() ) ; i++ )
-    borrados += borrar(indices[i]);
+  int inicio=0, final = cantidad;
+  while(indices.existe_siguiente() && inicio < cantidad){
+    borrados+=borrar(indices.siguiente_dato());
+    inicio++;
+  }
   return borrados;
 }
 
@@ -562,8 +596,8 @@ template <class Dato>
 int Lista<Dato>::borrar_toda_occurrencia(const Dato dato, int (*compare)(Dato A, Dato B)){
   int borrados = 0;
   Lista<int> indices = buscar_todo_dato(dato,compare);
-  for(int i=0;i<indices.obtener_tamano(); i++)
-    borrados += borrar(indices[i]);
+  while(indices.existe_siguiente())
+    borrados += borrar(indices.siguiente_dato());
   return borrados;
 }
 template <class Dato>
@@ -580,16 +614,25 @@ int Lista<Dato>::obtener_cantidad_dato(const Dato dato, int (*compare)(Dato A, D
 }
 
 template <class Dato>
-Lista<Dato>* Lista<Dato>::obtener_diferencia(const Lista<Dato> lista, int (*compare)(Dato A, Dato B)){
-  Lista *nueva = new Lista();
+Lista<Dato> Lista<Dato>::operator-(const Lista lista){
+  Lista<Dato> nueva;
+  reiniciar();
   while(existe_siguiente()){
     Dato dato = siguiente_dato();
-    if( !lista.existe(dato, compare ) )
-      nueva->agregar(dato);
+    if( !lista.existe(dato) )
+      nueva.agregar(dato);
   }
   reiniciar();
   return nueva;
 }
+
+template <class Dato>
+void Lista<Dato>::operator-=(const Lista<Dato> lista){
+  Lista<Dato> nueva = (*this)-lista;
+  borrar_todo();
+  copiar_todo(nueva);
+}
+
 
 template <class Dato>
 void Lista<Dato>::reiniciar(void){

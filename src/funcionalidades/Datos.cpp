@@ -1,3 +1,4 @@
+/*
 #include "Datos.h"
 #include "Funciones.h"
 #include "Includes_Objetos.h"
@@ -272,3 +273,5 @@ bool Datos::eliminar_objeto(Coordenada posicion,const char nombre_objeto){
 
 	return this->objetos.borrar(buscar_objeto(posicion)) && this->tablero->eliminar_objeto(posicion,nombre_objeto);
 }
+
+*/

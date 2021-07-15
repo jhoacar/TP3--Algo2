@@ -1,5 +1,4 @@
-#include "../src/funcionalidades/Funciones.h"
-#include "../src/funcionalidades/Datos.h"
+#include "../src/mapa/Tablero.h"
 #include <iostream>
 int main(int argc, char *argv[]){
     
@@ -12,10 +11,6 @@ int main(int argc, char *argv[]){
 	color(AMARILLO);
 	limpiar_pantalla();
 	pausa();
-	
-    Datos dato(archivo);
-    cout<<dato.obtener_resumen();
-    dato.obtener_tablero()->mostrar_tablero();
-    pausa();
+    
     return 0;
 }

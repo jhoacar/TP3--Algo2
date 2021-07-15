@@ -13,4 +13,7 @@ class Monstruo : public Ser
 	protected:
 };
 
+bool es_agua(Objeto* objeto_a_comprobar);
+bool es_estaca(Objeto* objeto_a_comprobar);
+
 #endif

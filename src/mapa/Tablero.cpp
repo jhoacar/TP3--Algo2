@@ -7,20 +7,20 @@ using namespace std;
 
 Tablero::Tablero(){
 
-    this->filas=0;
+    this->filas = 0;
 
-    this->columnas=0;
+    this->columnas = 0;
 
-    casillas=nullptr;
+    casillas = nullptr;
 
 }
 
 Tablero::Tablero(int filas,int columnas)
 {
 
-    this->filas=filas;
+    this->filas = filas;
 
-    this->columnas=columnas;
+    this->columnas = columnas;
 
     casillas = new Casilla**[filas];
 
@@ -38,31 +38,31 @@ Tablero::Tablero(int filas,int columnas)
 
 Tablero::~Tablero()
 {
-    for(int i=0; i < filas ; i++){
+    for(int i = 0; i < filas ; i++){
 
-        for(int j=0; j < columnas ; j++){
+        for(int j = 0; j < columnas ; j++){
 
             if(casillas[i][j] != nullptr){
 
                 delete casillas[i][j];
 
-                casillas[i][j]=nullptr;
+                casillas[i][j] = nullptr;
 
             }
         }
     }
 
-    for(int i=0 ; i < filas ;i++){
+    for(int i = 0 ; i < filas ;i++){
     
         delete[] casillas[i];
     
-        casillas[i]=nullptr;
+        casillas[i] = nullptr;
     
     }
 
     delete [] casillas;
 
-    casillas=nullptr;
+    casillas = nullptr;
 }
 
 string Tablero::obtener_cuadrante(Coordenada posicion){
@@ -71,15 +71,15 @@ string Tablero::obtener_cuadrante(Coordenada posicion){
     
         return "";
 
-    else if(posicion.obtener_x()<columnas/2 && posicion.obtener_y()<filas/2)
+    else if(posicion.obtener_fila()<columnas/2 && posicion.obtener_columna()<filas/2)
     
         return CARDINALES[NOROESTE];
     
-    else if(posicion.obtener_x()>columnas/2 && posicion.obtener_y()>filas/2)
+    else if(posicion.obtener_fila()>columnas/2 && posicion.obtener_columna()>filas/2)
     
         return CARDINALES[SURESTE];
     
-    else if(posicion.obtener_x()>=columnas/2 && posicion.obtener_y()<=filas/2)
+    else if(posicion.obtener_fila()>=columnas/2 && posicion.obtener_columna()<=filas/2)
     
         return CARDINALES[NORESTE];
     
@@ -90,9 +90,9 @@ string Tablero::obtener_cuadrante(Coordenada posicion){
 
 bool Tablero::es_valida(Coordenada posicion){
 
-    Coordenada limite( columnas , filas );
+    Coordenada limite( filas , columnas );
 
-    return posicion<limite;
+    return (posicion < limite);
 
 }
 void Tablero::cargar_objeto(Objeto *objeto){
@@ -100,14 +100,13 @@ void Tablero::cargar_objeto(Objeto *objeto){
     if(objeto!=nullptr){
 
         Coordenada posicion = objeto->obtener_casilla()->obtener_posicion();
+        
+        int fila = posicion.obtener_fila();
+        int columna = posicion.obtener_columna();
 
-        //Le resto una posicion para guardarla correctamente en el tablero arrancando en (0,0)
-        int fila = posicion.obtener_y() - 1;
-        int columna = posicion.obtener_x() - 1;
+        if(es_valida(posicion) && casillas[ fila ][ columna ] != nullptr){
 
-        if(es_valida({fila,columna}) && casillas[ fila ][ columna ] != nullptr){
-
-            objeto->asignar_cuadrante( obtener_cuadrante ( {fila,columna} ) );
+            objeto->asignar_cuadrante( obtener_cuadrante ( posicion ) );
     
             casillas[ fila ][ columna ]->agregar_objeto(objeto);
         }
@@ -116,10 +115,10 @@ void Tablero::cargar_objeto(Objeto *objeto){
 }
 
 void Tablero::cargar_lista_objetos(Lista<Objeto *>objeto){
-    
-    for(int i=0;i<objeto.obtener_tamano(); i++){
-        cargar_objeto(objeto[i]);
-    }
+    objeto.reiniciar();
+    while(objeto.existe_siguiente())
+        cargar_objeto(objeto.siguiente_dato()); 
+    objeto.reiniciar();
 }
 
 
@@ -136,11 +135,10 @@ int Tablero::obtener_columnas(){
 
 Casilla* Tablero::obtener_casilla(Coordenada posicion){
     
-    int fila = posicion.obtener_y();
-    int columna = posicion.obtener_x();
+    int fila = posicion.obtener_columna();
+    int columna = posicion.obtener_fila();
 
-
-    if(es_valida(posicion))
+    if(es_valida({fila,columna}))
         return casillas[fila][columna];        
     else  
         return nullptr;
@@ -150,8 +148,8 @@ void Tablero::asignar_casilla(Casilla *casilla){
 
     if(casilla!=nullptr && es_valida(casilla->obtener_posicion())){
 
-        int fila = casilla->obtener_posicion().obtener_y();
-        int columna = casilla->obtener_posicion().obtener_x();
+        int fila = casilla->obtener_posicion().obtener_columna();
+        int columna = casilla->obtener_posicion().obtener_fila();
 
         casillas[fila][columna] = casilla;
     }
@@ -159,16 +157,21 @@ void Tablero::asignar_casilla(Casilla *casilla){
 
 void Tablero::asignar_casillas( Lista<Casilla*> lista_casillas){
 
-    for( int i=0; i< lista_casillas.obtener_tamano(); i++)
-        asignar_casilla(lista_casillas[i]);
+    lista_casillas.reiniciar();
+    while(lista_casillas.existe_siguiente())
+        asignar_casilla(lista_casillas.siguiente_dato());
+    lista_casillas.reiniciar();
+
 }
 
 Lista<Casilla*> Tablero::obtener_lista_casillas(Lista<Coordenada> posiciones){
     
     Lista<Casilla*> lista_casillas;
-    for(int i=0;i<posiciones.obtener_tamano(); i++)
-        if(es_valida(posiciones[i]))
-            lista_casillas.agregar(obtener_casilla(posiciones[i]));
+    while(posiciones.existe_siguiente()){
+        Coordenada posicion = posiciones.siguiente_dato();
+        if(es_valida(posicion))
+            lista_casillas.agregar(obtener_casilla(posicion));
+    }
 
     return lista_casillas;
 }
@@ -182,8 +185,8 @@ void Tablero::cargar_grafo(int tipo_personaje){
         
             for(int k=0;k<adyacentes.obtener_tamano(); k++){
 
-                int fila_adyacente    = adyacentes[k].obtener_y();
-                int columna_adyacente = adyacentes[k].obtener_x();
+                int fila_adyacente    = adyacentes[k].obtener_columna();
+                int columna_adyacente = adyacentes[k].obtener_fila();
 
                 Casilla *casilla_adyacente = obtener_casilla(adyacentes[k]);
 
@@ -238,18 +241,18 @@ void Tablero::mostrar_tablero(){
 
 void Tablero::mostrar_leyenda(){
 
-    cout<<"\n\tCONVENCION USADA: "<<endl;
-    cout<<"\n-*: vacio";
-    cout<<"\n- h: humaNOROESTE simple";
-    cout<<"\n- H: humaNOROESTE caza vampiros-zombis";
-    cout<<"\n- W: Vanesa";
-    cout<<"\n- z: zombi";
-    cout<<"\n- v: vampiro";
-    cout<<"\n- V: Vampirella"; 
-    cout<<"\n- N: NOROESTEsferatu ";
-    cout<<"\n- c: cruz ";
-    cout<<"\n- a: agua bendita ";
-    cout<<"\n- e: estaca ";
-    cout<<"\n- E: escopeta ";
-    cout<<"\n- b: balas"<<endl;
+    cout << "\n\tCONVENCION USADA: " << endl;
+    cout << "\n-*: vacio";
+    cout << "\n- h: humaNOROESTE simple";
+    cout << "\n- H: humaNOROESTE caza vampiros-zombis";
+    cout << "\n- W: Vanesa";
+    cout << "\n- z: zombi";
+    cout << "\n- v: vampiro";
+    cout << "\n- V: Vampirella"; 
+    cout << "\n- N: NOROESTEsferatu ";
+    cout << "\n- c: cruz ";
+    cout << "\n- a: agua bendita ";
+    cout << "\n- e: estaca ";
+    cout << "\n- E: escopeta ";
+    cout << "\n- b: balas" << endl;
 }
