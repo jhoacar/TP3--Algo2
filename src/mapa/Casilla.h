@@ -22,8 +22,11 @@ class Casilla{
         string cuadrante;
         Coordenada posicion;
         Lista<Objeto*> objetos;
-    private:    
+
+    private:
+
         Objeto *objeto_referencia; //Nombre manipulable para el uso de comparaciones en la clase lista
+    
     public:
 
         //Post: Crea una casilla vacia con coordenada en (0,0)
@@ -36,7 +39,7 @@ class Casilla{
         virtual ~Casilla();
         
         //Post: Metodo polimorfico del tipo de casilla
-        virtual char obtener_tipo()=0;
+        virtual char obtener_tipo();
         
         //Pre: Un tipo de personaje
         //Dicho tipo de personaje podra ser
@@ -45,10 +48,10 @@ class Casilla{
 		//TIPO_VAMPIRO: 2
 		//TIPO_ZOMBIE : 3
         //Post: Metodo polimorfico del tipo de casilla que devuelve la energia que consumiria el personaje
-        virtual int obtener_energia(int tipo_personaje)=0;
+        virtual int obtener_energia(int tipo_personaje);
         
         //Post: Metodo polimorfico que devuelve el color de fondo que se pintara sobre la pantalla
-        virtual int obtener_color()=0;
+        virtual int obtener_color();
         
         //Post: Devuelve la lista completa de objetos en la casilla
         Lista<Objeto*> obtener_objetos();
