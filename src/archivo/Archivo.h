@@ -8,11 +8,14 @@
 #include "../funcionalidades/tda/Lista.h"
 #include "../constantes/Constantes.h"
 
+<<<<<<< HEAD
 using std::cout;
 using std::cin;
 using std::endl;
 using std::fstream;
 using std::string;
+=======
+>>>>>>> fb121e2ac3e01ff7ac50a93c69cb90118da9e088
 using namespace std;
 
 class Archivo{

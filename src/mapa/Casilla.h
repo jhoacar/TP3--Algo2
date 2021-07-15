@@ -8,6 +8,10 @@ using std::string;
 
 class Objeto;
 
+int comparacion_por_nombre(Objeto *A, Objeto *B);
+
+int comparacion_por_ID(Objeto *A, Objeto *B);
+
 class Casilla{
     protected:
         string cuadrante;

@@ -1,22 +1,19 @@
-#ifndef ARBOL_H
-#define ARBOL_H
+#ifndef ARBOL_BINARIO_H
+#define ARBOL_BINARIO_H
 
 #include "Vertice.h"
 #include "Lista.h"
 
 template <class Dato>
-class Arbol{
-    Vertice *raiz;
+class Arbol_B{
+
+    Vertice<Dato> *raiz;
     public:
-        Arbol(Arbol *padre){
-            dato = new Dato;
-            derecho=nullptr;
-            izquierdo=nullptr;
-            this->padre=padre;
+        Arbol_B(Dato dato){
+            raiz = new Vertice(dato)
         }
-        ~Arbol(){
-            delete dato;
-            dato=nullptr;
+        ~Arbol_B(){
+            
         }
 };
 

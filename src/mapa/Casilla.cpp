@@ -2,7 +2,6 @@
 #include "../objetos/Objeto.h"
 #include "../objetos/seres/humanos/Humano.h"
 
-
 int comparacion_por_nombre(Objeto *A, Objeto *B){
     
     if(A->obtener_nombre()==B->obtener_nombre())
