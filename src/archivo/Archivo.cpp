@@ -22,11 +22,7 @@ string Archivo::obtener_texto(const string nombre_fichero){
 	}
   	
 	string datos_texto;
-  	
-    if(nombre_fichero == FICHERO_OBJETOS || nombre_fichero == FICHERO_TABLERO){
-        archivo >> fila;
-        archivo >> columna;
-    }
+    
     getline(archivo, datos_texto, '\0');
   	
 	archivo.close();
@@ -38,7 +34,6 @@ bool Archivo::mostrar_contenido(){
 
     bool mostrado = false;
 
-        
     if(contenido.length()>0){
 
         contenido.replace(contenido.find("\\"),1,"\\\\");
