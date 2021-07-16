@@ -14,6 +14,9 @@ class Humano : public Ser
 		void regenerar_energia();
 		void encuentro_con_elemento();
 	protected:
+	
+	private:
+		bool armadura_aumentada;
 };
 
 #endif
