@@ -2,7 +2,7 @@
 #define ARBOL_BINARIO_H
 
 #include "Vertice.h"
-#include "Lista.h"
+#include "../Funciones.h"
 
 #include <iostream>
 using namespace std;
@@ -12,43 +12,80 @@ class Arbol_B{
 
     Vertice<Llave,Dato> *raiz;
 
-    int obtener_pivote(Vertice<Llave,Dato> *&pivote){
+    
+    void asignar_factor_equilibrio(Vertice<Llave,Dato> *vertice){
+        if(!esta_vacio(vertice)){
+            vertice->factor_equilibrio = obtener_factor_equilibrio(vertice);
+            asignar_factor_equilibrio(vertice->izquierdo);
+            asignar_factor_equilibrio(vertice->derecho);
+        }
+    }
 
-
+    Vertice<Llave,Dato>* obtener_pivote(Vertice<Llave,Dato> *vertice_origen){
+        
+        if(!esta_vacio(vertice_origen)){
+            
+            if(valor_absoluto(vertice_origen->factor_equilibrio)<=1)
+                return vertice_origen->padre;
+            
+            obtener_pivote(vertice_origen->izquierdo);
+            obtener_pivote(vertice_origen->derecho);
+        }
     }
 
     void balancear(){
 
-        Vertice<Llave,Dato> *pivote;
-        int equilibrio = obtener_pivote(pivote);
-        
-        Vertice<Llave,Dato> *padre = pivote->padre;
-        int hijo_izquierdo = esta_vacio(padre) ? NO_ENCONTRADO : padre->izquierdo == pivote;
-        
-        if(equilibrio > 1 ){
-            
-            rotar_izquierda();
-        }
-        if(equilibrio < -1){
-            //rotar_derecha();
-        }
+        if(valor_absoluto(obtener_factor_equilibrio(raiz))<=1 || esta_vacio(obtener_pivote(raiz)))
+            return;
 
+        Vertice<Llave,Dato> *pivote = obtener_pivote(raiz);
+
+        Vertice<Llave,Dato> *padre = pivote->padre;
+        int hijo_izquierdo = esta_vacio(padre) ? NO_ENCONTRADO : padre->izquierdo == pivote ;
+         
+        if(pivote->factor_equilibrio > 1 ){
+            
+            if(!esta_vacio(pivote->derecho))
+                rotar_izquierda(pivote);
+        }
+        if(pivote->factor_equilibrio < -1){
+
+            rotar_derecha(pivote);
+        }
         if(hijo_izquierdo!=NO_ENCONTRADO){
+
             if(hijo_izquierdo)
                 padre->izquierdo = pivote;
             else   
                 padre->derecho = pivote;
         }
     }
-    void rotar_izquierda( Vertice<Llave,Dato> *&vertice){
+    /*
+    Rotación simple a la izquierda
+
+    De un árbol de raíz (r) y de hijos izquierdo (i) y derecho (d), 
+    consiste en formar un nuevo árbol cuya raíz sea la raíz del hijo derecho,
+     como hijo derecho colocamos el hijo derecho de d (nuestro d’) y como hijo izquierdo 
+     construimos un nuevo árbol que tendrá como raíz la raíz del árbol (r),
+      el hijo izquierdo de d será el hijo derecho (i’) de r y el hijo izquierdo será el hijo izquierdo del árbol (i).
+
+    Precondición : Tiene que tener hijo derecho no vacío. 
+    */
+    void rotar_izquierda( Vertice<Llave,Dato> *&vertice){    
         
-        Vertice<Llave,Dato> *aux = vertice->izquierdo->derecho;
-	    vertice->izquierdo->derecho = vertice;
 
-	    Vertice<Llave,Dato> *aux2 = vertice->izquierdo;
-	    vertice->izquierdo = aux;
+        Vertice<Llave,Dato> *aux = vertice;
+        
+        vertice = vertice->derecho;
+        vertice->padre = aux->padre;
+        vertice->factor_equilibrio = 0;
 
-	    vertice = aux2;   
+        vertice->izquierdo = aux;
+        vertice->izquierdo->padre = vertice;
+
+        vertice->derecho->izquierdo = vertice;
+        vertice->derecho = nullptr;
+        
     }
     void rotar_derecha( Vertice<Llave,Dato> *&vertice){
         
@@ -114,7 +151,7 @@ class Arbol_B{
                 else
                     recorrido = recorrido->derecho;
             }
-            if(raiz==nullptr){
+            if(esta_vacio(raiz)){
                 raiz = new Vertice<Llave,Dato>(llave,nullptr);
                 return *(raiz->dato);
             }
@@ -122,12 +159,12 @@ class Arbol_B{
                 return *(anterior->dato);
             else if(comparar_llaves(llave,*(anterior->llave))==PEQUENO){
                 anterior->izquierdo = new Vertice<Llave,Dato>(llave,anterior);
-                balancear();
+                asignar_factor_equilibrio(raiz);
                 return *(anterior->izquierdo->dato);
             }
             else{
                 anterior->derecho = new Vertice<Llave,Dato>(llave,anterior);
-                balancear();
+                asignar_factor_equilibrio(raiz);
                 return *(anterior->derecho->dato);
             }
         }
@@ -142,8 +179,8 @@ class Arbol_B{
         int obtener_factor_equilibrio(Vertice<Llave,Dato> *vertice){
             int altura_derecha=0, altura_izquierda=0;
             if(!esta_vacio(vertice)){
-                aux_obtener_altura(vertice->derecho,0,altura_derecha);
-                aux_obtener_altura(vertice->izquierdo,0,altura_izquierda);
+                altura_derecha   = obtener_altura(vertice->derecho);
+                altura_izquierda = obtener_altura(vertice->izquierdo);
             }
             return altura_derecha-altura_izquierda;
         }

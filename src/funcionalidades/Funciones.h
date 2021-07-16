@@ -11,6 +11,10 @@
 
 using namespace std;
 
+//Pre: Un numero entero
+//Post: Devuelve el numero sin signo;
+int valor_absoluto(int numero);
+
 //Pre: Dos numeros enteros cargados
 //Post: Devuelve el numero mas pequeño entre los dos
 int minimo(int A, int B);

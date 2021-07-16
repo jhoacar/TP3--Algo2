@@ -124,6 +124,11 @@ int convertir_entero(string cadena){
 	return stoi(solo_numeros(cadena));
 
 }
+
+int valor_absoluto(int numero){
+	
+	return numero < 0  ? numero*-1 : numero ; 
+}
 int minimo(int A, int B){
 	return A < B ?  A : B;
 }

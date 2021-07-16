@@ -32,8 +32,6 @@ class Diccionario{
         Dato& operator[](const Llave llave){
             return buscar_dato(llave, comparacion);
         }
-        
-
 };
 
 #endif
