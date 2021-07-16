@@ -45,11 +45,22 @@ class Arbol_B{
          
         if(pivote->factor_equilibrio > 1 ){
             
-            if(!esta_vacio(pivote->derecho))
+            if(esta_vacio(pivote->izquierdo) && esta_vacio(pivote->derecho->izquierdo))
                 rotar_izquierda(pivote);
+            else if(esta_vacio(pivote->izquierdo) && esta_vacio(pivote->derecho->derecho){
+                rotar_derecha(pivote->derecho);
+                rotar_izquierda(pivote);
+            }
         }
         if(pivote->factor_equilibrio < -1){
 
+            if(esta_vacio(pivote->derecho) && esta_vacio(pivote->izquierdo->derecho))
+                rotar_derecha(pivote)
+            else if(esta_vacio(pivote->derecho) && esta_vacio(pivote->izquierdo->izquierdo)){
+                rotar_izquierda(pivote->izquierdo);
+                rotar_derecha(pivote);
+            }
+            
             rotar_derecha(pivote);
         }
         if(hijo_izquierdo!=NO_ENCONTRADO){
@@ -60,7 +71,7 @@ class Arbol_B{
                 padre->derecho = pivote;
         }
     }
-    /*
+    /* 
     Rotación simple a la izquierda
 
     De un árbol de raíz (r) y de hijos izquierdo (i) y derecho (d), 
@@ -72,39 +83,28 @@ class Arbol_B{
     Precondición : Tiene que tener hijo derecho no vacío. 
     */
     void rotar_izquierda( Vertice<Llave,Dato> *&vertice){    
-        
 
         Vertice<Llave,Dato> *aux = vertice;
         
-        vertice = vertice->derecho;
-        vertice->padre = aux->padre;
-        vertice->factor_equilibrio = 0;
+        vertice = vertice->derecho; //El nodo principal sera el de la derecha
+        vertice->padre = aux->padre;//Su padre sera el que tenia antes el vertice
 
         vertice->izquierdo = aux;
         vertice->izquierdo->padre = vertice;
-
-        vertice->derecho->izquierdo = vertice;
-        vertice->derecho = nullptr;
+        aux->derecho = nullptr;
         
     }
     void rotar_derecha( Vertice<Llave,Dato> *&vertice){
         
-        Vertice<Llave,Dato> *aux = vertice->derecho->izquierdo;
-	    vertice->derecho->izquierdo = vertice;
-	    
-        Vertice<Llave,Dato> *aux2 = vertice->derecho;
-	    vertice->derecho = aux;
-	    
-        vertice = aux2;
-    }
-    void rotar_izquierda_derecha(Vertice<Llave,Dato> *&vertice){ //precond: el árbol necesita una rotacion LR
-	    rotar_derecha(vertice->izquierdo);
-	    rotar_izquierda(vertice);
-    }
+        Vertice<Llave,Dato> *aux = vertice;
 
-    void rotar_derecha_izquierda(Vertice<Llave,Dato> *&vertice){ //precond: el árbol necesita una rotacion RL
-	    rotar_izquierda(vertice->derecho);
-	    rotar_derecha(vertice);
+        vertice = vertice->izquierdo; //El nodo principal sera el de la izquierda
+        vertice->padre = aux->padre;//Su padre sera el que tenia antes el vertice
+
+        vertice->derecho = aux;
+        vertice->derecho->padre = vertice;
+        aux->izquierdo = nullptr;  
+
     }
 
     void aux_obtener_altura(Vertice<Llave,Dato> *vertice, int altura_cambiante , int &altura_salida)
@@ -160,11 +160,13 @@ class Arbol_B{
             else if(comparar_llaves(llave,*(anterior->llave))==PEQUENO){
                 anterior->izquierdo = new Vertice<Llave,Dato>(llave,anterior);
                 asignar_factor_equilibrio(raiz);
+                balancear();
                 return *(anterior->izquierdo->dato);
             }
             else{
                 anterior->derecho = new Vertice<Llave,Dato>(llave,anterior);
                 asignar_factor_equilibrio(raiz);
+                balancear();
                 return *(anterior->derecho->dato);
             }
         }
