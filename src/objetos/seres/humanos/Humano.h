@@ -14,6 +14,11 @@ class Humano : public Ser
 		void regenerar_energia();
 		void encuentro_con_elemento();
 		
+		// Comprueba si hay agua bendita en el inventario
+    		// PRE: -
+    		// POS: Devuelve true si el humano tiene agua bendita en su inventario, caso contrario devuelve false.
+    		bool tengo_agua_bendita();
+
 		// PRE: Se comprobó previamente que el humano no tiene agua bendita en su invenatario.
     		//      Es decir, se ejecutó previamente el método tengoAguaBendita y devolvió false.
     		// POS: Incrementa 3 puntos la energía del humano.

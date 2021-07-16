@@ -42,6 +42,17 @@ void Humano::encuentro_con_elemento() {
     cout << "Se ejecuto el metodo encuentro con elemento" << endl;
 }
 
+bool Humano::tengo_agua_bendita() {
+    bool encontrado = false;
+    this->inventario.reiniciar();
+    while(this->inventario.existe_siguiente() && !encontrado){
+        if (obtener_nombre_del_objeto(this->inventario.siguiente_dato()->obtener_nombre()) == NOMBRES_STRING[0]){
+               encontrado = true;
+        }
+    }
+    return encontrado;
+}
+
 void Humano::aumentar_energia() {
     this->energia +=3;
 }
