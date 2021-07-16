@@ -41,3 +41,13 @@ void Humano::encuentro_con_elemento() {
     }
     cout << "Se ejecuto el metodo encuentro con elemento" << endl;
 }
+
+void Humano::aumentar_energia() {
+    this->energia +=3;
+}
+
+void Humano::aumentar_armadura() {
+    this->armadura++;
+    this->armadura_mejorada = true;
+}
+
