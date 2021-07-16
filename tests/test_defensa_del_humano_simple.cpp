@@ -2,6 +2,10 @@
 #include "../src/funcionalidades/Includes_Objetos.h"
 #include <iostream>
 
+// Tests:
+// (1) No tiene agua bendita en su inventario, aumenta +3 su energía => Bien!
+// (2) Tiene agua bendita en su inventario, regenera toda su energía => Pendiente
+// (3) Tiene agua bendita en su inventario, aumenta +1 su armadura   => Pendiente
 
 int main(){
     Coordenada posicion(10, 10);
