@@ -77,7 +77,7 @@ void Humano::aumentar_energia() {
 
 void Humano::aumentar_armadura() {
     this->armadura++;
-    this->armadura_mejorada = true;
+    this->armadura_aumentada = true;
 }
 
 void Humano::consumir_agua_bendita() {
