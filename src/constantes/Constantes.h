@@ -146,5 +146,10 @@ const int PEQUENO = -1;
 const int GRANDE = 1;
 const int IGUAL = 0;
 
+
+//Opciones de defensa del humano
+const int REGENERAR_ENERGIA = 1;
+const int AUMENTAR_ARMADURA = 2;
+
 #endif
 
