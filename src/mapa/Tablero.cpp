@@ -163,13 +163,12 @@ void Tablero::asignar_casilla(Casilla *casilla){
     }
 }
 
-void Tablero::asignar_casillas( Lista<Casilla*> lista_casillas){
+void Tablero::asignar_casillas( Lista<Casilla*>* lista_casillas){
 
-    lista_casillas.reiniciar();
-    while(lista_casillas.existe_siguiente())
-        asignar_casilla(lista_casillas.siguiente_dato());
-    lista_casillas.reiniciar();
-
+    lista_casillas->reiniciar();
+    while(lista_casillas->existe_siguiente())
+        asignar_casilla(lista_casillas->siguiente_dato());
+    lista_casillas->reiniciar();
 }
 
 Lista<Casilla*> Tablero::obtener_lista_casillas(Lista<Coordenada> posiciones){

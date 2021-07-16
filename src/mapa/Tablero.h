@@ -68,7 +68,7 @@ class Tablero
 		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Pre: Una lista de casillas previamente bien cargadas, con sus posiciones, comenzando desde fila=0, columna=0
 		//Post: Carga al tablero en la posicion de cada casilla, todas las casillas de la lista
-		void asignar_casillas(Lista<Casilla*> casillas);
+		void asignar_casillas(Lista<Casilla*>* casillas);
 		
 		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Pre: Una posicion del tablero, comenzando desde fila=0, columna=0
