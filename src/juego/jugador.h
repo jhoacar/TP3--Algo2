@@ -13,7 +13,7 @@ class Jugador {
 private:
 
     string bando;
-    Lista<string>* datos_personajes;
+    Lista<string> datos_personajes;
 
 public:
 
@@ -30,7 +30,7 @@ public:
     void guardar_datos_de_jugador(int numero_jugador, Lista<string> &datos);
 
     // POST: devuelve una lista con todos los datos del jugador y los datos de partida
-    Lista<string>* obtener_datos_partida();
+    Lista<string> obtener_datos_partida();
 
     
 };

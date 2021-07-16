@@ -22,29 +22,12 @@ void Humano::regenerar_energia() {
 }
 
 void Humano::encuentro_con_elemento() {
-    
-    Lista<Objeto*> objetos_casilla;
-    Objeto* objeto_para_agregar = nullptr;
-
-    objetos_casilla = this -> casilla ->obtener_objetos();
-
-    objetos_casilla.reiniciar();
-    while (objetos_casilla.existe_siguiente()){
-        objeto_para_agregar = objetos_casilla.siguiente_dato();
-
-        if (this ->es_elemento(objeto_para_agregar)){
-            this -> casilla ->eliminar_objeto(objeto_para_agregar ->obtener_nombre());
-            this->inventario.agregar(objeto_para_agregar); //Agrega los objetos si es que son elementos
-
-            cout << "Se agrego un " << obtener_nombre_del_objeto(objeto_para_agregar -> obtener_nombre()) << " al inventario" << endl;
-        }
-    }
-    cout << "Se ejecuto el metodo encuentro con elemento" << endl;
+    //ACTUALIZAR
 }
 
 void Humano::defenderse() {
-    if (!this->tengo_agua_bendita()){
-        this->aumentar_energia();
+    if (!tengo_agua_bendita()){
+        aumentar_energia();
         std::cout << "|||| No tengo agua bendita, pero aumenté mi energía ||||" << std::endl;
     }
     else {
@@ -61,14 +44,19 @@ void Humano::defenderse() {
 }
 
 bool Humano::tengo_agua_bendita() {
-    bool encontrado = false;
+    
+    /*bool encontrado = false;
     this->inventario.reiniciar();
     while(this->inventario.existe_siguiente() && !encontrado){
         if (obtener_nombre_del_objeto(this->inventario.siguiente_dato()->obtener_nombre()) == NOMBRES_STRING[0]){
                encontrado = true;
         }
     }
-    return encontrado;
+    return encontrado;*/
+    
+    objeto_referencia->asignar_nombre(NOMBRES_CHAR[AGUA]); //Le asigno el nombre que quiera buscar en la lista
+
+    return inventario.existe(objeto_referencia,comparacion_por_nombre);
 }
 
 void Humano::aumentar_energia() {
@@ -86,7 +74,7 @@ void Humano::consumir_agua_bendita() {
 }
 
 int Humano::buscar_agua_bendita_en_mi_inventario() {
-    int posicion=0;
+    /*int posicion=0;
     bool encontrado=false;
     this->inventario.reiniciar();
     while(this->inventario.existe_siguiente() && !encontrado){
@@ -95,7 +83,9 @@ int Humano::buscar_agua_bendita_en_mi_inventario() {
             encontrado = true;
         }
     }
-    return posicion;
+    return posicion;*/
+    objeto_referencia->asignar_nombre(NOMBRES_CHAR[AGUA]);
+    return inventario.buscar_dato(0,objeto_referencia,comparacion_por_nombre);
 }
 
 int Humano::elegir_accion() {

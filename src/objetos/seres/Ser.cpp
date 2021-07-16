@@ -1,9 +1,9 @@
 #include "Ser.h"
-
+#include "humanos/Humano.h"
 #include <iostream>
 
 Ser::Ser():Objeto(){
-
+    objeto_referencia = new Humano(); //No me interesa el tipo de objeto, solo sus atributos
 }
 
 Ser::Ser(Casilla *casilla,char nombre, string ID):Objeto(casilla,nombre,ID){
@@ -13,6 +13,7 @@ Ser::Ser(Casilla *casilla,char nombre, string ID):Objeto(casilla,nombre,ID){
     this -> fuerza   = obtener_numero_aleatorio(FUERZA_MINIMA, FUERZA_MAXIMA);
 }
 Ser::~Ser(){
+    delete objeto_referencia;
 }
 
 int Ser::devolver_armadura() {
@@ -31,7 +32,7 @@ int Ser::devolver_vida(){
     return this -> vida;
 }
 
-bool Ser::es_elemento(Objeto* objeto_a_comprobar) {
+bool es_elemento(Objeto* objeto_a_comprobar) {
 
     return buscar_dato(NOMBRES_CHAR, MAX_NOMBRES,objeto_a_comprobar->obtener_nombre(),HUMANO) == NO_ENCONTRADO;
 }
