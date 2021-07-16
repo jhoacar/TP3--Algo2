@@ -9,7 +9,12 @@
 #include <iostream>
 #include <sstream>
 
+
 using namespace std;
+
+
+//Post: Devuelve el caracter oprimido sin imprimirlo por consola
+char tecla_pulsada(void);
 
 //Pre: Un numero entero
 //Post: Devuelve el numero sin signo;
@@ -54,6 +59,10 @@ void limpiar_pantalla();
 //Pre: Dos numeros enteros para la posicion de la pantalla
 //Post: Coloca el cursor donde se escoga en la pantalla
 void gotoxy(int x, int y);
+
+//Pre: Una coordenada para la posicion de la pantalla
+//Post: Coloca el cursor donde se escoga en la pantalla
+void gotoxy(Coordenada posicion);
 
 
 //Pre: Dos numeros referentes a un intervalo, tomando valor minimo y maximo
