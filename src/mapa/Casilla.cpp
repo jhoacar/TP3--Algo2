@@ -126,6 +126,7 @@ bool Casilla::eliminar_objeto(string ID){
     
     return objetos.borrar_dato(objeto_referencia,comparacion_por_ID);
 }
+
 bool Casilla::eliminar_objeto(Objeto *objeto){
 
     return objetos.borrar_dato(objeto);

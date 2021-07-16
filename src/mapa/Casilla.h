@@ -96,18 +96,14 @@ class Casilla{
         //Pre: Un caracter representativo al nombre del objeto
         //Post: Devuelve la cantidad de veces que se encuentra dicho objeto en la lista
         int obtener_cantidad_objetos(char nombre_objeto);
-        
-        //Pre: Un caracter representativo al nombre del objeto
-        //Post: Elimina de la lista la primera ocurrencia de dicho objeto, devolviendo verdadero si lo elimina, falso caso contrario
-        bool eliminar_objeto(char nombre_objeto);
-        
-        //Pre: Un ID unico del objeto
-        //Post: Elimina de la lista el objeto con el ID, devolviendo verdadero si lo elimina, falso caso contrario
-        bool eliminar_objeto(string ID);
 
         //Pre: Un puntero del objeto
         //Post: Elimina de la lista el objeto, devolviendo verdadero si lo elimina, falso caso contrario
         bool eliminar_objeto(Objeto *objeto);
+
+        bool eliminar_objeto(char nombre_objeto);
+
+        bool eliminar_objeto(string ID);
 
         //Pre: Una lista de IDs unicos de cada objeto
         //Post: Elimina de la lista de objetos cada objeto que tenga el mismo ID, devolviendo la cantidad de objetos eliminados
@@ -116,11 +112,14 @@ class Casilla{
         //Pre: Una lista de punteros de Objetos
         //Post: Elimina de la lista de objetos cada objeto, devolviendo la cantidad de objetos eliminados
         int eliminar_objetos(Lista<Objeto*> objetos);
-        
+
         //Pre: Un caracter representativo al nombre del objeto
         //Post: Elimina de la lista todas las ocurrencia de dicho objeto, devolviendo la cantidad de objetos eliminados
-        int eliminar_toda_ocurrencia(char nombre_objeto);  
-        
+        int eliminar_toda_ocurrencia(char nombre_objeto);
+
 };
+
+
+
 
 #endif

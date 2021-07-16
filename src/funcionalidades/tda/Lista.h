@@ -128,7 +128,6 @@ class Lista
     template <class Dato_Map>
     Lista<Dato_Map> mapear_datos(int inicio_mapeo, Dato_Map (*map)(Dato A)) const;
     
-    
     //Pre: Un indice a buscar en la lista
     //Post: Devuelve una referencia del dato que se encuentra en dicha posicion
 	  Dato& operator[](const int index) const;

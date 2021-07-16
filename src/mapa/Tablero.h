@@ -24,16 +24,15 @@ class Tablero
 	void cargar_grafo(int tipo_personaje);
 
 	public:
-		
+
 		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Post: Construye un tablero sin ningun dato}
 		Tablero();
 
-		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Pre:  Dimensiones del tablero, filas y columnas
 		//Post: Construye un tablero reservando memoria dinamica para cada casilla
 		Tablero(int filas,int columnas);
-		
+
 		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Post: Destruye la memoria reservada previamente
 		~Tablero();
@@ -87,7 +86,7 @@ class Tablero
 		//TIPO_ZOMBIE : 3
 		//Post: Devuelve una lista con las coordenadas donde se encuentra el camino minimo para ir desde el origen hasta el destino
 		Lista<Casilla*> obtener_camino_minimo(Coordenada origen, Coordenada destino, int tipo_personaje);
-		
+
 		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Pre: Una coordenada de origen, comenzando desde fila=0, columna=0
 		// Una coordenada del destino, comenzando desde fila=0, columna=0
@@ -124,7 +123,7 @@ class Tablero
 		//Post: Muestra el tablero con un formato especifico
 		void mostrar_tablero();
 		
-		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna }
 		//Pre: 
 		//Post: Muestra en la pantalla la convencion de letras para el tablero y sus personajes
 		void mostrar_leyenda();

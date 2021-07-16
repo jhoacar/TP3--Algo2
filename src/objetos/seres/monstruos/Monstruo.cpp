@@ -14,3 +14,12 @@ void Monstruo::mostrar(){
 Monstruo::~Monstruo()
 {
 }
+
+bool es_agua(Objeto* objeto_a_comprobar) {
+
+    return objeto_a_comprobar ->obtener_nombre() == NOMBRES_CHAR[AGUA];
+}
+
+bool es_estaca(Objeto* objeto_a_comprobar){
+    return objeto_a_comprobar->obtener_nombre() == NOMBRES_CHAR[ESTACA];
+}

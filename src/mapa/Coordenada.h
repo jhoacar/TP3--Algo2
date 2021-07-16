@@ -9,7 +9,7 @@ class Coordenada
 
 		//Post: Crea una coordenada a (0,0)
 		Coordenada();
-		
+
 		//Pre: Una coordenada en fila e columna
 		//Post: Crea una coordenada con la posicion (fila,columna)
 		Coordenada(int fila, int columna);
@@ -17,6 +17,7 @@ class Coordenada
 		~Coordenada() = default;
 		
 		//Post: Devuelve la abscisa 
+
 		int obtener_fila();
 		
 		//Post: Devuelve la ordenada

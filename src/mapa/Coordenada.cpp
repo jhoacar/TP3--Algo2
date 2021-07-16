@@ -7,7 +7,7 @@ Coordenada::Coordenada(){
 
 Coordenada::Coordenada(int fila, int columna){
 	this->fila=fila;
-	this->columna=columna;	
+	this->columna=columna;
 }
 
 Coordenada& Coordenada::operator =(Coordenada coordenada){

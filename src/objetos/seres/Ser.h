@@ -7,7 +7,6 @@
 #include "../../funcionalidades/Funciones.h"
 #include "../../mapa/Casilla.h"
 
-
 bool es_elemento(Objeto* objeto_a_comprobar);
 
 class Ser : public Objeto

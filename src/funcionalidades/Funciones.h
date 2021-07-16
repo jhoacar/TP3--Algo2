@@ -55,6 +55,7 @@ void limpiar_pantalla();
 //Post: Coloca el cursor donde se escoga en la pantalla
 void gotoxy(int x, int y);
 
+
 //Pre: Dos numeros referentes a un intervalo, tomando valor minimo y maximo
 //Post: Devuelve un numero comprendido entre ambos, incluyendolos
 int obtener_numero_aleatorio(int minimo, int maximo);
@@ -69,10 +70,6 @@ void color(int color);
 //Pre: Un numero entero
 //Post: Devuelve verdadero si es par
 bool es_par(int numero);
-
-//Pre: Un nombre encontrado en el vector de objetos
-//Post: Obtiene la conversion en string del nombre del objeto
-string obtener_nombre_del_objeto(char nombre_char);
 
 //Pre: Una posicion de referencia y una longitud
 //Post: Devuelve una lista de coordenadas, positivas referentes a una cruz de esa longitud

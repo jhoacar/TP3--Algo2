@@ -115,11 +115,10 @@ void Tablero::cargar_objeto(Objeto *objeto){
 }
 
 void Tablero::cargar_lista_objetos(Lista<Objeto *>objeto){
-
     objeto.reiniciar();
     while(objeto.existe_siguiente())
         cargar_objeto(objeto.siguiente_dato()); 
-    objeto.reiniciar(); 
+    objeto.reiniciar();
 }
 
 
@@ -162,6 +161,7 @@ void Tablero::asignar_casillas( Lista<Casilla*> lista_casillas){
     while(lista_casillas.existe_siguiente())
         asignar_casilla(lista_casillas.siguiente_dato());
     lista_casillas.reiniciar();
+
 }
 
 Lista<Casilla*> Tablero::obtener_lista_casillas(Lista<Coordenada> posiciones){
