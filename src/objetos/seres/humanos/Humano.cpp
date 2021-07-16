@@ -4,10 +4,11 @@ using std::cout;
 using std::endl;
 
 Humano::Humano():Ser(){
-
+	this->armadura_aumentada = false;
 }
 Humano::Humano(Casilla *casilla,char nombre,string ID):Ser(casilla,nombre,ID)
 {
+	this->armadura_aumentada = false;
 }
 void Humano::mostrar(){
     cout<<"Objeto: Humano "<<endl;
