@@ -16,8 +16,6 @@ class Archivo_tablero : Archivo {
     private:
 
     string datos_tablero;
-    int fila;
-    int columna;
 
     public:
 

@@ -23,6 +23,8 @@ string Archivo::obtener_texto(const string nombre_fichero){
   	
 	string datos_texto;
   	
+    archivo >> fila;
+    archivo >> columna;
 	getline(archivo, datos_texto, '\0');
   	
 	archivo.close();

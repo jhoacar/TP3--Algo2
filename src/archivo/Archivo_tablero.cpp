@@ -4,17 +4,18 @@ Lista<Casilla*>* Archivo_tablero::obtener_datos_de_terreno(){
     
     Lista<Casilla*>* terrenos = nullptr;
 
-    datos_tablero = obtener_texto(FICHERO_TABLERO);
+    datos_tablero = obtener_texto(FICHERO_TABLERO);    
 
     if(datos_tablero != ""){
         terrenos = new Lista<Casilla*>;
         Casilla* casilla;
-        for(int i = 0; i < fila; i++)
+        for(int i = 0; i < fila; i++){
             for(int j = 0; j < columna; j++){
                 Coordenada pos(i, j);
                 casilla = separar_terrenos(datos_tablero, pos);
                 terrenos->agregar(casilla);
             }
+        }
     }
 
     return terrenos;            

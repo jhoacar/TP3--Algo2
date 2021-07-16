@@ -24,6 +24,11 @@ class Archivo{
     string contenido;
 
     protected:
+
+    int fila;
+    int columna;
+
+    protected:
     //Pre: Un nombre del fichero de texto
     //Post: Un string con toda la informacion del fichero, o un string vacio si ocurre un error
     string obtener_texto(const string nombre_fichero);
