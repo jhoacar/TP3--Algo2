@@ -7,6 +7,7 @@ class Archivo_objetos : Archivo {
 
     public:
 
+    
 };
 
 #endif

@@ -6,6 +6,7 @@ Archivo::Archivo():contenido(){
 Archivo::Archivo(const string nombre_fichero){
 
     contenido = obtener_texto(nombre_fichero);
+
 }
 
 string Archivo::obtener_texto(const string nombre_fichero){
@@ -14,15 +15,15 @@ string Archivo::obtener_texto(const string nombre_fichero){
 
 	if(!archivo){
 	
-		cout << "No se pudo abrir el fichero " << nombre_fichero << endl;
+		std::cout << "No se pudo abrir el fichero " << nombre_fichero << endl;
 	
 		return "";
 	
 	}
   	
 	string datos_texto;
-  	
-	getline(archivo, datos_texto, '\0');
+    
+    getline(archivo, datos_texto, '\0');
   	
 	archivo.close();
 
@@ -33,12 +34,11 @@ bool Archivo::mostrar_contenido(){
 
     bool mostrado = false;
 
-        
     if(contenido.length()>0){
 
         contenido.replace(contenido.find("\\"),1,"\\\\");
 
-        cout << contenido;
+        std::cout << contenido;
         
         mostrado = true;
     }

@@ -95,6 +95,14 @@ bool Tablero::es_valida(Coordenada posicion){
     return (posicion < limite);
 
 }
+
+bool Tablero::hay_casilla(Coordenada posicion){
+    if(!es_valida(posicion))
+        return false;
+
+    return casillas[posicion.obtener_fila()][posicion.obtener_columna()] != nullptr;
+}
+
 void Tablero::cargar_objeto(Objeto *objeto){
     
     if(objeto!=nullptr){
@@ -235,6 +243,18 @@ bool Tablero::eliminar_objeto(Coordenada posicion,const string ID){
 
 void Tablero::mostrar_tablero(){
 
+    for(int i=0; i<filas; i++){
+        for(int j=0; j<filas; j++){
+            if(hay_casilla({i,j})){
+                color(casillas[i][j]->obtener_color());
+                color(BLANCO);
+                cout<<" "<<casillas[i][j]->obtener_tipo()<<" ";
+                color(RESET);
+            }
+        }
+        cout<<endl;
+    }
+    cout<<endl<<endl;
     mostrar_leyenda();
 }
 

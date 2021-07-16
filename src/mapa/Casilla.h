@@ -22,7 +22,9 @@ class Casilla{
         string cuadrante;
         Coordenada posicion;
         Lista<Objeto*> objetos;
-    private:    
+
+    private:
+        
         Objeto *objeto_referencia; //Nombre manipulable para el uso de comparaciones en la clase lista
     public:
 

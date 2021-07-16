@@ -9,6 +9,7 @@ const string CAZADOR = "CV";
 const string FICHERO_OBJETOS = "estado.txt";
 const string FICHERO_TABLERO = "tablero.txt";
 const string FICHERO_PARTIDA = "Partida.txt";
+const string RUTA_GUARDADO_PARTIDA = "d://TP3--Algo2//partida.txt";
 
 
 //Convencion usada para este proyecto en los nombre,cardinales,colores,etc... 
@@ -22,7 +23,7 @@ enum {AGUA=0,BALA,CRUZ,ESTACA,ESCOPETA,HUMANO,HUMANO_CAZADOR,VANESA,VAMPIRO,VAMP
 //Con las variables enumeradas obtengo una equivalencia (int) en char y string del nombre del mapa que se desea
 const size_t MAX_TIPOS_MAPA = 6;
 const string TIPO_MAPA_STRING[MAX_TIPOS_MAPA]=	{"montana","precipicio","lago","volcan","camino","vacio"};
-const char TIPO_MAPA_CHAR[MAX_TIPOS_MAPA]=	{'M',	'P',	'L',	'V',	'C',		'O'};
+const char TIPO_MAPA_CHAR[MAX_TIPOS_MAPA]=	{'M',	'P',	'L',	'V',	'C', 'O'};
 enum {MONTANA=0,PRECIPICIO,LAGO,VOLCAN,CAMINO,VACIO};
 
 

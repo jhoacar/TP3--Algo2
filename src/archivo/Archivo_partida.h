@@ -11,12 +11,6 @@ public:
     //POST: Genera un archivo y graba en el todos los datos que se reciben de la lista
     void guardar_partida(Lista<string>* datos_juego);
 
-    
-    //POST: lee un archivo con los datos del mapa de juego, y retorna un puntero a una lista
-    //con los datos del archivo en orden a medida que se leen de el mismo;
-    Lista<string>* obtener_datos_de_mapa();
-
-    
     //POST: lee un archivo con los datos de la partida guardada, y retorna un puntero a una lista
     //con los datos del archivo en orden a medida que se leen de el mismo;
     Lista<string>* obtener_datos_de_partida();

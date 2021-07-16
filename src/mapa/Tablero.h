@@ -41,6 +41,11 @@ class Tablero
 		//Pre:  Una posicion a evaluar, comenzando desde fila=0, columna=0
 		//Post: Devuelve si se encuentra adentro del tablero
 	 	bool es_valida(Coordenada posicion);
+
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
+		//Pre:  Una posicion a evaluar, comenzando desde fila=0, columna=0
+		//Post: Devuelve si se encuentra una casilla cargada en esa posicion
+	 	bool hay_casilla(Coordenada posicion);
 		
 		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Post: Devuelve el numero de filas
