@@ -31,6 +31,7 @@ class Arbol_B{
             obtener_pivote(vertice_origen->izquierdo);
             obtener_pivote(vertice_origen->derecho);
         }
+        return nullptr;
     }
 
     void balancear(){
@@ -47,7 +48,7 @@ class Arbol_B{
             
             if(esta_vacio(pivote->izquierdo) && esta_vacio(pivote->derecho->izquierdo))
                 rotar_izquierda(pivote);
-            else if(esta_vacio(pivote->izquierdo) && esta_vacio(pivote->derecho->derecho){
+            else if(esta_vacio(pivote->izquierdo) && esta_vacio(pivote->derecho->derecho)){
                 rotar_derecha(pivote->derecho);
                 rotar_izquierda(pivote);
             }
@@ -55,13 +56,11 @@ class Arbol_B{
         if(pivote->factor_equilibrio < -1){
 
             if(esta_vacio(pivote->derecho) && esta_vacio(pivote->izquierdo->derecho))
-                rotar_derecha(pivote)
+                rotar_derecha(pivote);
             else if(esta_vacio(pivote->derecho) && esta_vacio(pivote->izquierdo->izquierdo)){
                 rotar_izquierda(pivote->izquierdo);
                 rotar_derecha(pivote);
             }
-            
-            rotar_derecha(pivote);
         }
         if(hijo_izquierdo!=NO_ENCONTRADO){
 
