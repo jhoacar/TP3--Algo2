@@ -27,7 +27,7 @@ class Archivo_tablero : Archivo {
 
 
     private:
-
+    
     Casilla* separar_terrenos(string texto, Coordenada &posicion);
 
     int obtener_tipo_terreno(char c);
