@@ -156,19 +156,19 @@ void Tablero::asignar_casilla(Casilla *casilla){
 
     if(casilla!=nullptr && es_valida(casilla->obtener_posicion())){
 
-        int fila = casilla->obtener_posicion().obtener_columna();
-        int columna = casilla->obtener_posicion().obtener_fila();
+        int fila = casilla->obtener_fila();
+        int columna = casilla->obtener_columna();
 
         casillas[fila][columna] = casilla;
     }
 }
 
-void Tablero::asignar_casillas( Lista<Casilla*>* lista_casillas){
+void Tablero::asignar_casillas( Lista<Casilla*> lista_casillas){
 
-    lista_casillas->reiniciar();
-    while(lista_casillas->existe_siguiente())
-        asignar_casilla(lista_casillas->siguiente_dato());
-    lista_casillas->reiniciar();
+    lista_casillas.reiniciar();
+    while(lista_casillas.existe_siguiente())
+        asignar_casilla(lista_casillas.siguiente_dato());
+    lista_casillas.reiniciar();
 }
 
 Lista<Casilla*> Tablero::obtener_lista_casillas(Lista<Coordenada> posiciones){
@@ -243,13 +243,15 @@ bool Tablero::eliminar_objeto(Coordenada posicion,const string ID){
 void Tablero::mostrar_tablero(){
 
     for(int i=0; i<filas; i++){
-        for(int j=0; j<filas; j++){
+        for(int j=0; j<columnas; j++){
             if(hay_casilla({i,j})){
                 color(casillas[i][j]->obtener_color());
                 color(BLANCO);
                 cout<<" "<<casillas[i][j]->obtener_tipo()<<" ";
                 color(RESET);
             }
+            else
+            cout<<" * ";
         }
         cout<<endl;
     }

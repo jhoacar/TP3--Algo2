@@ -1,9 +1,9 @@
 #include "Ser.h"
-#include "humanos/Humano.h"
+#include "../elementos/Agua.h"
 #include <iostream>
 
 Ser::Ser():Objeto(){
-    objeto_referencia = new Humano(); //No me interesa el tipo de objeto, solo sus atributos
+    objeto_referencia = new Agua(); //No me interesa el tipo de objeto, solo sus atributos
 }
 
 Ser::Ser(Casilla *casilla,char nombre, string ID):Objeto(casilla,nombre,ID){

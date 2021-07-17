@@ -2,10 +2,12 @@
 
 int main(){
     
+    activar_color();
+    
     Tablero* mapa = nullptr;
     Archivo_tablero lectura_tablero(FICHERO_TABLERO);
 
-    mapa = lectura_tablero.obtener_datos_de_terreno();
+    mapa = lectura_tablero.obtener_tablero();
     
     mapa->mostrar_tablero();
 

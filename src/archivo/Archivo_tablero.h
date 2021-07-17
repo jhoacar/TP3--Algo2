@@ -14,15 +14,15 @@ class Archivo_tablero : Archivo {
         int fila;
         int columna;
 
-        Lista<Casilla*>* separar_terrenos(string texto);
+        Lista<Casilla*> separar_terrenos(string texto);
         int obtener_tipo_terreno(char terreno);
         void extraer_dimensiones();
-        
+        void cargar_tablero();
         
     public:
 
         Archivo_tablero(string nombre_fichero);
-        Tablero* obtener_datos_de_terreno();
+        Tablero* obtener_tablero();
 };
 
 #endif
