@@ -30,13 +30,6 @@ Ataque::Ataque(Tablero* tablero, int coordenada_x, int coordenada_y, int energia
     this -> energia_actual = energia_actual;
 }
 
-int Ataque::obtener_ataque() {
-
-    if(!validacion_ataque)
-        valor_ataque = -1;
-
-    return valor_ataque;
-}
 
 
 bool Ataque::validacion_rango_ataque(int coord_x, int coord_y, int max_rango){
