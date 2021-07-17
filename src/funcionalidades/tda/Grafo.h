@@ -121,8 +121,8 @@ void Grafo<Dato>::agregar_camino(Dato origen, Dato destino, int peso) {
 template <class Dato>
 Lista<Dato> Grafo<Dato>::obtener_camino_minimo(Dato origen, Dato destino, int (*compare)(Dato A , Dato B)) {
     
-    int posicion_origen = vertices->buscar_dato(0,origen);
-    int posicion_destino = vertices->buscar_dato(0,destino);
+    int posicion_origen = vertices->buscar_dato(0,origen,compare);
+    int posicion_destino = vertices->buscar_dato(0,destino,compare);
 
     Lista<Dato> camino;
 

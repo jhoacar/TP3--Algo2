@@ -190,10 +190,10 @@ void Tablero::cargar_grafo(int tipo_personaje){
 
             Lista<Coordenada> adyacentes = obtener_cruz({i,j},1,{0,0},{filas,columnas});
         
-            for(int k=0;k<adyacentes.obtener_tamano(); k++){
+            for(int k=0;k < adyacentes.obtener_tamano(); k++){
 
-                int fila_adyacente    = adyacentes[k].obtener_columna();
-                int columna_adyacente = adyacentes[k].obtener_fila();
+                int fila_adyacente    = adyacentes[k].obtener_fila();
+                int columna_adyacente = adyacentes[k].obtener_columna();
 
                 Casilla *casilla_adyacente = obtener_casilla(adyacentes[k]);
 

@@ -129,6 +129,7 @@ string solo_numeros(string &cadena){
 }
 
 Lista<Coordenada> obtener_cruz(Coordenada centro, int longitud,Coordenada limite_inferior, Coordenada limite_superior){
+	
 	Lista<Coordenada> cruz;
 	int x,y;
 	for(int i=1;i<=longitud; i++){
