@@ -80,6 +80,16 @@ Grafo<Dato>::Grafo() {
     vertices = new Lista<Dato>();
     floyd = new Floyd<Dato>(vertices);
 }
+template <class Dato>
+Grafo<Dato>::~Grafo() {
+    liberar_matriz_adyacencia();
+    matriz_adyacencia = nullptr;
+    delete vertices;
+    delete floyd;
+    vertice = nullptr;
+    floyd = nullptr;
+}
+
 
 template <class Dato>
 void Grafo<Dato>::agregar_vertice(Dato nuevo_vertice) {
@@ -173,12 +183,6 @@ void Grafo<Dato>::liberar_matriz_adyacencia() {
         delete[] matriz_adyacencia[i];
     }
     delete[] matriz_adyacencia;
-}
-template <class Dato>
-Grafo<Dato>::~Grafo() {
-    liberar_matriz_adyacencia();
-    matriz_adyacencia = nullptr;
-    delete vertices;
 }
 
 template <class Dato>
