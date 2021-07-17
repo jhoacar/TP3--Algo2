@@ -86,7 +86,7 @@ Grafo<Dato>::~Grafo() {
     matriz_adyacencia = nullptr;
     delete vertices;
     delete floyd;
-    vertice = nullptr;
+    vertices = nullptr;
     floyd = nullptr;
 }
 
