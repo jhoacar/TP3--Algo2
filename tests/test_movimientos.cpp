@@ -1,9 +1,18 @@
 #include "../src/funcionalidades/Funciones.h"
 
+#ifdef __linux__
+const char ARRIBA    = 65;//'W';
+const char ABAJO     = 66;//'S';
+const char DERECHA   = 67;//'D';
+const char IZQUIERDA = 68;//'A';
+#endif
+
+#ifdef __MINGW32__
 const char ARRIBA    = 72;//'W';
 const char ABAJO     = 80;//'S';
 const char DERECHA   = 77;//'D';
 const char IZQUIERDA = 75;//'A';
+#endif
 
 void mover_arriba(Coordenada &posicion){
     posicion={posicion.obtener_fila()-3,posicion.obtener_columna()};
@@ -29,9 +38,9 @@ int main(){
     while(tecla!=' '){
 
         gotoxy(posicion);
-        //cout<<"*";
+        cout<<"*";
         tecla = caracter_mayuscula((char)tecla_pulsada());
-        
+        //cout<<"TECLA: "<<tecla<<" NUMERO: "<<(int)tecla<<endl;
         switch(tecla){
             case ARRIBA:
                 mover_arriba(posicion);

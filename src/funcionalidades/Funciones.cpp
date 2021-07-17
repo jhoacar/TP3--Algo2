@@ -3,6 +3,8 @@
 #ifdef __linux__
 #define LIMPIAR "clear"
 #include <termios.h>
+#include <stdio.h>
+#include <unistd.h>
 /* reads from keypress, doesn't echo */
 int getch(void)
 {
