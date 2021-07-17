@@ -22,53 +22,68 @@ void Archivo_tablero::extraer_dimensiones(){
 }
 
 
-Lista<Casilla*> Archivo_tablero::obtener_datos_de_terreno(){
+Tablero* Archivo_tablero::obtener_datos_de_terreno(){
     
-    Lista<Casilla*> terrenos;    
+    Tablero* mapa = nullptr;    
+
+    Lista<Casilla*>* casillas;
 
     if(contenido != ""){
-
-        Casilla* casilla;
         
-        for(int i = 0; i < fila; i++){
-            for(int j = 0; j < columna; j++){
-                Coordenada pos(i, j);
-                casilla = separar_terrenos(contenido, pos);
-                terrenos.agregar(casilla);
-            }
-        }
+        casillas = separar_terrenos(contenido);
+
+        mapa->asignar_casillas(casillas);
+
     }
 
-    return terrenos;            
+    delete casillas;
+
+    return mapa;            
 }
 
-Casilla* Archivo_tablero::separar_terrenos(string texto, Coordenada posicion){
-    
+Lista<Casilla*>* Archivo_tablero::separar_terrenos(string texto){
+    Lista<Casilla*>* terrenos;
     Casilla* terreno = nullptr;
-    int i = 0;
+    int i = 0, j;
     int tipo_terreno;
 
-    while(texto[i] != '\0'){
+    terrenos = new Lista<Casilla*>;
 
-        tipo_terreno = obtener_tipo_terreno(texto[i]);
-        
-        switch(tipo_terreno){
-            case MONTANA: terreno = new Montana(posicion);
-                break;
-            case PRECIPICIO: terreno = new Precipicio(posicion);
-                break;
-            case LAGO: terreno = new Lago(posicion);
-                break;
-            case VOLCAN: terreno = new Volcan(posicion);
-                break;
-            case CAMINO: terreno = new Camino(posicion);
-                break;
-            case VACIO: terreno = new Vacio(posicion);
-                break;
-        }
+    while(texto[i] != '\n') i++;
+
+    for(int k = 0; k < fila; k++){
         i++;
+        j = 0;
+        while(texto[i] != '\n' && texto[i] != '\0'){
+            
+            Coordenada posicion(k, j);
+            tipo_terreno = obtener_tipo_terreno(texto[i]);
+        
+            switch(tipo_terreno){
+                case MONTANA: terreno = new Montana(posicion);
+                    break;
+                case PRECIPICIO: terreno = new Precipicio(posicion);
+                    break;
+                case LAGO: terreno = new Lago(posicion);
+                    break;
+                case VOLCAN: terreno = new Volcan(posicion);
+                    break;
+                case CAMINO: terreno = new Camino(posicion);
+                    break;
+                case VACIO: terreno = new Vacio(posicion);
+                    break;
+            }
+            
+            if(tipo_terreno != NO_ENCONTRADO){
+                j++;
+                terrenos->agregar(terreno);
+            }
+            i++;
+        }
     }
-    return terreno;
+    delete terreno;
+
+    return terrenos;
 } 
 
 int Archivo_tablero::obtener_tipo_terreno(const char terreno){
