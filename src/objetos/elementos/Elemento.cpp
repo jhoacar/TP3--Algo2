@@ -16,3 +16,7 @@ Elemento::~Elemento()
 int Elemento::obtener_cantidad(){
 	return this->cantidad;
 }
+
+void Elemento::disminuir_cantidad(int cantidad_gastada){
+    this -> cantidad -= cantidad_gastada;
+}

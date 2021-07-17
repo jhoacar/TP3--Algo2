@@ -3,6 +3,10 @@
 
 #include "../Ser.h"
 #include "../../../mapa/Casilla.h"
+#include "../../../mapa/Tablero.h"
+#include "../../../ataque/Ataque.h"
+#include "../../elementos/Escopeta.h"
+
 
 class Humano : public Ser
 {
@@ -42,7 +46,19 @@ class Humano : public Ser
     		void consumir_agua_bendita();
 		
 	protected:
-	
+
+        bool tiene_arma(string arma_elegida);
+
+        bool tiene_balas(int cantidad_minima_balas);
+
+        void validacion_ataque(Ataque* ataque, int posicion_x_elegida, int posicion_y_elegida, string arma_elegida);
+
+        void atacar(Tablero* tablero, int posicion_x_elegida, int posicion_y_elegida, string arma_elegida);
+
+        int indice_personaje(string personaje);
+
+        void bajar_cantidad_objeto(int cantidad_gastada);
+
 	private:
 		bool armadura_aumentada;
 				
