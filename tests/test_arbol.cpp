@@ -1,5 +1,5 @@
 #include "../src/funcionalidades/Funciones.h"
-#include "../src/funcionalidades/tda/Arbol.h"
+#include "../src/funcionalidades/tda/AVL.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -7,7 +7,7 @@ using namespace std;
 
 int main(){
     activar_color();
-    Arbol_B<int,int> a;
+    AVL<int,int> a;
     
     a.buscar(33,comparacion) = 4;
     a.buscar(25,comparacion) = 2;

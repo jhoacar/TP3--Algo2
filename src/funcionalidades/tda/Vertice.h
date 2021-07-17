@@ -9,7 +9,6 @@ class Vertice{
     Vertice *derecho;
     Vertice *izquierdo;
     Vertice *padre;
-    int factor_equilibrio;
     
     public:
         //Usado para poder acceder a estos miembros desde la clase Arbol
@@ -21,7 +20,6 @@ class Vertice{
             derecho     = nullptr;
             izquierdo   = nullptr;
             padre       = nullptr;
-            factor_equilibrio = 0;
         }
         Vertice(const Llave llave, const Vertice<Llave,Dato> *padre){
             this->dato = new Dato;
@@ -29,8 +27,7 @@ class Vertice{
             *(this->llave) = llave;
             derecho = nullptr;
             izquierdo=nullptr;
-            padre = padre;
-            factor_equilibrio = 0; 
+            padre = padre; 
         }
         ~Vertice(){
             delete dato;
