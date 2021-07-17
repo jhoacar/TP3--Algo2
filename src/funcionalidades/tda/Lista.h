@@ -77,10 +77,6 @@ class Lista
     //Post: Agrega al final de la lista el dato por parametro
     void agregar(Dato data);
 
-    //Pre: Un dato a cargar a la lista
-    //Post: Devuelve un puntero con la referencia de la lista con dicho dato agregado al final
-    Lista<Dato>* expulsar(Dato data);
-    
     //Pre: Un indice a eliminar de la lista
     //Post: Devuelve verdadero si fue eliminado de la lista, falso caso contrario
     bool borrar(const int index);
@@ -175,7 +171,7 @@ class Lista
 
     //Pre: Una lista para unir
     //Post: Devuelve la union de esta lista con la del parametro, sin modificarla
-    Lista* obtener_union(Lista &lista);
+    Lista obtener_union(Lista &lista);
 		
     //Pre:
     //Post: Revierte el orden de esta lista, donde el ultimo se encontrara en el primero
@@ -183,14 +179,14 @@ class Lista
 
     //Pre:
     //Post: Devuelve un puntero con esta lista revertida, sin modificarla
-    Lista *obtener_revertir();
+    Lista obtener_revertir();
 
     //Pre: Recibe una lista con la informacion y una funcion de comparacion entre dos datos 
     //Esta funcion debe devolver un numero entero que representa
     // 0 : son iguales
     // 1 : si el primer argumento es mayor al segundo
     // -1: si el primer argumento es menor al segundo 
-    //Post: Se hace un mezclar entre las dos, modificando la original, que tiene que quedar ordenada  y  sin  elementos  repetidos.
+    //Post: Se hace una mezcla entre las dos, modificando la original, que tiene que quedar ordenada  y  sin  elementos  repetidos.
     void mezclar(Lista &list, int (*compare)(const Dato A, const Dato B) = comparacion);
 
     //Pre: Un dato a eliminar de la lista y una funcion de comparacion entre dos datos
@@ -330,12 +326,6 @@ void Lista<Dato>::agregar(Dato dato){
 }
 
 template <class Dato>
-Lista<Dato>* Lista<Dato>::expulsar(Dato dato){
-  agregar(dato);
-  return this;
-}
-
-template <class Dato>
 void Lista<Dato>::borrar_todo(){
   Nodo<Dato> *tmp;
   while( inicio!=nullptr ){
@@ -348,23 +338,23 @@ void Lista<Dato>::borrar_todo(){
 template <class Dato>
 bool Lista<Dato>::borrar(const int index){
 
-  Nodo<Dato> *borrar_node = buscar_nodo(index);
+  Nodo<Dato> *borrar_nodo = buscar_nodo(index);
   
-  if(borrar_node == nullptr) //Si no se encuentra en la lista no se eliminimoa
+  if(borrar_nodo == nullptr) //Si no se encuentra en la lista no se eliminimoa
     return false;
   
-  Nodo<Dato> *before = buscar_nodo(index-1);
+  Nodo<Dato> *anterior = buscar_nodo(index-1);
 
-  if(before==nullptr) // Si no tiene antecesor entonces se encuentra en el inicio
-    inicio = borrar_node->siguiente; //Se referencia al que sigue
-  else if(borrar_node->siguiente == nullptr){// Si en el que sigue no hay nada, se encuentra al final
-    fin = before;
+  if(anterior==nullptr) // Si no tiene antecesor entonces se encuentra en el inicio
+    inicio = borrar_nodo->siguiente; //Se referencia al que sigue
+  else if(borrar_nodo->siguiente == nullptr){// Si en el que sigue no hay nada, se encuentra al final
+    fin = anterior;
     fin->siguiente=nullptr;
   }
   else //Se deja de referenciar 
-    before->siguiente = borrar_node->siguiente;
+    anterior->siguiente = borrar_nodo->siguiente;
 
-  delete borrar_node;
+  delete borrar_nodo;
   
   tamano--;
   return true;
@@ -538,16 +528,16 @@ void Lista<Dato>::swap(const int index_a, const int index_b){
 template <class Dato>
 void Lista<Dato>::operator+=(Lista lista){
   lista.reiniciar();
-  for( int i=0; i<lista.obtener_tamano(); i++)
+  while(lista.existe_siguiente())
     agregar(lista.siguiente_dato());
   lista.reiniciar();
 }
 
 
 template <class Dato>
-Lista<Dato>* Lista<Dato>::obtener_union(Lista &lista){
-  Lista *nueva = new Lista(*this);
-  *nueva+=lista;
+Lista<Dato> Lista<Dato>::obtener_union(Lista &lista){
+  Lista nueva = *this;
+  nueva+=lista;
   return nueva;
 }
 
@@ -555,16 +545,16 @@ Lista<Dato>* Lista<Dato>::obtener_union(Lista &lista){
 template <class Dato>
 void Lista<Dato>::revertir(){
 
-  int middle = int(tamano/2) - (((int)tamano % 2) == 0 );
+  int mitad = int(tamano/2) - (((int)tamano % 2) == 0 );
   
-  for(int i = 0 ; i<= middle ; i++)
+  for(int i = 0 ; i<= mitad ; i++)
     swap( i , (int)tamano - i - 1 );
 }
 
 template <class Dato>
-Lista<Dato>* Lista<Dato>::obtener_revertir(){
-  Lista *nueva = new Lista(*this);
-  nueva->revertir();
+Lista<Dato> Lista<Dato>::obtener_revertir(){
+  Lista nueva = *this;
+  nueva.revertir();
   return nueva;
 }
 
@@ -582,11 +572,12 @@ bool Lista<Dato>::borrar_dato(const Dato dato, int (*compare)(Dato A, Dato B)){
 
 template <class Dato>
 int Lista<Dato>::borrar_cantidad_dato(const Dato dato, int cantidad ,int (*compare)(Dato A, Dato B)){
-  int borrados=0;
-  Lista<int> indices = buscar_todo_dato(0,dato,compare);
-  int inicio=0, final = cantidad;
+  int borrados=0, inicio = 0;
+  bool borrado=false;
+  Lista<int> indices = buscar_todo_dato(dato,compare);
   while(indices.existe_siguiente() && inicio < cantidad){
-    borrados+=borrar(indices.siguiente_dato());
+    borrado = borrar(indices.siguiente_dato()-borrado);
+    borrados+=(int)borrado;
     inicio++;
   }
   return borrados;
@@ -594,17 +585,20 @@ int Lista<Dato>::borrar_cantidad_dato(const Dato dato, int cantidad ,int (*compa
 
 template <class Dato>
 int Lista<Dato>::borrar_toda_occurrencia(const Dato dato, int (*compare)(Dato A, Dato B)){
+  
   int borrados = 0;
+  bool borrado = false;
   Lista<int> indices = buscar_todo_dato(dato,compare);
-  while(indices.existe_siguiente())
-    borrados += borrar(indices.siguiente_dato());
+  while(indices.existe_siguiente()){
+    borrado=borrar(indices.siguiente_dato()-borrado);
+    borrados+=(int)borrado;
+  }
   return borrados;
 }
 template <class Dato>
 int Lista<Dato>::obtener_cantidad_dato(const Dato dato, int (*compare)(Dato A, Dato B)){
   
   int inicio = -1, encontrados = NO_ENCONTRADO;
-  
   do{
     inicio = buscar_dato(inicio+1,dato,compare);
     encontrados++;
@@ -627,7 +621,7 @@ Lista<Dato> Lista<Dato>::operator-(const Lista lista){
 }
 
 template <class Dato>
-void Lista<Dato>::operator-=(const Lista<Dato> lista){
+void Lista<Dato>::operator-=(const Lista lista){
   Lista<Dato> nueva = (*this)-lista;
   borrar_todo();
   copiar_todo(nueva);
@@ -652,7 +646,7 @@ Dato Lista<Dato>::siguiente_dato(void){
 }
 
 template <class Dato>
-bool Lista<Dato>::existe_alguno(Lista<Dato> &lista , int(*compare)(Dato A, Dato B)){
+bool Lista<Dato>::existe_alguno(Lista &lista , int(*compare)(Dato A, Dato B)){
   bool found = false;
   while(lista.existe_siguiente() && !found)
     found = existe(lista.siguiente_dato(),compare);
@@ -661,7 +655,7 @@ bool Lista<Dato>::existe_alguno(Lista<Dato> &lista , int(*compare)(Dato A, Dato 
 }
 
 template <class Dato>
-bool Lista<Dato>::existen_todos(Lista<Dato> &lista , int(*compare)(Dato A, Dato B)){
+bool Lista<Dato>::existen_todos(Lista &lista , int(*compare)(Dato A, Dato B)){
   int cantidad = 0;
   while(lista.existe_siguiente())
     cantidad+=(int)existe(lista.siguiente_dato(),compare);
@@ -713,23 +707,5 @@ Lista<Dato>* selection_ordenar(Lista<Dato> &list,int (*compare)(const Dato a, co
       }
       return nueva;
 }
-
-template <class Dato>
-Lista<Dato>* quick_ordenar(Lista<Dato> &list,int (*compare)(const Dato a, const Dato b)){
-    if(list.obtener_tamano()==0)
-      return new Lista<Dato>();
-    Lista<Dato> left;
-    Lista<Dato> right;
-    Dato pivot = list[0];
-
-    for(int i=1;i<list.obtener_tamano();i++){
-        if(compare(list[i],pivot)==PEQUENO)
-          left.agregar(list[i]);
-        else
-          right.agregar(list[i]);
-    }
-  return *(quick_ordenar(left,compare)->expulsar(pivot))+*quick_ordenar(right,compare);
-}
-
 
 #endif
