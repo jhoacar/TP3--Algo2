@@ -12,7 +12,7 @@ class Vertice{
     
     public:
         //Usado para poder acceder a estos miembros desde la clase Arbol
-        template <class,class> friend class Arbol_B;
+        template <class,class> friend class AVL;
 
         Vertice(){
             this->dato  = nullptr;

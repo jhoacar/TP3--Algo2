@@ -5,6 +5,10 @@
 using namespace std;
 
 
+void imprimir_numero(int numero){
+    cout<<numero<<endl;
+}
+
 int main(){
     activar_color();
     AVL<int,int> a;
@@ -17,11 +21,17 @@ int main(){
     a.buscar(18,comparacion) = 0;
     a.buscar(15,comparacion) = 0;
     a.buscar(100,comparacion) = 0;
-    a.buscar(75,comparacion) = 0;
-    a.buscar(50,comparacion) = 0;
     cout<<"Altura del arbol: "<<a.obtener_altura(a.obtener_arbol())<<endl;
     cout<<"Factor de equilibrio del arbol: "<<a.obtener_factor_equilibrio(a.obtener_arbol())<<endl;
     cout<<endl;
+    Lista<int> llaves;
+    a.obtener_llaves(a.obtener_arbol(),llaves);
+    llaves.imprimir(imprimir_numero);
+    cout<<endl<<endl;
+
+    Lista<int> valores;
+    a.obtener_valores(a.obtener_arbol(),valores);
+    valores.imprimir(imprimir_numero);
 
     pausa();
 }

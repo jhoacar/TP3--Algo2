@@ -4,6 +4,14 @@
 #include <string>
 using namespace std;
 
+void imprimir_string(string dato){
+    cout<<dato<<endl;
+}
+void imprimir_entero(int dato){
+    cout<<dato<<endl;
+}
+
+
 int main(){
     activar_color();
     Diccionario<string,int> NUMEROS;
@@ -14,8 +22,9 @@ int main(){
     NUMEROS["4"] = 3;
     NUMEROS["5"] = 4;
 
-    for(int i=1; i<6 ; i++)
-        cout<<NUMEROS[to_string(i)]<<endl;
-    
+    NUMEROS.obtener_llaves().imprimir(imprimir_string);
+    cout<<endl;
+    NUMEROS.obtener_valores().imprimir(imprimir_entero);
+
     pausa();
 }

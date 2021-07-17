@@ -7,9 +7,7 @@ template < class Llave, class Dato>
 class Diccionario{
 
     AVL<Llave,Dato> avl;
-    Lista<Llave> llaves;
-    Lista<Dato> valores;
-	unsigned long tamano;
+    unsigned long tamano;
 
     public:
         Diccionario();
@@ -38,11 +36,22 @@ class Diccionario{
         // -1: si el primer argumento es menor al segundo 
         //Post: Devuelve una lista con las claves del diccionario
         Lista<Dato> obtener_valores();
+        //Post: Devuelve el tamaño del diccionario
+        unsigned long obtener_tamano();
 };
-
+template <class Llave, class Dato>
+Diccionario<Llave,Dato>::Diccionario(){
+    tamano=0;
+}
+template <class Llave, class Dato>
+Diccionario<Llave,Dato>::~Diccionario(){
+}
 template <class Llave, class Dato>
 Dato& Diccionario<Llave,Dato>::buscar_dato(Llave llave, int (*comparar_llaves)(Llave A , Llave B)){
-    return avl.buscar(llave,comparar_llaves);
+    bool se_agrego = false;
+    Dato &dato = avl.buscar(llave,se_agrego,comparar_llaves);
+    tamano+=(unsigned long)se_agrego;
+    return dato;
 }
 template <class Llave, class Dato>
 Dato& Diccionario<Llave,Dato>::operator[](const Llave llave){
@@ -60,4 +69,10 @@ Lista<Dato> Diccionario<Llave,Dato>::obtener_valores(){
     avl.obtener_valores(avl.obtener_arbol(),claves);
     return claves;
 }
+template <class Llave, class Dato>
+unsigned long Diccionario<Llave,Dato>::obtener_tamano(){
+    return tamano;
+}
+
+
 #endif
