@@ -50,7 +50,7 @@ public:
 
     //Pre: Una funcion que me permita imprimir el dato del vertice
     //Post: Imprime cada elemento de la matriz de camino como con su correspondiente vertice
-    void mostrar_matriz_camino(void (*imprimir)(Dato dato));
+    void mostrar_matriz_camino();
     
     //Post: Muestra la matriz de pesos en consola
     void mostrar_matriz_pesos();
@@ -106,10 +106,8 @@ void Floyd<Dato>::actualizar_matrices(){
             for (int j = 0; j < cantidad_vertices; j++){
                 if (matriz_costos[i][k] + matriz_costos[k][j] < matriz_costos[i][j]){
                     matriz_costos[i][j] = matriz_costos[i][k]+matriz_costos[k][j];
-                    matriz_caminos[i][j] = k;
-                }
-                else if (matriz_costos[i][k] + matriz_costos[k][j] == matriz_costos[i][j] && matriz_costos[i][j] != INFINITO && k != j && k != i )
-                    matriz_caminos[i][j]=k;
+                    matriz_caminos[i][j] = matriz_caminos[i][k];
+                } 
             }
         }
     }
@@ -158,7 +156,7 @@ void Floyd<Dato>::liberar_matrices() {
 
 
 template<class Dato>
-void Floyd<Dato>::mostrar_matriz_camino(void (*imprimir)(Dato dato)){
+void Floyd<Dato>::mostrar_matriz_camino(){
     cout << " Matriz de caminos:" << endl;
     for(int i=0; i< cantidad_vertices; i++){
         for(int j=0; j<cantidad_vertices; j++)
@@ -166,11 +164,6 @@ void Floyd<Dato>::mostrar_matriz_camino(void (*imprimir)(Dato dato)){
         cout<<endl;
     }
     cout<<endl;
-    for(int i=0; i< cantidad_vertices; i++){
-        for(int j=0; j<cantidad_vertices; j++)
-            imprimir((*vertices)[matriz_caminos[i][j]]);
-        cout<<endl;
-    }
 }
 
 template<class Dato>
@@ -178,7 +171,10 @@ void Floyd<Dato>::mostrar_matriz_pesos(){
     cout << " Matriz de pesos:" << endl;
     for(int i=0; i< cantidad_vertices; i++){
         for(int j=0; j<cantidad_vertices; j++)
-            cout<<" "<<matriz_costos[i][j]<<" ";
+            if(matriz_costos[i][j]>=INFINITO)
+                cout<<" "<<(char)157<<" ";
+            else
+                cout<<" "<<matriz_costos[i][j]<<" ";
         cout<<endl;
     }
 }

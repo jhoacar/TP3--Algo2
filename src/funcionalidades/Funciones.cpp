@@ -128,23 +128,19 @@ string solo_numeros(string &cadena){
 
 }
 
-Lista<Coordenada> obtener_cruz(Coordenada centro, int longitud,Coordenada limite_inferior, Coordenada limite_superior){
+Lista<Coordenada> obtener_cruz(Coordenada centro, int longitud){
 	
 	Lista<Coordenada> cruz;
-	int x,y;
+	int fila,columna;
 	for(int i=1;i<=longitud; i++){
 		
-		x = centro.obtener_fila();
-		y = centro.obtener_columna();
+		fila = centro.obtener_fila();
+		columna = centro.obtener_columna();
 
-		if(x+i<limite_superior.obtener_fila())
-			cruz.agregar({x+i,y});
-		if(y+i<limite_superior.obtener_columna())
-			cruz.agregar({x,y+i});
-		if(x-i>=limite_inferior.obtener_fila())
-			cruz.agregar({x-i,y});
-		if(y-i>=limite_inferior.obtener_columna())
-			cruz.agregar({x,y-i});
+		cruz.agregar({	fila+i	,	columna		});
+		cruz.agregar({	fila	,	columna+i	});
+		cruz.agregar({	fila-i	,	columna		});
+		cruz.agregar({	fila	,	columna-i	});
 	}
 	return cruz;
 }
