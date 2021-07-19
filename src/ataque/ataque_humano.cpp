@@ -4,6 +4,7 @@
 #include "../objetos/seres/monstruos/vampiros/Vampiro.h"
 #include <stdlib.h>
 #include <iostream>
+#include "../constantes/Constantes.h"
 
 using namespace std;
 
@@ -11,10 +12,47 @@ Ataque_humano::Ataque_humano(Humano *personaje): Ataque(personaje){
 }
 
 
+char Ataque_humano::devolver_inicial(string objeto) {
+
+    char inicial;
+    if(objeto == "agua")
+        inicial = NOMBRES_CHAR[AGUA];
+    if(objeto == "bala")
+        inicial = NOMBRES_CHAR[BALA];
+    if(objeto == "cruz")
+        inicial = NOMBRES_CHAR[CRUZ];
+    if(objeto == "estaca")
+        inicial = NOMBRES_CHAR[ESTACA];
+    if(objeto == "escopeta")
+        inicial = NOMBRES_CHAR[ESCOPETA];
+    if(objeto == "humano")
+        inicial = NOMBRES_CHAR[HUMANO];
+    if(objeto == "humano CV")
+        inicial = NOMBRES_CHAR[HUMANO_CAZADOR];
+    if(objeto == "Vanesa")
+        inicial = NOMBRES_CHAR[VANESA];
+    if(objeto == "vampiro")
+        inicial = NOMBRES_CHAR[VAMPIRO];
+    if(objeto == "Vampirella")
+        inicial = NOMBRES_CHAR[VAMPIRELLA];
+    if(objeto == "Nosferatu")
+        inicial = NOMBRES_CHAR[NOSFERATU];
+    if(objeto == "zombi")
+        inicial = NOMBRES_CHAR[ZOMBIE];
+
+    return inicial;
+
+
+
+}
+
+
+
+
 bool Ataque_humano::tiene_arma(string arma_elegida){
 
     Objeto *objeto_referencia = new Escopeta();
-    char inicial = NOMBRES_CHAR[arma_elegida];
+    char inicial = devolver_inicial(arma_elegida);
     objeto_referencia -> asignar_nombre(inicial);
     return personaje -> obtener_inventario().existe(objeto_referencia,comparacion_por_nombre);
 
@@ -25,7 +63,7 @@ int Ataque_humano::buscar_personaje(Casilla *casilla_a_atacar, string personaje)
 
     int posicion;
     Objeto *objeto_referencia = new Vampiro();
-    char inicial = NOMBRES_CHAR[personaje];
+    char inicial = devolver_inicial(personaje);
     objeto_referencia -> asignar_nombre(inicial);
 
     bool existe = casilla_a_atacar -> obtener_objetos().existe(objeto_referencia,comparacion_por_nombre);
@@ -65,7 +103,7 @@ bool Ataque_humano::tiene_balas(int cantidad_minima_balas){
 void Ataque_humano::bajar_cantidad_objeto(int cantidad_gastada, string arma){
 
     Objeto *objeto_referencia = new Bala();
-    char inicial = NOMBRES_CHAR[arma];
+    char inicial = devolver_inicial(arma);
     objeto_referencia -> asignar_nombre(inicial);
     int posicion_balas = personaje -> obtener_inventario().buscar_dato(0, objeto_referencia,comparacion_por_nombre);
 

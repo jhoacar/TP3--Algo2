@@ -20,6 +20,7 @@ class Ataque_humano : public Ataque{
     void bajar_cantidad_objeto(int cantidad_gastada, string arma);
     int indice_personaje(string personaje, Casilla* casilla);
     void bajar_vida(Casilla* casilla);
+    char devolver_inicial(string objeto)
 
 };
 
