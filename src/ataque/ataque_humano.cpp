@@ -143,8 +143,9 @@ string Ataque_humano::eleccion_arma(){
 
 
 
-void Ataque_humano::validacion_ataque(Casilla *casilla_a_atacar, string arma_elegida){
+bool Ataque_humano::validacion_ataque(Casilla *casilla_a_atacar, string arma_elegida){
 
+    bool validacion_ataque;
     bool validacion_rango = validacion_rango_ataque(casilla_a_atacar, 1);
 
     bool energia_suficiente_ = energia_suficiente(5, personaje -> devolver_energia());
@@ -155,6 +156,8 @@ void Ataque_humano::validacion_ataque(Casilla *casilla_a_atacar, string arma_ele
         validacion_ataque = true;
     else
         validacion_ataque = false;
+
+    return validacion_ataque;
 }
 
 

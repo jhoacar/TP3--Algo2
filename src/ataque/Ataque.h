@@ -9,7 +9,7 @@ class Ataque {
 
 protected:
     Ser *personaje;
-    bool validacion_ataque;
+
 public:
 
     Ataque(Ser *personaje);
