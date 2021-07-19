@@ -98,16 +98,4 @@ int Humano::elegir_accion() {
         cin >> opcion;
     }
     return opcion;
-
-    Lista<Objeto*> objetos_casilla;
-    Lista<Objeto*> solo_elementos;
-
-    objetos_casilla = this -> casilla ->obtener_objetos();
-    solo_elementos = objetos_casilla.filtrar_datos(0, es_elemento);
-
-    this ->inventario += solo_elementos;
-    cout << "Se agregaron con exito los elementos al inventario" << endl;
-
-    for (int i = 0; i < solo_elementos . obtener_tamano(); i++)
-        this ->casilla -> eliminar_objeto(solo_elementos[i]->obtener_ID());
 }
