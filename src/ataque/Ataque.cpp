@@ -73,7 +73,7 @@ int Ataque::calcular_porcentaje_fuerza(int fuerza, int porcentaje){
 
     int valor = (fuerza * porcentaje)/100;
 
-    retun valor;
+    return valor;
 }
 
 
