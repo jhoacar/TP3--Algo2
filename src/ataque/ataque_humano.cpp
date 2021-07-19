@@ -14,7 +14,7 @@ Ataque_humano::Ataque_humano(Humano *personaje): Ataque(personaje){
 bool Ataque_humano::tiene_arma(string arma_elegida){
 
     Objeto *objeto_referencia = new Escopeta();
-    objeto_referencia -> asignar_nombre(NOMBRES_STRING[arma_elegida]);
+    objeto_referencia -> asignar_nombre(arma_elegida);
     return personaje -> obtener_inventario().existe(objeto_referencia,comparacion_por_nombre);
 
 }
