@@ -18,6 +18,8 @@ class Ataque_humano : public Ataque{
     bool tiene_balas(int cantidad_minima_balas);
     void validacion_ataque(Casilla *casilla_a_atacar, string arma_elegida);
     void bajar_cantidad_objeto(int cantidad_gastada, string arma);
+    int indice_personaje(string personaje, Casilla* casilla);
+    void bajar_vida(Casilla* casilla);
 
 };
 
