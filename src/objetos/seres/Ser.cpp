@@ -1,9 +1,9 @@
 #include "Ser.h"
-#include "humanos/Humano.h"
+#include "../elementos/Agua.h"
 #include <iostream>
 
 Ser::Ser():Objeto(){
-    objeto_referencia = new Humano(); //No me interesa el tipo de objeto, solo sus atributos
+    objeto_referencia = new Agua(); //No me interesa el tipo de objeto, solo sus atributos
 }
 
 Ser::Ser(Casilla *casilla,char nombre, string ID):Objeto(casilla,nombre,ID){
@@ -11,7 +11,9 @@ Ser::Ser(Casilla *casilla,char nombre, string ID):Objeto(casilla,nombre,ID){
     this -> vida     = obtener_numero_aleatorio(VIDA_MINIMA, VIDA_MAXIMA);
     this -> energia  = obtener_numero_aleatorio(ENERGIA_MINIMA, ENERGIA_MAXIMA);
     this -> fuerza   = obtener_numero_aleatorio(FUERZA_MINIMA, FUERZA_MAXIMA);
+    this -> objeto_referencia = new Agua();
 }
+
 Ser::~Ser(){
     delete objeto_referencia;
 }
