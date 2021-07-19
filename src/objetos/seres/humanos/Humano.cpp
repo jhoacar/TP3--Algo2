@@ -1,5 +1,5 @@
 #include "Humano.h"
-#include "../../../ataque_v2/Ataque_humano.h"
+#include "../../../ataque/Ataque_humano.h"
 #include <iostream>
 using std::cout;
 using std::endl;
