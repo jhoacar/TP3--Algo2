@@ -9,6 +9,8 @@ using namespace std;
 
 class Ataque_humano : public Ataque{
 
+
+public:
     Ataque_humano(Humano *personaje);
     ~Ataque_humano();
 
