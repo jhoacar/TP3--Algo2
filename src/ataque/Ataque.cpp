@@ -58,11 +58,11 @@ int Ataque::calcular_vida_con_armadura(int valor_ataque){
     if(armadura == 0)
         valor_final = valor_ataque;
     else if(armadura == 1)
-        valor_final -= ((valor_ataque * 10)/100);
+        valor_final = valor_final - ((valor_ataque * 10)/100);
     else if(armadura == 2)
-        valor_final -= ((valor_ataque * 20)/100);
+        valor_final = valor_final - ((valor_ataque * 20)/100);
     else if (armadura >= 2)
-        valor_final -= ((valor_ataque * 80)/100);
+        valor_final = valor_final - ((valor_ataque * 80)/100);
 
     return valor_final;
 }
