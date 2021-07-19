@@ -65,7 +65,8 @@ bool Ataque_humano::tiene_balas(int cantidad_minima_balas){
 void Ataque_humano::bajar_cantidad_objeto(int cantidad_gastada, string arma){
 
     Objeto *objeto_referencia = new Bala();
-    objeto_referencia -> asignar_nombre(NOMBRES_STRING[arma]);
+    char inicial = NOMBRES_CHAR[arma];
+    objeto_referencia -> asignar_nombre(inicial);
     int posicion_balas = personaje -> obtener_inventario().buscar_dato(0, objeto_referencia,comparacion_por_nombre);
 
     if(posicion_balas != -1){
