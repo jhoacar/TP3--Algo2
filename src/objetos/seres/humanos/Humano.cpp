@@ -43,7 +43,7 @@ void Humano::regenerar_energia() {
 
 }*/
 
-void Humano::defenderse() {
+/*void Humano::defenderse() {
     
     if (!tengo_agua_bendita()){
         aumentar_energia();
@@ -60,7 +60,7 @@ void Humano::defenderse() {
             cout << "|||| Mejoré mi armadura ||||" << endl;
         }
     }
-}
+}*/
 
 bool Humano::tengo_agua_bendita() {
 
