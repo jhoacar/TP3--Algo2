@@ -24,7 +24,7 @@ int Ataque_humano::buscar_personaje(Casilla *casilla_a_atacar, string personaje)
 
     int posicion;
     Objeto *objeto_referencia = new Vampiro();
-    objeto_referencia -> asignar_nombre(personaje);
+    objeto_referencia -> asignar_nombre(NOMBRES_CHAR[personaje]);
 
     bool existe = casilla_a_atacar -> obtener_objetos().existe(objeto_referencia,comparacion_por_nombre);
 
@@ -44,7 +44,7 @@ bool Ataque_humano::tiene_balas(int cantidad_minima_balas){
     bool balas_necesarias = false;
 
     Objeto *objeto_referencia = new Bala();
-    objeto_referencia -> asignar_nombre(NOMBRES_STRING[BALA]);
+    objeto_referencia -> asignar_nombre(NOMBRES_CHAR[BALA]);
     bool esta_en_inventario = personaje -> obtener_inventario().existe(objeto_referencia,comparacion_por_nombre);
 
     if(esta_en_inventario){
