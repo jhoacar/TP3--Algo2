@@ -1,6 +1,6 @@
 #include "Defensa_humano.h"
 #include "../../objetos/elementos/Agua.h"
-
+/*
 bool tiene_agua_bendita(Humano *personaje){
     Objeto *objeto_referencia = new Agua();
     objeto_referencia->asignar_nombre(NOMBRES_CHAR[AGUA]); //Le asigno el nombre que quiera buscar en la lista
@@ -77,4 +77,4 @@ void Defensa_humano::defender(){
     
     
 }
-
+*/

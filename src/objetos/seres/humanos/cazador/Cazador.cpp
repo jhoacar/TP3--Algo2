@@ -3,7 +3,6 @@
 using std::cout;
 using std::endl;
 Cazador::Cazador():Humano(){
-    defensa = new Defensa_cazador(this);
 }
 Cazador::Cazador(Casilla *casilla,char nombre,string ID):Humano(casilla,nombre,ID){
 }
