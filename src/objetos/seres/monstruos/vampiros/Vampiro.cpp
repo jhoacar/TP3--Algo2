@@ -38,7 +38,7 @@ void Vampiro::encuentro_con_elemento() {
 }
 
 void Vampiro::defenderse() {
-    this->energía -=4;
+    this->energia -=4;
     this->ocultarse();
 }
 

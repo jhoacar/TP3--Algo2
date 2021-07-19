@@ -19,7 +19,7 @@ class Zombie : public Monstruo
 		void defenderse();
 
 		// PRE: El zombie se ha defendido en el turno anterior, por lo tanto escondido es true.
-		// POS: El zombie resurge, por lo tanto se establece escondido en false
+		// POS: El zombie resurge, por lo tanto se establece escondido en false.
 		void resurgir();
 
 		// PRE:-
