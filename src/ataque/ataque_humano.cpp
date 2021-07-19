@@ -135,7 +135,7 @@ string Ataque_humano::eleccion_arma(){
     }
     if(eleccion == '1')
         arma_a_utilizar = "escopeta";
-    else if (eleccion == '2')
+    else if(eleccion == '2')
         arma_a_utilizar = "agua";
     else
         arma_a_utilizar = "estaca";
@@ -216,9 +216,9 @@ void Ataque_humano::bajar_vida(Casilla* casilla){
 void Ataque_humano::atacar(Casilla *casilla) {
 
     string arma_elegida = eleccion_arma();
-    validacion_ataque(casilla, arma_elegida);
+    bool validacion = validacion_ataque(casilla, arma_elegida);
 
-    if(validacion_ataque){
+    if(validacion){
 
         Lista<Objeto*> lista_objetos = casilla -> obtener_objetos();
 
