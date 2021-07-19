@@ -148,7 +148,7 @@ bool Ataque_humano::validacion_ataque(Casilla *casilla_a_atacar, string arma_ele
     bool validacion_ataque;
     bool validacion_rango = validacion_rango_ataque(casilla_a_atacar, 1);
 
-    bool energia_suficiente_ = energia_suficiente(5, personaje -> devolver_energia());
+    bool energia_suficiente_ = energia_suficiente(5);
     bool tiene_arma_ = tiene_arma(arma_elegida);
     bool tiene_suficientes_balas = tiene_balas(2);
 
