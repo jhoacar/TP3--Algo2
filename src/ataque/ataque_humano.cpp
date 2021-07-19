@@ -94,8 +94,8 @@ bool Ataque_humano::tiene_balas(int cantidad_minima_balas){
     if(esta_en_inventario){
         int posicion_balas = personaje -> obtener_inventario().buscar_dato(0, objeto_referencia,comparacion_por_nombre);
 
-        Objeto* balas = personaje -> obtener_inventario()[posicion_balas];
-        int cantidad_balas = balas -> obtener_cantidad();
+
+        int cantidad_balas = ((Elemento*) personaje -> obtener_inventario()[posicion_balas]) -> obtener_cantidad();
 
         if(cantidad_balas >= cantidad_minima_balas)
             balas_necesarias = true;
