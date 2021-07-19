@@ -12,7 +12,7 @@ class Objeto{
         string cuadrante;
         string ID;
         Casilla *casilla;
-        int cantidad;
+
     public:
         /*
         PRE:
@@ -75,9 +75,7 @@ class Objeto{
         */
         void asignar_casilla(Casilla *casilla);
 
-        int obtener_cantidad();
 
-        void disminuir_cantidad(int cantidad_gastada);
 
 
 };

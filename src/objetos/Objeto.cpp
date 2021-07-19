@@ -39,11 +39,3 @@ void Objeto::asignar_casilla(Casilla *casilla){
 }
 
 
-
-int Elemento::obtener_cantidad(){
-    return this->cantidad;
-}
-
-void Elemento::disminuir_cantidad(int cantidad_gastada){
-    this -> cantidad -= cantidad_gastada;
-}

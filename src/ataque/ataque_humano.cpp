@@ -110,11 +110,13 @@ void Ataque_humano::bajar_cantidad_objeto(int cantidad_gastada, string arma){
     objeto_referencia -> asignar_nombre(inicial);
     int posicion_balas = personaje -> obtener_inventario().buscar_dato(0, objeto_referencia,comparacion_por_nombre);
 
-    if(posicion_balas != -1){
-        Objeto* balas = personaje -> obtener_inventario()[posicion_balas];
-        balas -> disminuir_cantidad(cantidad_gastada);
-    }
+    if(posicion_balas != NO_ENCONTRADO)
+        ((Elemento*) personaje -> obtener_inventario()[posicion_balas]) -> disminuir_cantidad(cantidad_gastada);
+
 }
+
+
+
 
 string Ataque_humano::eleccion_arma(){
 
@@ -185,31 +187,25 @@ void Ataque_humano::bajar_vida(Casilla* casilla){
     int valor_final;
     int fuerza = personaje -> devolver_fuerza();
 
-    if(indice_zombie != -1) {
+    if(indice_zombie != NO_ENCONTRADO) {
         valor_ataque = calcular_porcentaje_fuerza(fuerza, 100);
         valor_final = calcular_vida_con_armadura(valor_ataque);
-
-        Zombie *zombie = casilla -> obtener_objetos()[indice_zombie];
-        zombie -> bajar_vida(valor_final);
-
+        ((Ser*) casilla -> obtener_objetos()[indice_zombie])-> bajar_vida(valor_final);
     }
-    if(indice_vampiro != -1){
+    if(indice_vampiro != NO_ENCONTRADO){
         valor_ataque = calcular_porcentaje_fuerza(fuerza, 20);
         valor_final = calcular_vida_con_armadura(valor_ataque);
-        Vampiro *vampiro = casilla -> obtener_objetos()[indice_vampiro];
-        vampiro -> bajar_vida(valor_final);
+        ((Ser*) casilla -> obtener_objetos()[indice_vampiro]) -> bajar_vida(valor_final);
     }
     if(indice_nosferatu != -1){
         valor_ataque = calcular_porcentaje_fuerza(fuerza, 20);
         valor_final = calcular_vida_con_armadura(valor_ataque);
-        Nosferatu *nosferatu = casilla -> obtener_objetos()[indice_nosferatu];
-        nosferatu -> bajar_vida(valor_final);
+        ((Ser*) casilla -> obtener_objetos()[indice_nosferatu]) -> bajar_vida(valor_final);
     }
     if(indice_vampirella != -1){
         valor_ataque = calcular_porcentaje_fuerza(fuerza, 20);
         valor_final = calcular_vida_con_armadura(valor_ataque);
-        Vampirella *vampirella = casilla -> obtener_objetos()[indice_nosferatu];
-        vampirella -> bajar_vida(valor_final);
+        ((Ser*) casilla -> obtener_objetos()[indice_nosferatu]) -> bajar_vida(valor_final);
     }
 
 }
