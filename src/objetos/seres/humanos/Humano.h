@@ -6,6 +6,7 @@
 
 class Humano : public Ser
 {
+	friend class Defensa_humano;
 	public:
 		Humano();
 		Humano(Casilla *casilla,char nombre,string ID);

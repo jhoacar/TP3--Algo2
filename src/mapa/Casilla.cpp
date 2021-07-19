@@ -56,7 +56,7 @@ void Casilla::agregar_objetos(Lista<Objeto*> objetos){
     this->objetos+=objetos;
 }
 
-Lista<Objeto*> Casilla::obtener_objetos(char  nombre_objeto){
+Lista<Objeto*> Casilla::obtener_objetos(char nombre_objeto){
     
     Lista<Objeto*> objetos_encontrados;
 
@@ -155,6 +155,6 @@ int Casilla::eliminar_toda_ocurrencia(char nombre_objeto){
     return objetos.borrar_toda_occurrencia(objeto_referencia,comparacion_por_nombre);
 
 }
-Lista<Objeto*> Casilla::obtener_objetos(){
+Lista<Objeto*>& Casilla::obtener_objetos(){
     return objetos;
 }
