@@ -26,7 +26,7 @@ void Humano::regenerar_energia() {
     this -> energia += 5;
 }
 
-void Humano::encuentro_con_elemento() {
+/*void Humano::encuentro_con_elemento() {
     
     Lista<Objeto*> objetos_casilla;
     Lista<Objeto*> solo_elementos;
@@ -41,7 +41,7 @@ void Humano::encuentro_con_elemento() {
 
     casilla->eliminar_objetos(solo_elementos);
 
-}
+}*/
 
 void Humano::defenderse() {
     
