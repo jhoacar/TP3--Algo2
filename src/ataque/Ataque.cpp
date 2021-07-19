@@ -80,7 +80,7 @@ int Ataque::calcular_porcentaje_fuerza(int fuerza, int porcentaje){
 
 
 
-bool Ataque::validacion_rango_ataque_estaca(int coord_x, int coord_y, int max_rango){
+/*bool Ataque::validacion_rango_ataque_estaca(int coord_x, int coord_y, int max_rango){
 
     bool rango_valido = false;
     int resta_coord_x = abs(coord_x - coordenada_x_actual);
