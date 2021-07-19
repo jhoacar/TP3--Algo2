@@ -37,3 +37,13 @@ void Objeto::asignar_nombre(char nombre){
 void Objeto::asignar_casilla(Casilla *casilla){
     this->casilla=casilla;
 }
+
+
+
+int Elemento::obtener_cantidad(){
+    return this->cantidad;
+}
+
+void Elemento::disminuir_cantidad(int cantidad_gastada){
+    this -> cantidad -= cantidad_gastada;
+}
