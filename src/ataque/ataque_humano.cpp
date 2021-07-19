@@ -2,6 +2,9 @@
 #include "../objetos/elementos/Escopeta.h"
 #include "../objetos/elementos/Bala.h"
 #include "../objetos/seres/monstruos/vampiros/Vampiro.h"
+#include "../objetos/seres/monstruos/vampiros/Nosferatu.h"
+#include "../objetos/seres/monstruos/vampiros/Vampirella.h"
+#include "../objetos/seres/monstruos/zombies/Zombie.h"
 #include <stdlib.h>
 #include <iostream>
 #include "../constantes/Constantes.h"
@@ -185,22 +188,28 @@ void Ataque_humano::bajar_vida(Casilla* casilla){
     if(indice_zombie != -1) {
         valor_ataque = calcular_porcentaje_fuerza(fuerza, 100);
         valor_final = calcular_vida_con_armadura(valor_ataque);
-        lista_objetos[indice_zombie] -> quitar_vida(valor_final);
+
+        Zombie *zombie = casilla -> obtener_objetos()[indice_zombie];
+        zombie -> bajar_vida(valor_final);
+
     }
     if(indice_vampiro != -1){
         valor_ataque = calcular_porcentaje_fuerza(fuerza, 20);
         valor_final = calcular_vida_con_armadura(valor_ataque);
-        lista_objetos[indice_vampiro] -> quitar_vida(valor_final);
+        Vampiro *vampiro = casilla -> obtener_objetos()[indice_vampiro];
+        vampiro -> bajar_vida(valor_final);
     }
     if(indice_nosferatu != -1){
         valor_ataque = calcular_porcentaje_fuerza(fuerza, 20);
         valor_final = calcular_vida_con_armadura(valor_ataque);
-        lista_objetos[indice_nosferatu] -> quitar_vida(valor_final);
+        Nosferatu *nosferatu = casilla -> obtener_objetos()[indice_nosferatu];
+        nosferatu -> bajar_vida(valor_final);
     }
     if(indice_vampirella != -1){
         valor_ataque = calcular_porcentaje_fuerza(fuerza, 20);
         valor_final = calcular_vida_con_armadura(valor_ataque);
-        lista_objetos[indice_vampirella] -> quitar_vida(valor_final);
+        Vampirella *vampirella = casilla -> obtener_objetos()[indice_nosferatu];
+        vampirella -> bajar_vida(valor_final);
     }
 
 }
