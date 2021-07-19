@@ -41,6 +41,7 @@ class Ser : public Objeto
 
 		void bajar_vida(int cantidad);
 		void consumir_energia(int cantidad_gastada);
+		int calcular_vida_con_armadura(int vida_a_bajar);
 
 
 		/*//PRE: recive las posiciones donde quiere atacar, con que arma y el ataque
