@@ -26,7 +26,7 @@ bool Ataque::validacion_rango_ataque(Casilla *casilla_a_atacar, int max_rango){
     int posicion_x_atacar = casilla_a_atacar -> obtener_fila();
     int posicion_y_atacar = casilla_a_atacar -> obtener_columna();
 
-    casilla* casilla_atacante = personaje -> obtener_casilla();
+    Casilla* casilla_atacante = personaje -> obtener_casilla();
     int posicion_x_atacante = casilla_atacante -> obtener_fila();
     int posicion_y_atacante = casilla_atacante -> obtener_columna();
 
