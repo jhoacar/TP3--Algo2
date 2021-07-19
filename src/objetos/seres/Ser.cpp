@@ -1,5 +1,6 @@
 #include "Ser.h"
 #include "../elementos/Agua.h"
+#include "../../ataque/Ataque.h"
 #include <iostream>
 
 Ser::Ser():Objeto(){
@@ -32,12 +33,30 @@ int Ser::devolver_vida(){
     return this -> vida;
 }
 
+void Ser::bajar_energia(int cantidad){
+    this -> energia -= cantidad;
+}
+
+
+Lista<Objeto*> Ser::obtener_inventario(){
+    return this -> inventario;
+}
+
 bool es_elemento(Objeto* objeto_a_comprobar) {
 
     return buscar_dato(NOMBRES_CHAR, MAX_NOMBRES,objeto_a_comprobar->obtener_nombre(),HUMANO) == NO_ENCONTRADO;
 }
 
-void Ser::quitar_vida(int puntos){
+void Ser::atacar(Casilla *casilla) {
+
+    ataque -> atacar(casilla);
+
+}
+
+
+
+
+/*void Ser::quitar_vida(int puntos){
     this -> vida -= puntos;
 }
 
@@ -62,4 +81,4 @@ int calcular_vida_con_armadura(int vida_a_bajar){
         vida_final_bajar = vida_a_bajar - ((vida_a_bajar * 80)/100);
     }
     return vida_final_bajar
-}
+}*/

@@ -1,21 +1,24 @@
-//
-// Created by franco on 7/7/2021.
-//
-
-#ifndef ATAQUE_CPP_ATAQUE_HUMANO_H
-#define ATAQUE_CPP_ATAQUE_HUMANO_H
-
+#ifndef ATAQUE_HUMANO_H
+#define ATAQUE_HUMANO_H
 
 #include "Ataque.h"
+#include "../objetos/seres/humanos/Humano.h"
+#include <string>
+
+using namespace std;
 
 class Ataque_humano : public Ataque{
 
-    Ataque_humano(Tablero* tablero, int coordenada_x, int coordenada_y, int fuerza_actual);
-    Ataque_humano();
+    Ataque_humano(Humano *personaje);
+    ~Ataque_humano();
+    void atacar(Casilla *casilla);
+    string eleccion_arma();
+    bool tiene_arma(string arma_elegida);
+    int buscar_personaje(string personaje);
+    bool tiene_balas(int cantidad_minima_balas);
+    void validacion_ataque(Casilla *casilla_a_atacar, string arma_elegida);
 
-    void bajar_vida(Lista<Objeto*> lista_objetos, Casilla* casilla);
-    
 };
 
 
-#endif //ATAQUE_CPP_ATAQUE_HUMANO_H
+#endif //ATAQUE_HUMANO_H
