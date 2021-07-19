@@ -240,7 +240,6 @@ void Ataque_humano::atacar(Casilla *casilla) {
 
         bajar_vida(casilla);
     }
-    delete ataque;
 }
 
 
