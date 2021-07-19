@@ -61,7 +61,6 @@ void Humano::defenderse() {
 }
 
 bool Humano::tengo_agua_bendita() {
-
     objeto_referencia->asignar_nombre(NOMBRES_CHAR[AGUA]); //Le asigno el nombre que quiera buscar en la lista
     return inventario.existe(objeto_referencia,comparacion_por_nombre);
 }
@@ -78,6 +77,10 @@ void Humano::aumentar_armadura() {
 void Humano::consumir_agua_bendita() {
     energia = ENERGIA_MAXIMA;
     inventario.borrar(buscar_agua_bendita());
+}
+
+bool Humano::tiene_armadura_aumentada() {
+    return this->armadura_aumentada;
 }
 
 int Humano::buscar_agua_bendita() {
@@ -98,16 +101,5 @@ int Humano::elegir_accion() {
         cin >> opcion;
     }
     return opcion;
-
-    Lista<Objeto*> objetos_casilla;
-    Lista<Objeto*> solo_elementos;
-
-    objetos_casilla = this -> casilla ->obtener_objetos();
-    solo_elementos = objetos_casilla.filtrar_datos(0, es_elemento);
-
-    this ->inventario += solo_elementos;
-    cout << "Se agregaron con exito los elementos al inventario" << endl;
-
-    for (int i = 0; i < solo_elementos . obtener_tamano(); i++)
-        this ->casilla -> eliminar_objeto(solo_elementos[i]->obtener_ID());
 }
+
