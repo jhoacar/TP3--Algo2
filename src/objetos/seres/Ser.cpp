@@ -33,9 +33,7 @@ int Ser::devolver_vida(){
     return this -> vida;
 }
 
-void Ser::bajar_energia(int cantidad){
-    this -> energia -= cantidad;
-}
+
 
 
 Lista<Objeto*> Ser::obtener_inventario(){

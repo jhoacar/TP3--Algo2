@@ -27,41 +27,8 @@ void Humano::regenerar_energia() {
     this -> energia += 5;
 }
 
-/*void Humano::encuentro_con_elemento() {
-    
-    Lista<Objeto*> objetos_casilla;
-    Lista<Objeto*> solo_elementos;
 
-    objetos_casilla = casilla->obtener_objetos();
-    solo_elementos = objetos_casilla.filtrar_datos(0,es_elemento);
 
-    inventario += solo_elementos;
-    
-    if(solo_elementos.obtener_tamano()>0)
-        cout << "Se agregaron con exito los elementos al inventario" << endl;
-
-    casilla->eliminar_objetos(solo_elementos);
-
-}*/
-
-/*void Humano::defenderse() {
-    
-    if (!tengo_agua_bendita()){
-        aumentar_energia();
-        cout << "|||| No tengo agua bendita, pero aumenté mi energía ||||" << endl;
-    }
-    else {
-        int accion = elegir_accion();
-        if (accion == REGENERAR_ENERGIA){
-            consumir_agua_bendita();
-            cout << "|||| Regeneré mi energía ||||" << endl;
-        }
-        else{
-            aumentar_armadura();
-            cout << "|||| Mejoré mi armadura ||||" << endl;
-        }
-    }
-}*/
 
 bool Humano::tengo_agua_bendita() {
 
