@@ -80,5 +80,5 @@ int Ser::calcular_vida_con_armadura(int vida_a_bajar){
     else if(armadura == 3){
         vida_final_bajar = vida_a_bajar - ((vida_a_bajar * 80)/100);
     }
-    return vida_final_bajar
+    return vida_final_bajar;
 }
