@@ -88,7 +88,7 @@ int Humano::buscar_agua_bendita() {
     return inventario.buscar_dato(0,objeto_referencia,comparacion_por_nombre);
 }
 
-int Humano::elegir_accion() {
+/*int Humano::elegir_accion() {
     int opcion;
     cout << "Tengo agua bendita en mi inventario." << endl;
     cout << "¿Qué debo hacer?" << endl;
@@ -112,7 +112,7 @@ int Humano::elegir_accion() {
 
     for (int i = 0; i < solo_elementos . obtener_tamano(); i++)
         this ->casilla -> eliminar_objeto(solo_elementos[i]->obtener_ID());
-}
+}*/
 
 
 

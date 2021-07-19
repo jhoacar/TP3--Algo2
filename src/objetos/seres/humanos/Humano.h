@@ -61,7 +61,7 @@ class Humano : public Ser
     		// POS: Devuelve la acción a realizar durante la defensa.
     		//      Si elige regenerar energía, devuelve 1 = REGENERAR_ENERGIA
     		//      Si elige aumentar armadura, devuelve 2 = AUMENTAR_ARMADURA
-    		int elegir_accion();
+    		//int elegir_accion();
 
 };
 
