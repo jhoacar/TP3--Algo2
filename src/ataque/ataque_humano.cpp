@@ -53,7 +53,7 @@ bool Ataque_humano::tiene_balas(int cantidad_minima_balas){
     if(esta_en_inventario){
         int posicion_balas = personaje -> obtener_inventario().buscar_dato(0, objeto_referencia,comparacion_por_nombre);
 
-        Bala* balas = personaje -> obtener_inventario()[posicion_balas];
+        Objeto* balas = personaje -> obtener_inventario()[posicion_balas];
         int cantidad_balas = balas -> obtener_cantidad();
 
         if(cantidad_balas >= cantidad_minima_balas)
@@ -70,7 +70,7 @@ void Ataque_humano::bajar_cantidad_objeto(int cantidad_gastada, string arma){
     int posicion_balas = personaje -> obtener_inventario().buscar_dato(0, objeto_referencia,comparacion_por_nombre);
 
     if(posicion_balas != -1){
-        Bala* balas = personaje -> obtener_inventario()[posicion_balas];
+        Objeto* balas = personaje -> obtener_inventario()[posicion_balas];
         balas -> disminuir_cantidad(cantidad_gastada);
     }
 }

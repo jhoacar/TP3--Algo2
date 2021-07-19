@@ -53,12 +53,12 @@ void Ser::atacar(Casilla *casilla) {
 
 }
 
-
-
-
-/*void Ser::quitar_vida(int puntos){
-    this -> vida -= puntos;
+void Ser::bajar_vida(int cantidad){
+    this -> vida -= cantidad;
 }
+
+
+
 
 void Ser::consumir_energia(int cantidad_gastada){
     this -> energia -= cantidad_gastada;

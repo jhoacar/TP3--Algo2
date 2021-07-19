@@ -48,22 +48,6 @@ class Humano : public Ser
 	protected:
 
 
-		//PRE: recibe el arma elegida
-		//POST: verifica si tiene el arma en su inventario
-        bool tiene_arma(string arma_elegida);
-
-		//PRE: recibe la cantidad minima de balas para atacar
-		//POST: verifica si la cantidad es valida
-        bool tiene_balas(int cantidad_minima_balas);
-
-
-        void validacion_ataque(Ataque* ataque, int posicion_x_elegida, int posicion_y_elegida, string arma_elegida);
-
-        void atacar(Tablero* tablero, int posicion_x_elegida, int posicion_y_elegida, string arma_elegida);
-
-        int indice_personaje(string personaje, Lista<Objeto*> lista_objetos);
-
-        void bajar_cantidad_objeto(int cantidad_gastada);
 
 	private:
 		bool armadura_aumentada;

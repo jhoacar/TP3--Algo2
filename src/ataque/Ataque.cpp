@@ -20,6 +20,10 @@ bool Ataque::energia_suficiente(int minimo) {
     return suficiente_energia;
 }
 
+void Ataque::quitar_vida(int cantidad){
+    personaje ->bajar_vida(cantidad);
+}
+
 
 bool Ataque::validacion_rango_ataque(Casilla *casilla_a_atacar, int max_rango){
 

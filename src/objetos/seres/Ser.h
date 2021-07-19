@@ -39,6 +39,8 @@ class Ser : public Objeto
 		void bajar_energia(int cantidad);
 		void atacar(Casilla *casilla);
 
+		void bajar_vida(int cantidad);
+
 
 		/*//PRE: recive las posiciones donde quiere atacar, con que arma y el ataque
         //POST: devuelve si la posicion es valida para atacar

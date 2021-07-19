@@ -20,6 +20,7 @@ public:
     void consumir_energia(int cantidad);
     int calcular_vida_con_armadura(int valor_ataque);
     int calcular_porcentaje_fuerza(int fuerza, int porcentaje);
+    quitar_vida(int puntos);
 };
 
 
