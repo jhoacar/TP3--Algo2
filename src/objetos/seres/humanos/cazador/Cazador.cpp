@@ -19,7 +19,7 @@ void Cazador::regenerar_energia() {
 }
 
 
-
+/*
 void Cazador::validacion_ataque(Ataque* ataque, int posicion_x_elegida, int posicion_y_elegida, string arma_elegida){
 
     bool energia_suficiente = ataque -> energia_suficiente(6, energia);
@@ -78,6 +78,6 @@ void Cazador::atacar(Tablero* tablero, int posicion_x_elegida, int posicion_y_el
         ataque -> bajar_vida(lista_objetos, casilla);
     }
     delete ataque;
-}
+}*/
 
 

@@ -22,7 +22,7 @@ void Vanessa::regenerar_energia() {
 
 
 
-void Vanessa::validacion_ataque(Ataque* ataque, int posicion_x_elegida, int posicion_y_elegida, string arma_elegida){
+/*void Vanessa::validacion_ataque(Ataque* ataque, int posicion_x_elegida, int posicion_y_elegida, string arma_elegida){
 
     bool energia_suficiente = ataque -> energia_suficiente(8, energia);
     bool tiene_arma = tiene_arma(arma_elegida);
@@ -80,4 +80,4 @@ void Vanessa::atacar(Tablero* tablero, int posicion_x_elegida, int posicion_y_el
         ataque -> bajar_vida(lista_objetos, casilla);
     }
     delete ataque;
-}
+}*/
