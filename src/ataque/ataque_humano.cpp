@@ -24,7 +24,7 @@ int Ataque_humano::buscar_personaje(Casilla *casilla_a_atacar, string personaje)
 
     int posicion;
     Objeto *objeto_referencia = new Vampiro();
-    objeto_referencia -> asignar_nombre(NOMBRES_CHAR[personaje]);
+    objeto_referencia -> asignar_nombre(personaje);
 
     bool existe = casilla_a_atacar -> obtener_objetos().existe(objeto_referencia,comparacion_por_nombre);
 
@@ -77,7 +77,7 @@ string Ataque_humano::eleccion_arma(){
     char eleccion;
     cout << "Con que arma quiere atacar?:" << endl;
     cout << "1. Escopeta" << endl;
-    cout "2. Agua bendita" << endl;
+    cout << "2. Agua bendita" << endl;
     cout << "3. Estaca" << endl;
 
     cin  >> eleccion;
@@ -105,7 +105,7 @@ void Ataque_humano::validacion_ataque(Casilla *casilla_a_atacar, string arma_ele
 
     bool validacion_rango = validacion_rango_ataque(casilla_a_atacar, 1);
 
-    bool energia_suficiente = energia_suficiente(5, energia);
+    bool energia_suficiente = energia_suficiente(5, personaje -> devolver_energia());
     bool tiene_arma = tiene_arma(arma_elegida);
     bool tiene_suficientes_balas = tiene_balas(2);
 

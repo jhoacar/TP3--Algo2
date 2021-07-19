@@ -17,6 +17,7 @@ class Ataque_humano : public Ataque{
     int buscar_personaje(Casilla *casilla_a_atacar, string personaje);
     bool tiene_balas(int cantidad_minima_balas);
     void validacion_ataque(Casilla *casilla_a_atacar, string arma_elegida);
+    void bajar_cantidad_objeto(int cantidad_gastada, string arma);
 
 };
 
