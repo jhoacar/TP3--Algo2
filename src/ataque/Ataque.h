@@ -1,6 +1,7 @@
 #ifndef ATAQUE_H
 #define ATAQUE_H
 
+#include "../mapa/Casilla.h"
 
 class Ser;
 
