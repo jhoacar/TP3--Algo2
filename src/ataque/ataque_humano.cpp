@@ -219,6 +219,7 @@ void Ataque_humano::bajar_vida(Casilla* casilla){
 
 void Ataque_humano::atacar(Casilla *casilla) {
 
+    string arma_elegida = eleccion_arma();
     validacion_ataque(casilla, arma_elegida);
 
     if(validacion_ataque){
