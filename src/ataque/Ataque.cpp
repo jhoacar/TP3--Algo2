@@ -48,7 +48,7 @@ bool Ataque::validacion_rango_ataque(Casilla *casilla_a_atacar, int max_rango){
 
 
 void Ataque::consumir_energia(int cantidad){
-    personaje -> bajar_energia(cantidad);
+    personaje -> consumir_energia(cantidad);
 }
 
 
