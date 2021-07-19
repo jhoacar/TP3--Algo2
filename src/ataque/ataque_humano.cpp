@@ -164,7 +164,7 @@ bool Ataque_humano::validacion_ataque(Casilla *casilla_a_atacar, string arma_ele
 int Ataque_humano::indice_personaje(string personaje, Casilla* casilla){
 
     Objeto *objeto_referencia = new Vampiro();
-    char inicial = NOMBRES_CHAR[personaje];
+    char inicial = devolver_inicial(personaje);
     objeto_referencia -> asignar_nombre(inicial);
     int indice = casilla -> obtener_objetos().buscar_dato(0, objeto_referencia, comparacion_por_nombre);
     return indice;
