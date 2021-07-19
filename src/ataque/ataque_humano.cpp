@@ -105,11 +105,11 @@ void Ataque_humano::validacion_ataque(Casilla *casilla_a_atacar, string arma_ele
 
     bool validacion_rango = validacion_rango_ataque(casilla_a_atacar, 1);
 
-    bool energia_suficiente = energia_suficiente(5, personaje -> devolver_energia());
-    bool tiene_arma = tiene_arma(arma_elegida);
+    bool energia_suficiente_ = energia_suficiente(5, personaje -> devolver_energia());
+    bool tiene_arma_ = tiene_arma(arma_elegida);
     bool tiene_suficientes_balas = tiene_balas(2);
 
-    if(validacion_rango && energia_suficiente && arma && tiene_suficientes_balas)
+    if(validacion_rango && energia_suficiente_ && tiene_arma_ && tiene_suficientes_balas)
         validacion_ataque = true;
     else
         validacion_ataque = false;
