@@ -126,7 +126,7 @@ void Tablero::cargar_objeto(Objeto *objeto){
     }    
 }
 
-void Tablero::cargar_lista_objetos(Lista<Objeto *>objeto){
+void Tablero::cargar_lista_objetos(Lista<Objeto*> objeto){
     objeto.reiniciar();
     while(objeto.existe_siguiente())
         cargar_objeto(objeto.siguiente_dato()); 
