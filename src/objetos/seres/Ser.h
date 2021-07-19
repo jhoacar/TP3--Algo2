@@ -25,6 +25,7 @@ class Ser : public Objeto
 		int devolver_fuerza();
 		virtual void regenerar_energia()=0;
 		virtual void encuentro_con_elemento()=0;
+		virtual void defenderse() = 0;
 };
 
 #endif
