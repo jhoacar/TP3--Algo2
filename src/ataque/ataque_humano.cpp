@@ -138,6 +138,7 @@ void Ataque_humano::bajar_vida(Casilla* casilla){
     int indice_vampirella = indice_personaje(NOMBRES_STRING[VAMPIRELLA], casilla);
 
     int valor_ataque;
+    int valor_final;
     int fuerza = personaje -> devolver_fuerza();
 
     if(indice_zombie != -1) {
