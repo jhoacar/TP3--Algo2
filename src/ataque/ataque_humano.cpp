@@ -52,7 +52,7 @@ bool Ataque_humano::tiene_balas(int cantidad_minima_balas){
     return balas_necesarias;
 }
 
-void Ataque_humano::bajar_cantidad_objeto(arma){
+void Ataque_humano::bajar_cantidad_objeto(string arma){
 
     Objeto *objeto_referencia = new Bala();
     char inicial = devolver_inicial(arma);
