@@ -2,14 +2,13 @@
 #define HUMANO_H
 
 #include "../Ser.h"
-<<<<<<< HEAD
+
 #include "../../../mapa/Casilla.h"
 #include "../../../mapa/Tablero.h"
 #include "../../../ataque/Ataque.h"
 #include "../../elementos/Escopeta.h"
 
-=======
->>>>>>> dd24cbe531f59d1f6ab25ecc284ba3edf85872ec
+
 
 class Humano : public Ser
 {
