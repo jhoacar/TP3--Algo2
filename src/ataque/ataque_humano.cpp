@@ -207,25 +207,28 @@ void Ataque_humano::bajar_vida(Casilla* casilla){
 
 
     if(indice_zombie != NO_ENCONTRADO) {
-        calcular_valores_ataque(indice_zombie, 100, casilla)
-        valor_ataque = calcular_porcentaje_fuerza(fuerza, 100);
+        calcular_valores_ataque(indice_zombie, 100, casilla);
+        /*valor_ataque = calcular_porcentaje_fuerza(fuerza, 100);
         valor_final = calcular_vida_con_armadura(valor_ataque);
-        ((Ser*) casilla -> obtener_objetos()[indice_zombie])-> bajar_vida(valor_final);
+        ((Ser*) casilla -> obtener_objetos()[indice_zombie])-> bajar_vida(valor_final);*/
     }
     if(indice_vampiro != NO_ENCONTRADO){
-        valor_ataque = calcular_porcentaje_fuerza(fuerza, 20);
+        calcular_valores_ataque(indice_vampiro, 20, casilla);
+        /*valor_ataque = calcular_porcentaje_fuerza(fuerza, 20);
         valor_final = calcular_vida_con_armadura(valor_ataque);
-        ((Ser*) casilla -> obtener_objetos()[indice_vampiro]) -> bajar_vida(valor_final);
+        ((Ser*) casilla -> obtener_objetos()[indice_vampiro]) -> bajar_vida(valor_final);*/
     }
-    if(indice_nosferatu != -1){
-        valor_ataque = calcular_porcentaje_fuerza(fuerza, 20);
+    if(indice_nosferatu != NO_ENCONTRADO){
+        calcular_valores_ataque(indice_nosferatu, 20, casilla);
+        /*valor_ataque = calcular_porcentaje_fuerza(fuerza, 20);
         valor_final = calcular_vida_con_armadura(valor_ataque);
-        ((Ser*) casilla -> obtener_objetos()[indice_nosferatu]) -> bajar_vida(valor_final);
+        ((Ser*) casilla -> obtener_objetos()[indice_nosferatu]) -> bajar_vida(valor_final);*/
     }
-    if(indice_vampirella != -1){
-        valor_ataque = calcular_porcentaje_fuerza(fuerza, 20);
+    if(indice_vampirella != NO_ENCONTRADO){
+        calcular_valores_ataque(indice_vampirella, 20, casilla);
+        /*valor_ataque = calcular_porcentaje_fuerza(fuerza, 20);
         valor_final = calcular_vida_con_armadura(valor_ataque);
-        ((Ser*) casilla -> obtener_objetos()[indice_nosferatu]) -> bajar_vida(valor_final);
+        ((Ser*) casilla -> obtener_objetos()[indice_nosferatu]) -> bajar_vida(valor_final);*/
     }
 
 }
