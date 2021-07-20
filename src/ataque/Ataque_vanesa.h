@@ -21,7 +21,7 @@ class Ataque_vanesa : public Ataque {
     // Para no repetir mucho codigo
     //PRE:
     //POST:
-    void bajar_vida_vampiros(int indice, int porcentaje_escopeta, int porcentaje_agua, Casilla* casilla, string arma_elegida);
+    void bajar_vida_vampiro(int indice, int porcentaje_escopeta, int porcentaje_agua, Casilla* casilla, string arma_elegida);
 
     void bajar_vida_completa(int indice, Casilla *casilla);
 

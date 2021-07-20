@@ -79,7 +79,7 @@ void Ataque_vanesa::bajar_vida_completa(int indice, Casilla *casilla){
 }
 
 
-void Ataque_vanesa::bajar_vida_vampiros(int indice, int porcentaje_escopeta, int porcentaje_agua, Casilla* casilla, string arma_elegida){
+void Ataque_vanesa::bajar_vida_vampiro(int indice, int porcentaje_escopeta, int porcentaje_agua, Casilla* casilla, string arma_elegida){
 
     if (arma_elegida == NOMBRES_STRING[ESCOPETA])
         calcular_valores_ataque(indice, porcentaje_escopeta, casilla);
@@ -104,9 +104,9 @@ void Ataque_vanesa::bajar_vida(Casilla* casilla, string arma_elegida){
             calcular_valores_ataque(indice_zombie, 25, casilla);
     }
     if(indice_vampiro != NO_ENCONTRADO)
-        bajar_vida_vampiros(indice_vampiro, 40, 20, casilla, arma_elegida);
+        bajar_vida_vampiro(indice_vampiro, 40, 20, casilla, arma_elegida);
     if(indice_nosferatu != NO_ENCONTRADO)
-        bajar_vida_vampiros(indice_nosferatu, 40, 20, casilla, arma_elegida);
+        bajar_vida_vampiro(indice_nosferatu, 40, 20, casilla, arma_elegida);
     if(indice_vampirella != NO_ENCONTRADO)
-        bajar_vida_vampiros(indice_vampirella, 40, 20, casilla, arma_elegida);
+        bajar_vida_vampiro(indice_vampirella, 40, 20, casilla, arma_elegida);
 }

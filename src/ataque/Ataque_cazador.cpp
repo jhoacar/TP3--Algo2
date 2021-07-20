@@ -71,7 +71,7 @@ void Ataque_cazador::atacar(Casilla *casilla) {
 }
 
 
-void Ataque_cazador::bajar_vida_vampiros(int indice, int porcentaje_escopeta, int porcentaje_agua, int porcentaje_estaca, Casilla* casilla, string arma_elegida){
+void Ataque_cazador::bajar_vida_vampiro(int indice, int porcentaje_escopeta, int porcentaje_agua, int porcentaje_estaca, Casilla* casilla, string arma_elegida){
 
     if (arma_elegida == NOMBRES_STRING[ESCOPETA])
         calcular_valores_ataque(indice, porcentaje_escopeta, casilla);

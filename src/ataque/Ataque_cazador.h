@@ -22,7 +22,7 @@ class Ataque_cazador : public Ataque_humano {
     // Para no repetir mucho codigo
     //PRE:
     //POST:
-    void bajar_vida_vampiros(int indice, int porcentaje_escopeta, int porcentaje_agua, int porcentaje_estaca, Casilla* casilla, string arma_elegida);
+    void bajar_vida_vampiro(int indice, int porcentaje_escopeta, int porcentaje_agua, int porcentaje_estaca, Casilla* casilla, string arma_elegida);
 
 };
 
