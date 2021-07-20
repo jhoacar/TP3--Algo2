@@ -177,7 +177,7 @@ int Ataque_humano::indice_personaje(string personaje, Casilla* casilla){
 }
 
 
-void Ataque_humano::calcular_valores_ataque(int indice, int porcentaje){
+void Ataque_humano::calcular_valores_ataque(int indice, int porcentaje, Casilla* casilla){
 
     int valor_final;
     int fuerza = personaje -> devolver_fuerza();
@@ -207,7 +207,7 @@ void Ataque_humano::bajar_vida(Casilla* casilla){
 
 
     if(indice_zombie != NO_ENCONTRADO) {
-        calcular_valores_ataque(indice_zombie, 100)
+        calcular_valores_ataque(indice_zombie, 100, casilla)
         valor_ataque = calcular_porcentaje_fuerza(fuerza, 100);
         valor_final = calcular_vida_con_armadura(valor_ataque);
         ((Ser*) casilla -> obtener_objetos()[indice_zombie])-> bajar_vida(valor_final);
