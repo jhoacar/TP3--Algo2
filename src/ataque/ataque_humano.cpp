@@ -74,7 +74,7 @@ int Ataque_humano::buscar_personaje(Casilla *casilla_a_atacar, string personaje)
     if(existe)
         posicion = casilla_a_atacar -> obtener_objetos().buscar_dato(0, objeto_referencia,comparacion_por_nombre);
     else
-        posicion = -1;
+        posicion = NO_ENCONTRADO;
 
     return posicion;
 }
@@ -146,12 +146,13 @@ string Ataque_humano::eleccion_arma(){
 
 
 
-
-
 bool Ataque_humano::validacion_ataque(Casilla *casilla_a_atacar, string arma_elegida){
 
     bool validacion_ataque;
-    bool validacion_rango = validacion_rango_ataque(casilla_a_atacar, 1);
+
+    Lista<Coordenada> lista_casillas_posibles = obtener_cuadrado(casilla_a_atacar -> obtener_posicion(), 1);
+
+    bool validacion_rango = validacion_rango_ataque(lista_casillas_posibles, casilla_a_atacar);
 
     bool energia_suficiente_ = energia_suficiente(5);
     bool tiene_arma_ = tiene_arma(arma_elegida);
@@ -220,11 +221,11 @@ void Ataque_humano::atacar(Casilla *casilla) {
         int posicion;
         posicion = buscar_personaje(casilla, NOMBRES_STRING[ZOMBIE]);
 
-        if(posicion == -1)
+        if(posicion == NO_ENCONTRADO)
             posicion = buscar_personaje(casilla, NOMBRES_STRING[VAMPIRO]);
-        if(posicion == -1)
+        if(posicion == NO_ENCONTRADO)
             posicion = buscar_personaje(casilla, NOMBRES_STRING[VAMPIRELLA]);
-        if(posicion == -1)
+        if(posicion == NO_ENCONTRADO)
             posicion = buscar_personaje(casilla, NOMBRES_STRING[NOSFERATU]);
 
         consumir_energia(5);

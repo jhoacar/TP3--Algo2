@@ -2,9 +2,12 @@
 #include "../elementos/Agua.h"
 #include "../../ataque/Ataque.h"
 #include <iostream>
+#include "../../defensa/Defensa.h"
+
 
 Ser::Ser():Objeto(){
     objeto_referencia = new Agua(); //No me interesa el tipo de objeto, solo sus atributos
+
 }
 
 Ser::Ser(Casilla *casilla,char nombre, string ID):Objeto(casilla,nombre,ID){
@@ -12,9 +15,12 @@ Ser::Ser(Casilla *casilla,char nombre, string ID):Objeto(casilla,nombre,ID){
     this -> vida     = obtener_numero_aleatorio(VIDA_MINIMA, VIDA_MAXIMA);
     this -> energia  = obtener_numero_aleatorio(ENERGIA_MINIMA, ENERGIA_MAXIMA);
     this -> fuerza   = obtener_numero_aleatorio(FUERZA_MINIMA, FUERZA_MAXIMA);
+    objeto_referencia = new Agua(); //No me interesa el tipo de objeto, solo sus atributos
+
 }
 Ser::~Ser(){
     delete objeto_referencia;
+
 }
 
 int Ser::devolver_armadura() {
@@ -33,13 +39,23 @@ int Ser::devolver_vida(){
     return this -> vida;
 }
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> master
 Lista<Objeto*> Ser::obtener_inventario(){
     return this -> inventario;
 }
 
+<<<<<<< HEAD
+=======
+void Ser::defender(){
+    defensa->defender();
+}
+
+>>>>>>> master
 bool es_elemento(Objeto* objeto_a_comprobar) {
 
     return buscar_dato(NOMBRES_CHAR, MAX_NOMBRES,objeto_a_comprobar->obtener_nombre(),HUMANO) == NO_ENCONTRADO;

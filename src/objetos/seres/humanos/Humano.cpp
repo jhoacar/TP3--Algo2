@@ -1,5 +1,9 @@
 #include "Humano.h"
+<<<<<<< HEAD
 #include "../../../ataque/Ataque_humano.h"
+=======
+#include "../../../defensa/tipos/Defensa_humano.h"
+>>>>>>> master
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -11,6 +15,7 @@ Humano::Humano():Ser(){
 
 Humano::Humano(Casilla *casilla,char nombre,string ID):Ser(casilla,nombre,ID){
 	this->armadura_aumentada = false;
+    this -> ataque = new Ataque_humano(this);
 }
 
 void Humano::mostrar(){
@@ -19,6 +24,7 @@ void Humano::mostrar(){
 
 Humano::~Humano()
 {
+
 }
 
 void Humano::regenerar_energia() {
@@ -29,7 +35,6 @@ void Humano::regenerar_energia() {
 
 
 bool Humano::tengo_agua_bendita() {
-
     objeto_referencia->asignar_nombre(NOMBRES_CHAR[AGUA]); //Le asigno el nombre que quiera buscar en la lista
     return inventario.existe(objeto_referencia,comparacion_por_nombre);
 }
@@ -46,6 +51,10 @@ void Humano::aumentar_armadura() {
 void Humano::consumir_agua_bendita() {
     energia = ENERGIA_MAXIMA;
     inventario.borrar(buscar_agua_bendita());
+}
+
+bool Humano::tiene_armadura_aumentada() {
+    return this->armadura_aumentada;
 }
 
 int Humano::buscar_agua_bendita() {
@@ -66,6 +75,7 @@ int Humano::buscar_agua_bendita() {
         cin >> opcion;
     }
     return opcion;
+<<<<<<< HEAD
 
     Lista<Objeto*> objetos_casilla;
     Lista<Objeto*> solo_elementos;
@@ -81,4 +91,7 @@ int Humano::buscar_agua_bendita() {
 }*/
 
 
+=======
+}
+>>>>>>> master
 

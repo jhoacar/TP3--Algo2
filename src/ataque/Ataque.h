@@ -19,7 +19,7 @@ public:
 
     //PRE: recibe una casilla y un rango de distancia
     //POST: devuelve true si el objeto a atacar esta a su alcance
-    bool validacion_rango_ataque(Casilla *casilla_a_atacar, int max_rango);
+    bool validacion_rango_ataque(Lista<Coordenada> lista_casillas_posibles, Casilla *casilla_a_atacar);
 
     //PRE: recibe el minimo de energia necesario para atacar
     //POST: devuelve true si le alcanza

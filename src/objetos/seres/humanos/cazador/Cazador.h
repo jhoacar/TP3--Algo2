@@ -2,6 +2,7 @@
 #define CAZADOR_H
 
 #include "../Humano.h"
+#include "../../../../ataque/Ataque.h"
 
 class Cazador : public Humano
 {

@@ -20,7 +20,7 @@ class Archivo_tablero : Archivo {
         void cargar_tablero();
         
     public:
-
+    
         Archivo_tablero(string nombre_fichero);
         Tablero* obtener_tablero();
 };

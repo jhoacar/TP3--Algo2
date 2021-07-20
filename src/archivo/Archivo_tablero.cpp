@@ -75,49 +75,6 @@ Lista<Casilla*> Archivo_tablero::separar_terrenos(string texto){
                 terrenos.agregar(terreno);
         }
     }
-
-
-    /*int i = 0;
-    int j = 0;
-    int tipo_terreno = 0;
-
-    while(texto[i] != '\n') i++; //Saltamos a la siguiente linea, que no sean las dimensiones
-
-    
-
-
-    for(int k = 0; k < fila; k++){
-        i++;
-        j = 0;
-        while(texto[i] != '\n' && texto[i] != '\0'){
-            
-            Coordenada posicion(k, j);
-            tipo_terreno = obtener_tipo_terreno(texto[i]);
-        
-            switch(tipo_terreno){
-                case MONTANA: terreno = new Montana(posicion);
-                    break;
-                case PRECIPICIO: terreno = new Precipicio(posicion);
-                    break;
-                case LAGO: terreno = new Lago(posicion);
-                    break;
-                case VOLCAN: terreno = new Volcan(posicion);
-                    break;
-                case CAMINO: terreno = new Camino(posicion);
-                    break;
-                case VACIO: terreno = new Vacio(posicion);
-                    break;
-            }
-            
-            if(tipo_terreno != NO_ENCONTRADO){
-                j++;
-                terrenos.agregar(terreno);
-            }
-            i++;
-        }
-    }
-    */
-
     return terrenos;
 } 
 

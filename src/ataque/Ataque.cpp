@@ -25,7 +25,7 @@ void Ataque::quitar_vida(int cantidad){
 }
 
 
-bool Ataque::validacion_rango_ataque(Casilla *casilla_a_atacar, int max_rango){
+/*bool Ataque::validacion_rango_ataque(Casilla *casilla_a_atacar, int max_rango){
 
     int posicion_x_atacar = casilla_a_atacar -> obtener_fila();
     int posicion_y_atacar = casilla_a_atacar -> obtener_columna();
@@ -43,6 +43,17 @@ bool Ataque::validacion_rango_ataque(Casilla *casilla_a_atacar, int max_rango){
     }
 
     return rango_valido;
+}*/
+
+bool Ataque::validacion_rango_ataque(Lista<Coordenada> lista_casillas_posibles, Casilla *casilla_a_atacar){
+
+    bool validacion = false;
+
+    while(lista_casillas_posibles.existe_siguiente() && !validacion)
+        validacion = listalista_casillas_posibles.siguiente_dato() == casilla_a_atacar->obtener_posicion();
+
+    return validacion;
+
 }
 
 
