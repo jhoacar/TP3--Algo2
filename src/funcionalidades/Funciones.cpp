@@ -145,6 +145,26 @@ Lista<Coordenada> obtener_cruz(Coordenada centro, int longitud){
 	return cruz;
 }
 
+Lista<Coordenada> obtener_cuadrado(Coordenada centro, int longitud){
+	
+	Lista<Coordenada> cuadrado;
+	//Me ubico en la esquina superior izquierda
+	Coordenada inicio = {centro.obtener_fila()-longitud, centro.obtener_columna()-longitud };  
+	//Recorro una matriz con el tamaño acorde al cuadrado que me piden
+	int tamano = 2*longitud+1;
+
+	for(int i=0 ; i<tamano ; i++){
+		for(int j=0 ; j<tamano ; j++){
+			Coordenada incremento(i,j);
+			Coordenada adyacente = inicio+incremento;
+			if(adyacente!=centro)
+				cuadrado.agregar(adyacente);
+		}
+	}	
+	return cuadrado;
+}
+
+
 int convertir_entero(string cadena){
 
 	return stoi(solo_numeros(cadena));
