@@ -65,7 +65,7 @@ void Ataque_cazador::atacar(Casilla *casilla) {
             consumir_energia(5);
 
             bajar_cantidad_objeto(arma_elegida);
-            bajar_vida(casilla);
+            bajar_vida(casilla, arma_elegida);
         }
     }
 }
