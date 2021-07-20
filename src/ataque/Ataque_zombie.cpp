@@ -20,9 +20,9 @@ void Ataque_zombie::atacar(Tablero* tablero) {
     Casilla* casilla_objeto;
 
 
-    while(lista_casillas.existe_siguiente() && !validacion) {
+    while(lista_casillas.existe_siguiente() && !validacion_hay_personaje) {
         Casilla *casilla_actual = lista_casillas.siguiente_dato();
-        while(casilla_actual -> obtener_objetos().existe_siguiente() && !validacion){
+        while(casilla_actual -> obtener_objetos().existe_siguiente() && !validacion_hay_personaje){
 
             Objeto* objeto_actual = casilla_actual -> obtener_objetos().siguiente_dato();
             char nombre_actual = objeto_actual->obtener_nombre();
