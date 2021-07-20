@@ -70,10 +70,10 @@ void Ataque_zombie::bajar_vida(Casilla* casilla){
 
 
     if(indice_humano != NO_ENCONTRADO)
-        casilla -> obtener_objetos()[indice_humano] -> asignar_nombre(NOMBRES_STRING[ZOMBIE]);
+        casilla -> obtener_objetos()[indice_humano] -> asignar_nombre(NOMBRES_CHAR[ZOMBIE]);
     if(indice_cazador != NO_ENCONTRADO)
-        casilla -> obtener_objetos()[indice_cazador] -> asignar_nombre(NOMBRES_STRING[ZOMBIE]);
+        casilla -> obtener_objetos()[indice_cazador] -> asignar_nombre(NOMBRES_CHAR[ZOMBIE]);
     if(indice_vanesa != NO_ENCONTRADO)
-        casilla -> obtener_objetos()[indice_vanesa] -> asignar_nombre(NOMBRES_STRING[ZOMBIE]);
+        casilla -> obtener_objetos()[indice_vanesa] -> asignar_nombre(NOMBRES_CHAR[ZOMBIE]);
 
 }
