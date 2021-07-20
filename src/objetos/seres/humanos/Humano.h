@@ -61,20 +61,19 @@ class Humano : public Ser
 		//      Es decir, se ejecutó previamente el método tengoAguaBendita.
 		// POS: devuelve la posición del inventario en la que hay agua bendita.
 		int  buscar_agua_bendita();
-    		
-<<<<<<< HEAD
+
     		// PRE: -
     		// POS: Devuelve la acción a realizar durante la defensa.
     		//      Si elige regenerar energía, devuelve 1 = REGENERAR_ENERGIA
     		//      Si elige aumentar armadura, devuelve 2 = AUMENTAR_ARMADURA
     		//int elegir_accion();
-=======
+
 		// PRE: -
 		// POS: Devuelve la acción a realizar durante la defensa.
 		//      Si elige regenerar energía, devuelve 1 = REGENERAR_ENERGIA
 		//      Si elige aumentar armadura, devuelve 2 = AUMENTAR_ARMADURA
 		int elegir_accion();
->>>>>>> master
+
 
 };
 
