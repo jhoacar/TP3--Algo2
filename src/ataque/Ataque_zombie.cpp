@@ -13,7 +13,7 @@ void Ataque_zombie::atacar(Tablero* tablero) {
     Coordenada centro = casilla_personaje->obtener_posicion();
 
     Lista<Coordenada> lista_coordenadas = obtener_cruz(centro, 1);
-    Lista<Casilla *> lista_casillas = obtener_lista_casillas(lista_coordenadas);
+    Lista<Casilla *> lista_casillas = tablero -> obtener_lista_casillas(lista_coordenadas);
 
     bool validacion_hay_personaje = false;
 
