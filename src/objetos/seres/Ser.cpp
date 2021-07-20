@@ -39,21 +39,19 @@ int Ser::devolver_vida(){
     return this -> vida;
 }
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> master
+
+
 Lista<Objeto*> Ser::obtener_inventario(){
     return this -> inventario;
 }
 
-<<<<<<< HEAD
-=======
-void Ser::defender(){
+
+/*void Ser::defender(){
     defensa->defender();
-}
+}*/
 
 >>>>>>> master
 bool es_elemento(Objeto* objeto_a_comprobar) {
@@ -96,3 +94,9 @@ int Ser::calcular_vida_con_armadura(int vida_a_bajar){
     }
     return vida_final_bajar;
 }
+
+Ataque* Ser::devolver_ataque() {
+
+    return ataque;
+}
+

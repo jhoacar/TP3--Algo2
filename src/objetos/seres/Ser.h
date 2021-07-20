@@ -37,6 +37,8 @@ class Ser : public Objeto
 		int devolver_fuerza();
 
 
+		Ataque* devolver_ataque();
+
 		Lista<Objeto*> obtener_inventario();
 
 		//void defender();
