@@ -40,7 +40,6 @@ class Ser : public Objeto
 		Lista<Objeto*> obtener_inventario();
 
 		//void defender();
-		void atacar(Casilla *casilla);
 		//void atacar(Lista<Casilla*> casilla);
 
 		virtual void regenerar_energia()=0;
