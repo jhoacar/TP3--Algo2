@@ -31,14 +31,16 @@ void Zombie::encuentro_con_elemento() {
     this ->inventario += solo_agua;
     cout << "Se agregaro con exito el agua al inventario" << endl;
 
-    for (int i = 0; i < solo_agua . obtener_tamano(); i++)
-        this -> casilla -> eliminar_objeto(solo_agua[i]->obtener_ID());
+    this -> casilla -> eliminar_objetos(solo_agua);
 }
 
-void Zombie::defenderse() {
+void Zombie::defender() {
     this->energia -=3;
     this->escondido = true;
     this->vida +=20;
+}
+void Zombie::atacar(Casilla *casilla){
+    
 }
 
 void Zombie::resurgir() {
@@ -47,4 +49,7 @@ void Zombie::resurgir() {
 
 bool Zombie::esta_escondido() {
     return this->escondido;
+}
+void Zombie::aparecer_zombie(){
+    this->escondido = false;
 }

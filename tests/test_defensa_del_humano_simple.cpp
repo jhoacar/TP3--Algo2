@@ -1,4 +1,3 @@
-#include "../src/funcionalidades/Datos.h"
 #include "../src/funcionalidades/Includes_Objetos.h"
 #include <iostream>
 
@@ -13,7 +12,7 @@ int main(){
     Objeto* humano_simple = new Humano(camino, 'h', "id");
 
     cout << "Energía previa: " << ((Ser*)humano_simple)->devolver_energia() << endl;
-    ((Humano*)humano_simple)->defenderse();
+    ((Humano*)humano_simple)->defender();
     cout << "Energía posterior: " << ((Ser*)humano_simple)->devolver_energia() << endl;
 
     return 0;

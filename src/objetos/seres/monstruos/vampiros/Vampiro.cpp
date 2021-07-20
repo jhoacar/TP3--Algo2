@@ -32,14 +32,16 @@ void Vampiro::encuentro_con_elemento() {
     objetos_casilla = this -> casilla ->obtener_objetos();
     solo_estaca = objetos_casilla.filtrar_datos(0, es_estaca);
 
-    for (int i = 0; i < solo_estaca . obtener_tamano(); i++)
-        this -> casilla -> eliminar_objeto(solo_estaca[i]->obtener_ID());
+    this -> casilla -> eliminar_objetos(solo_estaca);
     cout << "Se han destruido las estacas" << endl;
 }
 
-void Vampiro::defenderse() {
+void Vampiro::defender() {
     this->energia -=4;
     this->ocultarse();
+}
+void Vampiro::atacar(Casilla *casilla){
+
 }
 
 void Vampiro::ocultarse() {

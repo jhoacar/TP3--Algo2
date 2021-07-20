@@ -2,12 +2,29 @@
 #define HUMANO_H
 
 #include "../Ser.h"
-#include "../../../mapa/Casilla.h"
 
 class Humano : public Ser
 {
+
 	friend class Defensa_humano;
+
+	private:
+
+		bool armadura_aumentada;
+
+		// PRE: Se comprobó previamente que el humano tiene agua bendita en su invenatario.
+		//      Es decir, se ejecutó previamente el método tengoAguaBendita.
+		// POS: devuelve la posición del inventario en la que hay agua bendita.
+		int  buscar_agua_bendita();
+    		
+		// PRE: -
+		// POS: Devuelve la acción a realizar durante la defensa.
+		//      Si elige regenerar energía, devuelve 1 = REGENERAR_ENERGIA
+		//      Si elige aumentar armadura, devuelve 2 = AUMENTAR_ARMADURA
+		int elegir_accion();
+
 	public:
+
 		Humano();
 		Humano(Casilla *casilla,char nombre,string ID);
 		void mostrar();
@@ -19,7 +36,9 @@ class Humano : public Ser
 		// POS: El humano se defiende. Es decir:
 		//      Si no tiene agua bendita en su inventario, incrementa 3 puntos su energía.
 		//      Si tiene agua bendita, puede regenera toda su energía o incrementa 1 su armadura por un turno.
-		void defenderse();
+		void defender();
+
+		void atacar(Casilla *casilla);
 		
 		// Comprueba si hay agua bendita en el inventario
 		// PRE: -
@@ -45,22 +64,6 @@ class Humano : public Ser
 		// PRE: -
 		// POS: Devuelve true si tiene la armadura aumentada por defenderse, caso contrario devuelve false.
 		bool tiene_armadura_aumentada();
-
-	protected:
-	
-	private:
-		bool armadura_aumentada;
-
-		// PRE: Se comprobó previamente que el humano tiene agua bendita en su invenatario.
-		//      Es decir, se ejecutó previamente el método tengoAguaBendita.
-		// POS: devuelve la posición del inventario en la que hay agua bendita.
-		int  buscar_agua_bendita();
-    		
-		// PRE: -
-		// POS: Devuelve la acción a realizar durante la defensa.
-		//      Si elige regenerar energía, devuelve 1 = REGENERAR_ENERGIA
-		//      Si elige aumentar armadura, devuelve 2 = AUMENTAR_ARMADURA
-		int elegir_accion();
 
 };
 

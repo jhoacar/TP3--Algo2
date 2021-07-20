@@ -3,6 +3,7 @@
 #include <iostream>
 using std::cout;
 using std::endl;
+using std::cin;
 
 Humano::Humano():Ser(){
 	this->armadura_aumentada = false;
@@ -40,10 +41,13 @@ void Humano::encuentro_con_elemento() {
         cout << "Se agregaron con exito los elementos al inventario" << endl;
 
     casilla->eliminar_objetos(solo_elementos);
+}
+
+void Humano::atacar(Casilla *casilla){
 
 }
 
-void Humano::defenderse() {
+void Humano::defender() {
     
     if (!tengo_agua_bendita()){
         aumentar_energia();

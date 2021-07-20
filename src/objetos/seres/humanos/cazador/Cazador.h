@@ -11,6 +11,8 @@ class Cazador : public Humano
 		void mostrar();
 		void regenerar_energia();
 		~Cazador();
+		void defender();
+		void atacar(Casilla *casilla);
 	protected:
 };
 

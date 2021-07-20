@@ -10,6 +10,8 @@ class Nosferatu : public Vampiro
 		Nosferatu(Casilla *casilla,char nombre,string ID);
 		void mostrar();
 		void regnerar_energia();
+		void defender();
+		void atacar(Casilla *casilla);
 		~Nosferatu();
 	protected:
 };

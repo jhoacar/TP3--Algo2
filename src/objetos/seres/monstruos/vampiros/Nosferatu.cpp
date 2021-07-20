@@ -14,7 +14,12 @@ void Nosferatu::mostrar(){
 Nosferatu::~Nosferatu()
 {
 }
+void Nosferatu::defender(){
 
+}
+void Nosferatu::atacar(Casilla *casilla){
+
+}
 void Nosferatu::regnerar_energia() {
     this -> energia += 10;
 }

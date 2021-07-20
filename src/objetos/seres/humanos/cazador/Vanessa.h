@@ -11,6 +11,9 @@ class Vanessa : public Cazador
 		void mostrar();
 		void regenerar_energia();
 		~Vanessa();
+		void defender();
+		void atacar(Casilla *casilla);
+		
 	protected:
 };
 

@@ -15,6 +15,12 @@ Vampirella::~Vampirella()
 {
 }
 
+void Vampirella::defender(){
+    
+}
+void Vampirella::atacar(Casilla *casilla){
+
+}
 void Vampirella::regenerar_energia() {
     this -> energia += 6;
 }

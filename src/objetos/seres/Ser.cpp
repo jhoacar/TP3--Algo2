@@ -1,8 +1,9 @@
 #include "Ser.h"
 #include "../elementos/Agua.h"
-#include <iostream>
-#include "../../defensa/Defensa.h"
 
+bool es_elemento(Objeto* objeto_a_comprobar) {
+    return buscar_dato(NOMBRES_CHAR, MAX_NOMBRES,objeto_a_comprobar->obtener_nombre(),HUMANO) == NO_ENCONTRADO;
+}
 
 Ser::Ser():Objeto(){
     objeto_referencia = new Agua(); //No me interesa el tipo de objeto, solo sus atributos
@@ -35,15 +36,23 @@ int Ser::devolver_vida(){
     return this -> vida;
 }
 
+void Ser::asignar_armadura(int armadura) {
+    this -> armadura = armadura;
+}
+
+void Ser::asignar_energia(int energia) {
+    this -> energia = energia;
+}
+
+void Ser::asignar_fuerza(int fuerza){
+    this -> fuerza = fuerza;
+}
+
+void Ser::asignar_vida(int vida){
+    this -> vida = vida;
+}
+
 Lista<Objeto*> Ser::obtener_inventario(){
     return this -> inventario;
 }
 
-void Ser::defender(){
-    defensa->defender();
-}
-
-bool es_elemento(Objeto* objeto_a_comprobar) {
-
-    return buscar_dato(NOMBRES_CHAR, MAX_NOMBRES,objeto_a_comprobar->obtener_nombre(),HUMANO) == NO_ENCONTRADO;
-}

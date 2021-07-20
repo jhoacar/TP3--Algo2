@@ -2,10 +2,10 @@
 #define SER_H
 
 #include "../Objeto.h"
-#include "../elementos/Elemento.h"
+#include "../../mapa/Casilla.h"
 #include "../../constantes/Constantes.h"
 #include "../../funcionalidades/Funciones.h"
-#include "../../mapa/Casilla.h"
+
 
 class Defensa;
 class Ataque;
@@ -28,10 +28,14 @@ class Ser : public Objeto
 		int devolver_vida();
 		int devolver_energia();
 		int devolver_fuerza();
+		void asignar_armadura(int armadura);
+		void asignar_vida(int vida);
+		void asignar_energia(int energia);
+		void asignar_fuerza(int fuerza);
 		Lista<Objeto*> obtener_inventario();
-		void defender();
-		void atacar(Casilla *casilla);
-		void atacar(Lista<Casilla*> casilla);
+		
+		virtual void defender()=0;
+		virtual void atacar(Casilla *casilla)=0;
 		virtual void regenerar_energia()=0;
 		virtual void encuentro_con_elemento()=0;
 };

@@ -11,6 +11,15 @@ void Cazador::mostrar(){
 }
 Cazador::~Cazador()
 {
+
+}
+
+void Cazador::defender(){
+
+}
+
+void Cazador::atacar(Casilla *casilla){
+    
 }
 
 void Cazador::regenerar_energia() {
