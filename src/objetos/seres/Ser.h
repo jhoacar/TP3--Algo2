@@ -64,7 +64,7 @@ class Ser : public Objeto
 
         //PRE: recibe una casilla
         //POST: baja la vida del personaje que se encuentra en esa casilla
-		void atacar(Casilla *casilla);
+		
 
         //PRE: recibe una cantidad
         //POST: baja la vida
