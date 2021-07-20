@@ -1,11 +1,10 @@
 #include "Ser.h"
 #include "../elementos/Agua.h"
-<<<<<<< HEAD
+
 #include "../../ataque/Ataque.h"
 #include <iostream>
 #include "../../defensa/Defensa.h"
-=======
->>>>>>> dd24cbe531f59d1f6ab25ecc284ba3edf85872ec
+
 
 bool es_elemento(Objeto* objeto_a_comprobar) {
     return buscar_dato(NOMBRES_CHAR, MAX_NOMBRES,objeto_a_comprobar->obtener_nombre(),HUMANO) == NO_ENCONTRADO;
@@ -45,7 +44,7 @@ int Ser::devolver_vida(){
     return this -> vida;
 }
 
-<<<<<<< HEAD
+
 
 
 Lista<Objeto*> Ser::obtener_inventario(){
@@ -57,7 +56,7 @@ Lista<Objeto*> Ser::obtener_inventario(){
     defensa->defender();
 }*/
 
-=======
+
 void Ser::asignar_armadura(int armadura) {
     this -> armadura = armadura;
 }
@@ -65,7 +64,7 @@ void Ser::asignar_armadura(int armadura) {
 void Ser::asignar_energia(int energia) {
     this -> energia = energia;
 }
->>>>>>> dd24cbe531f59d1f6ab25ecc284ba3edf85872ec
+
 
 void Ser::asignar_fuerza(int fuerza){
     this -> fuerza = fuerza;
@@ -79,7 +78,7 @@ Lista<Objeto*> Ser::obtener_inventario(){
     return this -> inventario;
 }
 
-<<<<<<< HEAD
+
     return buscar_dato(NOMBRES_CHAR, MAX_NOMBRES,objeto_a_comprobar->obtener_nombre(),HUMANO) == NO_ENCONTRADO;
 }
 
@@ -124,5 +123,4 @@ Ataque* Ser::devolver_ataque() {
     return ataque;
 }
 
-=======
->>>>>>> dd24cbe531f59d1f6ab25ecc284ba3edf85872ec
+
