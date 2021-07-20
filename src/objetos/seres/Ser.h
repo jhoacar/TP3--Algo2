@@ -52,7 +52,7 @@ class Ser : public Objeto
 		void asignar_vida(int vida);
 		void asignar_energia(int energia);
 		void asignar_fuerza(int fuerza);
-		Lista<Objeto*> obtener_inventario();
+
 		
 		virtual void defender()=0;
 		virtual void atacar(Casilla *casilla)=0;
