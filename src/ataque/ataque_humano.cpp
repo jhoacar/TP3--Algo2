@@ -202,8 +202,7 @@ void Ataque_humano::bajar_vida(Casilla* casilla){
     int indice_nosferatu = indice_personaje(NOMBRES_STRING[NOSFERATU], casilla);
     int indice_vampirella = indice_personaje(NOMBRES_STRING[VAMPIRELLA], casilla);
 
-    int valor_ataque;
-    int valor_final;
+    
 
 
     if(indice_zombie != NO_ENCONTRADO) {
