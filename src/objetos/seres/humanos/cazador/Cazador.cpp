@@ -1,4 +1,5 @@
 #include "Cazador.h"
+#include "../../../../ataque/Ataque_cazador.h"
 #include <iostream>
 using std::cout;
 using std::endl;
