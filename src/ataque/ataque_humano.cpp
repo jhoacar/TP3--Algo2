@@ -186,12 +186,7 @@ void Ataque_humano::calcular_valores_ataque(int indice, int porcentaje, Casilla*
     valor_final = calcular_vida_con_armadura(valor_ataque);
     ((Ser*) casilla -> obtener_objetos()[indice]) -> bajar_vida(valor_final);
 
-
 }
-
-
-
-
 
 
 
@@ -202,37 +197,15 @@ void Ataque_humano::bajar_vida(Casilla* casilla){
     int indice_nosferatu = indice_personaje(NOMBRES_STRING[NOSFERATU], casilla);
     int indice_vampirella = indice_personaje(NOMBRES_STRING[VAMPIRELLA], casilla);
 
-    
-
-
-    if(indice_zombie != NO_ENCONTRADO) {
+    if(indice_zombie != NO_ENCONTRADO)
         calcular_valores_ataque(indice_zombie, 100, casilla);
-        /*valor_ataque = calcular_porcentaje_fuerza(fuerza, 100);
-        valor_final = calcular_vida_con_armadura(valor_ataque);
-        ((Ser*) casilla -> obtener_objetos()[indice_zombie])-> bajar_vida(valor_final);*/
-    }
-    if(indice_vampiro != NO_ENCONTRADO){
+    if(indice_vampiro != NO_ENCONTRADO)
         calcular_valores_ataque(indice_vampiro, 20, casilla);
-        /*valor_ataque = calcular_porcentaje_fuerza(fuerza, 20);
-        valor_final = calcular_vida_con_armadura(valor_ataque);
-        ((Ser*) casilla -> obtener_objetos()[indice_vampiro]) -> bajar_vida(valor_final);*/
-    }
-    if(indice_nosferatu != NO_ENCONTRADO){
+    if(indice_nosferatu != NO_ENCONTRADO)
         calcular_valores_ataque(indice_nosferatu, 20, casilla);
-        /*valor_ataque = calcular_porcentaje_fuerza(fuerza, 20);
-        valor_final = calcular_vida_con_armadura(valor_ataque);
-        ((Ser*) casilla -> obtener_objetos()[indice_nosferatu]) -> bajar_vida(valor_final);*/
-    }
-    if(indice_vampirella != NO_ENCONTRADO){
+    if(indice_vampirella != NO_ENCONTRADO)
         calcular_valores_ataque(indice_vampirella, 20, casilla);
-        /*valor_ataque = calcular_porcentaje_fuerza(fuerza, 20);
-        valor_final = calcular_vida_con_armadura(valor_ataque);
-        ((Ser*) casilla -> obtener_objetos()[indice_nosferatu]) -> bajar_vida(valor_final);*/
-    }
-
 }
-
-
 
 
 void Ataque_humano::atacar(Casilla *casilla) {

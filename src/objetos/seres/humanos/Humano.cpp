@@ -9,10 +9,8 @@ Humano::Humano():Ser(){
 	this -> ataque = new Ataque_humano(this);
 }
 
-Humano::Humano(Casilla *casilla,char nombre,string ID):Ser(casilla,nombre,ID)
-{
+Humano::Humano(Casilla *casilla,char nombre,string ID):Ser(casilla,nombre,ID){
 	this->armadura_aumentada = false;
-
 }
 
 void Humano::mostrar(){
