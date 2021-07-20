@@ -51,7 +51,7 @@ public:
     //POST: devuelve la inicial
     char devolver_inicial(string objeto);
 
-    void calcular_valores_ataque(int indice, int porcentaje);
+    void calcular_valores_ataque(int indice, int porcentaje, Casilla* casilla);
 
 
 };
