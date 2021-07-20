@@ -40,6 +40,22 @@ public:
     //PRE: recibe una cantidad
     //POST: le baja la vida al personaje
     void quitar_vida(int cantidad);
+
+    //PRE: recibe el nombre del objeto
+    //POST: devuelve la inicial
+    char devolver_inicial(string objeto);
+
+
+    //PRE: recibe una casilla que atacara y el nombre del personaje que atacara
+    //POST: devuelve la posicion donde se encuentra el personaje en la lista,
+    //si no lo encuentra devolvera -1
+    int buscar_personaje(Casilla *casilla_a_atacar, string personaje);
+
+    //PRE: recibe el nombre y la casilla que se encuentra el personaje
+    //POST: devuelve la posicion del personaje
+    int indice_personaje(string personaje, Casilla* casilla);
+
+
 };
 
 

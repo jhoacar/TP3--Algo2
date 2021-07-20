@@ -28,8 +28,8 @@ class Ser : public Objeto
 
 
 =======
-		Defensa *defensa;
-		Ataque *ataque;
+		/*Defensa *defensa;
+		Ataque *ataque;*/
 >>>>>>> master
 	public:
 		Ser();
@@ -43,10 +43,10 @@ class Ser : public Objeto
 
 		Lista<Objeto*> obtener_inventario();
 =======
-		Lista<Objeto*> obtener_inventario();
-		void defender();
+
+		//void defender();
 		void atacar(Casilla *casilla);
-		void atacar(Lista<Casilla*> casilla);
+		//void atacar(Lista<Casilla*> casilla);
 >>>>>>> master
 		virtual void regenerar_energia()=0;
 		virtual void encuentro_con_elemento()=0;

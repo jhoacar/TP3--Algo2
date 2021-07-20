@@ -92,7 +92,66 @@ int Ataque::calcular_porcentaje_fuerza(int fuerza, int porcentaje){
 }
 
 
+char Ataque::devolver_inicial(string objeto) {
 
+    char inicial;
+    if(objeto == "agua")
+        inicial = NOMBRES_CHAR[AGUA];
+    if(objeto == "bala")
+        inicial = NOMBRES_CHAR[BALA];
+    if(objeto == "cruz")
+        inicial = NOMBRES_CHAR[CRUZ];
+    if(objeto == "estaca")
+        inicial = NOMBRES_CHAR[ESTACA];
+    if(objeto == "escopeta")
+        inicial = NOMBRES_CHAR[ESCOPETA];
+    if(objeto == "humano")
+        inicial = NOMBRES_CHAR[HUMANO];
+    if(objeto == "humano CV")
+        inicial = NOMBRES_CHAR[HUMANO_CAZADOR];
+    if(objeto == "Vanesa")
+        inicial = NOMBRES_CHAR[VANESA];
+    if(objeto == "vampiro")
+        inicial = NOMBRES_CHAR[VAMPIRO];
+    if(objeto == "Vampirella")
+        inicial = NOMBRES_CHAR[VAMPIRELLA];
+    if(objeto == "Nosferatu")
+        inicial = NOMBRES_CHAR[NOSFERATU];
+    if(objeto == "zombi")
+        inicial = NOMBRES_CHAR[ZOMBIE];
+
+    return inicial;
+
+}
+
+
+int Ataque::buscar_personaje(Casilla *casilla_a_atacar, string personaje){
+
+    int posicion;
+    Objeto *objeto_referencia = new Vampiro();
+    char inicial = devolver_inicial(personaje);
+    objeto_referencia -> asignar_nombre(inicial);
+
+    bool existe = casilla_a_atacar -> obtener_objetos().existe(objeto_referencia,comparacion_por_nombre);
+
+    if(existe)
+        posicion = casilla_a_atacar -> obtener_objetos().buscar_dato(0, objeto_referencia,comparacion_por_nombre);
+    else
+        posicion = NO_ENCONTRADO;
+
+    return posicion;
+}
+
+
+int Ataque::indice_personaje(string personaje, Casilla* casilla){
+
+    Objeto *objeto_referencia = new Vampiro();
+    char inicial = devolver_inicial(personaje);
+    objeto_referencia -> asignar_nombre(inicial);
+    int indice = casilla -> obtener_objetos().buscar_dato(0, objeto_referencia, comparacion_por_nombre);
+    return indice;
+
+}
 
 
 /*bool Ataque::validacion_rango_ataque_estaca(int coord_x, int coord_y, int max_rango){

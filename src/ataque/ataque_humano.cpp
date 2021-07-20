@@ -15,39 +15,7 @@ Ataque_humano::Ataque_humano(Humano *personaje): Ataque(personaje){
 }
 
 
-char Ataque_humano::devolver_inicial(string objeto) {
 
-    char inicial;
-    if(objeto == "agua")
-        inicial = NOMBRES_CHAR[AGUA];
-    if(objeto == "bala")
-        inicial = NOMBRES_CHAR[BALA];
-    if(objeto == "cruz")
-        inicial = NOMBRES_CHAR[CRUZ];
-    if(objeto == "estaca")
-        inicial = NOMBRES_CHAR[ESTACA];
-    if(objeto == "escopeta")
-        inicial = NOMBRES_CHAR[ESCOPETA];
-    if(objeto == "humano")
-        inicial = NOMBRES_CHAR[HUMANO];
-    if(objeto == "humano CV")
-        inicial = NOMBRES_CHAR[HUMANO_CAZADOR];
-    if(objeto == "Vanesa")
-        inicial = NOMBRES_CHAR[VANESA];
-    if(objeto == "vampiro")
-        inicial = NOMBRES_CHAR[VAMPIRO];
-    if(objeto == "Vampirella")
-        inicial = NOMBRES_CHAR[VAMPIRELLA];
-    if(objeto == "Nosferatu")
-        inicial = NOMBRES_CHAR[NOSFERATU];
-    if(objeto == "zombi")
-        inicial = NOMBRES_CHAR[ZOMBIE];
-
-    return inicial;
-
-
-
-}
 
 
 
@@ -60,25 +28,6 @@ bool Ataque_humano::tiene_arma(string arma_elegida){
     return personaje -> obtener_inventario().existe(objeto_referencia,comparacion_por_nombre);
 
 }
-
-
-int Ataque_humano::buscar_personaje(Casilla *casilla_a_atacar, string personaje){
-
-    int posicion;
-    Objeto *objeto_referencia = new Vampiro();
-    char inicial = devolver_inicial(personaje);
-    objeto_referencia -> asignar_nombre(inicial);
-
-    bool existe = casilla_a_atacar -> obtener_objetos().existe(objeto_referencia,comparacion_por_nombre);
-
-    if(existe)
-        posicion = casilla_a_atacar -> obtener_objetos().buscar_dato(0, objeto_referencia,comparacion_por_nombre);
-    else
-        posicion = NO_ENCONTRADO;
-
-    return posicion;
-}
-
 
 
 
@@ -103,15 +52,20 @@ bool Ataque_humano::tiene_balas(int cantidad_minima_balas){
     return balas_necesarias;
 }
 
-void Ataque_humano::bajar_cantidad_objeto(int cantidad_gastada, string arma){
+void Ataque_humano::bajar_cantidad_objeto(arma){
 
     Objeto *objeto_referencia = new Bala();
     char inicial = devolver_inicial(arma);
     objeto_referencia -> asignar_nombre(inicial);
-    int posicion_balas = personaje -> obtener_inventario().buscar_dato(0, objeto_referencia,comparacion_por_nombre);
+    int posicion = personaje -> obtener_inventario().buscar_dato(0, objeto_referencia,comparacion_por_nombre);
 
-    if(posicion_balas != NO_ENCONTRADO)
-        ((Elemento*) personaje -> obtener_inventario()[posicion_balas]) -> disminuir_cantidad(cantidad_gastada);
+    if(posicion != NO_ENCONTRADO){
+        if(arma == NOMBRES_STRING[BALA])
+            ((Elemento*) personaje -> obtener_inventario()[posicion]) -> disminuir_cantidad(2);
+        else if(arma == NOMBRES_STRING[AGUA])
+            ((Elemento*) personaje -> obtener_inventario()[posicion]) -> disminuir_cantidad(1);
+    }
+
 
 }
 
@@ -150,7 +104,10 @@ bool Ataque_humano::validacion_ataque(Casilla *casilla_a_atacar, string arma_ele
 
     bool validacion_ataque;
 
-    Lista<Coordenada> lista_casillas_posibles = obtener_cuadrado(casilla_a_atacar -> obtener_posicion(), 1);
+    Casilla* casilla_personaje = personaje ->obtener_casilla();
+    Coordenada centro = casilla_personaje ->obtener_posicion();
+
+    Lista<Coordenada> lista_casillas_posibles = obtener_cuadrado(centro, 1);
 
     bool validacion_rango = validacion_rango_ataque(lista_casillas_posibles, casilla_a_atacar);
 
@@ -167,15 +124,7 @@ bool Ataque_humano::validacion_ataque(Casilla *casilla_a_atacar, string arma_ele
 }
 
 
-int Ataque_humano::indice_personaje(string personaje, Casilla* casilla){
 
-    Objeto *objeto_referencia = new Vampiro();
-    char inicial = devolver_inicial(personaje);
-    objeto_referencia -> asignar_nombre(inicial);
-    int indice = casilla -> obtener_objetos().buscar_dato(0, objeto_referencia, comparacion_por_nombre);
-    return indice;
-
-}
 
 
 void Ataque_humano::calcular_valores_ataque(int indice, int porcentaje, Casilla* casilla){
@@ -188,6 +137,15 @@ void Ataque_humano::calcular_valores_ataque(int indice, int porcentaje, Casilla*
     ((Ser*) casilla -> obtener_objetos()[indice]) -> bajar_vida(valor_final);
 
 }
+
+void Ataque_humano::calcular_ataque_valores_fijos(int indice, int valor_a_sacar, Casilla* casilla){
+
+    int valor_final;
+    valor_final = calcular_vida_con_armadura(valor_a_sacar);
+    ((Ser*) casilla -> obtener_objetos()[indice]) -> bajar_vida(valor_final);
+
+}
+
 
 
 
@@ -228,10 +186,13 @@ void Ataque_humano::atacar(Casilla *casilla) {
         if(posicion == NO_ENCONTRADO)
             posicion = buscar_personaje(casilla, NOMBRES_STRING[NOSFERATU]);
 
-        consumir_energia(5);
-        bajar_cantidad_objeto(2, NOMBRES_STRING[BALA]);
+        if(posicion != NO_ENCONTRADO){
+            consumir_energia(5);
+            bajar_cantidad_objeto(arma_elegida);
+            bajar_vida(casilla);
+        }
 
-        bajar_vida(casilla);
+
     }
 }
 
