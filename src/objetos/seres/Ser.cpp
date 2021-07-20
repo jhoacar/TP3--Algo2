@@ -53,7 +53,7 @@ Lista<Objeto*> Ser::obtener_inventario(){
     defensa->defender();
 }*/
 
->>>>>>> master
+
 bool es_elemento(Objeto* objeto_a_comprobar) {
 
     return buscar_dato(NOMBRES_CHAR, MAX_NOMBRES,objeto_a_comprobar->obtener_nombre(),HUMANO) == NO_ENCONTRADO;
