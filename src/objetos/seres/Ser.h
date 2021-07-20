@@ -5,14 +5,12 @@
 #include "../../mapa/Casilla.h"
 #include "../../constantes/Constantes.h"
 #include "../../funcionalidades/Funciones.h"
-<<<<<<< HEAD
+
 #include "../../mapa/Casilla.h"
 #include "../../ataque/Ataque.h"
 
 class Ataque;
-=======
 
->>>>>>> dd24cbe531f59d1f6ab25ecc284ba3edf85872ec
 
 class Defensa;
 class Ataque;
@@ -39,7 +37,7 @@ class Ser : public Objeto
 		int devolver_vida();
 		int devolver_energia();
 		int devolver_fuerza();
-<<<<<<< HEAD
+
 
 
 		Ataque* devolver_ataque();
@@ -49,7 +47,7 @@ class Ser : public Objeto
 		//void defender();
 		//void atacar(Lista<Casilla*> casilla);
 
-=======
+
 		void asignar_armadura(int armadura);
 		void asignar_vida(int vida);
 		void asignar_energia(int energia);
@@ -58,7 +56,7 @@ class Ser : public Objeto
 		
 		virtual void defender()=0;
 		virtual void atacar(Casilla *casilla)=0;
->>>>>>> dd24cbe531f59d1f6ab25ecc284ba3edf85872ec
+
 		virtual void regenerar_energia()=0;
 		virtual void encuentro_con_elemento()=0;
 		bool es_elemento(Objeto* objeto_a_comprobar);
