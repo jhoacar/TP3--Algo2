@@ -21,7 +21,7 @@ void Ataque_nosferatu::atacar(Casilla *casilla) {
         posicion = buscar_personaje(casilla, NOMBRES_STRING[HUMANO]);
 
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla, NOMBRES_STRING[CAZADOR]);
+            posicion = buscar_personaje(casilla, NOMBRES_STRING[HUMANO_CAZADOR]);
         if(posicion == NO_ENCONTRADO)
             posicion = buscar_personaje(casilla, NOMBRES_STRING[VANESA]);
 
@@ -58,7 +58,7 @@ bool Ataque_nosferatu::validacion_ataque(Casilla *casilla_a_atacar){
 void Ataque_nosferatu::bajar_vida(Casilla* casilla){
 
     int indice_humano = indice_personaje(NOMBRES_STRING[HUMANO], casilla);
-    int indice_cazador = indice_personaje(NOMBRES_STRING[CAZADOR], casilla);
+    int indice_cazador = indice_personaje(NOMBRES_STRING[HUMANO_CAZADOR], casilla);
     int indice_vanesa = indice_personaje(NOMBRES_STRING[VANESA], casilla);
 
 
