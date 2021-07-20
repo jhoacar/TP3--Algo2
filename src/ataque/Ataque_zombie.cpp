@@ -42,12 +42,12 @@ void Ataque_zombie::atacar(Tablero* tablero) {
         Lista<Objeto*> lista_objetos = casilla_objeto -> obtener_objetos();
 
         int posicion;
-        posicion = buscar_personaje(casilla, NOMBRES_STRING[HUMANO]);
+        posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[HUMANO]);
 
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla, NOMBRES_STRING[HUMANO_CAZADOR]);
+            posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[HUMANO_CAZADOR]);
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla, NOMBRES_STRING[VANESA]);
+            posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[VANESA]);
 
 
         if(posicion != NO_ENCONTRADO){
