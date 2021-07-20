@@ -23,14 +23,10 @@ class Ser : public Objeto
         int armadura, vida, fuerza, energia;
         Lista<Objeto*> inventario;
 		Objeto *objeto_referencia; //Objeto de comparacion para la clase Lista
-<<<<<<< HEAD
 		Ataque *ataque;
 
-
-=======
 		/*Defensa *defensa;
 		Ataque *ataque;*/
->>>>>>> master
 	public:
 		Ser();
 		Ser(Casilla *casilla,char nombre,string ID);
@@ -39,15 +35,14 @@ class Ser : public Objeto
 		int devolver_vida();
 		int devolver_energia();
 		int devolver_fuerza();
-<<<<<<< HEAD
+
 
 		Lista<Objeto*> obtener_inventario();
-=======
 
 		//void defender();
 		void atacar(Casilla *casilla);
 		//void atacar(Lista<Casilla*> casilla);
->>>>>>> master
+
 		virtual void regenerar_energia()=0;
 		virtual void encuentro_con_elemento()=0;
 		bool es_elemento(Objeto* objeto_a_comprobar);
