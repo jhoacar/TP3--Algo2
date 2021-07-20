@@ -1,9 +1,9 @@
 #include "Humano.h"
-<<<<<<< HEAD
+
 #include "../../../ataque/Ataque_humano.h"
 =======
 #include "../../../defensa/tipos/Defensa_humano.h"
->>>>>>> master
+
 #include <iostream>
 using std::cout;
 using std::endl;
