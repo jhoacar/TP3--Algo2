@@ -4,7 +4,7 @@
 #include "Ataque.h"
 #include "../objetos/seres/humanos/Humano.h"
 
-class Ataque_vanesa : public Ataque {
+class Ataque_vanesa : public Ataque_humano {
 
     Ataque_vanesa(Humano *personaje);
     ~Ataque_vanesa();

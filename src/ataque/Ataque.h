@@ -16,7 +16,7 @@ public:
     ~Ataque();
     virtual void atacar(Casilla *casilla) = 0;
 
-protected:
+
     //PRE: recibe una casilla y un rango de distancia
     //POST: devuelve true si el objeto a atacar esta a su alcance
     bool validacion_rango_ataque(Lista<Coordenada> lista_casillas_posibles, Casilla *casilla_a_atacar);
