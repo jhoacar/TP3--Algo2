@@ -21,13 +21,13 @@ class Vertice{
             izquierdo   = nullptr;
             padre       = nullptr;
         }
-        Vertice(const Llave llave, const Vertice<Llave,Dato> *padre){
+        Vertice(const Llave llave, Vertice<Llave,Dato> *padre){
             this->dato = new Dato;
             this->llave = new Llave;
             *(this->llave) = llave;
             derecho = nullptr;
             izquierdo=nullptr;
-            padre = padre; 
+            this->padre = padre; 
         }
         ~Vertice(){
             delete dato;

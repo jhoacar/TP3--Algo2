@@ -8,6 +8,11 @@ using namespace std;
 void imprimir_coordenada(Coordenada coord){
     cout<<"("<<coord.obtener_fila()<<","<<coord.obtener_columna()<<")\t";
 }
+void imprimir_objeto(Objeto *objeto){
+    if(objeto!=nullptr)
+        objeto->mostrar();
+    cout<<endl;
+}
 
 Tablero::Tablero(){
 
@@ -109,28 +114,31 @@ bool Tablero::hay_casilla(Coordenada posicion){
 
 void Tablero::cargar_objeto(Objeto *objeto){
     
-    if(objeto!=nullptr){
+    if(objeto==nullptr)
+        return;
 
-        Coordenada posicion = objeto->obtener_casilla()->obtener_posicion();
-        
-        int fila = posicion.obtener_fila();
-        int columna = posicion.obtener_columna();
+    Coordenada posicion(NO_ENCONTRADO,NO_ENCONTRADO);
 
-        if(es_valida(posicion) && casillas[ fila ][ columna ] != nullptr){
-
-            objeto->asignar_cuadrante( obtener_cuadrante ( posicion ) );
+    if(objeto->obtener_casilla() != nullptr)
+        posicion = objeto->obtener_casilla()->obtener_posicion();
     
-            casillas[ fila ][ columna ]->agregar_objeto(objeto);
-        }
+    int fila = posicion.obtener_fila();
+    int columna = posicion.obtener_columna();
 
-    }    
+    if(es_valida(posicion) && casillas[ fila ][ columna ] != nullptr){
+
+        objeto->asignar_cuadrante( obtener_cuadrante ( posicion ) );
+
+        casillas[ fila ][ columna ]->agregar_objeto(objeto);
+    }
+        
 }
 
-void Tablero::cargar_lista_objetos(Lista<Objeto *>objeto){
-    objeto.reiniciar();
-    while(objeto.existe_siguiente())
-        cargar_objeto(objeto.siguiente_dato()); 
-    objeto.reiniciar();
+void Tablero::cargar_lista_objetos(Lista<Objeto*> objetos){
+    objetos.reiniciar();
+    while(objetos.existe_siguiente())
+        cargar_objeto(objetos.siguiente_dato()); 
+    objetos.reiniciar();
 }
 
 
@@ -162,7 +170,7 @@ void Tablero::asignar_casilla(Casilla *casilla){
 
         int fila = casilla->obtener_fila();
         int columna = casilla->obtener_columna();
-
+        casilla->asignar_cuadrante(obtener_cuadrante({fila,columna}));
         casillas[fila][columna] = casilla;
     }
 }
@@ -260,6 +268,17 @@ void Tablero::mostrar_tablero(){
         }
         color(RESET);
         cout<<endl;
+    }
+    cout<<endl<<endl;
+    for(int i=0; i<filas; i++){
+        for(int j=0; j<columnas; j++){
+            if(hay_casilla({i,j})){
+                cout<<endl<<"Casilla ("<<i<<","<<j<<"):"<<endl;
+                casillas[i][j]->obtener_objetos().imprimir(imprimir_objeto);
+            }
+            else
+            cout<<" NO HAY NINGUN OBJETO ACA ";
+        }
     }
     cout<<endl<<endl;
 }

@@ -110,8 +110,8 @@ class Tablero
 		
 		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Pre: Una lista de objetos previamente cargados cada uno con su casilla, comenzando desde fila=0, columna=0
-		//Post: Carga al tablero en la casilla de la posicion de cada objeto objeto, todos los objetos de la lista
-		void cargar_lista_objetos(Lista<Objeto *>objeto);
+		//Post: Carga al tablero en la casilla de la posicion de cada objeto, todos los objetos de la lista
+		void cargar_lista_objetos(Lista<Objeto*> objeto);
 
 		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Pre:  Una posicion a buscar, comenzando desde fila=0, columna=0 y un char representando el nombre del objeto
