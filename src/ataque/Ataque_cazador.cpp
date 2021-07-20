@@ -13,15 +13,16 @@ bool Ataque_cazador::validacion_ataque(Casilla *casilla_a_atacar, string arma_el
     bool validacion_ataque = false;
     Casilla* casilla_personaje = personaje ->obtener_casilla();
     Coordenada centro = casilla_personaje ->obtener_posicion();
+    Lista<Coordenada> lista_casillas_posibles;
 
     if(arma_elegida == NOMBRES_STRING[ESCOPETA]) {
-        Lista<Coordenada> lista_casillas_posibles = obtener_cuadrado(centro, 2);
+        lista_casillas_posibles = obtener_cuadrado(centro, 2);
         bool tiene_suficientes_balas = tiene_balas(2);
     }
     else if(arma_elegida == NOMBRES_STRING[AGUA])
-        Lista<Coordenada> lista_casillas_posibles = obtener_cuadrado(centro, 1);
+        lista_casillas_posibles = obtener_cuadrado(centro, 1);
     else if(arma_elegida == NOMBRES_STRING[ESTACA])
-        Lista<Coordenada> lista_casillas_posibles = obtener_cruz(centro, 1);
+        lista_casillas_posibles = obtener_cruz(centro, 1);
 
     bool validacion_rango = validacion_rango_ataque(lista_casillas_posibles, casilla_a_atacar);
     bool energia_suficiente_ = energia_suficiente(6);
