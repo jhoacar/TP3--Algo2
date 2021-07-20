@@ -74,9 +74,7 @@ void Ser::asignar_vida(int vida){
     this -> vida = vida;
 }
 
-Lista<Objeto*> Ser::obtener_inventario(){
-    return this -> inventario;
-}
+
 
 
     return buscar_dato(NOMBRES_CHAR, MAX_NOMBRES,objeto_a_comprobar->obtener_nombre(),HUMANO) == NO_ENCONTRADO;
