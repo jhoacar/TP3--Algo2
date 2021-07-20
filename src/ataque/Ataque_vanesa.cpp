@@ -61,7 +61,7 @@ void Ataque_vanesa::atacar(Casilla *casilla) {
             consumir_energia(8);
 
             bajar_cantidad_objeto(arma_elegida);
-            bajar_vida(casilla);
+            bajar_vida(casilla, arma_elegida);
         }
     }
 }
