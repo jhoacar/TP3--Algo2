@@ -1,14 +1,15 @@
-#include "Ataque_cazador.h"
+#include "Ataque_vanesa.h"
+#inlcude "../mapa/Casilla.h"
 
 
-Ataque_cazador::Ataque_cazador(Humano *personaje): Ataque_humano(personaje){
+Ataque_vanesa::Ataque_vanesa(Humano *personaje): Ataque_humano(personaje){
 }
 
 
 
 
-bool Ataque_cazador::validacion_ataque(Casilla *casilla_a_atacar, string arma_elegida){
 
+bool Ataque_vanesa::validacion_ataque(Casilla *casilla_a_atacar, string arma_elegida){
 
     bool validacion_ataque = false;
     Casilla* casilla_personaje = personaje ->obtener_casilla();
@@ -24,7 +25,8 @@ bool Ataque_cazador::validacion_ataque(Casilla *casilla_a_atacar, string arma_el
         Lista<Coordenada> lista_casillas_posibles = obtener_cruz(centro, 1);
 
     bool validacion_rango = validacion_rango_ataque(lista_casillas_posibles, casilla_a_atacar);
-    bool energia_suficiente_ = energia_suficiente(6);
+
+    bool energia_suficiente_ = energia_suficiente(8);
     bool tiene_arma_ = tiene_arma(arma_elegida);
 
     if(arma_elegida == NOMBRES_STRING[ESCOPETA]) {
@@ -39,8 +41,7 @@ bool Ataque_cazador::validacion_ataque(Casilla *casilla_a_atacar, string arma_el
     return validacion_ataque;
 }
 
-void Ataque_cazador::atacar(Casilla *casilla) {
-
+void Ataque_vanesa::atacar(Casilla *casilla) {
 
     string arma_elegida = eleccion_arma();
     bool validacion = validacion_ataque(casilla, arma_elegida);
@@ -60,7 +61,7 @@ void Ataque_cazador::atacar(Casilla *casilla) {
             posicion = buscar_personaje(casilla, NOMBRES_STRING[NOSFERATU]);
 
         if(posicion != NO_ENCONTRADO){
-            consumir_energia(5);
+            consumir_energia(8);
 
             bajar_cantidad_objeto(arma_elegida);
             bajar_vida(casilla);
@@ -68,19 +69,28 @@ void Ataque_cazador::atacar(Casilla *casilla) {
     }
 }
 
+void Ataque_vanesa::bajar_vida_completa(int indice, Casilla *casilla){
 
-void Ataque_cazador::bajar_vida_vampiros(int indice, int porcentaje_escopeta, int porcentaje_agua, int porcentaje_estaca, Casilla* casilla, string arma_elegida){
+    int valor_final;
+    int vida = ((Ser*)casilla -> obtener_objetos()[indice]) -> devolver_vida();
+    valor_final = calcular_vida_con_armadura(vida);
+
+    ((Ser*)casilla -> obtener_objetos()[indice]) -> bajar_vida(valor_final);
+}
+
+
+void Ataque_vanesa::bajar_vida_vampiros(int indice, int porcentaje_escopeta, int porcentaje_agua, Casilla* casilla, string arma_elegida){
 
     if (arma_elegida == NOMBRES_STRING[ESCOPETA])
         calcular_valores_ataque(indice, porcentaje_escopeta, casilla);
     else if (arma_elegida == NOMBRES_STRING[ESTACA])
         calcular_ataque_valores_fijos(indice, porcentaje_agua, casilla);
     else if (arma_elegida == NOMBRES_STRING[AGUA])
-        calcular_ataque_valores_fijos(indice, porcentaje_estaca, casilla);
+        bajar_vida_completa(indice, casilla);
 }
 
 
-void Ataque_cazador::bajar_vida(Casilla* casilla, string arma_elegida){
+void Ataque_vanesa::bajar_vida(Casilla* casilla, string arma_elegida){
 
     int indice_zombie = indice_personaje(NOMBRES_STRING[ZOMBIE], casilla);
     int indice_vampiro = indice_personaje(NOMBRES_STRING[VAMPIRO], casilla);
@@ -89,15 +99,14 @@ void Ataque_cazador::bajar_vida(Casilla* casilla, string arma_elegida){
 
     if(indice_zombie != NO_ENCONTRADO) {
         if (arma_elegida == NOMBRES_STRING[ESCOPETA])
-            calcular_valores_ataque(indice_zombie, 105, casilla);
+            calcular_valores_ataque(indice_zombie, 125, casilla);
         else if (arma_elegida == NOMBRES_STRING[ESTACA])
-            calcular_valores_ataque(indice_zombie, 20, casilla);
+            calcular_valores_ataque(indice_zombie, 25, casilla);
     }
     if(indice_vampiro != NO_ENCONTRADO)
-        bajar_vida_vampiro(indice_vampiro, 30, 10, 60, casilla, arma_elegida);
+        bajar_vida_vampiros(indice_vampiro, 40, 20, casilla, arma_elegida);
     if(indice_nosferatu != NO_ENCONTRADO)
-        bajar_vida_vampiro(indice_nosferatu, 30, 10, 60, casilla, arma_elegida);
+        bajar_vida_vampiros(indice_nosferatu, 40, 20, casilla, arma_elegida);
     if(indice_vampirella != NO_ENCONTRADO)
-        bajar_vida_vampiro(indice_vampirella, 30, 10, 60, casilla, arma_elegida);
+        bajar_vida_vampiros(indice_vampirella, 40, 20, casilla, arma_elegida);
 }
-
