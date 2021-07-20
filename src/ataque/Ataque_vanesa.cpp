@@ -3,6 +3,9 @@
 Ataque_vanesa::Ataque_vanesa(Humano *personaje):Ataque_humano(personaje){
 }
 
+Ataque_vanesa::~Ataque_vanesa(){
+}
+
 
 bool Ataque_vanesa::validacion_ataque(Casilla *casilla_a_atacar, string arma_elegida){
 

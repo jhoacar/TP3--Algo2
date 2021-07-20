@@ -55,6 +55,8 @@ public:
     //POST: devuelve la posicion del personaje
     int indice_personaje(string personaje, Casilla* casilla);
 
+    void calcular_valores_ataque(int indice, int porcentaje, Casilla* casilla);
+
 
 };
 

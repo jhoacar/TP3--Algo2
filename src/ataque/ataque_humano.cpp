@@ -15,7 +15,8 @@ Ataque_humano::Ataque_humano(Humano *personaje): Ataque(personaje){
 }
 
 
-
+Ataque_humano::~Ataque_humano(){
+}
 
 
 
@@ -127,16 +128,7 @@ bool Ataque_humano::validacion_ataque(Casilla *casilla_a_atacar, string arma_ele
 
 
 
-void Ataque_humano::calcular_valores_ataque(int indice, int porcentaje, Casilla* casilla){
 
-    int valor_final;
-    int fuerza = personaje -> devolver_fuerza();
-    int valor_ataque = calcular_porcentaje_fuerza(fuerza, porcentaje);
-
-    valor_final = calcular_vida_con_armadura(valor_ataque);
-    ((Ser*) casilla -> obtener_objetos()[indice]) -> bajar_vida(valor_final);
-
-}
 
 void Ataque_humano::calcular_ataque_valores_fijos(int indice, int valor_a_sacar, Casilla* casilla){
 

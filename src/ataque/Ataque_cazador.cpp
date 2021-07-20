@@ -1,10 +1,11 @@
 #include "Ataque_cazador.h"
 
 
-Ataque_cazador::Ataque_cazador(Humano *personaje): Ataque_humano(personaje){
+Ataque_cazador::Ataque_cazador(Cazador *personaje): Ataque_humano(personaje){
 }
 
-
+Ataque_cazador::~Ataque_cazador(){
+}
 
 
 bool Ataque_cazador::validacion_ataque(Casilla *casilla_a_atacar, string arma_elegida){

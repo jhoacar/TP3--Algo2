@@ -56,7 +56,16 @@ bool Ataque::validacion_rango_ataque(Lista<Coordenada> lista_casillas_posibles, 
 
 }
 
+void Ataque::calcular_valores_ataque(int indice, int porcentaje, Casilla* casilla){
 
+    int valor_final;
+    int fuerza = personaje -> devolver_fuerza();
+    int valor_ataque = calcular_porcentaje_fuerza(fuerza, porcentaje);
+
+    valor_final = calcular_vida_con_armadura(valor_ataque);
+    ((Ser*) casilla -> obtener_objetos()[indice]) -> bajar_vida(valor_final);
+
+}
 
 void Ataque::consumir_energia(int cantidad){
     personaje -> consumir_energia(cantidad);

@@ -4,6 +4,7 @@
 #include <iostream>
 using std::cout;
 using std::endl;
+using std::cin;
 
 Humano::Humano():Ser(){
 	this->armadura_aumentada = false;
@@ -29,7 +30,35 @@ void Humano::regenerar_energia() {
 }
 
 
+<<<<<<< HEAD
 
+=======
+    casilla->eliminar_objetos(solo_elementos);
+}
+
+void Humano::atacar(Casilla *casilla){
+
+}
+
+void Humano::defender() {
+    
+    if (!tengo_agua_bendita()){
+        aumentar_energia();
+        cout << "|||| No tengo agua bendita, pero aumenté mi energía ||||" << endl;
+    }
+    else {
+        int accion = elegir_accion();
+        if (accion == REGENERAR_ENERGIA){
+            consumir_agua_bendita();
+            cout << "|||| Regeneré mi energía ||||" << endl;
+        }
+        else{
+            aumentar_armadura();
+            cout << "|||| Mejoré mi armadura ||||" << endl;
+        }
+    }
+}
+>>>>>>> dd24cbe531f59d1f6ab25ecc284ba3edf85872ec
 
 bool Humano::tengo_agua_bendita() {
     objeto_referencia->asignar_nombre(NOMBRES_CHAR[AGUA]); //Le asigno el nombre que quiera buscar en la lista

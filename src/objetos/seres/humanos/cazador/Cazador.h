@@ -13,9 +13,14 @@ class Cazador : public Humano
 		void regenerar_energia();
 		~Cazador();
 
+
         /*void validacion_ataque(Ataque* ataque, int posicion_x_elegida, int posicion_y_elegida, string arma_elegida);
 
         void atacar(Tablero* tablero, int posicion_x_elegida, int posicion_y_elegida, string arma_elegida);*/
+
+
+		void defender();
+		void atacar(Casilla *casilla);
 
 	protected:
 };

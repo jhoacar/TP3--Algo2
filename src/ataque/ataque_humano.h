@@ -44,7 +44,7 @@ public:
 
 
 
-    void calcular_valores_ataque(int indice, int porcentaje, Casilla* casilla);
+
 
     void calcular_ataque_valores_fijos(int indice, int valor_a_sacar, Casilla* casilla);
 

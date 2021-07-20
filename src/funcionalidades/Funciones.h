@@ -84,8 +84,14 @@ bool es_par(int numero);
 //Post: Devuelve una lista de coordenadas, positivas referentes a una cruz de esa longitud
 Lista<Coordenada> obtener_cruz(Coordenada centro , int longitud);
 
+<<<<<<< HEAD
 
 Lista<Coordenada> obtener_cuadrado(Coordenada centro, int longitud);
+=======
+//Pre: Una posicion de referencia y una longitud
+//Post: Devuelve una lista de coordenadas, positivas referentes a un cuadrado de esa longitud
+Lista<Coordenada> obtener_cuadrado(Coordenada centro , int longitud);
+>>>>>>> dd24cbe531f59d1f6ab25ecc284ba3edf85872ec
 
 
 //Pre: Un vector de datos, un tamaño especifico y un dato a buscar

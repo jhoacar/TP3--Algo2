@@ -15,7 +15,13 @@ Vanessa::~Vanessa()
 {
 	
 }
+void Vanessa::defender(){
 
+}
+
+void Vanessa::atacar(Casilla *casilla){
+    
+}
 void Vanessa::regenerar_energia() {
     this -> energia += 10;
 }
