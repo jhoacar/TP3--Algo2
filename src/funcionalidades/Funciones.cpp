@@ -169,7 +169,7 @@ Lista<Coordenada> obtener_cuadrado(Coordenada centro, int longitud){
 }
 
 
->>>>>>> dd24cbe531f59d1f6ab25ecc284ba3edf85872ec
+
 int convertir_entero(string cadena){
 
 	return stoi(solo_numeros(cadena));
