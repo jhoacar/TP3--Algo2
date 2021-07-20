@@ -1,7 +1,7 @@
 #ifndef ATAQUE_HUMANO_H_ATAQUE_VANESA_H
 #define ATAQUE_HUMANO_H_ATAQUE_VANESA_H
 
-#include "Ataque.h"
+#include "Ataque_humano.h"
 #include "../objetos/seres/humanos/Humano.h"
 
 class Ataque_vanesa : public Ataque_humano {
