@@ -41,9 +41,6 @@ int Ser::devolver_vida(){
 
 
 
-
-
-
 Lista<Objeto*> Ser::obtener_inventario(){
     return this -> inventario;
 }
