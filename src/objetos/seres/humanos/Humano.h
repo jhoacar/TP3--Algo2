@@ -17,7 +17,7 @@ class Humano : public Ser
 		void mostrar();
 		~Humano();
 		void regenerar_energia();
-		//void encuentro_con_elemento();
+		void encuentro_con_elemento();
 		
 		// PRE: Una instancia de humano ha decidido defenderse.
 		// POS: El humano se defiende. Es decir:

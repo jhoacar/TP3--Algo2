@@ -15,7 +15,7 @@ Humano::Humano():Ser(){
 
 Humano::Humano(Casilla *casilla,char nombre,string ID):Ser(casilla,nombre,ID){
 	this->armadura_aumentada = false;
-    
+
 }
 
 void Humano::mostrar(){
