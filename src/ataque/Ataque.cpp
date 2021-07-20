@@ -50,7 +50,7 @@ bool Ataque::validacion_rango_ataque(Lista<Coordenada> lista_casillas_posibles, 
     bool validacion = false;
 
     while(lista_casillas_posibles.existe_siguiente() && !validacion)
-        validacion = listalista_casillas_posibles.siguiente_dato() == casilla_a_atacar->obtener_posicion();
+        validacion = lista_casillas_posibles.siguiente_dato() == casilla_a_atacar->obtener_posicion();
 
     return validacion;
 
