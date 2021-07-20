@@ -30,11 +30,6 @@ void Humano::regenerar_energia() {
 }
 
 
-<<<<<<< HEAD
-
-=======
-    casilla->eliminar_objetos(solo_elementos);
-}
 
 void Humano::atacar(Casilla *casilla){
 
@@ -58,7 +53,7 @@ void Humano::defender() {
         }
     }
 }
->>>>>>> dd24cbe531f59d1f6ab25ecc284ba3edf85872ec
+
 
 bool Humano::tengo_agua_bendita() {
     objeto_referencia->asignar_nombre(NOMBRES_CHAR[AGUA]); //Le asigno el nombre que quiera buscar en la lista
