@@ -14,10 +14,11 @@ bool Ataque_cazador::validacion_ataque(Casilla *casilla_a_atacar, string arma_el
     Casilla* casilla_personaje = personaje ->obtener_casilla();
     Coordenada centro = casilla_personaje ->obtener_posicion();
     Lista<Coordenada> lista_casillas_posibles;
+    bool tiene_suficientes_balas;
 
     if(arma_elegida == NOMBRES_STRING[ESCOPETA]) {
         lista_casillas_posibles = obtener_cuadrado(centro, 2);
-        bool tiene_suficientes_balas = tiene_balas(2);
+        tiene_suficientes_balas = tiene_balas(2);
     }
     else if(arma_elegida == NOMBRES_STRING[AGUA])
         lista_casillas_posibles = obtener_cuadrado(centro, 1);
