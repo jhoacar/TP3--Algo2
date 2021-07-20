@@ -1,6 +1,6 @@
 #include "Ataque.h"
 #include "../objetos/seres/Ser.h"
-
+#include "../objetos/seres/monstruos/vampiros/Vampiro.h"
 
 
 Ataque::Ataque(Ser *personaje) {
