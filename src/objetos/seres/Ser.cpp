@@ -76,10 +76,6 @@ void Ser::asignar_vida(int vida){
 
 
 
-
-    return buscar_dato(NOMBRES_CHAR, MAX_NOMBRES,objeto_a_comprobar->obtener_nombre(),HUMANO) == NO_ENCONTRADO;
-}
-
 void Ser::atacar(Casilla *casilla) {
 
     ataque -> atacar(casilla);
