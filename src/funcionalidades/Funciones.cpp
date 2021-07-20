@@ -145,7 +145,7 @@ Lista<Coordenada> obtener_cruz(Coordenada centro, int longitud){
 	return cruz;
 }
 
-<<<<<<< HEAD
+
 
 Lista<Coordenada> obtener_cuadrado(Coordenada centro, int longitud){
 
@@ -171,8 +171,6 @@ Lista<Coordenada> obtener_cuadrado(Coordenada centro, int longitud){
 
 
 
-
-=======
 Lista<Coordenada> obtener_cuadrado(Coordenada centro, int longitud){
 	
 	Lista<Coordenada> cuadrado;
