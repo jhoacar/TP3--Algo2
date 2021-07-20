@@ -75,7 +75,7 @@ class Humano : public Ser
 	protected:
 
 
-    
+
 
 
 };

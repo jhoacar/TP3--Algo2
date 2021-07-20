@@ -63,10 +63,10 @@ void Ataque_nosferatu::bajar_vida(Casilla* casilla){
 
 
     if(indice_humano != NO_ENCONTRADO)
-        calcular_valores_ataque(indice_zombie, 100, casilla);
+        calcular_valores_ataque(indice_humano, 100, casilla);
     if(indice_cazador != NO_ENCONTRADO)
-        calcular_valores_ataque(indice_vampiro, 100, casilla);
+        calcular_valores_ataque(indice_cazador, 100, casilla);
     if(indice_vanesa != NO_ENCONTRADO)
-        calcular_valores_ataque(indice_nosferatu, 100, casilla);
+        calcular_valores_ataque(indice_vanesa, 100, casilla);
 
 }
