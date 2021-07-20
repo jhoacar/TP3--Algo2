@@ -147,28 +147,6 @@ Lista<Coordenada> obtener_cruz(Coordenada centro, int longitud){
 
 
 
-Lista<Coordenada> obtener_cuadrado(Coordenada centro, int longitud){
-
-    Lista<Coordenada> cruz;
-    int fila,columna;
-    for(int i=1;i<=longitud; i++){
-
-        fila = centro.obtener_fila();
-        columna = centro.obtener_columna();
-
-        cruz.agregar({	fila+i	,	columna+i		});
-        cruz.agregar({	fila-i	,	columna-i		});
-        cruz.agregar({	fila+i	,	columna-i		});
-        cruz.agregar({	fila-i	,	columna+i		});
-
-        cruz.agregar({	fila+i	,	columna		});
-        cruz.agregar({	fila	,	columna+i	});
-        cruz.agregar({	fila-i	,	columna		});
-        cruz.agregar({	fila	,	columna-i	});
-    }
-    return cruz;
-}
-
 
 
 Lista<Coordenada> obtener_cuadrado(Coordenada centro, int longitud){
