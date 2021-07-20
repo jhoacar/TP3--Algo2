@@ -6,6 +6,7 @@
 
 class Ataque_cazador : public Ataque_humano {
 
+public:
     Ataque_cazador(Humano *personaje);
     ~Ataque_cazador();
 

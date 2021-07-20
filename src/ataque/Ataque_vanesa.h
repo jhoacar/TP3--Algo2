@@ -6,6 +6,7 @@
 
 class Ataque_vanesa : public Ataque_humano {
 
+public:
     Ataque_vanesa(Humano *personaje);
     ~Ataque_vanesa();
 
