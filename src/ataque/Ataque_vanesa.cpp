@@ -1,5 +1,5 @@
 #include "Ataque_vanesa.h"
-#inlcude "../mapa/Casilla.h"
+
 
 
 Ataque_vanesa::Ataque_vanesa(Humano *personaje): Ataque_humano(personaje){
