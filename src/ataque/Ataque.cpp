@@ -1,6 +1,6 @@
 #include "Ataque.h"
-#include "../objetos/seres/Ser.h"
-#include "../objetos/seres/monstruos/vampiros/Vampiro.h"
+#include "Ser.h"
+#include "Vampiro.h"
 
 
 Ataque::Ataque(Ser *personaje) {
@@ -22,7 +22,7 @@ bool Ataque::energia_suficiente(int minimo) {
 }
 
 void Ataque::quitar_vida(int cantidad){
-    personaje ->bajar_vida(cantidad);
+    personaje -> bajar_vida(cantidad);
 }
 
 
@@ -153,11 +153,10 @@ int Ataque::buscar_personaje(Casilla *casilla_a_atacar, string personaje){
 }
 
 
-int Ataque::indice_personaje(string personaje, Casilla* casilla){
+int Ataque::indice_personaje(char personaje, Casilla* casilla){
 
     Objeto *objeto_referencia = new Vampiro();
-    char inicial = devolver_inicial(personaje);
-    objeto_referencia -> asignar_nombre(inicial);
+    objeto_referencia -> asignar_nombre(personaje);
     int indice = casilla -> obtener_objetos().buscar_dato(0, objeto_referencia, comparacion_por_nombre);
     return indice;
 

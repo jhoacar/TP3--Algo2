@@ -2,8 +2,8 @@
 #define FUNCIONES_H_ATAQUE_ZOMBIE_H
 
 #include "Ataque.h"
-#include "../objetos/seres/monstruos/zombies/Zombie.h"
-#include "../mapa/Tablero.h"
+#include "Zombie.h"
+#include "Tablero.h"
 class Ataque_zombie: public Ataque{
 
 
@@ -21,6 +21,9 @@ class Ataque_zombie: public Ataque{
         //PRE: recibe la casilla del personaje a bajarle la vida
         //POST: le baja la vida al personaje
         void bajar_vida(Casilla* casilla);
+
+
+        Casilla* validacion_hay_personaje_en_casilla(Lista<Casilla *> lista_casillas);
 
 
 };

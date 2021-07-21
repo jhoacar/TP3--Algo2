@@ -2,7 +2,7 @@
 #define FUNCIONES_H_ATAQUE_VAMPIRELLA_H
 
 #include "Ataque_vampiro.h"
-#include "../objetos/seres/monstruos/vampiros/Vampirella.h"
+#include "Vampirella.h"
 
 class Ataque_vampirella:public Ataque_vampiro{
 
@@ -19,6 +19,8 @@ public:
     //PRE: recibe la casilla del personaje a bajarle la vida
     //POST: le baja la vida al personaje
     void bajar_vida(Casilla* casilla);
+
+    void atacar(Tablero* tablero);
 
 
 };

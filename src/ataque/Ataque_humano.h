@@ -2,7 +2,7 @@
 #define ATAQUE_HUMANO_H
 
 #include "Ataque.h"
-#include "../objetos/seres/humanos/Humano.h"
+#include "Humano.h"
 #include <string>
 
 using namespace std;
@@ -15,12 +15,12 @@ public:
     ~Ataque_humano();
 
     void atacar(Casilla *casilla);
-
-    string eleccion_arma();
+    void atacar(Tablero *tablero);
+    char eleccion_arma();
 
     //PRE: recibe el arma que utilizara
     //POST: verifica si existe ese arma en su inventario
-    bool tiene_arma(string arma_elegida);
+    bool tiene_arma(char arma_elegida);
 
 
 
@@ -30,12 +30,11 @@ public:
 
     //PRE: recibe la casilla a atacar y el arma que va a utilizar
     //POST: devuelve si puede atacar o no
-    bool validacion_ataque(Casilla *casilla_a_atacar, string arma_elegida);
+    bool validacion_ataque(Casilla *casilla_a_atacar, char arma_elegida);
 
     //PRE: recibe una cantidad de cuantos objetos gasto y que objeto
     //POST: baja la cantidad de ese objeto
-    void bajar_cantidad_objeto(string arma);
-
+    void bajar_cantidad_objeto(char arma);
 
 
     //PRE: recibe la casilla del personaje a bajarle la vida
@@ -43,10 +42,13 @@ public:
     void bajar_vida(Casilla* casilla);
 
 
-    bool validacion_mounstruo_oculto(Casilla* casilla, string arma_elegida);
+    bool validacion_mounstruo_oculto(Casilla* casilla, char arma_elegida);
 
 
     void calcular_ataque_valores_fijos(int indice, int valor_a_sacar, Casilla* casilla);
+
+
+    Casilla* validacion_hay_personaje_en_casilla(Lista<Casilla *> lista_casillas);
 
 
 };

@@ -7,7 +7,7 @@ Ataque_vanesa::~Ataque_vanesa(){
 }
 
 
-bool Ataque_vanesa::validacion_ataque(Casilla *casilla_a_atacar, string arma_elegida){
+bool Ataque_vanesa::validacion_ataque(Casilla *casilla_a_atacar, char arma_elegida){
 
     bool validacion_ataque = false;
     Casilla* casilla_personaje = personaje ->obtener_casilla();
@@ -15,13 +15,13 @@ bool Ataque_vanesa::validacion_ataque(Casilla *casilla_a_atacar, string arma_ele
     Lista<Coordenada> lista_casillas_posibles;
     bool tiene_suficientes_balas;
 
-    if(arma_elegida == NOMBRES_STRING[ESCOPETA]) {
+    if(arma_elegida == NOMBRES_CHAR[ESCOPETA]) {
         lista_casillas_posibles = obtener_cuadrado(centro, 2);
         tiene_suficientes_balas = tiene_balas(2);
     }
-    else if(arma_elegida == NOMBRES_STRING[AGUA])
+    else if(arma_elegida == NOMBRES_CHAR[AGUA])
         lista_casillas_posibles = obtener_cuadrado(centro, 1);
-    else if(arma_elegida == NOMBRES_STRING[ESTACA])
+    else if(arma_elegida == NOMBRES_CHAR[ESTACA])
         lista_casillas_posibles = obtener_cruz(centro, 1);
 
     bool validacion_rango = validacion_rango_ataque(lista_casillas_posibles, casilla_a_atacar);
@@ -29,12 +29,12 @@ bool Ataque_vanesa::validacion_ataque(Casilla *casilla_a_atacar, string arma_ele
     bool tiene_arma_ = tiene_arma(arma_elegida);
     bool mounstruo_oculto = validacion_mounstruo_oculto(casilla_a_atacar, arma_elegida);
 
-    if(arma_elegida == NOMBRES_STRING[ESCOPETA]) {
-        if (validacion_rango && energia_suficiente_ && tiene_arma_ && mounstruo_oculto && tiene_suficientes_balas)
+    if(arma_elegida == NOMBRES_CHAR[ESCOPETA]) {
+        if (validacion_rango && energia_suficiente_ && tiene_arma_ && !mounstruo_oculto && tiene_suficientes_balas)
             validacion_ataque = true;
     }
     else{
-        if (validacion_rango && energia_suficiente_ && tiene_arma_ && mounstruo_oculto)
+        if (validacion_rango && energia_suficiente_ && tiene_arma_ && !mounstruo_oculto)
             validacion_ataque = true;
     }
 
@@ -43,7 +43,7 @@ bool Ataque_vanesa::validacion_ataque(Casilla *casilla_a_atacar, string arma_ele
 
 void Ataque_vanesa::atacar(Casilla *casilla) {
 
-    string arma_elegida = eleccion_arma();
+    char arma_elegida = eleccion_arma();
     bool validacion = validacion_ataque(casilla, arma_elegida);
 
     if(validacion){
@@ -62,7 +62,6 @@ void Ataque_vanesa::atacar(Casilla *casilla) {
 
         if(posicion != NO_ENCONTRADO){
             consumir_energia(8);
-
             bajar_cantidad_objeto(arma_elegida);
             bajar_vida(casilla, arma_elegida);
         }
@@ -79,28 +78,28 @@ void Ataque_vanesa::bajar_vida_completa(int indice, Casilla *casilla){
 }
 
 
-void Ataque_vanesa::bajar_vida_vampiro(int indice, int porcentaje_escopeta, int porcentaje_agua, Casilla* casilla, string arma_elegida){
+void Ataque_vanesa::bajar_vida_vampiro(int indice, int porcentaje_escopeta, int porcentaje_agua, Casilla* casilla, char arma_elegida){
 
-    if (arma_elegida == NOMBRES_STRING[ESCOPETA])
+    if (arma_elegida == NOMBRES_CHAR[ESCOPETA])
         calcular_valores_ataque(indice, porcentaje_escopeta, casilla);
-    else if (arma_elegida == NOMBRES_STRING[ESTACA])
+    else if (arma_elegida == NOMBRES_CHAR[AGUA])
         calcular_ataque_valores_fijos(indice, porcentaje_agua, casilla);
-    else if (arma_elegida == NOMBRES_STRING[AGUA])
+    else if (arma_elegida == NOMBRES_CHAR[ESTACA])
         bajar_vida_completa(indice, casilla);
 }
 
 
-void Ataque_vanesa::bajar_vida(Casilla* casilla, string arma_elegida){
+void Ataque_vanesa::bajar_vida(Casilla* casilla, char arma_elegida){
 
-    int indice_zombie = indice_personaje(NOMBRES_STRING[ZOMBIE], casilla);
-    int indice_vampiro = indice_personaje(NOMBRES_STRING[VAMPIRO], casilla);
-    int indice_nosferatu = indice_personaje(NOMBRES_STRING[NOSFERATU], casilla);
-    int indice_vampirella = indice_personaje(NOMBRES_STRING[VAMPIRELLA], casilla);
+    int indice_zombie = indice_personaje(NOMBRES_CHAR[ZOMBIE], casilla);
+    int indice_vampiro = indice_personaje(NOMBRES_CHAR[VAMPIRO], casilla);
+    int indice_nosferatu = indice_personaje(NOMBRES_CHAR[NOSFERATU], casilla);
+    int indice_vampirella = indice_personaje(NOMBRES_CHAR[VAMPIRELLA], casilla);
 
     if(indice_zombie != NO_ENCONTRADO) {
-        if (arma_elegida == NOMBRES_STRING[ESCOPETA])
+        if (arma_elegida == NOMBRES_CHAR[ESCOPETA])
             calcular_valores_ataque(indice_zombie, 125, casilla);
-        else if (arma_elegida == NOMBRES_STRING[ESTACA])
+        else if (arma_elegida == NOMBRES_CHAR[ESTACA])
             calcular_valores_ataque(indice_zombie, 25, casilla);
     }
     if(indice_vampiro != NO_ENCONTRADO)
@@ -109,4 +108,39 @@ void Ataque_vanesa::bajar_vida(Casilla* casilla, string arma_elegida){
         bajar_vida_vampiro(indice_nosferatu, 40, 20, casilla, arma_elegida);
     if(indice_vampirella != NO_ENCONTRADO)
         bajar_vida_vampiro(indice_vampirella, 40, 20, casilla, arma_elegida);
+}
+
+void Ataque_vanesa::atacar(Tablero* tablero, char arma) {
+
+    Casilla *casilla_personaje = (personaje -> obtener_casilla());
+    Coordenada centro = casilla_personaje->obtener_posicion();
+
+    Lista<Coordenada> lista_coordenadas = obtener_cuadrado(centro, 1);
+    Lista<Casilla *> lista_casillas = tablero -> obtener_lista_casillas(lista_coordenadas);
+
+    Casilla* casilla_objeto = validacion_hay_personaje_en_casilla(lista_casillas);
+
+
+    bool validacion = validacion_ataque(casilla_objeto, arma);
+
+    if(validacion){
+
+        Lista<Objeto*> lista_objetos = casilla_objeto -> obtener_objetos();
+
+        int posicion;
+
+        posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[ZOMBIE]);
+        if(posicion == NO_ENCONTRADO)
+            posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[VAMPIRO]);
+        if(posicion == NO_ENCONTRADO)
+            posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[VAMPIRELLA]);
+        if(posicion == NO_ENCONTRADO)
+            posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[NOSFERATU]);
+
+        if(posicion != NO_ENCONTRADO){
+            consumir_energia(8);
+            bajar_cantidad_objeto(arma);
+            bajar_vida(casilla_objeto, arma);
+        }
+    }
 }

@@ -2,7 +2,7 @@
 #define ATAQUE_HUMANO_H_ATAQUE_VANESA_H
 
 #include "Ataque_humano.h"
-#include "../objetos/seres/humanos/Humano.h"
+#include "Humano.h"
 
 class Ataque_vanesa : public Ataque_humano {
 
@@ -10,22 +10,25 @@ public:
     Ataque_vanesa(Humano *personaje);
     ~Ataque_vanesa();
 
-    void atacar(Casilla *casilla);
+    void atacar(Casilla *casilla, char arma);
+    void atacar(Tablero* tablero, char arma);
 
     //PRE: recibe la casilla del personaje a bajarle la vida
     //POST: le baja la vida al personaje
-    void bajar_vida(Casilla* casilla, string arma_elegida);
+    void bajar_vida(Casilla* casilla, char arma_elegida);
 
     //PRE:
     //POST:
-    bool validacion_ataque(Casilla *casilla_a_atacar, string arma_elegida);
+    bool validacion_ataque(Casilla *casilla_a_atacar, char arma_elegida);
 
     // Para no repetir mucho codigo
     //PRE:
     //POST:
-    void bajar_vida_vampiro(int indice, int porcentaje_escopeta, int porcentaje_agua, Casilla* casilla, string arma_elegida);
+    void bajar_vida_vampiro(int indice, int porcentaje_escopeta, int porcentaje_agua, Casilla* casilla, char arma_elegida);
 
     void bajar_vida_completa(int indice, Casilla *casilla);
+
+
 
 };
 

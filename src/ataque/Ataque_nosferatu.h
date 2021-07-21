@@ -3,7 +3,7 @@
 
 
 #include "Ataque_vampiro.h"
-#include "../objetos/seres/monstruos/vampiros/Nosferatu.h"
+#include "Nosferatu.h"
 
 class Ataque_nosferatu:public Ataque_vampiro{
 
@@ -20,6 +20,9 @@ class Ataque_nosferatu:public Ataque_vampiro{
         //PRE: recibe la casilla del personaje a bajarle la vida
         //POST: le baja la vida al personaje
         void bajar_vida(Casilla* casilla);
+
+
+        void atacar(Tablero* tablero);
 
 
     };

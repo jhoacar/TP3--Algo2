@@ -1,8 +1,9 @@
 #ifndef ATAQUE_H
 #define ATAQUE_H
 
-#include "../mapa/Casilla.h"
-#include"../funcionalidades/Funciones.h"
+#include "Casilla.h"
+#include"Funciones.h"
+#include "Tablero.h"
 class Ser;
 
 class Ataque {
@@ -16,6 +17,7 @@ public:
     ~Ataque();
     virtual void atacar(Casilla *casilla) = 0;
 
+    virtual void atacar(Tablero *tablero) = 0;
 
     //PRE: recibe una casilla y un rango de distancia
     //POST: devuelve true si el objeto a atacar esta a su alcance
@@ -53,7 +55,7 @@ public:
 
     //PRE: recibe el nombre y la casilla que se encuentra el personaje
     //POST: devuelve la posicion del personaje
-    int indice_personaje(string personaje, Casilla* casilla);
+    int indice_personaje(char personaje, Casilla* casilla);
 
     void calcular_valores_ataque(int indice, int porcentaje, Casilla* casilla);
 
