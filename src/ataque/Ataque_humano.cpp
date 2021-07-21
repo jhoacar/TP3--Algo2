@@ -158,10 +158,6 @@ bool Ataque_humano::validacion_ataque(Casilla *casilla_a_atacar, string arma_ele
 
 
 
-
-
-
-
 void Ataque_humano::calcular_ataque_valores_fijos(int indice, int valor_a_sacar, Casilla* casilla){
 
     int valor_final;

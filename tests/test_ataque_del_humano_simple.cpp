@@ -1,4 +1,4 @@
-#include "../src/funcionalidades/Datos.h"
+//#include "../src/funcionalidades/Datos.h"
 #include "../src/funcionalidades/Includes_Objetos.h"
 #include <iostream>
 
@@ -11,19 +11,19 @@ using namespace std;
 
 int main(){
 
-    Coordenada coordenada = Coordenada(4,4);
-    Coordenada coordenada_2 = Coordenada(5,4);
+
+    Coordenada posicion(4, 4);
+    Casilla* camino = new Camino(posicion);
+
+    Coordenada posicion_2(5, 4);
+    Casilla* camino_2 = new Camino(posicion_2);
 
 
-    Casilla* casilla = new Casilla(coordenada);
-    Casilla* casilla_2 = new Casilla(coordenada_2);
+    Objeto* humano_simple = new Humano(camino, 'h', "id");
+    Objeto* zombie = new Zombie(camino_2, 'z', "id");
 
-
-    Objeto* humano_simple = new Humano(casilla, 'h', "id");
-    Objeto* zombie = new Zombie(casilla_2, 'z', "id");
-
-    Objeto* escopeta = new Escopeta(casilla, 'E', 1, "id");
-    Objeto* balas = new Bala(casilla, 'b', 2, "id");
+    Objeto* escopeta = new Escopeta(camino, 'E', 1, "id");
+    Objeto* balas = new Bala(camino, 'b', 2, "id");
 
    //humano_simple -> asignar_casilla(casilla);
 
@@ -58,7 +58,7 @@ int main(){
     cout << endl << "ATACO................." << endl << endl;
 
 
-    ((Ser*) humano_simple) -> atacar(casilla_2);
+    ((Ser*) humano_simple) -> atacar(camino_2);
 
     cout << "vida humano : " << vida_humano << endl;
     cout << "energia humano : " << energia_humano << endl;

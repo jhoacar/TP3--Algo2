@@ -1,5 +1,5 @@
 #include "Defensa.h"
-#include "../objetos/seres/Ser.h"
+#include "Ser.h"
 
 Defensa::Defensa(Ser *personaje){
     this->personaje=personaje;
