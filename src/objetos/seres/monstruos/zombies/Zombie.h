@@ -5,6 +5,8 @@
 
 class Zombie : public Monstruo
 {
+    bool escondido;
+
 	public:
         Zombie();
 		Zombie(Casilla *casilla,char nombre,string ID);
@@ -16,7 +18,9 @@ class Zombie : public Monstruo
         // POS: El zombie se defiende. Es decir:
         //      Consume 2 puntos de energía y se esconde por un turno.
         //      Aumenta 20 puntos de vida.
-		void defenderse();
+		void defender();
+		void atacar(Casilla *casilla);
+
 
 		// PRE: El zombie se ha defendido en el turno anterior, por lo tanto escondido es true.
 		// POS: El zombie resurge, por lo tanto se establece escondido en false.
@@ -26,12 +30,10 @@ class Zombie : public Monstruo
 		// POS: Devuelve true si el zombie está escondido, caso contrario devuelve false.
 		bool esta_escondido();
 
+		void aparecer_zombie();
+
+		
 		~Zombie();
-
-	protected:
-
-    private:
-        bool escondido;
 
 };
 

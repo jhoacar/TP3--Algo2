@@ -1,57 +1,23 @@
-#include "Humano.h"
-#include "../../../defensa/tipos/Defensa_humano.h"
-#include <iostream>
-using std::cout;
-using std::endl;
-using std::cin;
-
-Humano::Humano():Ser(){
-	this->armadura_aumentada = false;
+#include "Defensa_humano.h"
+#include "../../objetos/elementos/Agua.h"
+/*
+bool tiene_agua_bendita(Humano *personaje){
+    Objeto *objeto_referencia = new Agua();
+    objeto_referencia->asignar_nombre(NOMBRES_CHAR[AGUA]); //Le asigno el nombre que quiera buscar en la lista
+    return personaje->obtener_inventario().existe(objeto_referencia,comparacion_por_nombre);
 }
 
-Humano::Humano(Casilla *casilla,char nombre,string ID):Ser(casilla,nombre,ID)
-{
-	this->armadura_aumentada = false;
-}
-
-void Humano::mostrar(){
-    cout<<"Objeto: Humano "<<endl;
-}
-
-Humano::~Humano()
-{
-
-}
-
-void Humano::regenerar_energia() {
-    this -> energia += 5;
-}
-
-void Humano::encuentro_con_elemento() {
+Defensa_humano::Defensa_humano(Humano *personaje):Defensa(personaje){
     
-    Lista<Objeto*> objetos_casilla;
-    Lista<Objeto*> solo_elementos;
-
-    objetos_casilla = casilla->obtener_objetos();
-    solo_elementos = objetos_casilla.filtrar_datos(0,es_elemento);
-
-    inventario += solo_elementos;
-    
-    if(solo_elementos.obtener_tamano()>0)
-        cout << "Se agregaron con exito los elementos al inventario" << endl;
-
-    casilla->eliminar_objetos(solo_elementos);
-}
-
-void Humano::atacar(Casilla *casilla){
+    personaje->armadura_aumentada=false;
 
 }
 
-void Humano::defender() {
+void Humano::defenderse(){
     
     if (!tengo_agua_bendita()){
         aumentar_energia();
-        cout << "|||| No tengo agua bendita, pero aumenté mi energía ||||" << endl;
+        cout <<endl<< "|||| No tengo agua bendita, pero aumenté mi energía ||||" << endl;
     }
     else {
         int accion = elegir_accion();
@@ -67,6 +33,7 @@ void Humano::defender() {
 }
 
 bool Humano::tengo_agua_bendita() {
+
     objeto_referencia->asignar_nombre(NOMBRES_CHAR[AGUA]); //Le asigno el nombre que quiera buscar en la lista
     return inventario.existe(objeto_referencia,comparacion_por_nombre);
 }
@@ -83,10 +50,6 @@ void Humano::aumentar_armadura() {
 void Humano::consumir_agua_bendita() {
     energia = ENERGIA_MAXIMA;
     inventario.borrar(buscar_agua_bendita());
-}
-
-bool Humano::tiene_armadura_aumentada() {
-    return this->armadura_aumentada;
 }
 
 int Humano::buscar_agua_bendita() {
@@ -109,3 +72,9 @@ int Humano::elegir_accion() {
     return opcion;
 }
 
+void Defensa_humano::defender(){
+
+    
+    
+}
+*/

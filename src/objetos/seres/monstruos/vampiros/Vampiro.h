@@ -16,7 +16,8 @@ class Vampiro : public Monstruo
         // POS: El vampiro se defiende. Es decir:
         //      Consume 4 puntos de energía y se oculta por un turno.
         //      Aumenta 1 punto de armadura por un turno.
-		void defenderse();
+		void defender();
+        void atacar(Casilla *casilla);
 
 		// PRE: -
 		// POS:

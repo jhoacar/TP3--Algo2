@@ -62,9 +62,13 @@ public:
     //Post: Devuelve un entero con el peso minimo del camino desde el origen al destino
     int obtener_peso_minimo(Dato origen, Dato destino, int (*compare)(Dato A, Dato B)=comparacion);
 
-    //Pre: El peso es un valor positivo
+    //Pre: Dos tipos de dato, desde el origen y el destino, el peso, un valor positivo y una funcion de comparacion de dicho tipo de dato
+    //Esta funcion debe devolver un numero entero que representa
+    // 0 : son iguales
+    // 1 : si el primer argumento es mayor al segundo
+    // -1: si el primer argumento es menor al segundo
     //Post: Ajusta la matriz de adyacencia con el peso ingresado
-    void agregar_camino(Dato origen, Dato destino, int peso);
+    void agregar_camino(Dato origen, Dato destino, int peso, int (*compare)(Dato A , Dato B)=comparacion);
 
     //Pre: Una funcion que me permita imprimir cada vertice
     //Post: imprime por pantalla el grafo
@@ -72,6 +76,9 @@ public:
 
     //Post: Calcula la matrices que requiere el metodo de floyd para funcionar
     void calcular_matrices_Floyd();
+
+    //Post: Devuelve la lista de vertices que fueron agregados al grafo
+    Lista<Dato> obtener_vertices();
 };
 
 template <class Dato>
@@ -80,6 +87,16 @@ Grafo<Dato>::Grafo() {
     vertices = new Lista<Dato>();
     floyd = new Floyd<Dato>(vertices);
 }
+template <class Dato>
+Grafo<Dato>::~Grafo() {
+    liberar_matriz_adyacencia();
+    matriz_adyacencia = nullptr;
+    delete vertices;
+    delete floyd;
+    vertices = nullptr;
+    floyd = nullptr;
+}
+
 
 template <class Dato>
 void Grafo<Dato>::agregar_vertice(Dato nuevo_vertice) {
@@ -93,26 +110,24 @@ void Grafo<Dato>::mostrar_grafo(void (*imprimir)(Dato dato)) {
     vertices->imprimir(imprimir);
     cout<<endl;
     mostrar_matriz_adyacencia();
-    floyd->mostrar_matriz_camino(imprimir);
+    floyd->mostrar_matriz_camino();
     floyd->mostrar_matriz_pesos();
 }
 
 template <class Dato>
-void Grafo<Dato>::agregar_camino(Dato origen, Dato destino, int peso) {
+void Grafo<Dato>::agregar_camino(Dato origen, Dato destino, int peso, int (*compare)(Dato A , Dato B)) {
 
-    int posicion_origen = vertices->buscar_dato(0,origen);
-    int posicion_destino = vertices->buscar_dato(0,destino);
+    int posicion_origen = vertices->buscar_dato(0,origen,compare);
+    int posicion_destino = vertices->buscar_dato(0,destino,compare);
 
-    if(posicion_destino!= NO_ENCONTRADO && posicion_origen != NO_ENCONTRADO) {
+    if(posicion_destino!= NO_ENCONTRADO && posicion_origen != NO_ENCONTRADO)
         matriz_adyacencia[posicion_origen][posicion_destino] = peso;
-        matriz_adyacencia[posicion_destino][posicion_origen] = peso;
-    }
 }
 template <class Dato>
 Lista<Dato> Grafo<Dato>::obtener_camino_minimo(Dato origen, Dato destino, int (*compare)(Dato A , Dato B)) {
     
-    int posicion_origen = vertices->buscar_dato(0,origen);
-    int posicion_destino = vertices->buscar_dato(0,destino);
+    int posicion_origen = vertices->buscar_dato(0,origen,compare);
+    int posicion_destino = vertices->buscar_dato(0,destino,compare);
 
     Lista<Dato> camino;
 
@@ -174,12 +189,6 @@ void Grafo<Dato>::liberar_matriz_adyacencia() {
     }
     delete[] matriz_adyacencia;
 }
-template <class Dato>
-Grafo<Dato>::~Grafo() {
-    liberar_matriz_adyacencia();
-    matriz_adyacencia = nullptr;
-    delete vertices;
-}
 
 template <class Dato>
 void Grafo<Dato>::mostrar_matriz_adyacencia() {
@@ -194,10 +203,10 @@ void Grafo<Dato>::mostrar_matriz_adyacencia() {
                 if(matriz_adyacencia[i][j/2] == INFINITO){
                     cout <<" "<<(char)157<<" "; //"∞-";
                 } else {
-                    cout << " "<<matriz_adyacencia[i][j/2]<<" ";
+                    cout <<" "<<matriz_adyacencia[i][j/2]<<" ";
                 }
             } else{
-                cout << " | ";
+                cout << "  |  ";
             }
         }
     }
@@ -211,6 +220,11 @@ void Grafo<Dato>::calcular_matrices_Floyd() {
 template <class Dato>
 Lista<Dato> Grafo<Dato>::camino_minimo(int origen, int destino) {
     return floyd->camino_minimo(origen,destino);
+}
+
+template <class Dato>
+Lista<Dato> Grafo<Dato>::obtener_vertices() {
+    return *vertices;
 }
 
 

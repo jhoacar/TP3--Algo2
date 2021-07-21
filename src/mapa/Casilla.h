@@ -53,7 +53,7 @@ class Casilla{
         virtual int obtener_color()=0;
         
         //Post: Devuelve la lista completa de objetos en la casilla
-        Lista<Objeto*> obtener_objetos();
+        Lista<Objeto*>& obtener_objetos();
 
         //Post: Devuelve el cuadrante que se le ha asignado
         string obtener_cuadrante();
