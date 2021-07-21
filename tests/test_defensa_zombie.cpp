@@ -4,7 +4,9 @@
 // Test defensa zombie:
 // (1) El zombie se defiende. Consume 2 puntos de energía, aumenta 20 puntos de vida y se esconde.
 //     Ver antes y después de los stats energía, vida.    => Bien!
-// (2) Mostrar si está escondido luego de defenderse.
+// (2) Mostrar si está escondido luego de defenderse.     => Bien!
+//
+// Test pasado con éxito!
 
 
 int main(){
