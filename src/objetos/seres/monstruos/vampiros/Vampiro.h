@@ -31,6 +31,10 @@ class Vampiro : public Monstruo
         // POS: Devuelve true si tiene la armadura aumentada por defenderse, caso contrario devuelve false.
         bool tiene_armadura_aumentada();
 
+        // PRE:-
+        // POS: Devuelve true si el vampiro está oculto, caso contrario devuelve false.
+        bool esta_oculto();
+
 		~Vampiro();
 
     protected:

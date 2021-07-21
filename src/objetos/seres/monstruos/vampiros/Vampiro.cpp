@@ -55,3 +55,7 @@ void Vampiro::aparecer() {
 bool Vampiro::tiene_armadura_aumentada() {
     return this->armadura_aumentada;
 }
+
+bool Vampiro::esta_oculto() {
+    return this->oculto;
+}
