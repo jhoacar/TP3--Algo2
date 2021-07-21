@@ -3,13 +3,6 @@
 
 #include "../Ser.h"
 
-#include "../../../mapa/Casilla.h"
-#include "../../../mapa/Tablero.h"
-#include "../../../ataque/Ataque.h"
-#include "../../elementos/Escopeta.h"
-
-
-
 class Humano : public Ser
 {
 
@@ -71,11 +64,6 @@ class Humano : public Ser
 		// PRE: -
 		// POS: Devuelve true si tiene la armadura aumentada por defenderse, caso contrario devuelve false.
 		bool tiene_armadura_aumentada();
-
-	protected:
-
-
-
 
 
 };

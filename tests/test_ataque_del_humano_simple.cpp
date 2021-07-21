@@ -20,12 +20,12 @@ int main(){
 
 
     Objeto* humano_simple = new Humano(casilla, 'h', "id");
-    Objeto* zombie = new Zombie(casilla_2, 'h', "id");
+    Objeto* zombie = new Zombie(casilla_2, 'z', "id");
 
     Objeto* escopeta = new Escopeta(casilla, 'E', 1, "id");
     Objeto* balas = new Bala(casilla, 'b', 2, "id");
 
-    humano_simple -> asignar_casilla(casilla);
+   //humano_simple -> asignar_casilla(casilla);
 
     Lista<Objeto*> lista = ((Ser*) humano_simple)-> obtener_inventario();
 

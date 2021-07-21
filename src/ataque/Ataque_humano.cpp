@@ -99,11 +99,42 @@ string Ataque_humano::eleccion_arma(){
 
 }
 
+bool Ataque_humano::validacion_mounstruo_oculto(Casilla *casilla, string arma_elegida){
 
+    Objeto *objeto_referencia = new Vampiro();
+    objeto_referencia -> asignar_nombre(NOMBRES_CHAR[VAMPIRO]);
+
+    Lista<Objeto*> lista_objetos = casilla -> obtener_objetos();
+
+    int indice_vampiro = buscar_personaje(casilla, NOMBRES_STRING[VAMPIRO]);
+    int indice_zombie = buscar_personaje(casilla, NOMBRES_STRING[ZOMBIE]);
+    int indice_vampirella = buscar_personaje(casilla, NOMBRES_STRING[VAMPIRELLA]);
+
+    bool oculto = false;
+
+    if(indice_vampiro != NO_ENCONTRADO){
+        oculto = ((Vampiro*)lista_objetos[indice_vampiro]) -> esta_oculto();
+    }
+    else if(indice_zombie != NO_ENCONTRADO) {
+        oculto = ((Zombie*)lista_objetos[indice_zombie]) -> esta_escondido();
+    }
+    else if(indice_vampirella != NO_ENCONTRADO){
+        oculto = ((Vampirella*)lista_objetos[indice_vampirella]) -> esta_oculto();
+        if(arma_elegida == NOMBRES_STRING[ESCOPETA])
+            oculto = true;
+    }
+
+    return oculto;
+
+
+
+}
 
 bool Ataque_humano::validacion_ataque(Casilla *casilla_a_atacar, string arma_elegida){
 
     bool validacion_ataque;
+
+
 
     Casilla* casilla_personaje = personaje ->obtener_casilla();
     Coordenada centro = casilla_personaje ->obtener_posicion();
@@ -115,8 +146,9 @@ bool Ataque_humano::validacion_ataque(Casilla *casilla_a_atacar, string arma_ele
     bool energia_suficiente_ = energia_suficiente(5);
     bool tiene_arma_ = tiene_arma(arma_elegida);
     bool tiene_suficientes_balas = tiene_balas(2);
+    bool mounstruo_oculto = validacion_mounstruo_oculto(casilla_a_atacar, arma_elegida);
 
-    if(validacion_rango && energia_suficiente_ && tiene_arma_ && tiene_suficientes_balas)
+    if(validacion_rango && energia_suficiente_ && tiene_arma_ && tiene_suficientes_balas && mounstruo_oculto)
         validacion_ataque = true;
     else
         validacion_ataque = false;

@@ -43,7 +43,7 @@ public:
     void bajar_vida(Casilla* casilla);
 
 
-
+    bool validacion_mounstruo_oculto(Casilla* casilla, string arma_elegida);
 
 
     void calcular_ataque_valores_fijos(int indice, int valor_a_sacar, Casilla* casilla);

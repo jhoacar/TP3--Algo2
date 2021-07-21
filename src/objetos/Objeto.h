@@ -12,7 +12,6 @@ class Objeto{
         string cuadrante;
         string ID;
         Casilla *casilla;
-
     public:
         /*
         PRE:
@@ -74,10 +73,6 @@ class Objeto{
         POST: Asigna la posicion al objeto
         */
         void asignar_casilla(Casilla *casilla);
-
-
-
-
 };
 
 

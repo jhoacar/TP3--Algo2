@@ -2,7 +2,7 @@
 #define ATAQUE_H
 
 #include "../mapa/Casilla.h"
-
+#include"../funcionalidades/Funciones.h"
 class Ser;
 
 class Ataque {

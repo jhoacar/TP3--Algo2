@@ -25,16 +25,16 @@ bool Ataque_vanesa::validacion_ataque(Casilla *casilla_a_atacar, string arma_ele
         lista_casillas_posibles = obtener_cruz(centro, 1);
 
     bool validacion_rango = validacion_rango_ataque(lista_casillas_posibles, casilla_a_atacar);
-
     bool energia_suficiente_ = energia_suficiente(8);
     bool tiene_arma_ = tiene_arma(arma_elegida);
+    bool mounstruo_oculto = validacion_mounstruo_oculto(casilla_a_atacar, arma_elegida);
 
     if(arma_elegida == NOMBRES_STRING[ESCOPETA]) {
-        if (validacion_rango && energia_suficiente_ && tiene_arma_ && tiene_suficientes_balas)
+        if (validacion_rango && energia_suficiente_ && tiene_arma_ && mounstruo_oculto && tiene_suficientes_balas)
             validacion_ataque = true;
     }
     else{
-        if (validacion_rango && energia_suficiente_ && tiene_arma_)
+        if (validacion_rango && energia_suficiente_ && tiene_arma_ && mounstruo_oculto)
             validacion_ataque = true;
     }
 

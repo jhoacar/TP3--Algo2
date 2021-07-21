@@ -13,14 +13,11 @@ class Elemento : public Objeto
 		PRE:
 		POST: Devuelve la cantidad del elemento
 		*/
-        int obtener_cantidad();
-
-        void disminuir_cantidad(int cantidad_gastada);
+		int obtener_cantidad();
 		~Elemento();
-
-
+        void disminuir_cantidad(int cantidad_gastada);
 	protected:
-        int cantidad;
+		int cantidad;
 };
 
 #endif

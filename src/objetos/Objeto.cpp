@@ -37,5 +37,3 @@ void Objeto::asignar_nombre(char nombre){
 void Objeto::asignar_casilla(Casilla *casilla){
     this->casilla=casilla;
 }
-
-

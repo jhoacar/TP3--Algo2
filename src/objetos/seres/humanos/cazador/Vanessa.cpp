@@ -26,4 +26,3 @@ void Vanessa::regenerar_energia() {
     this -> energia += 10;
 }
 
-

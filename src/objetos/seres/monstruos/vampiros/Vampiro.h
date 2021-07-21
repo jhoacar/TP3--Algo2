@@ -33,6 +33,8 @@ class Vampiro : public Monstruo
 
 		~Vampiro();
 
+		bool esta_oculto();
+
     protected:
 
     private:
