@@ -13,79 +13,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e85d939b-2f59-41d7-bbf2-19742a8bcaa5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/test_busqueda_lista.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/TP3--Algo2.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/funcionalidades/Datos.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/funcionalidades/Datos.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/funcionalidades/Funciones.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/funcionalidades/Funciones.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/mapa/Casilla.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/mapa/Casilla.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/mapa/Coordenada.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/mapa/Coordenada.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/mapa/Tablero.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/mapa/Tablero.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/objetos/Objeto.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/objetos/Objeto.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/objetos/elementos/Agua.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/objetos/elementos/Agua.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/objetos/elementos/Bala.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/objetos/elementos/Bala.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/objetos/elementos/Cruz.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/objetos/elementos/Cruz.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/objetos/elementos/Elemento.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/objetos/elementos/Elemento.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/objetos/elementos/Escopeta.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/objetos/elementos/Escopeta.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/objetos/elementos/Estaca.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/objetos/elementos/Estaca.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/objetos/seres/Ser.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/objetos/seres/Ser.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/objetos/seres/humanos/Humano.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/objetos/seres/humanos/Humano.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/objetos/seres/humanos/cazador/Cazador.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/objetos/seres/humanos/cazador/Cazador.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/objetos/seres/humanos/cazador/Vanessa.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/objetos/seres/humanos/cazador/Vanessa.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/objetos/seres/monstruos/vampiros/Nosferatu.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/objetos/seres/monstruos/vampiros/Nosferatu.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/objetos/seres/monstruos/vampiros/Vampirella.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/objetos/seres/monstruos/vampiros/Vampirella.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/objetos/seres/monstruos/vampiros/Vampiro.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/objetos/seres/monstruos/vampiros/Vampiro.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constantes/Constantes.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/constantes/Constantes.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/Datos.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/funcionalidades/Datos.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/Funciones.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/funcionalidades/Funciones.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/Funciones.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/funcionalidades/Funciones.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/tda/Floyd.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/funcionalidades/tda/Floyd.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/tda/Grafo.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/funcionalidades/tda/Grafo.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/tda/Lista.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/funcionalidades/tda/Lista.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapa/Casilla.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapa/Casilla.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapa/Casilla.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapa/Casilla.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapa/Coordenada.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapa/Coordenada.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapa/Coordenada.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapa/Coordenada.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapa/Tablero.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapa/Tablero.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapa/Tablero.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapa/Tablero.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/Objeto.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/Objeto.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/Objeto.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/Objeto.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/elementos/Agua.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/elementos/Agua.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/elementos/Agua.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/elementos/Agua.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/elementos/Bala.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/elementos/Bala.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/elementos/Bala.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/elementos/Bala.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/elementos/Cruz.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/elementos/Cruz.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/elementos/Cruz.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/elementos/Cruz.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/elementos/Elemento.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/elementos/Elemento.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/elementos/Elemento.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/elementos/Elemento.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/elementos/Escopeta.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/elementos/Escopeta.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/elementos/Escopeta.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/elementos/Escopeta.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/elementos/Estaca.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/elementos/Estaca.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/elementos/Estaca.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/elementos/Estaca.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/Ser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/Ser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/Ser.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/Ser.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/humanos/Humano.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/humanos/Humano.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/humanos/Humano.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/humanos/Humano.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/humanos/cazador/Cazador.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/humanos/cazador/Cazador.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/humanos/cazador/Cazador.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/humanos/cazador/Cazador.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/humanos/cazador/Vanessa.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/humanos/cazador/Vanessa.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/humanos/cazador/Vanessa.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/humanos/cazador/Vanessa.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/Monstruo.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/Monstruo.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/Monstruo.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/Monstruo.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Nosferatu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Nosferatu.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Nosferatu.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Nosferatu.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampirella.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampirella.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampirella.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampirella.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampiro.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampiro.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampiro.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampiro.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/zombies/Zombie.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/zombies/Zombie.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/zombies/Zombie.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/zombies/Zombie.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_inventario.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_inventario.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_lista.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_lista.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/archivo/Archivo.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/archivo/Archivo_objetos.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/archivo/Archivo_partida.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/archivo/Archivo_tablero.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/funcionalidades/Datos.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/funcionalidades/Funciones.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/juego/jugador.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/mapa/Casilla.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/mapa/Coordenada.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/mapa/Tablero.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/mapa/tipos/Camino.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/mapa/tipos/Lago.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/mapa/tipos/Montana.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/mapa/tipos/Precipicio.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/mapa/tipos/Vacio.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/mapa/tipos/Volcan.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/objetos/Objeto.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/objetos/elementos/Agua.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/objetos/elementos/Bala.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/objetos/elementos/Cruz.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/objetos/elementos/Elemento.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/objetos/elementos/Escopeta.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/objetos/elementos/Estaca.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/objetos/seres/Ser.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/objetos/seres/humanos/Humano.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/objetos/seres/humanos/cazador/Cazador.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/objetos/seres/humanos/cazador/Vanessa.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/objetos/seres/monstruos/Monstruo.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/objetos/seres/monstruos/vampiros/Nosferatu.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/objetos/seres/monstruos/vampiros/Vampirella.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/objetos/seres/monstruos/vampiros/Vampiro.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/objetos/seres/monstruos/zombies/Zombie.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_gotoxy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_gotoxy.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_obj/test_inventario.o" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +101,10 @@
       <workItem from="1626121564735" duration="95000" />
       <workItem from="1626121683057" duration="3458000" />
       <workItem from="1626207487058" duration="1444000" />
-      <workItem from="1626275036137" duration="17628000" />
+      <workItem from="1626275036137" duration="18625000" />
+      <workItem from="1626985771929" duration="157000" />
+      <workItem from="1626985950653" duration="2787000" />
+      <workItem from="1626989344918" duration="2117000" />
     </task>
     <servers />
   </component>
