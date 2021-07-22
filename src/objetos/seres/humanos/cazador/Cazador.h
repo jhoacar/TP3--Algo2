@@ -5,7 +5,14 @@
 
 class Cazador : public Humano
 {
-	public:
+    private:
+        // PRE: -
+        // POS: Devuelve la acción a realizar durante la defensa.
+        //      Si elige curarse a si mismo, devuelve 1 = CURARME
+        //      Si elige aumentar armadura, devuelve 2 = CURAR_ALIADOS
+        int elegir_accion();
+
+    public:
 		Cazador();
 		Cazador(Casilla *casilla,char nombre,string ID);
 		void mostrar();
