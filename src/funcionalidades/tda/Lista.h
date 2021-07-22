@@ -394,7 +394,7 @@ int Lista<Dato>::buscar_dato(int inicio_busqueda,const Dato dato, int (*compare)
 
   Nodo<Dato> *nodo = buscar_nodo(inicio_busqueda);
   
-  if(nodo==nullptr)
+  if(nodo == nullptr || tamano == 0)
     return NO_ENCONTRADO;
 
   bool found = compare(*(nodo->dato) , dato) == IGUAL;

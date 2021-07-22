@@ -1,13 +1,10 @@
 #include "Ser.h"
 #include "../elementos/Agua.h"
-<<<<<<< HEAD
 #include <iostream>
-=======
 
 bool es_elemento(Objeto* objeto_a_comprobar) {
     return buscar_dato(NOMBRES_CHAR, MAX_NOMBRES,objeto_a_comprobar->obtener_nombre(),HUMANO) == NO_ENCONTRADO;
 }
->>>>>>> dd24cbe531f59d1f6ab25ecc284ba3edf85872ec
 
 Ser::Ser():Objeto(){
     objeto_referencia = new Agua(); //No me interesa el tipo de objeto, solo sus atributos
@@ -18,11 +15,8 @@ Ser::Ser(Casilla *casilla,char nombre, string ID):Objeto(casilla,nombre,ID){
     this -> vida     = obtener_numero_aleatorio(VIDA_MINIMA, VIDA_MAXIMA);
     this -> energia  = obtener_numero_aleatorio(ENERGIA_MINIMA, ENERGIA_MAXIMA);
     this -> fuerza   = obtener_numero_aleatorio(FUERZA_MINIMA, FUERZA_MAXIMA);
-<<<<<<< HEAD
     this -> objeto_referencia = new Agua();
-=======
     objeto_referencia = new Agua(); //No me interesa el tipo de objeto, solo sus atributos
->>>>>>> dd24cbe531f59d1f6ab25ecc284ba3edf85872ec
 }
 
 Ser::~Ser(){

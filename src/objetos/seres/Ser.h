@@ -38,7 +38,6 @@ class Ser : public Objeto
 		virtual void atacar(Casilla *casilla)=0;
 		virtual void regenerar_energia()=0;
 		virtual void encuentro_con_elemento()=0;
-		virtual void defenderse() = 0;
 };
 
 #endif
