@@ -40,7 +40,7 @@ class Diccionario{
         unsigned long obtener_tamano();
 };
 template <class Llave, class Dato>
-Diccionario<Llave,Dato>::Diccionario(){
+Diccionario<Llave,Dato>::Diccionario():avl(){
     tamano=0;
 }
 template <class Llave, class Dato>

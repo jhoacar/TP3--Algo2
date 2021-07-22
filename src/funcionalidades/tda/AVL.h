@@ -48,7 +48,7 @@ class AVL{
         // 1 : si el primer argumento es mayor al segundo
         // -1: si el primer argumento es menor al segundo 
         //Post: Devuelve una referencia del dato donde fue encontrado, 
-        //o una nueva en caso que no se encuentre la llave cambiando a verdadero el valor de la variable booleana
+        //o una nueva en caso que no se encuentre la llave, cambiando a verdadero el valor de la variable booleana
         Dato& buscar(Llave llave,bool &se_agrego, int (*comparar_llaves)(Llave A , Llave B));
         //Post: Devuelve la raiz del AVL
         Vertice<Llave,Dato>* obtener_arbol();
