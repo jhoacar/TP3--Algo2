@@ -152,5 +152,11 @@ const int IGUAL = 0;
 const int REGENERAR_ENERGIA = 1;
 const int AUMENTAR_ARMADURA = 2;
 
+//Opciones de defensa del humano cazavampiros
+const int CURARME = 1;
+const int CURAR_ALIADOS = 2;
+
+
+
 #endif
 
