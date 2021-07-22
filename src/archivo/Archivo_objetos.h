@@ -37,10 +37,8 @@ class Archivo_objetos : Archivo {
     public:
 
     Archivo_objetos(string nombre_fichero, Tablero *tablero);
-    ~Archivo_objetos()=default;
     //POST: retorna una lista con los datos de objetos, o una lista vacia si no hay datos cargados.
-    Lista<Objeto*> obtener_lista_objetos();
-    
+    Lista<Objeto*> obtener_lista_objetos();    
 };
 
 #endif

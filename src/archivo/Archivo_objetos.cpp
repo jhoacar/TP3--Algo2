@@ -1,7 +1,7 @@
 #include "Archivo_objetos.h"
 #include "../funcionalidades/Includes_Objetos.h"
 
-Archivo_objetos::Archivo_objetos(const string nombre_fichero, Tablero *tablero):Archivo(nombre_fichero){
+Archivo_objetos::Archivo_objetos(const string nombre_fichero, Tablero *tablero):Archivo(nombre_fichero),objetos(){
 
     cargar_tablero(tablero);
 }
