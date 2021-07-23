@@ -1,13 +1,13 @@
 #include "Ataque_humano.h"
-#include "Escopeta.h"
-#include "Bala.h"
-#include "Vampiro.h"
-#include "Nosferatu.h"
-#include "Vampirella.h"
-#include "Zombie.h"
+#include "../objetos/elementos/Escopeta.h"
+#include "../objetos/elementos/Bala.h"
+#include "../objetos/seres/monstruos/Vampiro.h"
+#include "../objetos/seres/monstruos/vampiros/Vampiro.h"
+#include "../objetos/seres/monstruos/vampiros/Vampirella.h"
+#include "../objetos/seres/monstruos/zombies/Zombie.h"
 #include <stdlib.h>
 #include <iostream>
-#include "Constantes.h"
+#include "../constantes/Constantes.h"
 
 using namespace std;
 
@@ -17,7 +17,6 @@ Ataque_humano::Ataque_humano(Humano *personaje): Ataque(personaje){
 
 Ataque_humano::~Ataque_humano(){
 }
-
 
 
 
@@ -45,7 +44,6 @@ bool Ataque_humano::tiene_balas(int cantidad_minima_balas){
     if(esta_en_inventario){
         int posicion_balas = personaje -> obtener_inventario().buscar_dato(0, objeto_referencia,comparacion_por_nombre);
 
-
         int cantidad_balas = ((Elemento*) personaje -> obtener_inventario()[posicion_balas]) -> obtener_cantidad();
 
         if(cantidad_balas >= cantidad_minima_balas)
@@ -56,14 +54,22 @@ bool Ataque_humano::tiene_balas(int cantidad_minima_balas){
 
 void Ataque_humano::bajar_cantidad_objeto(char arma){
 
+    char a_bajar;
+    if(arma == NOMBRES_CHAR[ESCOPETA])
+        a_bajar = NOMBRES_CHAR[BALA];
+    else if(arma == NOMBRES_CHAR[AGUA])
+        a_bajar = NOMBRES_CHAR[AGUA];
+    else
+        a_bajar = NOMBRES_CHAR[ESTACA];
+
     Objeto *objeto_referencia = new Bala();
-    objeto_referencia -> asignar_nombre(arma);
+    objeto_referencia -> asignar_nombre(a_bajar);
     int posicion = personaje -> obtener_inventario().buscar_dato(0, objeto_referencia,comparacion_por_nombre);
 
     if(posicion != NO_ENCONTRADO){
-        if(arma == NOMBRES_CHAR[BALA])
+        if(a_bajar == NOMBRES_CHAR[BALA])
             ((Elemento*) personaje -> obtener_inventario()[posicion]) -> disminuir_cantidad(2);
-        else if(arma == NOMBRES_CHAR[AGUA])
+        else if(a_bajar == NOMBRES_CHAR[AGUA] || a_bajar == NOMBRES_CHAR[ESTACA])
             ((Elemento*) personaje -> obtener_inventario()[posicion]) -> disminuir_cantidad(1);
     }
 
@@ -71,31 +77,6 @@ void Ataque_humano::bajar_cantidad_objeto(char arma){
 }
 
 
-char Ataque_humano::eleccion_arma(){
-
-    char arma_a_utilizar;
-    char eleccion;
-    cout << "Con que arma quiere atacar?:" << endl;
-    cout << "1. Escopeta" << endl;
-    cout << "2. Agua bendita" << endl;
-    cout << "3. Estaca" << endl;
-
-    cin  >> eleccion;
-
-    while((eleccion != '1') && (eleccion != '2') && (eleccion != '3')){
-        cout << "Ingrese un valor de 1 a 3:" << endl;
-        cin >> eleccion;
-    }
-    if(eleccion == '1')
-        arma_a_utilizar = 'E';
-    else if(eleccion == '2')
-        arma_a_utilizar = 'a';
-    else
-        arma_a_utilizar = 'e';
-
-    return arma_a_utilizar;
-
-}
 
 bool Ataque_humano::validacion_mounstruo_oculto(Casilla *casilla, char arma_elegida){
 
@@ -128,28 +109,19 @@ bool Ataque_humano::validacion_mounstruo_oculto(Casilla *casilla, char arma_eleg
 
 }
 
-bool Ataque_humano::validacion_ataque(Casilla *casilla_a_atacar, char arma_elegida){
+bool Ataque_humano::validacion_ataque(char arma_elegida, int energia){
 
-    bool validacion_ataque;
-
-
-
-    Casilla* casilla_personaje = personaje ->obtener_casilla();
-    Coordenada centro = casilla_personaje ->obtener_posicion();
-
-    Lista<Coordenada> lista_casillas_posibles = obtener_cuadrado(centro, 1);
-
-    bool validacion_rango = validacion_rango_ataque(lista_casillas_posibles, casilla_a_atacar);
-
-    bool energia_suficiente_ = energia_suficiente(5);
+    bool validacion_ataque = false;
+    bool tiene_suficientes_balas;
+    bool energia_suficiente_ = energia_suficiente(energia);
     bool tiene_arma_ = tiene_arma(arma_elegida);
-    bool tiene_suficientes_balas = tiene_balas(2);
-    bool mounstruo_oculto = validacion_mounstruo_oculto(casilla_a_atacar, arma_elegida);
-
-    if(validacion_rango && energia_suficiente_ && tiene_arma_ && tiene_suficientes_balas && !mounstruo_oculto)
+    if(arma_elegida == NOMBRES_CHAR[ESCOPETA]) {
+        tiene_suficientes_balas = tiene_balas(2);
+        if (energia_suficiente_ && tiene_arma_ && tiene_suficientes_balas)
+            validacion_ataque = true;
+    }
+    else if(energia_suficiente_ && tiene_arma_)
         validacion_ataque = true;
-    else
-        validacion_ataque = false;
 
     return validacion_ataque;
 }
@@ -185,94 +157,139 @@ void Ataque_humano::bajar_vida(Casilla* casilla){
 }
 
 
-void Ataque_humano::atacar(Casilla *casilla) {
+Casilla* Ataque_humano::devolver_casilla_aleatoria_en_tablero(Tablero* tablero, Coordenada centro, char arma_elegida, int rango_escopeta){
 
-    char arma_elegida = NOMBRES_CHAR[ESCOPETA];
-    bool validacion = validacion_ataque(casilla, arma_elegida);
+    Lista<Coordenada> lista_coordenadas;
 
-    if(validacion){
+    if(arma_elegida == NOMBRES_CHAR[ESCOPETA])
+        lista_coordenadas = obtener_cuadrado(centro, rango_escopeta);
+    else if(arma_elegida == NOMBRES_CHAR[AGUA])
+        lista_coordenadas = obtener_cuadrado(centro, 1);
+    else if(arma_elegida == NOMBRES_CHAR[ESTACA])
+        lista_coordenadas = obtener_cruz(centro, 1);
 
-        Lista<Objeto*> lista_objetos = casilla -> obtener_objetos();
+    Lista<Casilla *> lista_casillas = tablero->obtener_lista_casillas(lista_coordenadas);
+    Casilla* casilla_objeto = validacion_hay_personaje_en_casilla(lista_casillas, "monstruo");
 
-        int posicion;
-        posicion = buscar_personaje(casilla, NOMBRES_STRING[ZOMBIE]);
-
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla, NOMBRES_STRING[VAMPIRO]);
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla, NOMBRES_STRING[VAMPIRELLA]);
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla, NOMBRES_STRING[NOSFERATU]);
-
-        if(posicion != NO_ENCONTRADO){
-            consumir_energia(5);
-            bajar_cantidad_objeto(arma_elegida);
-            bajar_vida(casilla);
-        }
-
-
-    }
-}
-Casilla* Ataque_humano::validacion_hay_personaje_en_casilla(Lista<Casilla *> lista_casillas){
-
-    bool validacion_hay_personaje = false;
-    Casilla* casilla_objeto;
-
-    while(lista_casillas.existe_siguiente() && !validacion_hay_personaje) {
-        Casilla *casilla_actual = lista_casillas.siguiente_dato();
-        while (casilla_actual->obtener_objetos().existe_siguiente() && !validacion_hay_personaje) {
-
-            Objeto *objeto_actual = casilla_actual->obtener_objetos().siguiente_dato();
-            char nombre_actual = objeto_actual->obtener_nombre();
-
-
-            if (nombre_actual == NOMBRES_CHAR[ZOMBIE] || nombre_actual == NOMBRES_CHAR[VAMPIRO] ||
-                nombre_actual == NOMBRES_CHAR[VAMPIRELLA] || nombre_actual == NOMBRES_CHAR[NOSFERATU]) {
-                validacion_hay_personaje = true;
-                casilla_objeto = objeto_actual -> obtener_casilla();
-            }
-        }
-    }
     return casilla_objeto;
+
+}
+
+Casilla* Ataque_humano::devolver_casilla_especifica_en_tablero(Tablero* tablero, Casilla* casilla){
+    Casilla* casilla_atacar = tablero->obtener_casilla(casilla->obtener_posicion());
+    return casilla_atacar;
 }
 
 
-void Ataque_humano::atacar(Tablero* tablero) {
 
-    Casilla *casilla_personaje = (personaje -> obtener_casilla());
-    Coordenada centro = casilla_personaje->obtener_posicion();
 
-    Lista<Coordenada> lista_coordenadas = obtener_cuadrado(centro, 1);
-    Lista<Casilla *> lista_casillas = tablero -> obtener_lista_casillas(lista_coordenadas);
 
-    Casilla* casilla_objeto = validacion_hay_personaje_en_casilla(lista_casillas);
+bool Ataque_humano::validacion_rango_aleatorio(Tablero* tablero, Coordenada centro, char arma_elegida, int rango_escopeta){
 
-    char arma_elegida = NOMBRES_CHAR[ESCOPETA];
     bool validacion = false;
-    if(casilla_objeto != nullptr)
-        validacion = validacion_ataque(casilla_objeto, arma_elegida);
+    bool validacion_hay_objeto = false;
+    bool mounstruo_oculto;
+    Lista<Coordenada> lista_coordenadas;
 
-    if((casilla_objeto != nullptr) && validacion){
+    lista_coordenadas = obtener_lista_coordenadas_segun_arma(centro, arma_elegida, rango_escopeta);
 
-        Lista<Objeto*> lista_objetos = casilla_objeto -> obtener_objetos();
+    Lista<Casilla *> lista_casillas = tablero->obtener_lista_casillas(lista_coordenadas);
+    Casilla* casilla_objeto = validacion_hay_personaje_en_casilla(lista_casillas, "monstruo");
+
+    if(casilla_objeto != nullptr) {
+        mounstruo_oculto = validacion_mounstruo_oculto(casilla_objeto, arma_elegida);
+        validacion_hay_objeto = true;
+    }
+    if(validacion_hay_objeto && !mounstruo_oculto)
+        validacion = true;
+    return validacion;
+}
+
+
+
+bool Ataque_humano::validacion_rango_especifico(Casilla* casilla_a_atacar, char arma_elegida, int rango_escopeta){
+    bool validacion = false;
+    bool validacion_rango;
+    bool mounstruo_oculto;
+    Casilla* casilla_personaje = personaje ->obtener_casilla();
+    Coordenada centro = casilla_personaje ->obtener_posicion();
+
+    Lista<Coordenada> lista_casillas_posibles;
+    lista_casillas_posibles = obtener_lista_coordenadas_segun_arma(centro, arma_elegida, rango_escopeta);
+
+    validacion_rango = validacion_rango_ataque(lista_casillas_posibles, casilla_a_atacar);
+    mounstruo_oculto = validacion_mounstruo_oculto(casilla_a_atacar, arma_elegida);
+
+    if(validacion_rango && !mounstruo_oculto)
+        validacion = true;
+
+    return validacion;
+}
+
+
+void Ataque_humano::atacar(Casilla *casilla, Tablero* tablero) {
+
+    Coordenada centro = personaje->obtener_casilla()->obtener_posicion();
+    char arma_elegida = NOMBRES_CHAR[ESCOPETA];
+    bool ataque_validacion;
+    bool validacion_rango;
+    Lista<Objeto*> lista_objetos;
+
+    Casilla* casilla_en_tablero;
+
+    if(casilla == nullptr)
+        validacion_rango = validacion_rango_aleatorio(tablero, centro, arma_elegida, 1);
+    else {
+        Coordenada posicion_atacar = casilla->obtener_posicion();
+        Casilla *casilla_elegida = tablero->obtener_casilla(posicion_atacar);
+        validacion_rango = validacion_rango_especifico(casilla_elegida, arma_elegida, 1);
+    }
+    ataque_validacion = validacion_ataque(arma_elegida, 5);
+
+
+    if(validacion_rango && ataque_validacion){
+
+        if(casilla == nullptr)
+            casilla_en_tablero = devolver_casilla_aleatoria_en_tablero(tablero, centro, arma_elegida, 1);
+        else
+            casilla_en_tablero = devolver_casilla_especifica_en_tablero(tablero, casilla);
 
         int posicion;
-        posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[ZOMBIE]);
+        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[ZOMBIE]);
 
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[VAMPIRO]);
+            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRO]);
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[VAMPIRELLA]);
+            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRELLA]);
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[NOSFERATU]);
+            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[NOSFERATU]);
 
         if(posicion != NO_ENCONTRADO){
             consumir_energia(5);
             bajar_cantidad_objeto(arma_elegida);
-            bajar_vida(casilla_objeto);
+            bajar_vida(casilla_en_tablero);
         }
     }
 }
+
+
+void Ataque_humano::atacar(Casilla *casilla, Tablero *tablero, char arma) {
+}
+
+Lista<Coordenada> Ataque_humano::obtener_lista_coordenadas_segun_arma(Coordenada centro, char arma_elegida, int rango_escopeta) {
+    Lista<Coordenada> lista_coordenadas;
+    if(arma_elegida == NOMBRES_CHAR[ESCOPETA])
+        lista_coordenadas = obtener_cuadrado(centro, rango_escopeta);
+    else if(arma_elegida == NOMBRES_CHAR[AGUA])
+        lista_coordenadas = obtener_cuadrado(centro, 1);
+    else if(arma_elegida == NOMBRES_CHAR[ESTACA])
+        lista_coordenadas = obtener_cruz(centro, 1);
+
+    return lista_coordenadas;
+}
+
+
+
 
 
 

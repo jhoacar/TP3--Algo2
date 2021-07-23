@@ -2,7 +2,7 @@
 #define ZOMBIE_H
 
 #include "../Monstruo.h"
-
+#include "../../../../mapa/Tablero.h"
 class Zombie : public Monstruo
 {
     bool escondido;
@@ -19,7 +19,8 @@ class Zombie : public Monstruo
         //      Consume 2 puntos de energía y se esconde por un turno.
         //      Aumenta 20 puntos de vida.
 		void defender();
-		void atacar(Casilla *casilla);
+		void atacar(Casilla *casilla, Tablero* tablero);
+        void atacar(Casilla *casilla, Tablero* tablero, char arma);
 
 
 		// PRE: El zombie se ha defendido en el turno anterior, por lo tanto escondido es true.

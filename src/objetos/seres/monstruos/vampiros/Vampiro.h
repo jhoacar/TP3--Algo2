@@ -2,6 +2,7 @@
 #define VAMPIRO_H
 
 #include "../Monstruo.h"
+#include "../../../../mapa/Tablero.h"
 
 class Vampiro : public Monstruo
 {
@@ -17,7 +18,8 @@ class Vampiro : public Monstruo
         //      Consume 4 puntos de energía y se oculta por un turno.
         //      Aumenta 1 punto de armadura por un turno.
 		void defender();
-        void atacar(Casilla *casilla);
+        void atacar(Casilla *casilla, Tablero* tablero);
+        void atacar(Casilla *casilla, Tablero* tablero, char arma);
 
 		// PRE: -
 		// POS:

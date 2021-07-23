@@ -2,6 +2,7 @@
 #define HUMANO_H
 
 #include "../Ser.h"
+#include "../../../mapa/Tablero.h"
 
 class Humano : public Ser
 {
@@ -38,8 +39,8 @@ class Humano : public Ser
 		//      Si tiene agua bendita, puede regenera toda su energía o incrementa 1 su armadura por un turno.
 		void defender();
 
-		void atacar(Casilla *casilla);
-		
+		void atacar(Casilla *casilla, Tablero* tablero);
+        void atacar(Casilla *casilla, Tablero* tablero, char arma);
 		// Comprueba si hay agua bendita en el inventario
 		// PRE: -
 		// POS: Devuelve true si el humano tiene agua bendita en su inventario, caso contrario devuelve false.

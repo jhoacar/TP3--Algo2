@@ -1,6 +1,6 @@
 #include "Ataque.h"
-#include "Ser.h"
-#include "Vampiro.h"
+#include "../objetos/seres/Ser.h"
+#include "../objetos/seres/monstruos/vampiros/Vampiro.h"
 
 
 Ataque::Ataque(Ser *personaje) {
@@ -21,30 +21,7 @@ bool Ataque::energia_suficiente(int minimo) {
     return suficiente_energia;
 }
 
-void Ataque::quitar_vida(int cantidad){
-    personaje -> bajar_vida(cantidad);
-}
 
-
-/*bool Ataque::validacion_rango_ataque(Casilla *casilla_a_atacar, int max_rango){
-
-    int posicion_x_atacar = casilla_a_atacar -> obtener_fila();
-    int posicion_y_atacar = casilla_a_atacar -> obtener_columna();
-
-    Casilla* casilla_atacante = personaje -> obtener_casilla();
-    int posicion_x_atacante = casilla_atacante -> obtener_fila();
-    int posicion_y_atacante = casilla_atacante -> obtener_columna();
-
-    bool rango_valido = false;
-    int resta_coord_x = abs(posicion_x_atacar - posicion_x_atacante);
-    int resta_coord_y = abs(posicion_y_atacar - posicion_y_atacante);
-
-    if((resta_coord_x <= max_rango && resta_coord_x > 0) || (resta_coord_y <= max_rango && resta_coord_x > 0)){
-        rango_valido = true;
-    }
-
-    return rango_valido;
-}*/
 
 bool Ataque::validacion_rango_ataque(Lista<Coordenada> lista_casillas_posibles, Casilla *casilla_a_atacar){
 
@@ -102,36 +79,14 @@ int Ataque::calcular_porcentaje_fuerza(int fuerza, int porcentaje){
 }
 
 
-char Ataque::devolver_inicial(string objeto) {
+char Ataque::devolver_inicial(string nombre_objeto) {
 
-    char inicial;
-    if(objeto == "agua")
-        inicial = NOMBRES_CHAR[AGUA];
-    if(objeto == "bala")
-        inicial = NOMBRES_CHAR[BALA];
-    if(objeto == "cruz")
-        inicial = NOMBRES_CHAR[CRUZ];
-    if(objeto == "estaca")
-        inicial = NOMBRES_CHAR[ESTACA];
-    if(objeto == "escopeta")
-        inicial = NOMBRES_CHAR[ESCOPETA];
-    if(objeto == "humano")
-        inicial = NOMBRES_CHAR[HUMANO];
-    if(objeto == "humano CV")
-        inicial = NOMBRES_CHAR[HUMANO_CAZADOR];
-    if(objeto == "Vanesa")
-        inicial = NOMBRES_CHAR[VANESA];
-    if(objeto == "vampiro")
-        inicial = NOMBRES_CHAR[VAMPIRO];
-    if(objeto == "Vampirella")
-        inicial = NOMBRES_CHAR[VAMPIRELLA];
-    if(objeto == "Nosferatu")
-        inicial = NOMBRES_CHAR[NOSFERATU];
-    if(objeto == "zombi")
-        inicial = NOMBRES_CHAR[ZOMBIE];
+    int indice = buscar_dato(NOMBRES_STRING, MAX_NOMBRES,nombre_objeto);
 
-    return inicial;
-
+    if(indice != NO_ENCONTRADO)
+        return NOMBRES_CHAR[indice];
+    else
+        return 0;
 }
 
 
@@ -163,16 +118,56 @@ int Ataque::indice_personaje(char personaje, Casilla* casilla){
 }
 
 
-/*bool Ataque::validacion_rango_ataque_estaca(int coord_x, int coord_y, int max_rango){
+bool es_tipo_humano(Objeto* personaje){
 
-    bool rango_valido = false;
-    int resta_coord_x = abs(coord_x - coordenada_x_actual);
-    int resta_coord_y = abs(coord_y - coordenada_y_actual);
+    if(personaje == nullptr)
+        return false;
 
-    if(((resta_coord_x <= max_rango) && (resta_coord_x > 0) && (coordenada_y_actual == coord_y)) || ((resta_coord_y <= max_rango) && (resta_coord_x > 0)&& (coordenada_y_actual == coord_y))){
-        rango_valido = true;
-    }
+    return personaje->obtener_nombre() == NOMBRES_CHAR[HUMANO]
+           || personaje->obtener_nombre() == NOMBRES_CHAR[HUMANO_CAZADOR]
+           || personaje->obtener_nombre() == NOMBRES_CHAR[VANESA];
+}
 
-    return rango_valido;
-}*/
-	
+bool es_tipo_monstruo(Objeto* personaje){
+
+    if(personaje == nullptr)
+        return false;
+
+    return personaje->obtener_nombre() == NOMBRES_CHAR[ZOMBIE]
+           || personaje->obtener_nombre() == NOMBRES_CHAR[VAMPIRO]
+           || personaje->obtener_nombre() == NOMBRES_CHAR[VAMPIRELLA]
+           || personaje->obtener_nombre() == NOMBRES_CHAR[NOSFERATU];
+}
+
+bool hay_humano_en_casilla(Casilla* casilla){
+
+    if(casilla == nullptr)
+        return false;
+    return casilla->obtener_objetos().filtrar_datos(0, es_tipo_humano).obtener_tamano() != 0;
+
+
+}
+
+bool hay_monstruo_en_casilla(Casilla* casilla){
+
+    if(casilla == nullptr)
+        return false;
+    return casilla->obtener_objetos().filtrar_datos(0, es_tipo_monstruo).obtener_tamano() != 0;
+
+
+}
+
+Casilla* Ataque::validacion_hay_personaje_en_casilla(Lista<Casilla *> lista_casillas, string personaje){
+
+    Casilla* casilla_objeto = nullptr;
+    Lista<Casilla*> lista_casillas_con_personaje;
+    if(personaje == "humano")
+        lista_casillas_con_personaje = lista_casillas.filtrar_datos(0, hay_humano_en_casilla);
+    else
+        lista_casillas_con_personaje = lista_casillas.filtrar_datos(0, hay_monstruo_en_casilla);
+
+    if(lista_casillas_con_personaje.obtener_tamano() > 0)
+        casilla_objeto = lista_casillas_con_personaje[0];
+
+    return casilla_objeto;
+}

@@ -8,13 +8,13 @@ using std::cin;
 
 Humano::Humano():Ser(){
 	this->armadura_aumentada = false;
-    this -> ataque = new Ataque_humano(this);
+    ataque= nullptr;
 }
 
 Humano::Humano(Casilla *casilla,char nombre,string ID):Ser(casilla,nombre,ID)
 {
 	this->armadura_aumentada = false;
-    this -> ataque = new Ataque_humano(this);
+    ataque = nullptr;
 }
 
 void Humano::mostrar(){
@@ -23,7 +23,8 @@ void Humano::mostrar(){
 
 Humano::~Humano()
 {
-
+if(ataque != nullptr)
+    delete ataque;
 }
 
 void Humano::regenerar_energia() {
@@ -31,7 +32,7 @@ void Humano::regenerar_energia() {
 }
 
 void Humano::encuentro_con_elemento() {
-    
+
     Lista<Objeto*> objetos_casilla;
     Lista<Objeto*> solo_elementos;
 
@@ -39,15 +40,20 @@ void Humano::encuentro_con_elemento() {
     solo_elementos = objetos_casilla.filtrar_datos(0,es_elemento);
 
     inventario += solo_elementos;
-    
+
     if(solo_elementos.obtener_tamano()>0)
         cout << "Se agregaron con exito los elementos al inventario" << endl;
 
     casilla->eliminar_objetos(solo_elementos);
 }
 
-void Humano::atacar(Casilla *casilla){
-    ataque -> atacar(casilla);
+void Humano::atacar(Casilla *casilla, Tablero* tablero){
+    if(ataque == nullptr)
+        this -> ataque = new Ataque_humano(this);
+    ataque -> atacar(casilla, tablero);
+}
+
+void Humano::atacar(Casilla *casilla, Tablero* tablero, char arma){
 }
 
 

@@ -1,7 +1,7 @@
 #ifndef CAZADOR_H
 #define CAZADOR_H
 
-#include "../Humano.h"
+#include "Humano.h"
 
 class Cazador : public Humano
 {
@@ -12,7 +12,8 @@ class Cazador : public Humano
 		void regenerar_energia();
 		~Cazador();
 		void defender();
-		void atacar(Casilla *casilla);
+		void atacar(Casilla *casilla, Tablero* tablero);
+        void atacar(Casilla *casilla, Tablero* tablero, char arma);
 	protected:
 };
 

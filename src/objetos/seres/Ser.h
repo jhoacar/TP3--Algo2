@@ -1,10 +1,10 @@
 #ifndef SER_H
 #define SER_H
-
 #include "../Objeto.h"
 #include "../../mapa/Casilla.h"
 #include "../../constantes/Constantes.h"
 #include "../../funcionalidades/Funciones.h"
+#include "../../mapa/Tablero.h"
 
 
 class Defensa;
@@ -35,7 +35,8 @@ class Ser : public Objeto
 		Lista<Objeto*> obtener_inventario();
 		
 		virtual void defender()=0;
-		virtual void atacar(Casilla *casilla)=0;
+		virtual void atacar(Casilla *casilla, Tablero* tablero)=0;
+        virtual void atacar(Casilla *casilla, Tablero* tablero, char arma)=0;
 		virtual void regenerar_energia()=0;
 		virtual void encuentro_con_elemento()=0;
 

@@ -1,7 +1,7 @@
 //#include "../src/funcionalidades/Datos.h"
 #include "../src/funcionalidades/Includes_Objetos.h"
 #include <iostream>
-
+//#include "Funciones.h"
 using namespace std;
 
 // Tests:
@@ -9,33 +9,71 @@ using namespace std;
 // (2) Tiene agua bendita en su inventario, regenera toda su energía => Pendiente
 // (3) Tiene agua bendita en su inventario, aumenta +1 su armadura   => Pendiente
 
+
+
 int main(){
 
 
-    Coordenada posicion(4, 4);
+
+    Coordenada posicion(10, 10);
+    Casilla* casilla = new Camino(posicion);
+    Objeto* agua = new Agua(casilla,'a', 20, "id");
+    Objeto* escopeta = new Escopeta(casilla,'e', 1, "ideee");
+    Objeto* humano_simple = new Humano(casilla, 'h', "id");
+
+    //Agrego agua a la casilla
+    casilla->agregar_objeto(agua);
+    casilla->agregar_objeto(escopeta);
+
+    //El humano se encuentra con el elemento
+    ((Humano*)humano_simple)->encuentro_con_elemento();
+    Lista<Objeto*> inventario = ((Humano*)humano_simple)->obtener_inventario();
+
+    inventario.reiniciar();
+    while ( inventario.existe_siguiente() ) {
+        cout << "Elemento: " << inventario.siguiente_dato()->obtener_nombre() << endl;
+    }
+
+
+
+    /*Coordenada posicion(4, 4);
     Casilla* camino = new Camino(posicion);
 
     Coordenada posicion_2(5, 4);
     Casilla* camino_2 = new Camino(posicion_2);
 
 
-    Objeto* humano_simple = new Humano(camino, 'h', "id");
+    Objeto* cazador = new Cazador(camino, 'H', "id");
     Objeto* zombie = new Zombie(camino_2, 'z', "id");
 
-    Objeto* escopeta = new Escopeta(camino, 'E', 1, "id");
-    Objeto* balas = new Bala(camino, 'b', 2, "id");
+    Objeto* estaca = new Estaca(camino, 'e', 1, "id");
+    //Objeto* balas = new Bala(camino, 'b', 2, "idee");
 
-   //humano_simple -> asignar_casilla(casilla);
+    camino ->agregar_objeto(estaca);
+    //camino->agregar_objeto(balas);
 
-    Lista<Objeto*> lista = ((Ser*) humano_simple)-> obtener_inventario();
 
-    lista.agregar(escopeta);
-    lista.agregar(balas);
+    ((Cazador*)cazador)->encuentro_con_elemento();
 
-    int vida_humano = ((Ser*) humano_simple) -> devolver_vida();
-    int energia_humano = ((Ser*) humano_simple) -> devolver_energia();
-    int armadura_humano = ((Ser*) humano_simple) -> devolver_armadura();
-    int fuerza_humano = ((Ser*) humano_simple) -> devolver_fuerza();
+    Lista<Objeto*> inventario = ((Cazador*)cazador)->obtener_inventario();
+
+    inventario.reiniciar();
+
+
+    while(inventario.existe_siguiente()) {
+
+       cout << endl << "elemento:" << inventario.siguiente_dato()->obtener_nombre() << endl <<endl;
+   }
+*/
+
+
+
+/*
+
+    int vida_humano = ((Ser*) cazador) -> devolver_vida();
+    int energia_humano = ((Ser*) cazador) -> devolver_energia();
+    int armadura_humano = ((Ser*) cazador) -> devolver_armadura();
+    int fuerza_humano = ((Ser*) cazador) -> devolver_fuerza();
 
 
     cout << "vida humano : " << vida_humano << endl;
@@ -58,7 +96,7 @@ int main(){
     cout << endl << "ATACO................." << endl << endl;
 
 
-    ((Ser*) humano_simple) -> atacar(camino_2);
+    ((Ser*) cazador) -> atacar(camino_2);
 
     cout << "vida humano : " << vida_humano << endl;
     cout << "energia humano : " << energia_humano << endl;
@@ -79,7 +117,7 @@ int main(){
 
 
 
-
+*/
 
 
     /*Coordenada posicion(10, 10);

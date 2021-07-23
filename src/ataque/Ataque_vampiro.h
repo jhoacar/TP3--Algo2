@@ -11,19 +11,22 @@ public:
     Ataque_vampiro(Vampiro *personaje);
     ~Ataque_vampiro();
 
-    void atacar(Casilla *casilla);
+    void atacar(Casilla *casilla, Tablero* tablero);
+    void atacar(Casilla *casilla, Tablero* tablero, char arma);
 
-    void atacar(Tablero *tablero);
 
     //PRE: recibe la casilla a atacar y el arma que va a utilizar
     //POST: devuelve si puede atacar o no
-    bool validacion_ataque(Casilla *casilla_a_atacar);
+    bool validacion_ataque( int energia);
 
     //PRE: recibe la casilla del personaje a bajarle la vida
     //POST: le baja la vida al personaje
     void bajar_vida(Casilla* casilla);
 
-    Casilla* validacion_hay_personaje_en_casilla(Lista<Casilla *> lista_casillas);
+    bool validacion_rango_aleatorio(Tablero* tablero,Coordenada centro);
+    bool validacion_rango_especifico(Casilla* casilla_a_atacar);
+    Casilla* devolver_casilla_aleatoria_en_tablero(Tablero* tablero, Coordenada centro);
+    Casilla* devolver_casilla_especifica_en_tablero(Tablero* tablero, Casilla* casilla);
 
 };
 

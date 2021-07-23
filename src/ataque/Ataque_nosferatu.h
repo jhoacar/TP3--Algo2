@@ -11,11 +11,11 @@ class Ataque_nosferatu:public Ataque_vampiro{
         Ataque_nosferatu(Nosferatu *personaje);
         ~Ataque_nosferatu();
 
-        void atacar(Casilla *casilla);
+        void atacar(Casilla *casilla, Tablero* tablero);
 
-        //PRE: recibe la casilla a atacar y el arma que va a utilizar
+        /*//PRE: recibe la casilla a atacar y el arma que va a utilizar
         //POST: devuelve si puede atacar o no
-        bool validacion_ataque(Casilla *casilla_a_atacar);
+        bool validacion_ataque(Casilla *casilla_a_atacar);*/
 
         //PRE: recibe la casilla del personaje a bajarle la vida
         //POST: le baja la vida al personaje
@@ -24,6 +24,9 @@ class Ataque_nosferatu:public Ataque_vampiro{
 
         void atacar(Tablero* tablero);
 
+        bool validacion_rango_aleatorio(Tablero* tablero,Coordenada centro);
+        bool validacion_rango_especifico(Casilla* casilla_a_atacar);
+        Casilla* devolver_casilla_aleatoria_en_tablero(Tablero* tablero, Coordenada centro);
 
     };
 

@@ -15,9 +15,9 @@ public:
 
     Ataque(Ser *personaje);
     ~Ataque();
-    virtual void atacar(Casilla *casilla) = 0;
+    virtual void atacar(Casilla *casilla, Tablero* tablero) = 0;
+    virtual void atacar(Casilla *casilla, Tablero* tablero, char arma) = 0;
 
-    virtual void atacar(Tablero *tablero) = 0;
 
     //PRE: recibe una casilla y un rango de distancia
     //POST: devuelve true si el objeto a atacar esta a su alcance
@@ -39,9 +39,6 @@ public:
     //POST: devuelve el valor del danio que hara el ataque
     int calcular_porcentaje_fuerza(int fuerza, int porcentaje);
 
-    //PRE: recibe una cantidad
-    //POST: le baja la vida al personaje
-    void quitar_vida(int cantidad);
 
     //PRE: recibe el nombre del objeto
     //POST: devuelve la inicial
@@ -58,6 +55,10 @@ public:
     int indice_personaje(char personaje, Casilla* casilla);
 
     void calcular_valores_ataque(int indice, int porcentaje, Casilla* casilla);
+
+    Casilla* validacion_hay_personaje_en_casilla(Lista<Casilla *> lista_casillas, string personaje);
+
+
 
 
 };

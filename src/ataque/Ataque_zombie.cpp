@@ -7,65 +7,78 @@ Ataque_zombie::Ataque_zombie(Zombie *personaje): Ataque(personaje){
 Ataque_zombie::~Ataque_zombie(){
 }
 
+bool Ataque_zombie::validacion_ataque(int energia){
 
-
-Casilla* Ataque_zombie::validacion_hay_personaje_en_casilla(Lista<Casilla *> lista_casillas){
-
-    bool validacion_hay_personaje = false;
-    Casilla* casilla_objeto;
-
-    while(lista_casillas.existe_siguiente() && !validacion_hay_personaje) {
-        Casilla *casilla_actual = lista_casillas.siguiente_dato();
-        while (casilla_actual->obtener_objetos().existe_siguiente() && !validacion_hay_personaje) {
-
-            Objeto *objeto_actual = casilla_actual->obtener_objetos().siguiente_dato();
-            char nombre_actual = objeto_actual->obtener_nombre();
-
-
-            if (nombre_actual == NOMBRES_CHAR[HUMANO] || nombre_actual == NOMBRES_CHAR[HUMANO_CAZADOR] ||
-                nombre_actual == NOMBRES_CHAR[VANESA]) {
-                validacion_hay_personaje = true;
-                casilla_objeto = objeto_actual -> obtener_casilla();
-            }
-        }
-    }
-    return casilla_objeto;
+    return energia_suficiente(energia);
 }
 
-void Ataque_zombie::atacar(Tablero* tablero) {
-
-    Casilla *casilla_personaje = (personaje ->obtener_casilla());
-    Coordenada centro = casilla_personaje->obtener_posicion();
-
-    Lista<Coordenada> lista_coordenadas = obtener_cruz(centro, 1);
-    Lista<Casilla *> lista_casillas = tablero -> obtener_lista_casillas(lista_coordenadas);
-
-    Casilla* casilla_objeto = validacion_hay_personaje_en_casilla(lista_casillas);
 
 
-    bool energia_suficiente_ = energia_suficiente(5);
 
-    if((casilla_objeto != nullptr) && energia_suficiente_){
 
-        Lista<Objeto*> lista_objetos = casilla_objeto -> obtener_objetos();
+bool Ataque_zombie::validacion_rango_aleatorio(Tablero* tablero, Coordenada centro){
+
+    bool validacion = false;
+
+    Lista<Coordenada> lista_coordenadas;
+
+    lista_coordenadas = obtener_cruz(centro, 1);
+    Lista<Casilla *> lista_casillas = tablero->obtener_lista_casillas(lista_coordenadas);
+    Casilla* casilla_objeto = validacion_hay_personaje_en_casilla(lista_casillas, "humano");
+
+    if(casilla_objeto != nullptr) {
+        validacion = true;
+    }
+    return validacion;
+}
+
+Casilla* Ataque_zombie::devolver_casilla_aleatoria_en_tablero(Tablero* tablero, Coordenada centro){
+
+    Lista<Coordenada> lista_coordenadas;
+
+    lista_coordenadas = obtener_cruz(centro, 1);
+
+    Lista<Casilla *> lista_casillas = tablero->obtener_lista_casillas(lista_coordenadas);
+    Casilla* casilla_objeto = validacion_hay_personaje_en_casilla(lista_casillas, "humano");
+
+    return casilla_objeto;
+
+}
+
+
+void Ataque_zombie::atacar(Casilla* casilla, Tablero* tablero) {
+
+    Coordenada centro = personaje->obtener_casilla()->obtener_posicion();
+    bool ataque_validacion;
+    bool validacion_rango;
+    Lista<Objeto*> lista_objetos;
+
+    Casilla* casilla_en_tablero;
+
+    validacion_rango = validacion_rango_aleatorio(tablero, centro);
+    ataque_validacion = validacion_ataque(personaje->devolver_energia());
+
+    if(validacion_rango && ataque_validacion){
+
+        casilla_en_tablero = devolver_casilla_aleatoria_en_tablero(tablero, centro);
 
         int posicion;
-        posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[HUMANO]);
+        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[ZOMBIE]);
 
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[HUMANO_CAZADOR]);
+            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRO]);
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[VANESA]);
-
+            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRELLA]);
+        if(posicion == NO_ENCONTRADO)
+            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[NOSFERATU]);
 
         if(posicion != NO_ENCONTRADO){
             consumir_energia(5);
-            bajar_vida(casilla_objeto);
+            bajar_vida(casilla_en_tablero);
         }
-
-
     }
 }
+
 
 
 void Ataque_zombie::bajar_vida(Casilla* casilla){
@@ -82,4 +95,6 @@ void Ataque_zombie::bajar_vida(Casilla* casilla){
     if(indice_vanesa != NO_ENCONTRADO)
         casilla -> obtener_objetos()[indice_vanesa] -> asignar_nombre(NOMBRES_CHAR[ZOMBIE]);
 
+}
+void Ataque_zombie::atacar(Casilla *casilla, Tablero* tablero, char arma){
 }

@@ -7,7 +7,7 @@ Ataque_cazador::Ataque_cazador(Cazador *personaje): Ataque_humano(personaje){
 Ataque_cazador::~Ataque_cazador(){
 }
 
-
+/*
 bool Ataque_cazador::validacion_ataque(Casilla *casilla_a_atacar, char arma_elegida){
 
 
@@ -41,36 +41,51 @@ bool Ataque_cazador::validacion_ataque(Casilla *casilla_a_atacar, char arma_eleg
     }
 
     return validacion_ataque;
-}
+}*/
 
-void Ataque_cazador::atacar(Casilla *casilla, char arma) {
+void Ataque_cazador::atacar(Casilla *casilla, Tablero* tablero, char arma) {
 
+    Coordenada centro = personaje->obtener_casilla()->obtener_posicion();
+    bool ataque_validacion;
+    bool validacion_rango;
+    Lista<Objeto*> lista_objetos;
 
+    Casilla* casilla_en_tablero;
 
-    bool validacion = validacion_ataque(casilla, arma);
+    if(casilla == nullptr)
+        validacion_rango = validacion_rango_aleatorio(tablero, centro, arma, 2);
+    else {
+        Casilla *casilla_elegida = tablero->obtener_casilla(casilla->obtener_posicion());
+        validacion_rango = validacion_rango_especifico(casilla_elegida, arma, 2);
+    }
+    ataque_validacion = validacion_ataque( arma, 6);
 
-    if(validacion){
+    if(validacion_rango && ataque_validacion){
 
-        Lista<Objeto*> lista_objetos = casilla -> obtener_objetos();
+        if(casilla == nullptr)
+            casilla_en_tablero = devolver_casilla_aleatoria_en_tablero(tablero, centro, arma, 2);
+        else
+            casilla_en_tablero = devolver_casilla_especifica_en_tablero(tablero, casilla);
 
         int posicion;
+        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[ZOMBIE]);
 
-        posicion = buscar_personaje(casilla, NOMBRES_STRING[ZOMBIE]);
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla, NOMBRES_STRING[VAMPIRO]);
+            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRO]);
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla, NOMBRES_STRING[VAMPIRELLA]);
+            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRELLA]);
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla, NOMBRES_STRING[NOSFERATU]);
+            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[NOSFERATU]);
 
         if(posicion != NO_ENCONTRADO){
             consumir_energia(6);
-
             bajar_cantidad_objeto(arma);
-            bajar_vida(casilla, arma);
+            bajar_vida(casilla_en_tablero, arma);
         }
     }
 }
+
+
 
 
 void Ataque_cazador::bajar_vida_vampiro(int indice, int porcentaje_escopeta, int porcentaje_agua, int porcentaje_estaca, Casilla* casilla, char arma_elegida){
@@ -108,40 +123,3 @@ void Ataque_cazador::bajar_vida(Casilla* casilla, char arma_elegida){
 
 
 
-
-void Ataque_cazador::atacar(Tablero* tablero, char arma) {
-
-    Casilla *casilla_personaje = (personaje -> obtener_casilla());
-    Coordenada centro = casilla_personaje->obtener_posicion();
-
-    Lista<Coordenada> lista_coordenadas = obtener_cuadrado(centro, 1);
-    Lista<Casilla *> lista_casillas = tablero -> obtener_lista_casillas(lista_coordenadas);
-
-    Casilla* casilla_objeto = validacion_hay_personaje_en_casilla(lista_casillas);
-
-
-    bool validacion = false;
-    if(casilla_objeto != nullptr)
-        validacion = validacion_ataque(casilla_objeto, arma);
-
-    if((casilla_objeto != nullptr) && validacion){
-
-        Lista<Objeto*> lista_objetos = casilla_objeto -> obtener_objetos();
-
-        int posicion;
-        posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[ZOMBIE]);
-
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[VAMPIRO]);
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[VAMPIRELLA]);
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[NOSFERATU]);
-
-        if(posicion != NO_ENCONTRADO){
-            consumir_energia(6);
-            bajar_cantidad_objeto(arma_elegida);
-            bajar_vida(casilla_objeto, arma_elegida);
-        }
-    }
-}

@@ -11,7 +11,7 @@ class Nosferatu : public Vampiro
 		void mostrar();
 		void regnerar_energia();
 		void defender();
-		void atacar(Casilla *casilla);
+		void atacar(Casilla *casilla, Tablero* tablero);
 		~Nosferatu();
 	protected:
 };

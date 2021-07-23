@@ -7,50 +7,47 @@ Ataque_vampirella::Ataque_vampirella(Vampirella *personaje): Ataque_vampiro(pers
 Ataque_vampirella::~Ataque_vampirella(){
 }
 
-void Ataque_vampirella::atacar(Casilla *casilla) {
+void Ataque_vampirella::atacar(Casilla *casilla, Tablero*tablero) {
 
-    bool validacion = validacion_ataque(casilla);
+    Coordenada centro = personaje->obtener_casilla()->obtener_posicion();
+    bool ataque_validacion;
+    bool validacion_rango;
+    Lista<Objeto*> lista_objetos;
 
-    if(validacion){
+    Casilla* casilla_en_tablero;
 
-        Lista<Objeto*> lista_objetos = casilla -> obtener_objetos();
+    if(casilla == nullptr)
+        validacion_rango = validacion_rango_aleatorio(tablero, centro);
+    else {
+        Casilla *casilla_elegida = tablero->obtener_casilla(casilla->obtener_posicion());
+        validacion_rango = validacion_rango_especifico(casilla_elegida);
+    }
+    ataque_validacion = validacion_ataque(personaje->devolver_energia());
+
+    if(validacion_rango && ataque_validacion){
+
+        if(casilla == nullptr)
+            casilla_en_tablero = devolver_casilla_aleatoria_en_tablero(tablero, centro);
+        else
+            casilla_en_tablero = devolver_casilla_especifica_en_tablero(tablero, casilla);
 
         int posicion;
-        posicion = buscar_personaje(casilla, NOMBRES_STRING[HUMANO]);
+        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[ZOMBIE]);
 
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla, NOMBRES_STRING[HUMANO_CAZADOR]);
+            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRO]);
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla, NOMBRES_STRING[VANESA]);
+            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRELLA]);
+        if(posicion == NO_ENCONTRADO)
+            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[NOSFERATU]);
 
         if(posicion != NO_ENCONTRADO){
             consumir_energia(4);
-            bajar_vida(casilla);
+            bajar_vida(casilla_en_tablero);
         }
     }
 }
 
-
-bool Ataque_vampirella::validacion_ataque(Casilla *casilla_a_atacar){
-
-    bool validacion_ataque;
-
-    Casilla* casilla_personaje = personaje -> obtener_casilla();
-    Coordenada centro = casilla_personaje -> obtener_posicion();
-
-    Lista<Coordenada> lista_casillas_posibles = obtener_cruz(centro, 1);
-
-    bool validacion_rango = validacion_rango_ataque(lista_casillas_posibles, casilla_a_atacar);
-    bool energia_suficiente_ = energia_suficiente(4);
-
-
-    if(validacion_rango && energia_suficiente_)
-        validacion_ataque = true;
-    else
-        validacion_ataque = false;
-
-    return validacion_ataque;
-}
 
 
 void Ataque_vampirella::bajar_vida(Casilla* casilla){
@@ -70,38 +67,3 @@ void Ataque_vampirella::bajar_vida(Casilla* casilla){
 }
 
 
-
-void Ataque_vampirella::atacar(Tablero* tablero) {
-
-    Casilla *casilla_personaje = (personaje ->obtener_casilla());
-    Coordenada centro = casilla_personaje->obtener_posicion();
-
-    Lista<Coordenada> lista_coordenadas = obtener_cruz(centro, 1);
-    Lista<Casilla *> lista_casillas = tablero -> obtener_lista_casillas(lista_coordenadas);
-
-    Casilla* casilla_objeto = validacion_hay_personaje_en_casilla(lista_casillas);
-
-
-    bool energia_suficiente_ = energia_suficiente(4);
-    bool validacion;
-    if(casilla_objeto != nullptr)
-        validacion = validacion_ataque(casilla_objeto);
-
-    if(casilla_objeto != nullptr && energia_suficiente_ && validacion){
-
-        Lista<Objeto*> lista_objetos = casilla_objeto -> obtener_objetos();
-
-        int posicion;
-        posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[HUMANO]);
-
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[HUMANO_CAZADOR]);
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_objeto, NOMBRES_STRING[VANESA]);
-
-        if(posicion != NO_ENCONTRADO){
-            consumir_energia(4);
-            bajar_vida(casilla_objeto);
-        }
-    }
-}
