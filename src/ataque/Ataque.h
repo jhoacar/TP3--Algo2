@@ -1,9 +1,9 @@
 #ifndef ATAQUE_H
 #define ATAQUE_H
 
-#include "Casilla.h"
-#include"Funciones.h"
-#include "Tablero.h"
+#include "../mapa/Casilla.h"
+#include"../funcionalidades/Funciones.h"
+#include "../mapa/Tablero.h"
 class Ser;
 
 class Ataque {
@@ -14,7 +14,7 @@ protected:
 public:
 
     Ataque(Ser *personaje);
-    ~Ataque();
+    virtual ~Ataque();
     virtual void atacar(Casilla *casilla, Tablero* tablero) = 0;
     virtual void atacar(Casilla *casilla, Tablero* tablero, char arma) = 0;
 
@@ -33,7 +33,7 @@ public:
 
     //PRE: recibe el valor del ataque
     //POST: baja la vida a partir de cuantos puntos de armadura tenga
-    int calcular_vida_con_armadura(int valor_ataque);
+    int calcular_vida_con_armadura(int valor_ataque, Casilla* casilla, int indice);
 
     //PRE: recibe la fuerza del personaje y el porcentaje que se aplicara
     //POST: devuelve el valor del danio que hara el ataque

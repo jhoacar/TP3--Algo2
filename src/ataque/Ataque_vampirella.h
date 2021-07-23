@@ -2,7 +2,7 @@
 #define FUNCIONES_H_ATAQUE_VAMPIRELLA_H
 
 #include "Ataque_vampiro.h"
-#include "Vampirella.h"
+#include "../objetos/seres/monstruos/vampiros/Vampirella.h"
 
 class Ataque_vampirella:public Ataque_vampiro{
 

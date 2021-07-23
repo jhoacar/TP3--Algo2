@@ -2,7 +2,7 @@
 #define LISTA_H
 
 #include "Nodo.h"
-#include "Constantes.h"
+#include "../../constantes/Constantes.h"
 
 //Pre: Dos datos a comparar, con sobrecargas de los operadores "<,>,=="
 //Post: Compara y devuelve PEQUENO si A es menor que B, GRANDE si A es mayor que B e IGUAL caso contrario

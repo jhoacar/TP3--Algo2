@@ -22,7 +22,7 @@ void Ataque_vampirella::atacar(Casilla *casilla, Tablero*tablero) {
         Casilla *casilla_elegida = tablero->obtener_casilla(casilla->obtener_posicion());
         validacion_rango = validacion_rango_especifico(casilla_elegida);
     }
-    ataque_validacion = validacion_ataque(personaje->devolver_energia());
+    ataque_validacion = validacion_ataque(4);
 
     if(validacion_rango && ataque_validacion){
 
@@ -32,14 +32,13 @@ void Ataque_vampirella::atacar(Casilla *casilla, Tablero*tablero) {
             casilla_en_tablero = devolver_casilla_especifica_en_tablero(tablero, casilla);
 
         int posicion;
-        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[ZOMBIE]);
+        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[HUMANO]);
 
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRO]);
+            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[HUMANO_CAZADOR]);
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRELLA]);
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[NOSFERATU]);
+            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VANESA]);
+
 
         if(posicion != NO_ENCONTRADO){
             consumir_energia(4);

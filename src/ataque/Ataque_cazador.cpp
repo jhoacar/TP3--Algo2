@@ -7,41 +7,6 @@ Ataque_cazador::Ataque_cazador(Cazador *personaje): Ataque_humano(personaje){
 Ataque_cazador::~Ataque_cazador(){
 }
 
-/*
-bool Ataque_cazador::validacion_ataque(Casilla *casilla_a_atacar, char arma_elegida){
-
-
-    bool validacion_ataque = false;
-    Casilla* casilla_personaje = personaje ->obtener_casilla();
-    Coordenada centro = casilla_personaje ->obtener_posicion();
-    Lista<Coordenada> lista_casillas_posibles;
-    bool tiene_suficientes_balas;
-
-    if(arma_elegida == NOMBRES_CHAR[ESCOPETA]) {
-        lista_casillas_posibles = obtener_cuadrado(centro, 2);
-        tiene_suficientes_balas = tiene_balas(2);
-    }
-    else if(arma_elegida == NOMBRES_CHAR[AGUA])
-        lista_casillas_posibles = obtener_cuadrado(centro, 1);
-    else if(arma_elegida == NOMBRES_CHAR[ESTACA])
-        lista_casillas_posibles = obtener_cruz(centro, 1);
-
-    bool validacion_rango = validacion_rango_ataque(lista_casillas_posibles, casilla_a_atacar);
-    bool energia_suficiente_ = energia_suficiente(6);
-    bool tiene_arma_ = tiene_arma(arma_elegida);
-    bool mounstruo_oculto = validacion_mounstruo_oculto(casilla_a_atacar, arma_elegida);
-
-    if(arma_elegida == NOMBRES_CHAR[ESCOPETA]) {
-        if (validacion_rango && energia_suficiente_ && tiene_arma_ && !mounstruo_oculto && tiene_suficientes_balas)
-            validacion_ataque = true;
-    }
-    else{
-        if (validacion_rango && energia_suficiente_ && tiene_arma_ && !mounstruo_oculto)
-            validacion_ataque = true;
-    }
-
-    return validacion_ataque;
-}*/
 
 void Ataque_cazador::atacar(Casilla *casilla, Tablero* tablero, char arma) {
 
@@ -93,9 +58,9 @@ void Ataque_cazador::bajar_vida_vampiro(int indice, int porcentaje_escopeta, int
     if (arma_elegida == NOMBRES_CHAR[ESCOPETA])
         calcular_valores_ataque(indice, porcentaje_escopeta, casilla);
     else if (arma_elegida == NOMBRES_CHAR[ESTACA])
-        calcular_ataque_valores_fijos(indice, porcentaje_agua, casilla);
-    else if (arma_elegida == NOMBRES_CHAR[AGUA])
         calcular_ataque_valores_fijos(indice, porcentaje_estaca, casilla);
+    else if (arma_elegida == NOMBRES_CHAR[AGUA])
+        calcular_ataque_valores_fijos(indice, porcentaje_agua, casilla);
 }
 
 
@@ -114,9 +79,9 @@ void Ataque_cazador::bajar_vida(Casilla* casilla, char arma_elegida){
     }
     if(indice_vampiro != NO_ENCONTRADO)
         bajar_vida_vampiro(indice_vampiro, 30, 10, 60, casilla, arma_elegida);
-    if(indice_nosferatu != NO_ENCONTRADO)
+    else if(indice_nosferatu != NO_ENCONTRADO)
         bajar_vida_vampiro(indice_nosferatu, 30, 10, 60, casilla, arma_elegida);
-    if(indice_vampirella != NO_ENCONTRADO)
+    else if(indice_vampirella != NO_ENCONTRADO)
         bajar_vida_vampiro(indice_vampirella, 30, 10, 60, casilla, arma_elegida);
 }
 

@@ -1,8 +1,8 @@
 #include "Ataque_humano.h"
 #include "../objetos/elementos/Escopeta.h"
 #include "../objetos/elementos/Bala.h"
-#include "../objetos/seres/monstruos/Vampiro.h"
 #include "../objetos/seres/monstruos/vampiros/Vampiro.h"
+#include "../objetos/seres/monstruos/vampiros/Nosferatu.h"
 #include "../objetos/seres/monstruos/vampiros/Vampirella.h"
 #include "../objetos/seres/monstruos/zombies/Zombie.h"
 #include <stdlib.h>
@@ -25,10 +25,23 @@ bool Ataque_humano::tiene_arma(char arma_elegida){
     Objeto *objeto_referencia = new Escopeta();
     objeto_referencia -> asignar_nombre(arma_elegida);
     Lista<Objeto*> inventario = personaje -> obtener_inventario();
+    bool validacion = false;
 
-    return inventario.existe(objeto_referencia,comparacion_por_nombre);
+    bool esta_en_inventario = personaje -> obtener_inventario().existe(objeto_referencia,comparacion_por_nombre);
 
+    if(esta_en_inventario){
+        int posicion = personaje -> obtener_inventario().buscar_dato(0, objeto_referencia,comparacion_por_nombre);
+
+        int cantidad = ((Elemento*) personaje -> obtener_inventario()[posicion]) -> obtener_cantidad();
+
+        if(cantidad >= 1)
+            validacion = true;
+    }
+    delete objeto_referencia;
+    return validacion;
 }
+
+
 
 
 
@@ -49,6 +62,7 @@ bool Ataque_humano::tiene_balas(int cantidad_minima_balas){
         if(cantidad_balas >= cantidad_minima_balas)
             balas_necesarias = true;
     }
+    delete objeto_referencia;
     return balas_necesarias;
 }
 
@@ -71,8 +85,9 @@ void Ataque_humano::bajar_cantidad_objeto(char arma){
             ((Elemento*) personaje -> obtener_inventario()[posicion]) -> disminuir_cantidad(2);
         else if(a_bajar == NOMBRES_CHAR[AGUA] || a_bajar == NOMBRES_CHAR[ESTACA])
             ((Elemento*) personaje -> obtener_inventario()[posicion]) -> disminuir_cantidad(1);
-    }
 
+    }
+    delete objeto_referencia;
 
 }
 
@@ -102,7 +117,7 @@ bool Ataque_humano::validacion_mounstruo_oculto(Casilla *casilla, char arma_eleg
         if(arma_elegida == NOMBRES_CHAR[ESCOPETA])
             oculto = true;
     }
-
+    delete objeto_referencia;
     return oculto;
 
 
@@ -131,7 +146,7 @@ bool Ataque_humano::validacion_ataque(char arma_elegida, int energia){
 void Ataque_humano::calcular_ataque_valores_fijos(int indice, int valor_a_sacar, Casilla* casilla){
 
     int valor_final;
-    valor_final = calcular_vida_con_armadura(valor_a_sacar);
+    valor_final = calcular_vida_con_armadura(valor_a_sacar, casilla, indice);
     ((Ser*) casilla -> obtener_objetos()[indice]) -> bajar_vida(valor_final);
 
 }
@@ -148,11 +163,11 @@ void Ataque_humano::bajar_vida(Casilla* casilla){
 
     if(indice_zombie != NO_ENCONTRADO)
         calcular_valores_ataque(indice_zombie, 100, casilla);
-    if(indice_vampiro != NO_ENCONTRADO)
+    else if(indice_vampiro != NO_ENCONTRADO)
         calcular_valores_ataque(indice_vampiro, 20, casilla);
-    if(indice_nosferatu != NO_ENCONTRADO)
+    else if(indice_nosferatu != NO_ENCONTRADO)
         calcular_valores_ataque(indice_nosferatu, 20, casilla);
-    if(indice_vampirella != NO_ENCONTRADO)
+    else if(indice_vampirella != NO_ENCONTRADO)
         calcular_valores_ataque(indice_vampirella, 20, casilla);
 }
 
@@ -253,6 +268,7 @@ void Ataque_humano::atacar(Casilla *casilla, Tablero* tablero) {
             casilla_en_tablero = devolver_casilla_aleatoria_en_tablero(tablero, centro, arma_elegida, 1);
         else
             casilla_en_tablero = devolver_casilla_especifica_en_tablero(tablero, casilla);
+
 
         int posicion;
         posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[ZOMBIE]);

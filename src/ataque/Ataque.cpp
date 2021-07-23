@@ -1,13 +1,12 @@
 #include "Ataque.h"
 #include "../objetos/seres/Ser.h"
 #include "../objetos/seres/monstruos/vampiros/Vampiro.h"
-
+#include "../objetos/Objeto.h"
 
 Ataque::Ataque(Ser *personaje) {
     this -> personaje = personaje;
 }
-Ataque::~Ataque(){
-}
+Ataque::~Ataque(){}
 
 bool Ataque::energia_suficiente(int minimo) {
 
@@ -40,8 +39,10 @@ void Ataque::calcular_valores_ataque(int indice, int porcentaje, Casilla* casill
     int fuerza = personaje -> devolver_fuerza();
     int valor_ataque = calcular_porcentaje_fuerza(fuerza, porcentaje);
 
-    valor_final = calcular_vida_con_armadura(valor_ataque);
-    ((Ser*) casilla -> obtener_objetos()[indice]) -> bajar_vida(valor_final);
+    valor_final = calcular_vida_con_armadura(valor_ataque, casilla, indice);
+    Objeto* objeto = casilla -> obtener_objetos()[indice];
+    ((Ser*) objeto) -> bajar_vida(valor_final);
+    //((Ser*) casilla -> obtener_objetos()[indice]) -> bajar_vida(valor_final);
 
 }
 
@@ -52,9 +53,10 @@ void Ataque::consumir_energia(int cantidad){
 
 
 
-int Ataque::calcular_vida_con_armadura(int valor_ataque){
+int Ataque::calcular_vida_con_armadura(int valor_ataque, Casilla* casilla, int indice){
 
-    int armadura = personaje -> devolver_armadura();
+    Objeto* objeto = casilla ->obtener_objetos()[indice];
+    int armadura = ((Ser*) objeto)->devolver_armadura();
     int valor_final;
 
     if(armadura == 0)
@@ -63,7 +65,7 @@ int Ataque::calcular_vida_con_armadura(int valor_ataque){
         valor_final = ((valor_ataque * 10)/100);
     else if(armadura == 2)
         valor_final = valor_ataque - ((valor_ataque * 20)/100);
-    else if (armadura >= 2)
+    else if (armadura > 2)
         valor_final = valor_ataque - ((valor_ataque * 80)/100);
 
     return valor_final;

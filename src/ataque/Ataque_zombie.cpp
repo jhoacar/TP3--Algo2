@@ -63,14 +63,12 @@ void Ataque_zombie::atacar(Casilla* casilla, Tablero* tablero) {
         casilla_en_tablero = devolver_casilla_aleatoria_en_tablero(tablero, centro);
 
         int posicion;
-        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[ZOMBIE]);
+        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[HUMANO]);
 
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRO]);
+            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[HUMANO_CAZADOR]);
         if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRELLA]);
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[NOSFERATU]);
+            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VANESA]);
 
         if(posicion != NO_ENCONTRADO){
             consumir_energia(5);

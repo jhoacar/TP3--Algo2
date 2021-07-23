@@ -1,52 +1,17 @@
 #include "Ataque_vanesa.h"
 
-Ataque_vanesa::Ataque_vanesa(Humano *personaje):Ataque_humano(personaje){
+Ataque_vanesa::Ataque_vanesa(Vanessa *personaje):Ataque_humano(personaje){
 }
 
 Ataque_vanesa::~Ataque_vanesa(){
 }
 
-/*
-bool Ataque_vanesa::validacion_ataque(Casilla *casilla_a_atacar, char arma_elegida){
-
-    bool validacion_ataque = false;
-    Casilla* casilla_personaje = personaje ->obtener_casilla();
-    Coordenada centro = casilla_personaje ->obtener_posicion();
-    Lista<Coordenada> lista_casillas_posibles;
-    bool tiene_suficientes_balas;
-
-    if(arma_elegida == NOMBRES_CHAR[ESCOPETA]) {
-        lista_casillas_posibles = obtener_cuadrado(centro, 2);
-        tiene_suficientes_balas = tiene_balas(2);
-    }
-    else if(arma_elegida == NOMBRES_CHAR[AGUA])
-        lista_casillas_posibles = obtener_cuadrado(centro, 1);
-    else if(arma_elegida == NOMBRES_CHAR[ESTACA])
-        lista_casillas_posibles = obtener_cruz(centro, 1);
-
-    bool validacion_rango = validacion_rango_ataque(lista_casillas_posibles, casilla_a_atacar);
-    bool energia_suficiente_ = energia_suficiente(8);
-    bool tiene_arma_ = tiene_arma(arma_elegida);
-    bool mounstruo_oculto = validacion_mounstruo_oculto(casilla_a_atacar, arma_elegida);
-
-    if(arma_elegida == NOMBRES_CHAR[ESCOPETA]) {
-        if (validacion_rango && energia_suficiente_ && tiene_arma_ && !mounstruo_oculto && tiene_suficientes_balas)
-            validacion_ataque = true;
-    }
-    else{
-        if (validacion_rango && energia_suficiente_ && tiene_arma_ && !mounstruo_oculto)
-            validacion_ataque = true;
-    }
-
-    return validacion_ataque;
-}
-*/
 
 void Ataque_vanesa::bajar_vida_completa(int indice, Casilla *casilla){
 
     int valor_final;
     int vida = ((Ser*)casilla -> obtener_objetos()[indice]) -> devolver_vida();
-    valor_final = calcular_vida_con_armadura(vida);
+    valor_final = calcular_vida_con_armadura(vida, casilla, indice);
 
     ((Ser*)casilla -> obtener_objetos()[indice]) -> bajar_vida(valor_final);
 }
@@ -76,11 +41,11 @@ void Ataque_vanesa::bajar_vida(Casilla* casilla, char arma_elegida){
         else if (arma_elegida == NOMBRES_CHAR[ESTACA])
             calcular_valores_ataque(indice_zombie, 25, casilla);
     }
-    if(indice_vampiro != NO_ENCONTRADO)
+    else if(indice_vampiro != NO_ENCONTRADO)
         bajar_vida_vampiro(indice_vampiro, 40, 20, casilla, arma_elegida);
-    if(indice_nosferatu != NO_ENCONTRADO)
+    else if(indice_nosferatu != NO_ENCONTRADO)
         bajar_vida_vampiro(indice_nosferatu, 40, 20, casilla, arma_elegida);
-    if(indice_vampirella != NO_ENCONTRADO)
+    else if(indice_vampirella != NO_ENCONTRADO)
         bajar_vida_vampiro(indice_vampirella, 40, 20, casilla, arma_elegida);
 }
 

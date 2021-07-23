@@ -1,5 +1,5 @@
 #include "Vampirella.h"
-#include "Ataque_vampirella.h"
+#include "../../../../ataque/Ataque_vampirella.h"
 #include <iostream>
 using std::cout;
 using std::endl;

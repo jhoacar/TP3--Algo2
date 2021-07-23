@@ -3,7 +3,7 @@
 
 
 #include "Ataque_vampiro.h"
-#include "Nosferatu.h"
+#include "../objetos/seres/monstruos/vampiros/Nosferatu.h"
 
 class Ataque_nosferatu:public Ataque_vampiro{
 

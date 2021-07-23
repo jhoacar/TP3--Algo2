@@ -1,7 +1,7 @@
 #ifndef CAZADOR_H
 #define CAZADOR_H
 
-#include "Humano.h"
+#include "../Humano.h"
 
 class Cazador : public Humano
 {

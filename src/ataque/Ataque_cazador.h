@@ -2,7 +2,7 @@
 #define ATAQUE_HUMANO_CPP_ATAQUE_CAZADOR_H
 
 #include "Ataque_humano.h"
-#include "../objetos/seres/humanos/Cazador.h"
+#include "../objetos/seres/humanos/cazador/Cazador.h"
 
 class Ataque_cazador : public Ataque_humano {
 
