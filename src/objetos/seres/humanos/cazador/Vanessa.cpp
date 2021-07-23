@@ -27,7 +27,7 @@ void Vanessa::atacar(Casilla *casilla, Tablero* tablero){
 void Vanessa::atacar(Casilla *casilla, Tablero* tablero, char arma){
     if(ataque == nullptr)
         this -> ataque = new Ataque_vanesa(this);
-    ataque -> atacar(casilla, tablero);
+    ataque -> atacar(casilla, tablero, arma);
 }
 
 
