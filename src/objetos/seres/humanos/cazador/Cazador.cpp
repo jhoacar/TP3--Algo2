@@ -3,7 +3,6 @@
 using std::cout;
 using std::endl;
 Cazador::Cazador():Humano(){
-
 }
 Cazador::Cazador(Casilla *casilla,char nombre,string ID):Humano(casilla,nombre,ID){
 }
@@ -12,6 +11,15 @@ void Cazador::mostrar(){
 }
 Cazador::~Cazador()
 {
+
+}
+
+void Cazador::defender(){
+
+}
+
+void Cazador::atacar(Casilla *casilla){
+    
 }
 
 void Cazador::regenerar_energia() {

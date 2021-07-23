@@ -1,34 +1,34 @@
 #include "Casilla.h"
 #include "../objetos/Objeto.h"
-#include "../objetos/seres/humanos/Humano.h"
-
+#include "../objetos/elementos/Estaca.h"
 
 int comparacion_por_nombre(Objeto *A, Objeto *B){
-
+    
     if(A->obtener_nombre()==B->obtener_nombre())
         return IGUAL;
     else if(A->obtener_nombre() > B->obtener_nombre())
         return GRANDE;
-    else
+    else   
         return PEQUENO;
 }
 
 int comparacion_por_ID(Objeto *A, Objeto *B){
-
+    
     if(A->obtener_ID()==B->obtener_ID())
         return IGUAL;
     else if(A->obtener_ID() > B->obtener_ID())
         return GRANDE;
-    else
+    else   
         return PEQUENO;
 }
 
+
 Casilla::Casilla():cuadrante(),posicion(),objetos(){
-    objeto_referencia = new Humano(); 
+    objeto_referencia = new Estaca(); 
     //Lo iniciamos con Humano, pero puede ser cualquier objeto, solo me interesa sus atributos
 }
 Casilla::Casilla(Coordenada pos):cuadrante(),posicion(pos),objetos(){
-    objeto_referencia = new Humano();
+    objeto_referencia = new Estaca();
     //Lo iniciamos con Humano, pero puede ser cualquier objeto, solo me interesa sus atributos
 }
 Casilla::~Casilla(){
@@ -56,7 +56,7 @@ void Casilla::agregar_objetos(Lista<Objeto*> objetos){
     this->objetos+=objetos;
 }
 
-Lista<Objeto*> Casilla::obtener_objetos(char  nombre_objeto){
+Lista<Objeto*> Casilla::obtener_objetos(char nombre_objeto){
     
     Lista<Objeto*> objetos_encontrados;
 
@@ -155,6 +155,6 @@ int Casilla::eliminar_toda_ocurrencia(char nombre_objeto){
     return objetos.borrar_toda_occurrencia(objeto_referencia,comparacion_por_nombre);
 
 }
-Lista<Objeto*> Casilla::obtener_objetos(){
+Lista<Objeto*>& Casilla::obtener_objetos(){
     return objetos;
 }

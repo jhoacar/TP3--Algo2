@@ -9,7 +9,16 @@
 #include <iostream>
 #include <sstream>
 
+
 using namespace std;
+
+
+//Post: Devuelve el caracter oprimido sin imprimirlo por consola
+char tecla_pulsada(void);
+
+//Pre: Un numero entero
+//Post: Devuelve el numero sin signo;
+int valor_absoluto(int numero);
 
 //Pre: Dos numeros enteros cargados
 //Post: Devuelve el numero mas pequeño entre los dos
@@ -51,6 +60,10 @@ void limpiar_pantalla();
 //Post: Coloca el cursor donde se escoga en la pantalla
 void gotoxy(int x, int y);
 
+//Pre: Una coordenada para la posicion de la pantalla
+//Post: Coloca el cursor donde se escoga en la pantalla
+void gotoxy(Coordenada posicion);
+
 
 //Pre: Dos numeros referentes a un intervalo, tomando valor minimo y maximo
 //Post: Devuelve un numero comprendido entre ambos, incluyendolos
@@ -69,7 +82,12 @@ bool es_par(int numero);
 
 //Pre: Una posicion de referencia y una longitud
 //Post: Devuelve una lista de coordenadas, positivas referentes a una cruz de esa longitud
-Lista<Coordenada> obtener_cruz(Coordenada centro , int longitud, Coordenada limite_inferior, Coordenada limite_superior);
+Lista<Coordenada> obtener_cruz(Coordenada centro , int longitud);
+
+//Pre: Una posicion de referencia y una longitud
+//Post: Devuelve una lista de coordenadas, positivas referentes a un cuadrado de esa longitud
+Lista<Coordenada> obtener_cuadrado(Coordenada centro , int longitud);
+
 
 //Pre: Un vector de datos, un tamaño especifico y un dato a buscar
 //Post: Devuelve el indice donde se encontro el dato o NO_ENCONTRADO (-1) en caso contrario

@@ -27,7 +27,7 @@ class Objeto{
         PRE:
         POST: Destruye por defecto cada objeto, destruyendo cada atributo
         */
-        virtual ~Objeto() = default;
+        virtual ~Objeto();
         /*
         PRE: 
         POST: Metodo virtual puro para la posterior herencia de esta clase abstracta 

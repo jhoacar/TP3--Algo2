@@ -6,21 +6,25 @@
 #include "Coordenada.h"
 using std::string;
 
-
-
 class Objeto;
 
+
+//Pre: Dos objetos a comparar, con el atributo del nombre cargado
+//Post: Retorna 0 si son de igual nombre, -1 Si el objeto A es de menor nombre que el objeto B y 1 en caso contrario
 int comparacion_por_nombre(Objeto *A, Objeto *B);
 
+//Pre: Dos objetos a comparar, con el atributo del ID cargado
+//Post: Retorna 0 si son de igual ID, -1 Si el objeto A es de menor ID que el objeto B y 1 en caso contrario
 int comparacion_por_ID(Objeto *A, Objeto *B);
-
 
 class Casilla{
     protected:
         string cuadrante;
         Coordenada posicion;
         Lista<Objeto*> objetos;
-    private:    
+
+    private:
+        
         Objeto *objeto_referencia; //Nombre manipulable para el uso de comparaciones en la clase lista
     public:
 
@@ -49,7 +53,7 @@ class Casilla{
         virtual int obtener_color()=0;
         
         //Post: Devuelve la lista completa de objetos en la casilla
-        Lista<Objeto*> obtener_objetos();
+        Lista<Objeto*>& obtener_objetos();
 
         //Post: Devuelve el cuadrante que se le ha asignado
         string obtener_cuadrante();

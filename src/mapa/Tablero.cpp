@@ -5,6 +5,15 @@
 using namespace std;
 
 
+void imprimir_coordenada(Coordenada coord){
+    cout<<"("<<coord.obtener_fila()<<","<<coord.obtener_columna()<<")\t";
+}
+void imprimir_objeto(Objeto *objeto){
+    if(objeto!=nullptr)
+        objeto->mostrar();
+    cout<<endl;
+}
+
 Tablero::Tablero(){
 
     this->filas = 0;
@@ -95,30 +104,41 @@ bool Tablero::es_valida(Coordenada posicion){
     return (posicion < limite);
 
 }
-void Tablero::cargar_objeto(Objeto *objeto){
-    
-    if(objeto!=nullptr){
 
-        Coordenada posicion = objeto->obtener_casilla()->obtener_posicion();
-        
-        int fila = posicion.obtener_fila();
-        int columna = posicion.obtener_columna();
+bool Tablero::hay_casilla(Coordenada posicion){
+    if(!es_valida(posicion))
+        return false;
 
-        if(es_valida(posicion) && casillas[ fila ][ columna ] != nullptr){
-
-            objeto->asignar_cuadrante( obtener_cuadrante ( posicion ) );
-    
-            casillas[ fila ][ columna ]->agregar_objeto(objeto);
-        }
-
-    }    
+    return casillas[posicion.obtener_fila()][posicion.obtener_columna()] != nullptr;
 }
 
-void Tablero::cargar_lista_objetos(Lista<Objeto *>objeto){
-    objeto.reiniciar();
-    while(objeto.existe_siguiente())
-        cargar_objeto(objeto.siguiente_dato()); 
-    objeto.reiniciar();
+void Tablero::cargar_objeto(Objeto *objeto){
+    
+    if(objeto==nullptr)
+        return;
+
+    Coordenada posicion(NO_ENCONTRADO,NO_ENCONTRADO);
+
+    if(objeto->obtener_casilla() != nullptr)
+        posicion = objeto->obtener_casilla()->obtener_posicion();
+    
+    int fila = posicion.obtener_fila();
+    int columna = posicion.obtener_columna();
+
+    if(es_valida(posicion) && casillas[ fila ][ columna ] != nullptr){
+
+        objeto->asignar_cuadrante( obtener_cuadrante ( posicion ) );
+
+        casillas[ fila ][ columna ]->agregar_objeto(objeto);
+    }
+        
+}
+
+void Tablero::cargar_lista_objetos(Lista<Objeto*> objetos){
+    objetos.reiniciar();
+    while(objetos.existe_siguiente())
+        cargar_objeto(objetos.siguiente_dato()); 
+    objetos.reiniciar();
 }
 
 
@@ -135,8 +155,8 @@ int Tablero::obtener_columnas(){
 
 Casilla* Tablero::obtener_casilla(Coordenada posicion){
     
-    int fila = posicion.obtener_columna();
-    int columna = posicion.obtener_fila();
+    int fila = posicion.obtener_fila();
+    int columna = posicion.obtener_columna();
 
     if(es_valida({fila,columna}))
         return casillas[fila][columna];        
@@ -148,9 +168,9 @@ void Tablero::asignar_casilla(Casilla *casilla){
 
     if(casilla!=nullptr && es_valida(casilla->obtener_posicion())){
 
-        int fila = casilla->obtener_posicion().obtener_columna();
-        int columna = casilla->obtener_posicion().obtener_fila();
-
+        int fila = casilla->obtener_fila();
+        int columna = casilla->obtener_columna();
+        casilla->asignar_cuadrante(obtener_cuadrante({fila,columna}));
         casillas[fila][columna] = casilla;
     }
 }
@@ -161,7 +181,6 @@ void Tablero::asignar_casillas( Lista<Casilla*> lista_casillas){
     while(lista_casillas.existe_siguiente())
         asignar_casilla(lista_casillas.siguiente_dato());
     lista_casillas.reiniciar();
-
 }
 
 Lista<Casilla*> Tablero::obtener_lista_casillas(Lista<Coordenada> posiciones){
@@ -181,23 +200,24 @@ void Tablero::cargar_grafo(int tipo_personaje){
     for(int i=0; i< filas; i++){
         for(int j=0; j<columnas ; j++){
 
-            Lista<Coordenada> adyacentes = obtener_cruz({i,j},1,{0,0},{filas,columnas});
-        
-            for(int k=0;k<adyacentes.obtener_tamano(); k++){
+            Lista<Coordenada> adyacentes = obtener_cruz({i,j},1);
+            
+            while(adyacentes.existe_siguiente()){
 
-                int fila_adyacente    = adyacentes[k].obtener_columna();
-                int columna_adyacente = adyacentes[k].obtener_fila();
+                Coordenada adyacente = adyacentes.siguiente_dato();
+                
+                if(es_valida(adyacente)){
 
-                Casilla *casilla_adyacente = obtener_casilla(adyacentes[k]);
+                    Casilla *casilla_adyacente = obtener_casilla(adyacente);
 
-                int peso = casilla_adyacente!=nullptr ? casilla_adyacente->obtener_energia(tipo_personaje) : INFINITO;
-                    
-                grafo.agregar_camino({i,j},{fila_adyacente,columna_adyacente},peso);
-
+                    int peso = casilla_adyacente!=nullptr ? casilla_adyacente->obtener_energia(tipo_personaje) : INFINITO;
+                
+                    grafo.agregar_camino({i,j},adyacente,peso);
+                }
             }
         }
     }
-
+    grafo.calcular_matrices_Floyd();
 }
 
 Lista<Casilla*> Tablero::obtener_camino_minimo(Coordenada origen, Coordenada destino, int tipo_personaje){
@@ -235,7 +255,32 @@ bool Tablero::eliminar_objeto(Coordenada posicion,const string ID){
 
 void Tablero::mostrar_tablero(){
 
-    mostrar_leyenda();
+    for(int i=0; i<filas; i++){
+        for(int j=0; j<columnas; j++){
+            if(hay_casilla({i,j})){
+                color(casillas[i][j]->obtener_color());
+                color(NEGRO);
+                cout<<" "<<casillas[i][j]->obtener_tipo()<<" ";
+                color(RESET);
+            }
+            else
+            cout<<" * ";
+        }
+        color(RESET);
+        cout<<endl;
+    }
+    cout<<endl<<endl;
+    for(int i=0; i<filas; i++){
+        for(int j=0; j<columnas; j++){
+            if(hay_casilla({i,j})){
+                cout<<endl<<"Casilla ("<<i<<","<<j<<"):"<<endl;
+                casillas[i][j]->obtener_objetos().imprimir(imprimir_objeto);
+            }
+            else
+            cout<<" NO HAY NINGUN OBJETO ACA ";
+        }
+    }
+    cout<<endl<<endl;
 }
 
 

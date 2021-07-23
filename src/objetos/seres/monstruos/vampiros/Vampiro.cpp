@@ -5,10 +5,13 @@ using std::cout;
 using std::endl;
 
 Vampiro::Vampiro():Monstruo(){
-    
+    this->oculto = false;
+    this->armadura_aumentada = false;
 }
 Vampiro::Vampiro(Casilla *casilla,char nombre,string ID):Monstruo(casilla,nombre,ID)
 {
+    this->oculto = false;
+    this->armadura_aumentada = false;
 }
 void Vampiro::mostrar(){
     cout<<"Objeto: Vampiro"<<endl;
@@ -29,7 +32,26 @@ void Vampiro::encuentro_con_elemento() {
     objetos_casilla = this -> casilla ->obtener_objetos();
     solo_estaca = objetos_casilla.filtrar_datos(0, es_estaca);
 
-    for (int i = 0; i < solo_estaca . obtener_tamano(); i++)
-        this -> casilla -> eliminar_objeto(solo_estaca[i]->obtener_ID());
+    this -> casilla -> eliminar_objetos(solo_estaca);
     cout << "Se han destruido las estacas" << endl;
+}
+
+void Vampiro::defender() {
+    this->energia -=4;
+    this->ocultarse();
+}
+void Vampiro::atacar(Casilla *casilla){
+
+}
+
+void Vampiro::ocultarse() {
+    this->oculto = true;
+}
+
+void Vampiro::aparecer() {
+    this->oculto = false;
+}
+
+bool Vampiro::tiene_armadura_aumentada() {
+    return this->armadura_aumentada;
 }

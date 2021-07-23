@@ -5,21 +5,21 @@
 
 using namespace std;
 
-void imprimir_coordenada(Coordenada coord){
-    cout<<"("<<coord.obtener_x()<<","<<coord.obtener_y()<<")"<<endl;
+/*void imprimir_coordenada(Coordenada coord){
+    cout<<"("<<coord.obtener_fila()<<","<<coord.obtener_columna()<<")"<<endl;
 }
-
+*/
 int main(){
 
     limpiar_pantalla();
-    Lista<Coordenada> cruz = obtener_cuadrado({1,1},5,{1,1},{6,6});
+    Lista<Coordenada> cruz = obtener_cuadrado({5,5},1);
     gotoxy(1,1);
     cout<<"C";
     for(int i=0;i<cruz.obtener_tamano();i++){
-        gotoxy(cruz[i].obtener_x(),cruz[i].obtener_y());
+        gotoxy(cruz[i].obtener_fila(),cruz[i].obtener_columna());
         cout<<"*";
     }
-    gotoxy(0,10);
+    //gotoxy(0,10);
     pausa();
     //cruz.imprimir(imprimir_coordenada);
         

@@ -11,6 +11,8 @@ class Vampirella : public Vampiro
 		void mostrar();
 		void regenerar_energia();
 		~Vampirella();
+		void defender();
+		void atacar(Casilla *casilla);
 	protected:
 };
 

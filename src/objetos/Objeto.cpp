@@ -1,5 +1,6 @@
 #include "Objeto.h"
 #include "../mapa/Casilla.h"
+#include "seres/humanos/Humano.h"
 
 Objeto::Objeto():nombre(),cuadrante(),ID(){
     this->casilla=nullptr;
@@ -9,6 +10,8 @@ Objeto::Objeto(Casilla *casilla,char nombre,string ID){
     this->nombre = nombre;
     this->ID = ID;
     this->cuadrante="";
+}
+Objeto::~Objeto(){
 }
 Casilla* Objeto::obtener_casilla(){
     return this->casilla;
