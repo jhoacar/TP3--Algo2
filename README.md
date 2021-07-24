@@ -39,8 +39,8 @@ Ejecutando las pruebas ⚙️
 
 Construido con 🛠️
 
-Para construir este proyecto, hemos usado dos tecnologias
-    `C++`  -  Lenguaje de alto nivel para programacion orientada a objetos
-    `make` -  Procesador de archivos para crear ficheros
+Para construir este proyecto, hemos usado dos tecnologias:
+- `C++`  -  Lenguaje de alto nivel para programacion orientada a objetos
+- `make` -  Procesador de archivos para compilar el proyecto
 
 
