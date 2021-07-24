@@ -25,7 +25,7 @@ endef
 
 ##########################################################
 ### CONFIGURACION 
-APP 		:= TP3
+APP 		:= Nosferatu_Batalla_Final
 CPP     	:= g++
 VALGRIND	:= valgrind
 FLAGS 		:= -ggdb -std=c++11 -Wconversion -O0 -limits -Wall -Werror -pedantic
