@@ -1,7 +1,9 @@
-#Nosferatu - Batalla Final
+# Nosferatu - Batalla Final
 
-**Proyecto Grupal de Algoritmos y Programacion II de la carrera de Ingenieria Informatica de la Universidad de Buenos Aires, 
-basado en programacion orientada a objetos con el uso de Estructuras Abstractas de Datos e implementado con lenguaje C++.**
+**Proyecto**
+
+Proyecto Grupal de Algoritmos y Programacion II de la carrera de Ingenieria Informatica de la Universidad de Buenos Aires, 
+basado en programacion orientada a objetos con el uso de Estructuras Abstractas de Datos e implementado con lenguaje C++.
 
 Comenzando 🚀
 
