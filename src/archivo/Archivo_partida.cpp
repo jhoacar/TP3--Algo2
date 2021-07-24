@@ -1,7 +1,7 @@
 #include "Archivo_partida.h"
 
 Archivo_partida::Archivo_partida(const string nombre_fichero):Archivo(nombre_fichero)
-{
+{   
     mapa_guardado = nullptr;
 }
 
@@ -11,6 +11,9 @@ Archivo_partida::Archivo_partida()
 }
 
 Tablero* Archivo_partida::obtener_datos_de_partida(){
+
+           
+
     return mapa_guardado;            
 }
 
@@ -35,6 +38,7 @@ void Archivo_partida::guardar_partida(Jugador* jugador1, Jugador* jugador2, List
     }
 
     archivo.close();
+    
     remove("partida.txt");
     rename("datos_partida.txt", "partida.txt");
 }
@@ -61,9 +65,9 @@ string Archivo_partida::obtener_contenido_datos_jugador(Jugador* jugador, bool g
         int tipo_pj = buscar_dato(NOMBRES_CHAR,MAX_NOMBRES, ente->obtener_nombre());
         string nombre_pj = NOMBRES_STRING[tipo_pj];
         contenido_jugador+=SALTO_LINEA+nombre_pj+ESPACIO+ente->obtener_ID()+ESPACIO;
-        asignar_estatus(ente);
-        asignar_posicion(ente);        
-        asignar_objetos(ente);
+        grabar_estatus(ente);
+        grabar_posicion(ente);        
+        grabar_objetos(ente);
         index++;
     }   
 
@@ -89,7 +93,7 @@ string Archivo_partida::obtener_contenido_objetos(Lista<Objeto*> objetos)
     return contenido_obj;
 }
 
-void Archivo_partida::asignar_estatus(Ser* ente)
+void Archivo_partida::grabar_estatus(Ser* ente)
 {
     contenido_jugador+=to_string(ente->devolver_armadura())+ESPACIO;
     contenido_jugador+=to_string(ente->devolver_fuerza())+ESPACIO;
@@ -97,13 +101,13 @@ void Archivo_partida::asignar_estatus(Ser* ente)
     contenido_jugador+=to_string(ente->devolver_energia())+ESPACIO;
 }
 
-void Archivo_partida::asignar_posicion(Ser* ente)
+void Archivo_partida::grabar_posicion(Ser* ente)
 {
     contenido_jugador+=to_string(ente->obtener_casilla()->obtener_fila())+ESPACIO;
     contenido_jugador+=to_string(ente->obtener_casilla()->obtener_columna())+ESPACIO;
 }
 
-void Archivo_partida::asignar_objetos(Ser* ente)
+void Archivo_partida::grabar_objetos(Ser* ente)
 {
     int index = 0;
     string agua="0", cruz="0", estaca="0", escopeta="0", bala="0";
@@ -111,14 +115,14 @@ void Archivo_partida::asignar_objetos(Ser* ente)
     while(index < ente->obtener_inventario().obtener_tamano()){
         Elemento* objeto = (Elemento*)ente->obtener_inventario()[index];
         int tipo_obj = buscar_dato(NOMBRES_CHAR,MAX_NOMBRES, objeto->obtener_nombre());
-        asignar_cantidad(objeto, tipo_obj, agua, cruz, estaca, escopeta, bala);
+        grabar_cantidad(objeto, tipo_obj, agua, cruz, estaca, escopeta, bala);
         index++;
     }
     cant_objetos+=agua+ESPACIO+cruz+ESPACIO+estaca+ESPACIO+escopeta+ESPACIO+bala;
     contenido_jugador+=cant_objetos;
 }
 
-void Archivo_partida::asignar_cantidad(Elemento* objeto, int tipo, string &agua, string &cruz, string &estaca, string &escopeta,string &bala)
+void Archivo_partida::grabar_cantidad(Elemento* objeto, int tipo, string &agua, string &cruz, string &estaca, string &escopeta,string &bala)
 {
     switch (tipo)
     {

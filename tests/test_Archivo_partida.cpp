@@ -1,5 +1,6 @@
 #include "../src/juego/jugador.h"
 #include "../src/archivo/Archivo_partida.h"
+#include "../src/constantes/Constantes.h"
 
 int main(){
     Coordenada posicion1(3, 6);
@@ -17,25 +18,25 @@ int main(){
     Objeto* objeto2;
     Objeto* objeto3;
     objeto = new Humano;
-    objeto->asignar_nombre('h');
+    objeto->asignar_nombre(NOMBRES_CHAR[HUMANO]);
     objeto->asignar_ID("001");
     objeto->asignar_casilla(casilla);
     objeto2 = new Humano;
-    objeto2->asignar_nombre('h');
+    objeto2->asignar_nombre(NOMBRES_CHAR[HUMANO]);
     objeto2->asignar_ID("022");
     objeto2->asignar_casilla(casilla2);
     objeto3 = new Cazador;
-    objeto3->asignar_nombre('H');
-    objeto3->asignar_ID("624");
+    objeto3->asignar_nombre(NOMBRES_CHAR[HUMANO_CAZADOR]);
+    objeto3->asignar_ID("085");
     objeto3->asignar_casilla(casilla3);
 
     Objeto* elemento1;
     Objeto* elemento2;
     Objeto* elemento3;
 
-    elemento1 = new Agua(casilla, 'a', 10, "523");
-    elemento2 = new Bala(casilla2, 'b', 3, "801");
-    elemento3 = new Cruz(casilla3, 'c', 1, "033");
+    elemento1 = new Agua(casilla, NOMBRES_CHAR[AGUA], 10, "302");
+    elemento2 = new Bala(casilla2, NOMBRES_CHAR[BALA], 3, "366");
+    elemento3 = new Cruz(casilla3, NOMBRES_CHAR[CRUZ], 1, "333");
 
     Lista<Objeto*> elementos;
     elementos.agregar(elemento1);
@@ -52,7 +53,7 @@ int main(){
     Jugador* jugador1;
     jugador1 = new Jugador(1, "humanos");
     jugador1->guardar_personajes_de_jugador(objetos);
-
+    
     Archivo_partida partida;
 
     cout << partida.obtener_contenido_datos_jugador(jugador1, false);
