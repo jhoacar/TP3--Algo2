@@ -15,44 +15,50 @@ const char IZQUIERDA = 75;//'A';
 #endif
 
 void mover_arriba(Coordenada &posicion){
-    posicion={posicion.obtener_fila()-3,posicion.obtener_columna()};
+    posicion={(posicion.obtener_fila()-1),posicion.obtener_columna()};
 }
 void mover_abajo(Coordenada &posicion){
-    posicion={posicion.obtener_fila()+3,posicion.obtener_columna()};
+    posicion={(posicion.obtener_fila()+1),posicion.obtener_columna()};
 }
 void mover_izquierda(Coordenada &posicion){
-    posicion={posicion.obtener_fila(),posicion.obtener_columna()-3};
+    posicion={posicion.obtener_fila(),posicion.obtener_columna()-1};
 }
 void mover_derecha(Coordenada &posicion){
-    posicion={posicion.obtener_fila(),posicion.obtener_columna()+3};
+    posicion={posicion.obtener_fila(),posicion.obtener_columna()+1};
 }
 
 
+void imprimir_menu(){
+    cout<<"Menu: "<<endl<<endl;
+    cout<<"Opcion: 1"<<endl;
+    cout<<"Opcion: 2"<<endl;
+    cout<<"Opcion: 3"<<endl;
+}
 
 int main(){
 
     char tecla=0;
-    Coordenada posicion={10,10};
+    Coordenada posicion={3,10};
     limpiar_pantalla();
 
-    while(tecla!=' '){
+    imprimir_menu();
 
+    while(tecla!=' '){
+        
         gotoxy(posicion);
         cout<<"*";
         tecla = caracter_mayuscula((char)tecla_pulsada());
         //cout<<"TECLA: "<<tecla<<" NUMERO: "<<(int)tecla<<endl;
         switch(tecla){
-            case ARRIBA:
+            case ARRIBA:   
+                gotoxy(posicion);
+                cout<<" ";
                 mover_arriba(posicion);
                 break;
             case ABAJO:
+                gotoxy(posicion);
+                cout<<" ";
                 mover_abajo(posicion);
-                break;
-            case IZQUIERDA:
-                mover_izquierda(posicion);
-                break;
-            case DERECHA:
-                mover_derecha(posicion);
                 break;
         }
     }
