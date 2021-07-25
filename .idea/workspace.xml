@@ -13,74 +13,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e85d939b-2f59-41d7-bbf2-19742a8bcaa5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ataque/Ataque.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ataque/Ataque.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/defensa/Defensa.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/defensa/Defensa.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/defensa/tipos/Defensa_humano.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/defensa/tipos/Defensa_humano.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/funcionalidades/tda/AVL.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tablero.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_Archivo_objetos.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_Archivo_tablero.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_arbol.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_defensa_del_humano_simple.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_diccionario.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_movimientos.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/TP3--Algo2.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estado.txt" beforeDir="false" afterPath="$PROJECT_DIR$/estado.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/archivo/Archivo.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/archivo/Archivo.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/archivo/Archivo.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/archivo/Archivo.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/archivo/Archivo_objetos.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/archivo/Archivo_objetos.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/archivo/Archivo_objetos.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/archivo/Archivo_objetos.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/archivo/Archivo_partida.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/archivo/Archivo_partida.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/archivo/Archivo_partida.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/archivo/Archivo_partida.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/archivo/Archivo_tablero.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/archivo/Archivo_tablero.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/archivo/Archivo_tablero.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/archivo/Archivo_tablero.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constantes/Constantes.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/constantes/Constantes.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/Datos.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/Datos.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/Funciones.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/funcionalidades/Funciones.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/Funciones.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/funcionalidades/Funciones.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/tda/Arbol.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/tda/Diccionario.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/funcionalidades/tda/Diccionario.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/tda/Floyd.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/funcionalidades/tda/Floyd.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/tda/Grafo.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/funcionalidades/tda/Grafo.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/tda/Lista.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/funcionalidades/tda/Lista.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/funcionalidades/tda/Vertice.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/funcionalidades/tda/Vertice.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juego/jugador.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/juego/jugador.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juego/jugador.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/juego/jugador.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapa/Casilla.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapa/Casilla.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapa/Casilla.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapa/Casilla.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapa/Coordenada.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapa/Coordenada.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapa/Coordenada.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapa/Coordenada.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mapa/Tablero.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapa/Tablero.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapa/Tablero.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapa/Tablero.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapa/tipos/Vacio.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapa/tipos/Vacio.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/Objeto.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/Objeto.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/Objeto.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/Objeto.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/Ser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/Ser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/Ser.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/Ser.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/humanos/Humano.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/humanos/Humano.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/humanos/Humano.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/humanos/Humano.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/humanos/cazador/Cazador.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/humanos/cazador/Cazador.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/humanos/cazador/Cazador.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/humanos/cazador/Cazador.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/humanos/cazador/Vanessa.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/humanos/cazador/Vanessa.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/humanos/cazador/Vanessa.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/humanos/cazador/Vanessa.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Nosferatu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Nosferatu.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Nosferatu.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Nosferatu.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampirella.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampirella.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampirella.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampirella.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampiro.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampiro.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampiro.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/vampiros/Vampiro.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/zombies/Zombie.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/zombies/Zombie.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objetos/seres/monstruos/zombies/Zombie.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/monstruos/zombies/Zombie.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_inventario" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_camino_minimo.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_camino_minimo.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_cruz.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_cruz.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_lista.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_lista.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_menu_dinamico" beforeDir="false" afterPath="$PROJECT_DIR$/test_menu_dinamico" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +32,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1uulysSqS9gbtIjeQMid43zSXTI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -143,7 +86,11 @@
       <workItem from="1626993428610" duration="552000" />
       <workItem from="1626994008757" duration="1329000" />
       <workItem from="1627005898364" duration="3300000" />
-      <workItem from="1627062250196" duration="5495000" />
+      <workItem from="1627062250196" duration="7997000" />
+      <workItem from="1627159917509" duration="4638000" />
+      <workItem from="1627167046977" duration="6308000" />
+      <workItem from="1627243482679" duration="104000" />
+      <workItem from="1627243631420" duration="1796000" />
     </task>
     <servers />
   </component>

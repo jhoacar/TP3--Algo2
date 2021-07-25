@@ -269,6 +269,7 @@ void Tablero::mostrar_tablero(){
         color(RESET);
         cout<<endl;
     }
+    /*
     cout<<endl<<endl;
     for(int i=0; i<filas; i++){
         for(int j=0; j<columnas; j++){
@@ -281,6 +282,7 @@ void Tablero::mostrar_tablero(){
         }
     }
     cout<<endl<<endl;
+     */
 }
 
 
