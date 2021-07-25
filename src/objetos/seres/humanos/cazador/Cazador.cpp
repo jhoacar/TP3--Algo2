@@ -28,7 +28,13 @@ void Cazador::atacar(Casilla *casilla, Tablero* tablero, char arma){
         this -> ataque = new Ataque_cazador(this);
     ataque -> atacar(casilla, tablero, arma);
 }
+bool Cazador::validacion_ataque(Casilla *casilla, Tablero* tablero, char arma){
+    if(ataque == nullptr)
+        this -> ataque = new Ataque_cazador(this);
+    return ataque -> validacion_atacar_personaje(casilla, tablero, arma);
 
+
+}
 
 void Cazador::regenerar_energia() {
     this -> energia += 8;

@@ -2,7 +2,6 @@
 #define ATAQUE_HUMANO_H_ATAQUE_VANESA_H
 
 #include "Ataque_humano.h"
-#include "../objetos/seres/humanos/Humano.h"
 #include "../objetos/seres/humanos/cazador/Vanessa.h"
 
 class Ataque_vanesa : public Ataque_humano {
@@ -20,12 +19,19 @@ public:
 
 
 
-    //PRE:
-    //POST:
+    //PRE: recibe el indice donde se encuentra el personaje, los porcentajes, la casilla y el arma elegida
+    //POST: le baja la vida a los de tipo vampiro
     void bajar_vida_vampiro(int indice, int porcentaje_escopeta, int porcentaje_agua, Casilla* casilla, char arma_elegida);
 
+
+    //PRE: recibe el indice donde se encuentra el personaje, y la casilla a atacar
+    //POST: le baja la vida completa al personaje
     void bajar_vida_completa(int indice, Casilla *casilla);
 
+
+    bool validacion_atacar_personaje(Casilla *casilla, Tablero* tablero);
+
+    bool validacion_atacar_personaje(Casilla *casilla, Tablero* tablero, char arma);
 
 
 };

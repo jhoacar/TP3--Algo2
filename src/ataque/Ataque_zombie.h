@@ -17,7 +17,7 @@ class Ataque_zombie: public Ataque{
 
         //PRE: recibe la casilla a atacar y el arma que va a utilizar
         //POST: devuelve si puede atacar o no
-        bool validacion_ataque( int energia);
+        bool validacion_ataque(int energia);
 
         //PRE: recibe la casilla del personaje a bajarle la vida
         //POST: le baja la vida al personaje
@@ -30,6 +30,10 @@ class Ataque_zombie: public Ataque{
         //PRE: recibe la casilla del personaje a bajarle la vida
         //POST: devuelve la casilla donde se encuentra el personaje a atacar
         Casilla* devolver_casilla_aleatoria_en_tablero(Tablero* tablero, Coordenada centro);
+
+        bool validacion_atacar_personaje(Casilla *casilla, Tablero* tablero);
+
+        bool validacion_atacar_personaje(Casilla *casilla, Tablero* tablero, char arma);
 
 
 

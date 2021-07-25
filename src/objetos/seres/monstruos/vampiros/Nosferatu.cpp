@@ -25,8 +25,15 @@ void Nosferatu::atacar(Casilla *casilla, Tablero* tablero){
     if(ataque == nullptr)
         this -> ataque = new Ataque_nosferatu(this);
     ataque -> atacar(casilla, tablero);
-
 }
+
+bool Nosferatu::validacion_ataque(Casilla *casilla, Tablero* tablero){
+    if(ataque == nullptr)
+        this -> ataque = new Ataque_nosferatu(this);
+    return ataque -> validacion_atacar_personaje(casilla, tablero);
+}
+
+
 void Nosferatu::regnerar_energia() {
     this -> energia += 10;
 }

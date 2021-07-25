@@ -6,7 +6,8 @@
 Ataque::Ataque(Ser *personaje) {
     this -> personaje = personaje;
 }
-Ataque::~Ataque(){}
+Ataque::~Ataque(){
+}
 
 bool Ataque::energia_suficiente(int minimo) {
 

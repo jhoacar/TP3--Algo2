@@ -17,8 +17,9 @@ public:
     //POST: le baja la vida al personaje
     void bajar_vida(Casilla* casilla);
 
+    bool validacion_atacar_personaje(Casilla *casilla, Tablero* tablero);
 
-
+    bool validacion_atacar_personaje(Casilla *casilla, Tablero* tablero, char arma);
 
 };
 

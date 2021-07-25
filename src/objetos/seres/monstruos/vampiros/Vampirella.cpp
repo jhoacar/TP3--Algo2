@@ -31,3 +31,8 @@ void Vampirella::regenerar_energia() {
     this -> energia += 6;
 }
 
+bool Vampirella::validacion_ataque(Casilla *casilla, Tablero* tablero){
+    if(ataque == nullptr)
+        this -> ataque = new Ataque_vampirella(this);
+    return ataque -> validacion_atacar_personaje(casilla, tablero);
+}

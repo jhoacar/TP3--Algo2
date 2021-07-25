@@ -39,8 +39,10 @@ class Humano : public Ser
 		//      Si tiene agua bendita, puede regenera toda su energía o incrementa 1 su armadura por un turno.
 		void defender();
 
+        bool validacion_ataque(Casilla *casilla, Tablero* tablero);
 		void atacar(Casilla *casilla, Tablero* tablero);
         void atacar(Casilla *casilla, Tablero* tablero, char arma);
+
 		// Comprueba si hay agua bendita en el inventario
 		// PRE: -
 		// POS: Devuelve true si el humano tiene agua bendita en su inventario, caso contrario devuelve false.
@@ -65,6 +67,8 @@ class Humano : public Ser
 		// PRE: -
 		// POS: Devuelve true si tiene la armadura aumentada por defenderse, caso contrario devuelve false.
 		bool tiene_armadura_aumentada();
+
+
 
 
 };

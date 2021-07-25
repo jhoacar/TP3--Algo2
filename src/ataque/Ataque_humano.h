@@ -23,6 +23,8 @@ public:
     //POST: verifica si existe ese arma en su inventario
     bool tiene_arma(char arma_elegida);
 
+    bool validacion_atacar_personaje(Casilla *casilla, Tablero* tablero);
+    bool validacion_atacar_personaje(Casilla *casilla, Tablero* tablero, char arma);
 
 
     //PRE: recibe la cantidad minima de balas para atacar
@@ -68,6 +70,9 @@ public:
     //PRE: recibe la coordenada donde se encuentra el atacante, el arma elegida y el rango de escopeta
     //POST: devuelve la lista de coordenadas posibles a atacar segun el arma usada
     Lista<Coordenada> obtener_lista_coordenadas_segun_arma(Coordenada centro, char arma_elegida, int rango_escopeta);
+
+
+
 
 };
 

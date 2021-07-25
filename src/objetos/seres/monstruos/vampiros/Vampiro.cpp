@@ -52,6 +52,16 @@ void Vampiro::atacar(Casilla *casilla, Tablero* tablero){
 }
 void Vampiro::atacar(Casilla *casilla, Tablero* tablero, char arma){}
 
+bool Vampiro::validacion_ataque(Casilla *casilla, Tablero* tablero){
+    if(ataque == nullptr)
+        this -> ataque = new Ataque_vampiro(this);
+
+    return ataque -> validacion_atacar_personaje(casilla, tablero);
+}
+
+
+
+
 void Vampiro::ocultarse() {
     this->oculto = true;
 }

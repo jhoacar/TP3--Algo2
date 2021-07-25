@@ -50,6 +50,11 @@ void Zombie::atacar(Casilla *casilla, Tablero* tablero){
     ataque -> atacar(casilla, tablero);
 }
 
+bool Zombie::validacion_ataque(Casilla *casilla, Tablero* tablero){
+    if(ataque == nullptr)
+        this -> ataque = new Ataque_zombie(this);
+    return ataque -> validacion_atacar_personaje(casilla, tablero);
+}
 
 void Zombie::resurgir() {
     this->escondido = false;
@@ -63,5 +68,9 @@ void Zombie::aparecer_zombie(){
 }
 
 void Zombie::atacar(Casilla *casilla, Tablero *tablero, char arma) {
+
+}
+void Zombie::esconderse() {
+    this->escondido = true;
 
 }

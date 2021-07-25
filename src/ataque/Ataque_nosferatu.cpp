@@ -53,14 +53,12 @@ Casilla* Ataque_nosferatu::devolver_casilla_aleatoria_en_tablero(Tablero* tabler
 
 }
 
-void Ataque_nosferatu::atacar(Casilla *casilla, Tablero* tablero) {
+bool Ataque_nosferatu::validacion_atacar_personaje(Casilla *casilla, Tablero* tablero){
 
     Coordenada centro = personaje->obtener_casilla()->obtener_posicion();
     bool ataque_validacion;
     bool validacion_rango;
-    Lista<Objeto*> lista_objetos;
-
-    Casilla* casilla_en_tablero;
+    bool validacion = false;
 
     if(casilla == nullptr)
         validacion_rango = validacion_rango_aleatorio(tablero, centro);
@@ -70,28 +68,38 @@ void Ataque_nosferatu::atacar(Casilla *casilla, Tablero* tablero) {
     }
     ataque_validacion = validacion_ataque(6);
 
-    if(validacion_rango && ataque_validacion){
+    if(validacion_rango && ataque_validacion)
+        validacion = true;
 
-        if(casilla == nullptr)
-            casilla_en_tablero = devolver_casilla_aleatoria_en_tablero(tablero, centro);
-        else
-            casilla_en_tablero = devolver_casilla_especifica_en_tablero(tablero, casilla);
-
-        int posicion;
-        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[HUMANO]);
-
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[HUMANO_CAZADOR]);
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VANESA]);
+    return validacion;
+}
 
 
-        if(posicion != NO_ENCONTRADO){
-            consumir_energia(6);
-            bajar_vida(casilla_en_tablero);
-        }
+
+void Ataque_nosferatu::atacar(Casilla *casilla, Tablero* tablero) {
+
+    Coordenada centro = personaje->obtener_casilla()->obtener_posicion();
+    Casilla* casilla_en_tablero;
+
+    if(casilla == nullptr)
+        casilla_en_tablero = devolver_casilla_aleatoria_en_tablero(tablero, centro);
+    else
+        casilla_en_tablero = devolver_casilla_especifica_en_tablero(tablero, casilla);
+
+    int posicion;
+    posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[HUMANO]);
+
+    if(posicion == NO_ENCONTRADO)
+        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[HUMANO_CAZADOR]);
+    if(posicion == NO_ENCONTRADO)
+        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VANESA]);
+
+    if(posicion != NO_ENCONTRADO){
+        consumir_energia(6);
+        bajar_vida(casilla_en_tablero);
     }
 }
+
 
 void Ataque_nosferatu::verificar_transformacion_a_vampiro(int indice, Casilla* casilla){
 
@@ -121,3 +129,6 @@ void Ataque_nosferatu::bajar_vida(Casilla* casilla){
     }
 }
 
+
+
+bool Ataque_nosferatu::validacion_atacar_personaje(Casilla *casilla, Tablero* tablero, char arma){return true;}

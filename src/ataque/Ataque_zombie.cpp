@@ -49,16 +49,8 @@ Casilla* Ataque_zombie::devolver_casilla_aleatoria_en_tablero(Tablero* tablero, 
 void Ataque_zombie::atacar(Casilla* casilla, Tablero* tablero) {
 
     Coordenada centro = personaje->obtener_casilla()->obtener_posicion();
-    bool ataque_validacion;
-    bool validacion_rango;
-    Lista<Objeto*> lista_objetos;
 
     Casilla* casilla_en_tablero;
-
-    validacion_rango = validacion_rango_aleatorio(tablero, centro);
-    ataque_validacion = validacion_ataque(personaje->devolver_energia());
-
-    if(validacion_rango && ataque_validacion){
 
         casilla_en_tablero = devolver_casilla_aleatoria_en_tablero(tablero, centro);
 
@@ -75,7 +67,7 @@ void Ataque_zombie::atacar(Casilla* casilla, Tablero* tablero) {
             bajar_vida(casilla_en_tablero);
         }
     }
-}
+
 
 
 
@@ -96,3 +88,21 @@ void Ataque_zombie::bajar_vida(Casilla* casilla){
 }
 void Ataque_zombie::atacar(Casilla *casilla, Tablero* tablero, char arma){
 }
+
+bool Ataque_zombie::validacion_atacar_personaje(Casilla *casilla, Tablero* tablero){
+
+    Coordenada centro = personaje->obtener_casilla()->obtener_posicion();
+    bool ataque_validacion;
+    bool validacion_rango;
+    bool validacion = false;
+
+    validacion_rango = validacion_rango_aleatorio(tablero, centro);
+    ataque_validacion = validacion_ataque(5);
+
+    if(validacion_rango && ataque_validacion)
+        validacion = true;
+    return validacion;
+}
+
+
+bool Ataque_zombie::validacion_atacar_personaje(Casilla *casilla, Tablero* tablero, char arma){return true;}

@@ -1,13 +1,6 @@
 #include "Ataque_humano.h"
-#include "../objetos/elementos/Escopeta.h"
-#include "../objetos/elementos/Bala.h"
-#include "../objetos/seres/monstruos/vampiros/Vampiro.h"
-#include "../objetos/seres/monstruos/vampiros/Nosferatu.h"
-#include "../objetos/seres/monstruos/vampiros/Vampirella.h"
-#include "../objetos/seres/monstruos/zombies/Zombie.h"
-#include <stdlib.h>
-#include <iostream>
-#include "../constantes/Constantes.h"
+
+
 
 using namespace std;
 
@@ -242,15 +235,16 @@ bool Ataque_humano::validacion_rango_especifico(Casilla* casilla_a_atacar, char 
 }
 
 
-void Ataque_humano::atacar(Casilla *casilla, Tablero* tablero) {
+bool Ataque_humano::validacion_atacar_personaje(Casilla *casilla, Tablero* tablero, char arma){return true;}
+
+bool Ataque_humano::validacion_atacar_personaje(Casilla *casilla, Tablero* tablero){
 
     Coordenada centro = personaje->obtener_casilla()->obtener_posicion();
     char arma_elegida = NOMBRES_CHAR[ESCOPETA];
     bool ataque_validacion;
     bool validacion_rango;
+    bool validacion = false;
     Lista<Objeto*> lista_objetos;
-
-    Casilla* casilla_en_tablero;
 
     if(casilla == nullptr)
         validacion_rango = validacion_rango_aleatorio(tablero, centro, arma_elegida, 1);
@@ -260,37 +254,53 @@ void Ataque_humano::atacar(Casilla *casilla, Tablero* tablero) {
         validacion_rango = validacion_rango_especifico(casilla_elegida, arma_elegida, 1);
     }
     ataque_validacion = validacion_ataque(arma_elegida, 5);
-
-
     if(validacion_rango && ataque_validacion){
 
-        if(casilla == nullptr)
-            casilla_en_tablero = devolver_casilla_aleatoria_en_tablero(tablero, centro, arma_elegida, 1);
-        else
-            casilla_en_tablero = devolver_casilla_especifica_en_tablero(tablero, casilla);
+        validacion = true;
+    }
+    return validacion;
+
+}
 
 
-        int posicion;
-        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[ZOMBIE]);
+void Ataque_humano::atacar(Casilla *casilla, Tablero* tablero) {
 
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRO]);
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRELLA]);
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[NOSFERATU]);
 
-        if(posicion != NO_ENCONTRADO){
-            consumir_energia(5);
-            bajar_cantidad_objeto(arma_elegida);
-            bajar_vida(casilla_en_tablero);
-        }
+    Coordenada centro = personaje->obtener_casilla()->obtener_posicion();
+    char arma_elegida = NOMBRES_CHAR[ESCOPETA];
+    Casilla* casilla_en_tablero;
+
+
+    if(casilla == nullptr)
+        casilla_en_tablero = devolver_casilla_aleatoria_en_tablero(tablero, centro, arma_elegida, 1);
+    else
+        casilla_en_tablero = devolver_casilla_especifica_en_tablero(tablero, casilla);
+
+
+    int posicion;
+    posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[ZOMBIE]);
+
+    if(posicion == NO_ENCONTRADO)
+        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRO]);
+    if(posicion == NO_ENCONTRADO)
+        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRELLA]);
+    if(posicion == NO_ENCONTRADO)
+        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[NOSFERATU]);
+
+    if(posicion != NO_ENCONTRADO){
+        consumir_energia(5);
+        bajar_cantidad_objeto(arma_elegida);
+        bajar_vida(casilla_en_tablero);
     }
 }
 
 
+
 void Ataque_humano::atacar(Casilla *casilla, Tablero *tablero, char arma) {
 }
+
+
+
 
 Lista<Coordenada> Ataque_humano::obtener_lista_coordenadas_segun_arma(Coordenada centro, char arma_elegida, int rango_escopeta) {
     Lista<Coordenada> lista_coordenadas;
@@ -303,9 +313,5 @@ Lista<Coordenada> Ataque_humano::obtener_lista_coordenadas_segun_arma(Coordenada
 
     return lista_coordenadas;
 }
-
-
-
-
 
 

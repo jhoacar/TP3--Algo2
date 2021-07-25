@@ -22,6 +22,8 @@ class Zombie : public Monstruo
 		void atacar(Casilla *casilla, Tablero* tablero);
         void atacar(Casilla *casilla, Tablero* tablero, char arma);
 
+        bool validacion_ataque(Casilla *casilla, Tablero* tablero);
+
 
 		// PRE: El zombie se ha defendido en el turno anterior, por lo tanto escondido es true.
 		// POS: El zombie resurge, por lo tanto se establece escondido en false.
@@ -33,7 +35,7 @@ class Zombie : public Monstruo
 
 		void aparecer_zombie();
 
-		
+		void esconderse();
 		~Zombie();
 
 };

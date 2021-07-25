@@ -14,6 +14,8 @@ class Cazador : public Humano
 		void defender();
 		void atacar(Casilla *casilla, Tablero* tablero);
         void atacar(Casilla *casilla, Tablero* tablero, char arma);
+
+        bool validacion_ataque(Casilla *casilla, Tablero* tablero, char arma);
 	protected:
 };
 

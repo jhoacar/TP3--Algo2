@@ -22,14 +22,19 @@ void Vanessa::defender(){
 
 }
 
-void Vanessa::atacar(Casilla *casilla, Tablero* tablero){
+bool Vanessa::validacion_ataque(Casilla *casilla, Tablero* tablero, char arma){
+    if(ataque == nullptr)
+        this -> ataque = new Ataque_vanesa(this);
+    return ataque -> validacion_atacar_personaje(casilla, tablero, arma);
 }
+
 void Vanessa::atacar(Casilla *casilla, Tablero* tablero, char arma){
     if(ataque == nullptr)
         this -> ataque = new Ataque_vanesa(this);
     ataque -> atacar(casilla, tablero, arma);
 }
-
+void Vanessa::atacar(Casilla *casilla, Tablero* tablero){
+}
 
 void Vanessa::regenerar_energia() {
     this -> energia += 10;

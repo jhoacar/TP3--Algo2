@@ -64,24 +64,8 @@ Casilla* Ataque_vampiro::devolver_casilla_aleatoria_en_tablero(Tablero* tablero,
 
 void Ataque_vampiro::atacar(Casilla *casilla, Tablero* tablero) {
 
-    Coordenada centro = personaje->obtener_casilla()->obtener_posicion();
-    bool ataque_validacion;
-    bool validacion_rango;
-    Lista<Objeto*> lista_objetos;
-
-    Casilla* casilla_en_tablero;
-
-    if(casilla == nullptr)
-        validacion_rango = validacion_rango_aleatorio(tablero, centro);
-    else {
-        Casilla *casilla_elegida = tablero->obtener_casilla(casilla->obtener_posicion());
-        validacion_rango = validacion_rango_especifico(casilla_elegida);
-    }
-    ataque_validacion = validacion_ataque(2);
-
-
-    if(validacion_rango && ataque_validacion){
-
+        Coordenada centro = personaje->obtener_casilla()->obtener_posicion();
+        Casilla* casilla_en_tablero;
         if(casilla == nullptr)
             casilla_en_tablero = devolver_casilla_aleatoria_en_tablero(tablero, centro);
         else
@@ -100,8 +84,8 @@ void Ataque_vampiro::atacar(Casilla *casilla, Tablero* tablero) {
             consumir_energia(2);
             bajar_vida(casilla_en_tablero);
         }
-    }
 }
+
 
 void Ataque_vampiro::atacar(Casilla *casilla, Tablero *tablero, char arma) {
 }
@@ -125,3 +109,26 @@ void Ataque_vampiro::bajar_vida(Casilla* casilla){
 }
 
 
+bool Ataque_vampiro::validacion_atacar_personaje(Casilla *casilla, Tablero* tablero){
+
+    Coordenada centro = personaje->obtener_casilla()->obtener_posicion();
+    bool ataque_validacion;
+    bool validacion_rango;
+    bool validacion = false;
+
+
+    if(casilla == nullptr)
+        validacion_rango = validacion_rango_aleatorio(tablero, centro);
+    else {
+        Casilla *casilla_elegida = tablero->obtener_casilla(casilla->obtener_posicion());
+        validacion_rango = validacion_rango_especifico(casilla_elegida);
+    }
+    ataque_validacion = validacion_ataque(2);
+
+
+    if(validacion_rango && ataque_validacion)
+        validacion = true;
+    return validacion;
+}
+
+bool Ataque_vampiro::validacion_atacar_personaje(Casilla *casilla, Tablero* tablero, char arma){return true;}

@@ -1,5 +1,5 @@
 #include "Humano.h"
-#include "../../../defensa/tipos/Defensa_humano.h"
+#include "../../../defensa/Defensa_humano.h"
 #include "../../../ataque/Ataque_humano.h"
 #include <iostream>
 using std::cout;
@@ -47,11 +47,22 @@ void Humano::encuentro_con_elemento() {
     casilla->eliminar_objetos(solo_elementos);
 }
 
+bool Humano::validacion_ataque(Casilla *casilla, Tablero* tablero){
+    if(ataque == nullptr)
+        this -> ataque = new Ataque_humano(this);
+
+    return ataque -> validacion_atacar_personaje(casilla, tablero);
+}
+
 void Humano::atacar(Casilla *casilla, Tablero* tablero){
     if(ataque == nullptr)
         this -> ataque = new Ataque_humano(this);
     ataque -> atacar(casilla, tablero);
 }
+
+
+
+
 
 void Humano::atacar(Casilla *casilla, Tablero* tablero, char arma){
 }

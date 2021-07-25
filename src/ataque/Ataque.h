@@ -14,10 +14,11 @@ protected:
 public:
 
     Ataque(Ser *personaje);
-    virtual ~Ataque();
+    ~Ataque();
     virtual void atacar(Casilla *casilla, Tablero* tablero) = 0;
     virtual void atacar(Casilla *casilla, Tablero* tablero, char arma) = 0;
-
+    virtual bool validacion_atacar_personaje(Casilla *casilla, Tablero* tablero)=0;
+    virtual bool validacion_atacar_personaje(Casilla *casilla, Tablero* tablero, char arma)=0;
 
     //PRE: recibe una casilla y un rango de distancia
     //POST: devuelve true si el objeto a atacar esta a su alcance

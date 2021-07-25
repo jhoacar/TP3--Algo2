@@ -13,6 +13,7 @@ class Vampirella : public Vampiro
 		~Vampirella();
 		void defender();
 		void atacar(Casilla *casilla, Tablero* tablero);
+        bool validacion_ataque(Casilla *casilla, Tablero* tablero);
 
 	protected:
 };

@@ -8,14 +8,14 @@ Ataque_cazador::~Ataque_cazador(){
 }
 
 
-void Ataque_cazador::atacar(Casilla *casilla, Tablero* tablero, char arma) {
+bool Ataque_cazador::validacion_atacar_personaje(Casilla *casilla, Tablero* tablero){return true;}
+
+bool Ataque_cazador::validacion_atacar_personaje(Casilla *casilla, Tablero* tablero, char arma){
 
     Coordenada centro = personaje->obtener_casilla()->obtener_posicion();
     bool ataque_validacion;
     bool validacion_rango;
-    Lista<Objeto*> lista_objetos;
-
-    Casilla* casilla_en_tablero;
+    bool validacion = false;
 
     if(casilla == nullptr)
         validacion_rango = validacion_rango_aleatorio(tablero, centro, arma, 2);
@@ -25,30 +25,41 @@ void Ataque_cazador::atacar(Casilla *casilla, Tablero* tablero, char arma) {
     }
     ataque_validacion = validacion_ataque( arma, 6);
 
-    if(validacion_rango && ataque_validacion){
+    if(validacion_rango && ataque_validacion)
+        validacion = true;
 
-        if(casilla == nullptr)
-            casilla_en_tablero = devolver_casilla_aleatoria_en_tablero(tablero, centro, arma, 2);
-        else
-            casilla_en_tablero = devolver_casilla_especifica_en_tablero(tablero, casilla);
+    return validacion;
 
-        int posicion;
-        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[ZOMBIE]);
+}
 
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRO]);
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRELLA]);
-        if(posicion == NO_ENCONTRADO)
-            posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[NOSFERATU]);
 
-        if(posicion != NO_ENCONTRADO){
-            consumir_energia(6);
-            bajar_cantidad_objeto(arma);
-            bajar_vida(casilla_en_tablero, arma);
-        }
+void Ataque_cazador::atacar(Casilla *casilla, Tablero* tablero, char arma) {
+
+    Coordenada centro = personaje->obtener_casilla()->obtener_posicion();
+    Casilla* casilla_en_tablero;
+
+    if(casilla == nullptr)
+        casilla_en_tablero = devolver_casilla_aleatoria_en_tablero(tablero, centro, arma, 2);
+    else
+        casilla_en_tablero = devolver_casilla_especifica_en_tablero(tablero, casilla);
+
+    int posicion;
+    posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[ZOMBIE]);
+
+    if(posicion == NO_ENCONTRADO)
+        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRO]);
+    if(posicion == NO_ENCONTRADO)
+        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[VAMPIRELLA]);
+    if(posicion == NO_ENCONTRADO)
+        posicion = buscar_personaje(casilla_en_tablero, NOMBRES_STRING[NOSFERATU]);
+
+    if(posicion != NO_ENCONTRADO){
+        consumir_energia(6);
+        bajar_cantidad_objeto(arma);
+        bajar_vida(casilla_en_tablero, arma);
     }
 }
+
 
 
 
@@ -84,7 +95,6 @@ void Ataque_cazador::bajar_vida(Casilla* casilla, char arma_elegida){
     else if(indice_vampirella != NO_ENCONTRADO)
         bajar_vida_vampiro(indice_vampirella, 30, 10, 60, casilla, arma_elegida);
 }
-
 
 
 

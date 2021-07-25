@@ -12,8 +12,9 @@ class Vanessa : public Cazador
 		void regenerar_energia();
 		~Vanessa();
 		void defender();
-		void atacar(Casilla *casilla, Tablero* tablero);
         void atacar(Casilla *casilla, Tablero* tablero, char arma);
+        void atacar(Casilla *casilla, Tablero* tablero);
+        bool validacion_ataque(Casilla *casilla, Tablero* tablero, char arma);
 		
 	protected:
 };

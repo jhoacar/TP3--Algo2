@@ -37,6 +37,10 @@ public:
     //POST: devuelve la casilla donde se encuentra el personaje a atacar
     Casilla* devolver_casilla_especifica_en_tablero(Tablero* tablero, Casilla* casilla);
 
+    bool validacion_atacar_personaje(Casilla *casilla, Tablero* tablero);
+
+    bool validacion_atacar_personaje(Casilla *casilla, Tablero* tablero, char arma);
+
 };
 
 

@@ -13,6 +13,7 @@ class Nosferatu : public Vampiro
 		void defender();
 		void atacar(Casilla *casilla, Tablero* tablero);
 		~Nosferatu();
+        bool validacion_ataque(Casilla *casilla, Tablero* tablero);
 	protected:
 };
 
