@@ -4,7 +4,8 @@
 Ataque_vampirella::Ataque_vampirella(Vampirella *personaje): Ataque_vampiro(personaje){
 }
 
-
+Ataque_vampirella::~Ataque_vampirella(){
+}
 
 void Ataque_vampirella::atacar(Casilla *casilla, Tablero*tablero) {
 

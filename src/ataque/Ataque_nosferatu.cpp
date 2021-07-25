@@ -5,6 +5,8 @@
 Ataque_nosferatu::Ataque_nosferatu(Nosferatu *personaje): Ataque_vampiro(personaje){
 }
 
+Ataque_nosferatu::~Ataque_nosferatu(){
+}
 
 
 bool Ataque_nosferatu::validacion_rango_especifico(Casilla* casilla_a_atacar){
