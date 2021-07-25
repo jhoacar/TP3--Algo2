@@ -1,5 +1,13 @@
 #include "Ataque_humano.h"
-
+#include "Escopeta.h"
+#include "Bala.h"
+#include "Vampiro.h"
+#include "Nosferatu.h"
+#include "Vampirella.h"
+#include "Zombie.h"
+#include <stdlib.h>
+#include <iostream>
+#include "Constantes.h"
 
 
 using namespace std;
