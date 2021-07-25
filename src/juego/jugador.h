@@ -26,7 +26,11 @@ public:
 
     Jugador(int num, string bando);
 
-    ~Jugador();
+    Jugador();
+
+    void asignar_numero(int num);
+
+    void asignar_bando(string bando);
 
     // PRE: una lista con los datos de los personajes del bando del jugador
     // POST: se guarda la cantidad de personajes, y los datos en una lista.

@@ -1,23 +1,166 @@
 #include "Archivo_partida.h"
 
-Archivo_partida::Archivo_partida(const string nombre_fichero):Archivo(nombre_fichero)
-{   
-    mapa_guardado = nullptr;
+Archivo_partida::Archivo_partida(const string nombre_fichero):Archivo(nombre_fichero){   }
+
+void Archivo_partida::cargar_datos_de_partida(Tablero* tablero, Jugador* jugador1, Jugador* jugador2){
+
+    if(contenido.length()==0||tablero==nullptr)
+        return;
+
+    Lista<string> lineas = dividir_texto(contenido,'\n');
+    
+    int guardo_partida = convertir_entero(lineas[0]);
+    
+    if(guardo_partida == 1){
+        cargar_jugadores(tablero, jugador1, jugador2, lineas);
+    }else{
+        cargar_jugadores(tablero,jugador2, jugador1, lineas);
+    }
+
+    tablero->cargar_lista_objetos(objetos.obtener_valores());
 }
 
-Archivo_partida::Archivo_partida()
+void Archivo_partida::cargar_jugadores(Tablero* tablero, Jugador* jugador1, Jugador* jugador2, Lista<string> &lineas)
 {
-    mapa_guardado = nullptr;
+    int num_jugador = convertir_entero(lineas[0]);
+    jugador1->asignar_numero(num_jugador);
+    
+    Lista<string> datos = dividir_texto(lineas[1], ' ');
+    
+    jugador1->asignar_bando(datos[0]);
+    int cantidad_pj = convertir_entero(datos[1]);
+    
+    Lista<Objeto*> personajes_j1;
+    
+    int iterator = 2;
+    
+    int max = iterator+cantidad_pj;
+    while(iterator < max){
+        datos=dividir_texto(lineas[iterator], ' ');
+        personajes_j1.agregar(cargar_personaje(tablero, datos));
+        iterator++;
+    }
+    jugador1->guardar_personajes_de_jugador(personajes_j1);
+    
+    Lista<Objeto*> personajes_j2;
+    
+    if(num_jugador == 1) jugador2->asignar_numero(2);
+    else jugador2->asignar_numero(1);
+    
+    datos=dividir_texto(lineas[iterator], ' ');
+    iterator++;
+    
+    cantidad_pj = convertir_entero(datos[1]);
+    jugador2->asignar_bando(datos[0]);
+    
+
+    max = iterator+cantidad_pj;
+    while(iterator < max){
+        datos=dividir_texto(lineas[iterator], ' ');
+        personajes_j2.agregar(cargar_personaje(tablero, datos));
+        iterator++;
+    }
+    jugador2->guardar_personajes_de_jugador(personajes_j2);
+    
+    datos=dividir_texto(lineas[iterator], ' ');
+    iterator++;
+    
+    int cantidad_obj = convertir_entero(datos[1]);
+    
+    max = iterator+cantidad_obj;
+    while(iterator < max){
+        datos=dividir_texto(lineas[iterator], ' ');
+        cargar_elemento(tablero, datos);
+        iterator++;
+    }
 }
 
-Tablero* Archivo_partida::obtener_datos_de_partida(){
+void Archivo_partida::cargar_elemento(Tablero* tablero, Lista<string> &datos)
+{
+    int fila = convertir_entero(datos[3]);
+    int columna = convertir_entero(datos[4]);
+    
+    Coordenada posicion_objeto(fila, columna);
+    string ID = datos[1];
+    string nombre_objeto = datos[0];
+    int cantidad = convertir_entero(datos[2]);
+		
+    int tipo_objeto = 	buscar_dato(NOMBRES_STRING,MAX_NOMBRES,nombre_objeto);
+    char nombre = tipo_objeto!=NO_ENCONTRADO ? NOMBRES_CHAR[tipo_objeto] : 0;
+    Casilla *casilla = tablero->obtener_casilla(posicion_objeto);
 
-           
+	Objeto *elemento = crear_objeto(tipo_objeto,nombre,casilla, cantidad, ID);
 
-    return mapa_guardado;            
+	objetos[ID] = elemento;
+    
 }
 
-void Archivo_partida::guardar_partida(Jugador* jugador1, Jugador* jugador2, Lista<Objeto*> objetos){
+Objeto* Archivo_partida::cargar_personaje(Tablero* tablero, Lista<string> &datos)
+{
+    string nombre_objeto = datos[0];
+    if(datos[1] == "CV"){
+        nombre_objeto+=ESPACIO+datos[1];
+        datos.borrar(1);
+    }
+    int fila = convertir_entero(datos[6]);
+    int columna = convertir_entero(datos[7]);
+    Coordenada posicion_objeto(fila, columna);
+    
+    string ID = datos[1];
+		
+    int tipo_objeto = 	buscar_dato(NOMBRES_STRING,MAX_NOMBRES,nombre_objeto);
+    char nombre = tipo_objeto!=NO_ENCONTRADO ? NOMBRES_CHAR[tipo_objeto] : 0;
+    Casilla *casilla = tablero->obtener_casilla(posicion_objeto);
+
+	Objeto *personaje = crear_objeto(tipo_objeto,nombre,casilla, 1, ID);
+
+    ((Ser*)personaje)->asignar_armadura(convertir_entero(datos[2]));
+    ((Ser*)personaje)->asignar_fuerza(convertir_entero(datos[3]));
+    ((Ser*)personaje)->asignar_vida(convertir_entero(datos[4]));
+    ((Ser*)personaje)->asignar_energia(convertir_entero(datos[5]));
+
+	objetos[ID] = personaje;
+    
+    return personaje;
+}
+
+Objeto* Archivo_partida::crear_objeto(const int tipo_objeto,const char nombre,Casilla *casilla, int cantidad, string ID){
+
+	Objeto* objeto = nullptr;
+
+	switch(tipo_objeto) {
+
+		case AGUA: 			objeto = new Agua(casilla,nombre,cantidad,ID); break;
+
+		case BALA: 			objeto = new Bala(casilla,nombre,cantidad,ID); break;
+
+		case CRUZ: 			objeto = new Cruz(casilla,nombre,cantidad,ID); break;
+
+		case ESTACA: 		objeto = new Estaca(casilla,nombre,cantidad, ID); break;
+
+		case ESCOPETA: 		objeto = new Escopeta(casilla,nombre,cantidad, ID); break;
+
+		case HUMANO: 		objeto = new Humano(casilla,nombre,ID); break;
+
+		case HUMANO_CAZADOR:objeto = new Cazador(casilla,nombre,ID); break;
+
+		case VANESA: 		objeto = new Vanessa(casilla,nombre,ID); break;
+
+		case VAMPIRO: 		objeto = new Vampiro(casilla,nombre,ID); break;
+
+		case VAMPIRELLA: 	objeto = new Vampirella(casilla,nombre,ID); break;
+
+		case NOSFERATU: 	objeto = new Nosferatu(casilla,nombre,ID); break;
+
+		case ZOMBIE: 		objeto = new Zombie(casilla,nombre,ID); break;	
+
+		default: 			cout<<"No se ha encontrado el objeto de nombre: "<<nombre<<endl; break;
+	}
+
+	return objeto;
+}
+
+void Archivo_partida::guardar_partida(Jugador* jugador1, Jugador* jugador2, Lista<Objeto*> &objetos){
 
     ofstream archivo;
     archivo.open("datos_partida.txt", ios::out);
@@ -39,8 +182,8 @@ void Archivo_partida::guardar_partida(Jugador* jugador1, Jugador* jugador2, List
 
     archivo.close();
     
-    remove("partida.txt");
-    rename("datos_partida.txt", "partida.txt");
+    remove("Partida.txt");
+    rename("datos_partida.txt", "Partida.txt");
 }
 
 string Archivo_partida::obtener_contenido_datos_jugador(Jugador* jugador, bool guardo_el_juego)
@@ -74,7 +217,7 @@ string Archivo_partida::obtener_contenido_datos_jugador(Jugador* jugador, bool g
     return contenido_jugador;
 }
 
-string Archivo_partida::obtener_contenido_objetos(Lista<Objeto*> objetos)
+string Archivo_partida::obtener_contenido_objetos(Lista<Objeto*> &objetos)
 {
     string contenido_obj="";
     contenido_obj+=ITEMS+ESPACIO+to_string(objetos.obtener_tamano());

@@ -6,10 +6,20 @@ Jugador::Jugador(int num, string bando){
     this->cantidad_pjs = 0;
 }
 
-Jugador::~Jugador(){
+Jugador::Jugador(){
     num_jugador = 0;
     bando = "";
     cantidad_pjs = 0;
+}
+
+void Jugador::asignar_numero(int num)
+{
+    num_jugador = num;
+}
+
+void Jugador::asignar_bando(string bando)
+{
+    this->bando = bando;
 }
 
 void Jugador::guardar_personajes_de_jugador(Lista<Objeto*> &datos){
