@@ -21,12 +21,22 @@ class Ataque_nosferatu:public Ataque_vampiro{
         //POST: le baja la vida al personaje
         void bajar_vida(Casilla* casilla);
 
-
-        void atacar(Tablero* tablero);
-
+        //PRE: recibe el tablero y la coordenada del atacante
+        //POST: verifica si el personaje a atacar se encuentra en rango
         bool validacion_rango_aleatorio(Tablero* tablero,Coordenada centro);
+
+
+        //PRE: recibe la casilla del personaje a bajarle la vida
+        //POST: verifica si el personaje a atacar se encuentra en rango
         bool validacion_rango_especifico(Casilla* casilla_a_atacar);
+
+        //PRE: recibe el tablero y la coordenada del atacante
+        //POST: devuelve una casilla aleatoria con algun personaje
         Casilla* devolver_casilla_aleatoria_en_tablero(Tablero* tablero, Coordenada centro);
+
+        //PRE: recibe el indice del personaje en la lista de la casilla y la casilla
+        //POST: verifica si el personaje tiene menos de 30 de vida para transformar a vampiro
+        void verificar_transformacion_a_vampiro(int indice, Casilla* casilla);
 
     };
 

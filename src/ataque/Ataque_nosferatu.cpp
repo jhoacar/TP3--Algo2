@@ -70,7 +70,6 @@ void Ataque_nosferatu::atacar(Casilla *casilla, Tablero* tablero) {
     }
     ataque_validacion = validacion_ataque(6);
 
-
     if(validacion_rango && ataque_validacion){
 
         if(casilla == nullptr)
@@ -94,6 +93,12 @@ void Ataque_nosferatu::atacar(Casilla *casilla, Tablero* tablero) {
     }
 }
 
+void Ataque_nosferatu::verificar_transformacion_a_vampiro(int indice, Casilla* casilla){
+
+    if((((Ser*) casilla -> obtener_objetos()[indice]) ->devolver_vida()) <= 30)
+        ((Ser*) casilla -> obtener_objetos()[indice]) -> asignar_nombre(NOMBRES_CHAR[VAMPIRO]);
+}
+
 
 void Ataque_nosferatu::bajar_vida(Casilla* casilla){
 
@@ -102,12 +107,17 @@ void Ataque_nosferatu::bajar_vida(Casilla* casilla){
     int indice_vanesa = indice_personaje(NOMBRES_CHAR[VANESA], casilla);
 
 
-    if(indice_humano != NO_ENCONTRADO)
+    if(indice_humano != NO_ENCONTRADO) {
         calcular_valores_ataque(indice_humano, 100, casilla);
-    if(indice_cazador != NO_ENCONTRADO)
+        verificar_transformacion_a_vampiro(indice_humano, casilla);
+    }
+    if(indice_cazador != NO_ENCONTRADO) {
         calcular_valores_ataque(indice_cazador, 100, casilla);
-    if(indice_vanesa != NO_ENCONTRADO)
+        verificar_transformacion_a_vampiro(indice_cazador, casilla);
+    }
+    if(indice_vanesa != NO_ENCONTRADO) {
         calcular_valores_ataque(indice_vanesa, 100, casilla);
-
+        verificar_transformacion_a_vampiro(indice_vanesa, casilla);
+    }
 }
 
