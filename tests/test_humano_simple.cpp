@@ -1,4 +1,4 @@
-/*#include "Includes_Objetos.h"
+#include "../src/funcionalidades/Includes_Objetos.h"
 #include <iostream>
 
 
@@ -74,7 +74,7 @@ int main() {
 
     cout << endl << "ATACO................." << endl << endl;
 
-    Casilla* casilla1= nullptr;
+    //Casilla* casilla1= nullptr;
 
     bool validacion = ((Humano *) humano_simple)->validacion_ataque(casilla_2, tablero);
     if(validacion)
@@ -107,4 +107,4 @@ int main() {
 
     return 0;
 
-}*/
+}
