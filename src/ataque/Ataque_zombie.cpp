@@ -4,8 +4,8 @@
 Ataque_zombie::Ataque_zombie(Zombie *personaje): Ataque(personaje){
 }
 
-Ataque_zombie::~Ataque_zombie(){
-}
+/*Ataque_zombie::~Ataque_zombie(){
+}*/
 
 bool Ataque_zombie::validacion_ataque(int energia){
 

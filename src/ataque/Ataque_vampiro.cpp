@@ -4,8 +4,8 @@
 Ataque_vampiro::Ataque_vampiro(Vampiro *personaje): Ataque(personaje){
 }
 
-Ataque_vampiro::~Ataque_vampiro(){
-}
+/*Ataque_vampiro::~Ataque_vampiro(){
+}*/
 
 bool Ataque_vampiro::validacion_ataque(int energia){
     return energia_suficiente(energia);

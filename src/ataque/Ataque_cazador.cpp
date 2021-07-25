@@ -4,8 +4,8 @@
 Ataque_cazador::Ataque_cazador(Cazador *personaje): Ataque_humano(personaje){
 }
 
-Ataque_cazador::~Ataque_cazador(){
-}
+/*Ataque_cazador::~Ataque_cazador(){
+}*/
 
 
 bool Ataque_cazador::validacion_atacar_personaje(Casilla *casilla, Tablero* tablero){return true;}
