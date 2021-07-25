@@ -1,5 +1,5 @@
 #include "Humano.h"
-#include "../../../defensa/Defensa_humano.h"
+//#include "../../../defensa/Defensa_humano.h"
 #include "../../../ataque/Ataque_humano.h"
 #include <iostream>
 using std::cout;

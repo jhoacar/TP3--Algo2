@@ -1,13 +1,13 @@
 #include "Ataque_humano.h"
-#include "Escopeta.h"
-#include "Bala.h"
-#include "Vampiro.h"
-#include "Nosferatu.h"
-#include "Vampirella.h"
-#include "Zombie.h"
+#include "../objetos/elementos/Escopeta.h"
+#include "../objetos/elementos/Bala.h"
+#include "../objetos/seres/monstruos/vampiros/Vampiro.h"
+#include "../objetos/seres/monstruos/vampiros/Nosferatu.h"
+#include "../objetos/seres/monstruos/vampiros/Vampirella.h"
+#include "../objetos/seres/monstruos/zombies/Zombie.h"
 #include <stdlib.h>
 #include <iostream>
-#include "Constantes.h"
+#include "../constantes/constantes.h"
 
 
 using namespace std;

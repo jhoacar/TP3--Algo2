@@ -14,7 +14,7 @@ protected:
 public:
 
     Ataque(Ser *personaje);
-    ~Ataque();
+    virtual~Ataque();
     virtual void atacar(Casilla *casilla, Tablero* tablero) = 0;
     virtual void atacar(Casilla *casilla, Tablero* tablero, char arma) = 0;
     virtual bool validacion_atacar_personaje(Casilla *casilla, Tablero* tablero)=0;
