@@ -4,8 +4,7 @@
 Ataque_vanesa::Ataque_vanesa(Vanessa *personaje):Ataque_humano(personaje){
 }
 
-/*Ataque_vanesa::~Ataque_vanesa(){
-}*/
+
 
 
 void Ataque_vanesa::bajar_vida_completa(int indice, Casilla *casilla){

@@ -16,8 +16,6 @@ Ataque_humano::Ataque_humano(Humano *personaje): Ataque(personaje){
 }
 
 
-/*Ataque_humano::~Ataque_humano(){
-}*/
 
 
 
