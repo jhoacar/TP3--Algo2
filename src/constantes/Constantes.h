@@ -8,7 +8,7 @@ const string CAZADOR = "CV";
 
 const string FICHERO_OBJETOS = "estado.txt";
 const string FICHERO_TABLERO = "tablero.txt";
-const string FICHERO_PARTIDA = "Partida.txt";
+const string FICHERO_PARTIDA = "partida.txt";
 
 
 //Convencion usada para este proyecto en los nombre,cardinales,colores,etc... 

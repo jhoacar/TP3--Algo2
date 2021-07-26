@@ -179,8 +179,8 @@ void Archivo_partida::guardar_partida(Jugador* jugador1, Jugador* jugador2, List
 
     archivo.close();
     
-    remove("Partida.txt");
-    rename("datos_partida.txt", "Partida.txt");
+    remove("partida.txt");
+    rename("datos_partida.txt", "partida.txt");
 }
 
 string Archivo_partida::obtener_contenido_datos_jugador(Jugador* jugador, bool guardo_el_juego)
