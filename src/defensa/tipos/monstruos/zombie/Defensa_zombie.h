@@ -1,7 +1,7 @@
 #ifndef VANESSA_H_DEFENSA_ZOMBIE_H
 #define VANESSA_H_DEFENSA_ZOMBIE_H
 
-#include "../../../Defensa.h"
+#include "../../../../defensa/Defensa.h"
 #include "../../../../objetos/seres/monstruos/zombies/Zombie.h"
 class Defensa_zombie: public Defensa {
 
