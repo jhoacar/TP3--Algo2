@@ -1,17 +1,15 @@
 #include "Vampirella.h"
 #include "../../../../ataque/monstruo/vampiro/Ataque_vampirella.h"
-#include "../../../../defensa/tipos/Defensa_vampirella.h"
+#include "../../../../defensa/tipos/monstruos/vampiros/Defensa_vampirella.h"
 #include <iostream>
 using std::cout;
 using std::endl;
 Vampirella::Vampirella():Vampiro(){
     ataque = nullptr;
-    defensa = nullptr;
 }
 Vampirella::Vampirella(Casilla *casilla,char nombre,string ID):Vampiro(casilla,nombre,ID)
 {
     ataque = nullptr;
-    defensa = nullptr;
 }
 void Vampirella::mostrar(){
     cout<<"Objeto: Vampirella"<<endl;
@@ -20,8 +18,6 @@ Vampirella::~Vampirella()
 {
     if(ataque != nullptr)
         delete ataque;
-    if(defensa != nullptr)
-        delete defensa;
 }
 
 

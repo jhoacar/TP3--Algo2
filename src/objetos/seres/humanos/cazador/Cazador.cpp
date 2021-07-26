@@ -1,7 +1,8 @@
 #include "Cazador.h"
 #include "../../../../ataque/humanos/cazador/Ataque_cazador.h"
-#include "../../../../defensa/tipos/Defensa_cazador.h"
+#include "../../../../defensa/tipos/humanos/cazador/Defensa_cazador.h"
 #include <iostream>
+
 
 using std::cout;
 using std::endl;
@@ -47,7 +48,7 @@ void Cazador::defender(int accion, Tablero* tablero){
 
 bool Cazador::validacion_defensa(int valor){
     if(defensa == nullptr)
-        this -> defensa = new Defensa_humano(this);
+        this -> defensa = new Defensa_cazador(this);
     return defensa -> validar_energia(valor);
 }
 

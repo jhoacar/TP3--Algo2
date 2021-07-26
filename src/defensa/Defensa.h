@@ -17,5 +17,7 @@ class Defensa{
         virtual void defender(Tablero* tablero) = 0;
         virtual void defender(int accion, Tablero*)=0;
         bool validar_energia(int minimo);
+        Lista<Casilla *> obtener_casilla_con_personaje(Lista<Casilla *> lista_casillas, string personaje);
+        int indice_personaje(char personaje, Casilla* casilla);
 };
 #endif

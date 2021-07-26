@@ -1,5 +1,7 @@
 #include "Defensa_humano.h"
-#include "../../objetos/elementos/Agua.h"
+#include "../../../objetos/elementos/Agua.h"
+#include "../../../objetos/seres/humanos/cazador/Cazador.h"
+#include "../../../objetos/seres/humanos/cazador/Vanessa.h"
 
 bool tiene_agua_bendita(Humano *personaje){
     Objeto *objeto_referencia = new Agua();
@@ -64,7 +66,7 @@ void Defensa_humano::consumir_objeto(char arma) {
 }
 
 
-/*
+
 int Humano::elegir_accion() {
     int opcion;
     cout << "Tengo agua bendita en mi inventario." << endl;
@@ -78,5 +80,18 @@ int Humano::elegir_accion() {
     }
     return opcion;
 }
-*/
 
+void Defensa_humano::regenerar_vida_aliados(Casilla* casilla){
+
+    int indice_humano = indice_personaje(NOMBRES_CHAR[HUMANO], casilla);
+    int indice_cazador = indice_personaje(NOMBRES_CHAR[HUMANO_CAZADOR], casilla);
+    int indice_vanesa = indice_personaje(NOMBRES_CHAR[VANESA], casilla);
+
+    if(indice_humano != NO_ENCONTRADO)
+        ((Ser*)casilla->obtener_objetos()[indice_humano]) ->regenerar_vida_defensa(20);
+    else if(indice_cazador != NO_ENCONTRADO)
+        ((Ser*)casilla->obtener_objetos()[indice_cazador]) ->regenerar_vida_defensa(20);
+    else if(indice_vanesa != NO_ENCONTRADO)
+        ((Ser*)casilla->obtener_objetos()[indice_vanesa]) ->regenerar_vida_defensa(20);
+
+}

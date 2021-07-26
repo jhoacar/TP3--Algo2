@@ -81,7 +81,7 @@ class Humano : public Ser
 
 		void frenar_transformacion();
 
-
+        bool devolver_en_transformacion();
 
 };
 

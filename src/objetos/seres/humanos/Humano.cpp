@@ -1,5 +1,5 @@
 #include "Humano.h"
-#include "../../../defensa/tipos/Defensa_humano.h"
+#include "../../../defensa/tipos/humanos/Defensa_humano.h"
 #include "../../../ataque/humanos/Ataque_humano.h"
 #include <iostream>
 using std::cout;
@@ -7,14 +7,14 @@ using std::endl;
 using std::cin;
 
 Humano::Humano():Ser(){
-	this->armadura_aumentada = false;
+    this->armadura_aumentada = false;
     ataque= nullptr;
     defensa = nullptr;
 }
 
 Humano::Humano(Casilla *casilla,char nombre,string ID):Ser(casilla,nombre,ID)
 {
-	this->armadura_aumentada = false;
+    this->armadura_aumentada = false;
     ataque = nullptr;
     defensa = nullptr;
 }
@@ -83,19 +83,7 @@ void Humano::atacar(Casilla *casilla, Tablero* tablero, char arma){
 }
 
 
-int Humano::elegir_accion() {
-    int opcion;
-    cout << "Tengo agua bendita en mi inventario." << endl;
-    cout << "¿Qué debo hacer?" << endl;
-    cout << "(1) Regenerar toda mi energía." << endl;
-    cout << "(2) Aumentar mi armadura." << endl;
-    cin >> opcion;
-    while (opcion != REGENERAR_ENERGIA  && opcion != AUMENTAR_ARMADURA ){
-        cout << "No lo entiendo. ¿Qué debo hacer?" << endl;
-        cin >> opcion;
-    }
-    return opcion;
-}
+
 
 
 void Humano::aumentar_energia() {
@@ -119,4 +107,9 @@ void Humano::regeneracion_maxima_energia(int maximo){
 
 void Humano::frenar_transformacion(){
     en_transformacion = false;
+}
+
+
+bool Humano::devolver_en_transformacion(){
+    return en_transformacion;
 }

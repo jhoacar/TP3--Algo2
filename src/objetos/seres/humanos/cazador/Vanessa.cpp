@@ -1,5 +1,5 @@
 #include "Vanessa.h"
-#include "../../../../defensa/tipos/Defensa_vanesa.h"
+#include "../../../../defensa/tipos/humanos/cazador/Defensa_vanesa.h"
 #include <iostream>
 #include "../../../../ataque/humanos/cazador/Ataque_vanesa.h"
 using std::cout;

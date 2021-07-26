@@ -1,8 +1,8 @@
 #ifndef VANESSA_H_DEFENSA_CAZADOR_H
 #define VANESSA_H_DEFENSA_CAZADOR_H
 
-#include "Defensa_humano.h"
-#include "../../objetos/seres/humanos/cazador/Cazador.h"
+#include "../Defensa_humano.h"
+#include "../../../../objetos/seres/humanos/cazador/Cazador.h"
 class Defensa_cazador:public Defensa_humano {
 
     public:
@@ -12,6 +12,10 @@ class Defensa_cazador:public Defensa_humano {
     void defender(){};
     void defender(int eleccion){};
     void defender(Tablero* tablero){};
+
+
+
+    int posicion_en_lista(char personaje, Lista<Objeto*> lista_objetos);
 
 
 };

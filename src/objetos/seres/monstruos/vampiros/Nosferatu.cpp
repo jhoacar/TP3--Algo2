@@ -1,6 +1,6 @@
 #include "Nosferatu.h"
 #include "../../../../ataque/monstruo/vampiro/Ataque_nosferatu.h"
-#include "../../../../defensa/tipos/Defensa_nosferatu.h"
+#include "../../../../defensa/tipos/monstruos/vampiros/Defensa_nosferatu.h"
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -46,7 +46,7 @@ void Nosferatu::regnerar_energia() {
 void Nosferatu::defender(Tablero* tablero){
     if(defensa == nullptr)
         this -> defensa = new Defensa_nosferatu(this);
-    defensa -> defender();
+    defensa -> defender(tablero);
 }
 
 bool Nosferatu::validacion_defensa(int valor){

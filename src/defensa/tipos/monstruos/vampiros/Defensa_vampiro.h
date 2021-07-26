@@ -1,8 +1,8 @@
 #ifndef VANESSA_H_DEFENSA_VAMPIRO_H
 #define VANESSA_H_DEFENSA_VAMPIRO_H
 
-#include "../Defensa.h"
-#include "../../objetos/seres/monstruos/vampiros/Vampiro.h"
+#include "../../../Defensa.h"
+#include "../../../../objetos/seres/monstruos/vampiros/Vampiro.h"
 
 class Defensa_vampiro:public Defensa{
 

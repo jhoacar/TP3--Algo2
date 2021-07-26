@@ -1,7 +1,8 @@
 #include "Vampiro.h"
 #include "../../../../ataque/monstruo/vampiro/Ataque_vampiro.h"
-#include "../../../../defensa/tipos/Defensa_vampiro.h"
+#include "../../../../defensa/tipos/monstruos/vampiros/Defensa_vampiro.h"
 #include <iostream>
+
 
 using std::cout;
 using std::endl;
@@ -71,8 +72,6 @@ bool Vampiro::validacion_defensa(int valor){
         this -> defensa = new Defensa_vampiro(this);
     return defensa -> validar_energia(valor);
 }
-
-
 
 void Vampiro::ocultarse() {
     this->oculto = true;

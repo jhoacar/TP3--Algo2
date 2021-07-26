@@ -5,20 +5,27 @@
 
 class Nosferatu : public Vampiro
 {
-	public:
-		Nosferatu();
-		Nosferatu(Casilla *casilla,char nombre,string ID);
-		void mostrar();
-		void regnerar_energia();
-		void defender(Tablero* tablero);
-		void atacar(Casilla *casilla, Tablero* tablero);
-		~Nosferatu();
-        bool validacion_ataque(Casilla *casilla, Tablero* tablero);
+public:
+    Nosferatu();
+    Nosferatu(Casilla *casilla,char nombre,string ID);
+    void mostrar();
+    void regnerar_energia();
 
-        bool validacion_defensa(int valor);
+    void defender(Tablero* tablero);
+    void defender(){};
+    void defender(int accion, Tablero* tablero){};
+    void defender(int eleccion){}
 
 
-	protected:
+
+    void atacar(Casilla *casilla, Tablero* tablero);
+    ~Nosferatu();
+    bool validacion_ataque(Casilla *casilla, Tablero* tablero);
+
+    bool validacion_defensa(int valor);
+
+
+protected:
 };
 
 #endif

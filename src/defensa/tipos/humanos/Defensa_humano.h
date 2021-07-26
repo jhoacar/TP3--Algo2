@@ -1,8 +1,8 @@
 #ifndef DEFENSA_HUMANO_H
 #define DEFENSA_HUMANO_H
 
-#include "../Defensa.h"
-#include "../../objetos/seres/humanos/Humano.h"
+#include "../../Defensa.h"
+#include "../../../objetos/seres/humanos/Humano.h"
 
 class Defensa_humano:public Defensa{
 
@@ -21,6 +21,8 @@ class Defensa_humano:public Defensa{
         void consumir_agua_bendita();
         int buscar_objeto(char arma);
         void consumir_objeto(char arma);
+        void regenerar_vida_aliados(Casilla* casilla);
+
 
 };
 #endif

@@ -3,7 +3,7 @@
 
 
 #include "Defensa_vampiro.h"
-#include "../../objetos/seres/monstruos/vampiros/Vampirella.h"
+#include "../../../../objetos/seres/monstruos/vampiros/Vampirella.h"
 class Defensa_vampirella:public Defensa_vampiro {
 
 public:
