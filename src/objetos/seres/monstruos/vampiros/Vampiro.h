@@ -22,6 +22,8 @@ class Vampiro : public Monstruo
         void atacar(Casilla *casilla, Tablero* tablero, char arma);
         bool validacion_ataque(Casilla *casilla, Tablero* tablero);
 
+        bool validacion_defensa(int valor);
+
 		// PRE: -
 		// POS:
 		void ocultarse();

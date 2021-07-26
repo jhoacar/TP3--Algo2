@@ -1,5 +1,6 @@
 #include "Vampiro.h"
 #include "../../../../ataque/Ataque_vampiro.h"
+#include "../../../../defensa/tipos/Defensa_vampiro.h"
 #include <iostream>
 
 using std::cout;
@@ -41,10 +42,6 @@ void Vampiro::encuentro_con_elemento() {
     cout << "Se han destruido las estacas" << endl;
 }
 
-void Vampiro::defender() {
-    this->energia -=4;
-    this->ocultarse();
-}
 void Vampiro::atacar(Casilla *casilla, Tablero* tablero){
     if(ataque == nullptr)
         this -> ataque = new Ataque_vampiro(this);
@@ -59,6 +56,17 @@ bool Vampiro::validacion_ataque(Casilla *casilla, Tablero* tablero){
     return ataque -> validacion_atacar_personaje(casilla, tablero);
 }
 
+void Vampiro::defender(){
+    if(defensa == nullptr)
+        this -> defensa = new Defensa_vampiro(this);
+    defensa -> defender();
+}
+
+bool Vampiro::validacion_defensa(int valor){
+    if(defensa == nullptr)
+        this -> defensa = new Defensa_vampiro(this);
+    return defensa -> validar_energia(valor);
+}
 
 
 

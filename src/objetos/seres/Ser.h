@@ -32,13 +32,23 @@ class Ser : public Objeto
 		void asignar_vida(int vida);
 		void asignar_energia(int energia);
 		void asignar_fuerza(int fuerza);
+		void aumentar_armadura();
 		Lista<Objeto*> obtener_inventario();
 		
-		virtual void defender()=0;
+
+        virtual void defender()=0;
+        virtual void defender(int eleccion) = 0;
+        virtual void defender(Tablero* tablero) = 0;
+        virtual void defender(int accion, Tablero*)=0;
+
 		virtual void atacar(Casilla *casilla, Tablero* tablero)=0;
         virtual void atacar(Casilla *casilla, Tablero* tablero, char arma)=0;
+
+
 		virtual void regenerar_energia()=0;
 		virtual void encuentro_con_elemento()=0;
+
+        void regenerar_vida_defensa(int vida_a_sumar);
 
         //PRE: recibe una cantidad
         //POST: baja la vida

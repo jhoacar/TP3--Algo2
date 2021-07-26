@@ -1,5 +1,5 @@
 #include "Humano.h"
-//#include "../../../defensa/Defensa_humano.h"
+#include "../../../defensa/tipos/Defensa_humano.h"
 #include "../../../ataque/Ataque_humano.h"
 #include <iostream>
 using std::cout;
@@ -50,7 +50,6 @@ void Humano::encuentro_con_elemento() {
 bool Humano::validacion_ataque(Casilla *casilla, Tablero* tablero){
     if(ataque == nullptr)
         this -> ataque = new Ataque_humano(this);
-
     return ataque -> validacion_atacar_personaje(casilla, tablero);
 }
 
@@ -60,6 +59,18 @@ void Humano::atacar(Casilla *casilla, Tablero* tablero){
     ataque -> atacar(casilla, tablero);
 }
 
+
+void Humano::defender(int eleccion){
+    if(defensa == nullptr)
+        this -> defensa = new Defensa_humano(this);
+    defensa -> defender(eleccion);
+}
+
+bool Humano::validacion_defensa(int valor){
+    if(defensa == nullptr)
+        this -> defensa = new Defensa_humano(this);
+    return defensa -> validar_energia(valor);
+}
 
 
 
@@ -82,29 +93,6 @@ int Humano::elegir_accion() {
     return opcion;
 }
 
-void Humano::defender() {
-    
-    if (!tengo_agua_bendita()){
-        aumentar_energia();
-        cout << "|||| No tengo agua bendita, pero aumenté mi energía ||||" << endl;
-    }
-    else {
-        int accion = elegir_accion();
-        if (accion == REGENERAR_ENERGIA){
-            consumir_agua_bendita();
-            cout << "|||| Regeneré mi energía ||||" << endl;
-        }
-        else{
-            aumentar_armadura();
-            cout << "|||| Mejoré mi armadura ||||" << endl;
-        }
-    }
-}
-
-bool Humano::tengo_agua_bendita() {
-    objeto_referencia->asignar_nombre(NOMBRES_CHAR[AGUA]); //Le asigno el nombre que quiera buscar en la lista
-    return inventario.existe(objeto_referencia,comparacion_por_nombre);
-}
 
 void Humano::aumentar_energia() {
     energia +=3;
@@ -115,20 +103,16 @@ void Humano::aumentar_armadura() {
     armadura_aumentada = true;
 }
 
-void Humano::consumir_agua_bendita() {
-    energia = ENERGIA_MAXIMA;
-    inventario.borrar(buscar_agua_bendita());
-}
 
-bool Humano::tiene_armadura_aumentada() {
-    return this->armadura_aumentada;
-}
-
-int Humano::buscar_agua_bendita() {
-
-    objeto_referencia->asignar_nombre(NOMBRES_CHAR[AGUA]);
-    return inventario.buscar_dato(0,objeto_referencia,comparacion_por_nombre);
+void Humano::regenerar_energia_defensa() {
+    energia += 3;
 }
 
 
+void Humano::regeneracion_maxima_energia(int maximo){
+    energia = maximo;
+}
 
+void Humano::frenar_transformacion(){
+    en_transformacion = false;
+}

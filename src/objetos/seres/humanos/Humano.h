@@ -12,6 +12,7 @@ class Humano : public Ser
 	private:
 
 		bool armadura_aumentada;
+		bool en_transformacion;
 
 		// PRE: Se comprobó previamente que el humano tiene agua bendita en su invenatario.
 		//      Es decir, se ejecutó previamente el método tengoAguaBendita.
@@ -37,11 +38,17 @@ class Humano : public Ser
 		// POS: El humano se defiende. Es decir:
 		//      Si no tiene agua bendita en su inventario, incrementa 3 puntos su energía.
 		//      Si tiene agua bendita, puede regenera toda su energía o incrementa 1 su armadura por un turno.
-		void defender();
+        void defender(int eleccion);
+        void defender(){}
+        void defender(Tablero* tablero){}
+        void defender(int accion, Tablero*){}
+
 
         bool validacion_ataque(Casilla *casilla, Tablero* tablero);
 		void atacar(Casilla *casilla, Tablero* tablero);
         void atacar(Casilla *casilla, Tablero* tablero, char arma);
+
+        bool validacion_defensa(int valor);
 
 		// Comprueba si hay agua bendita en el inventario
 		// PRE: -
@@ -68,6 +75,11 @@ class Humano : public Ser
 		// POS: Devuelve true si tiene la armadura aumentada por defenderse, caso contrario devuelve false.
 		bool tiene_armadura_aumentada();
 
+		void regenerar_energia_defensa();
+
+		void regeneracion_maxima_energia(int maximo);
+
+		void frenar_transformacion();
 
 
 

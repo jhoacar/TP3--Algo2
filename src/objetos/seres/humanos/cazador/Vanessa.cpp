@@ -1,4 +1,5 @@
 #include "Vanessa.h"
+#include "../../../../defensa/tipos/Defensa_vanesa.h"
 #include <iostream>
 #include "../../../../ataque/Ataque_vanesa.h"
 using std::cout;
@@ -17,9 +18,6 @@ Vanessa::~Vanessa()
 {
     if(ataque != nullptr)
         delete ataque;
-}
-void Vanessa::defender(){
-
 }
 
 bool Vanessa::validacion_ataque(Casilla *casilla, Tablero* tablero, char arma){
@@ -40,3 +38,22 @@ void Vanessa::regenerar_energia() {
     this -> energia += 10;
 }
 
+void Vanessa::defender(Tablero* tablero){
+    if(defensa == nullptr)
+        this -> defensa = new Defensa_vanesa(this);
+    defensa -> defender(tablero);
+}
+
+bool Vanessa::validacion_defensa(int valor){
+    if(defensa == nullptr)
+        this -> defensa = new Defensa_vanesa(this);
+    return defensa -> validar_energia(valor);
+}
+
+void Vanessa::proteccion_de_ataque_vampiro(){
+    defendido_de_vampiro = true;
+}
+
+bool Vanessa::devolver_proteccion_de_vampiro(){
+    return defendido_de_vampiro;
+}

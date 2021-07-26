@@ -1,5 +1,6 @@
 #include "Vampirella.h"
 #include "../../../../ataque/Ataque_vampirella.h"
+#include "../../../../defensa/tipos/Defensa_vampirella.h"
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -19,9 +20,7 @@ Vampirella::~Vampirella()
         delete ataque;
 }
 
-void Vampirella::defender(){
-    
-}
+
 void Vampirella::atacar(Casilla *casilla, Tablero* tablero){
     if(ataque == nullptr)
         this -> ataque = new Ataque_vampirella(this);
@@ -35,4 +34,28 @@ bool Vampirella::validacion_ataque(Casilla *casilla, Tablero* tablero){
     if(ataque == nullptr)
         this -> ataque = new Ataque_vampirella(this);
     return ataque -> validacion_atacar_personaje(casilla, tablero);
+}
+
+void Vampirella::convertir_en_murcielago() {
+    this->murcielago = true;
+}
+
+void Vampirella::convertir_en_vampiro() {
+    this->murcielago = false;
+}
+
+bool Vampirella::es_murcielago() {
+    return this->murcielago;
+}
+
+void Vampirella::defender(){
+    if(defensa == nullptr)
+        this -> defensa = new Defensa_vampirella(this);
+    defensa -> defender();
+}
+
+bool Vampirella::validacion_defensa(int valor){
+    if(defensa == nullptr)
+        this -> defensa = new Defensa_vampirella(this);
+    return defensa -> validar_energia(valor);
 }

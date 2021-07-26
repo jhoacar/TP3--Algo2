@@ -11,11 +11,15 @@ class Cazador : public Humano
 		void mostrar();
 		void regenerar_energia();
 		~Cazador();
-		void defender();
+		void defender(int accion, Tablero* tablero);
 		void atacar(Casilla *casilla, Tablero* tablero);
         void atacar(Casilla *casilla, Tablero* tablero, char arma);
 
+        bool validacion_defensa(int valor);
+
         bool validacion_ataque(Casilla *casilla, Tablero* tablero, char arma);
+
+
 	protected:
 };
 

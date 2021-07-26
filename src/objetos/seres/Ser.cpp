@@ -1,6 +1,6 @@
 #include "Ser.h"
+//#include "Humano.h"
 #include "../elementos/Agua.h"
-
 bool es_elemento(Objeto* objeto_a_comprobar) {
     return buscar_dato(NOMBRES_CHAR, MAX_NOMBRES,objeto_a_comprobar->obtener_nombre(),HUMANO) == NO_ENCONTRADO;
 }
@@ -55,7 +55,9 @@ void Ser::asignar_vida(int vida){
 Lista<Objeto*> Ser::obtener_inventario(){
     return this -> inventario;
 }
-
+void Ser::aumentar_armadura(){
+    this -> armadura += 1;
+}
 
 
 
@@ -87,4 +89,9 @@ int Ser::calcular_vida_con_armadura(int vida_a_bajar){
         vida_final_bajar = vida_a_bajar - ((vida_a_bajar * 80)/100);
     }
     return vida_final_bajar;
+}
+
+
+void Ser::regenerar_vida_defensa(int vida_a_sumar){
+    vida += vida_a_sumar;
 }

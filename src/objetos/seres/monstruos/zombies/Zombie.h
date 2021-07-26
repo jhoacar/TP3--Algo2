@@ -37,6 +37,7 @@ class Zombie : public Monstruo
 
 		void esconderse();
 		~Zombie();
+        bool validacion_defensa(int valor);
 
 };
 

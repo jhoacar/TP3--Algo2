@@ -1,6 +1,6 @@
 #include "Defensa_humano.h"
 #include "../../objetos/elementos/Agua.h"
-/*
+
 bool tiene_agua_bendita(Humano *personaje){
     Objeto *objeto_referencia = new Agua();
     objeto_referencia->asignar_nombre(NOMBRES_CHAR[AGUA]); //Le asigno el nombre que quiera buscar en la lista
@@ -8,19 +8,15 @@ bool tiene_agua_bendita(Humano *personaje){
 }
 
 Defensa_humano::Defensa_humano(Humano *personaje):Defensa(personaje){
-    
-    personaje->armadura_aumentada=false;
-
 }
 
-void Humano::defenderse(){
-    
-    if (!tengo_agua_bendita()){
+void Defensa_humano::defender(int accion){
+
+    if (!tengo_objeto(NOMBRES_CHAR[AGUA])){
         aumentar_energia();
-        cout <<endl<< "|||| No tengo agua bendita, pero aumenté mi energía ||||" << endl;
+        cout << "|||| No tengo agua bendita, pero aumenté mi energía ||||" << endl;
     }
     else {
-        int accion = elegir_accion();
         if (accion == REGENERAR_ENERGIA){
             consumir_agua_bendita();
             cout << "|||| Regeneré mi energía ||||" << endl;
@@ -32,32 +28,43 @@ void Humano::defenderse(){
     }
 }
 
-bool Humano::tengo_agua_bendita() {
+bool Defensa_humano::tengo_objeto(char arma){
 
-    objeto_referencia->asignar_nombre(NOMBRES_CHAR[AGUA]); //Le asigno el nombre que quiera buscar en la lista
-    return inventario.existe(objeto_referencia,comparacion_por_nombre);
+    Objeto *objeto_referencia = new Agua();
+    objeto_referencia -> asignar_nombre(arma);
+    bool esta_en_inventario = personaje -> obtener_inventario().existe(objeto_referencia,comparacion_por_nombre);
+
+    return esta_en_inventario;
+
 }
 
-void Humano::aumentar_energia() {
-    energia +=3;
+void Defensa_humano::aumentar_energia() {
+    ((Humano*) personaje) -> regenerar_energia_defensa();
 }
 
-void Humano::aumentar_armadura() {
-    armadura++;
-    armadura_aumentada = true;
+void Defensa_humano::aumentar_armadura() {
+    personaje ->aumentar_armadura();
+    //armadura_aumentada = true;
 }
 
-void Humano::consumir_agua_bendita() {
-    energia = ENERGIA_MAXIMA;
-    inventario.borrar(buscar_agua_bendita());
+void Defensa_humano::consumir_agua_bendita() {
+    ((Humano*) personaje) -> regeneracion_maxima_energia(ENERGIA_MAXIMA);
+    personaje -> obtener_inventario().borrar(buscar_objeto(NOMBRES_CHAR[AGUA]));
 }
 
-int Humano::buscar_agua_bendita() {
+int Defensa_humano::buscar_objeto(char arma) {
 
-    objeto_referencia->asignar_nombre(NOMBRES_CHAR[AGUA]);
-    return inventario.buscar_dato(0,objeto_referencia,comparacion_por_nombre);
+    Objeto *objeto_referencia = new Agua();
+    objeto_referencia -> asignar_nombre(arma);
+    return personaje->obtener_inventario().buscar_dato(0,objeto_referencia,comparacion_por_nombre);
 }
 
+void Defensa_humano::consumir_objeto(char arma) {
+    personaje -> obtener_inventario().borrar(buscar_objeto(arma));
+}
+
+
+/*
 int Humano::elegir_accion() {
     int opcion;
     cout << "Tengo agua bendita en mi inventario." << endl;
@@ -71,10 +78,5 @@ int Humano::elegir_accion() {
     }
     return opcion;
 }
-
-void Defensa_humano::defender(){
-
-    
-    
-}
 */
+

@@ -15,7 +15,23 @@ class Vampirella : public Vampiro
 		void atacar(Casilla *casilla, Tablero* tablero);
         bool validacion_ataque(Casilla *casilla, Tablero* tablero);
 
+        // PRE: Vampirella se defiende.
+        // POS: Se convierte en murcielago, por lo tanto establece murcielago en true.
+        void convertir_en_murcielago();
+
+        // PRE: Vampirella se ha defendido en el turno anterior, por lo tanto muricelago es true.
+        // POS: Vampirella se vuelve a convertir en vampiro, por lo tanto se establece murcielago en false.
+        void convertir_en_vampiro();
+
+        // PRE: -
+        // POS: Devuelve true si es murcielago, caso contrario devuelve false.
+        bool es_murcielago();
+
+        bool validacion_defensa(int valor);
+
 	protected:
+    private:
+        bool murcielago;
 };
 
 #endif

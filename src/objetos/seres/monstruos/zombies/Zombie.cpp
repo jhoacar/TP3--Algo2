@@ -1,6 +1,7 @@
 #include "Zombie.h"
 #include <iostream>
 #include "../../../../ataque/Ataque_zombie.h"
+#include "../../../../defensa/tipos/Defensa_zombie.h"
 using std::cout;
 using std::endl;
 
@@ -39,11 +40,8 @@ void Zombie::encuentro_con_elemento() {
     this -> casilla -> eliminar_objetos(solo_agua);
 }
 
-void Zombie::defender() {
-    this->energia -=3;
-    this->escondido = true;
-    this->vida +=20;
-}
+
+
 void Zombie::atacar(Casilla *casilla, Tablero* tablero){
     if(ataque == nullptr)
         this -> ataque = new Ataque_zombie(this);
@@ -72,5 +70,17 @@ void Zombie::atacar(Casilla *casilla, Tablero *tablero, char arma) {
 }
 void Zombie::esconderse() {
     this->escondido = true;
+}
 
+
+void Zombie::defender(){
+    if(defensa == nullptr)
+        this -> defensa = new Defensa_zombie(this);
+    defensa -> defender();
+}
+
+bool Zombie::validacion_defensa(int valor){
+    if(defensa == nullptr)
+        this -> defensa = new Defensa_zombie(this);
+    return defensa -> validar_energia(valor);
 }
