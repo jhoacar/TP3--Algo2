@@ -1,13 +1,13 @@
 1
 humanos 3
-humano 001 0 0 0 0 2 5 0 0 0 0 0
+humano 001 0 0 0 0 2 2 0 0 0 0 0
 humano 022 0 0 0 0 1 2 0 0 0 0 0
 humano CV 085 0 0 0 0 0 3 0 0 0 0 0
 monstruos 3
 zombi 134 0 0 0 0 3 5 0 0 0 0 0
-zombi 167 0 0 0 0 5 2 0 0 0 0 0
+zombi 167 0 0 0 0 4 2 0 0 0 0 0
 vampiro 268 0 0 0 0 4 3 0 0 0 0 0
 items 3
 agua 302 10 3 3
-bala 366 3 2 2
+bala 366 3 2 5
 cruz 333 1 1 3

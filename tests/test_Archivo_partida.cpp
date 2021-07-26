@@ -21,6 +21,9 @@ int main(){
 
     cout << endl << j2->obtener_datos_personajes()[2]->obtener_nombre() << endl;
 
+    Coordenada pos(4, 2);
+    cout << mapa->obtener_casilla(pos)->obtener_tipo() << endl;
+
     delete j1;
     delete j2;
     delete mapa;

@@ -76,11 +76,8 @@ void Archivo_partida::cargar_jugadores(Tablero* tablero, Jugador* jugador1, Juga
 }
 
 void Archivo_partida::cargar_elemento(Tablero* tablero, Lista<string> &datos)
-{
-    int fila = convertir_entero(datos[3]);
-    int columna = convertir_entero(datos[4]);
-    
-    Coordenada posicion_objeto(fila, columna);
+{   
+    Coordenada posicion_objeto(convertir_entero(datos[3])-1, convertir_entero(datos[4])-1);
     string ID = datos[1];
     string nombre_objeto = datos[0];
     int cantidad = convertir_entero(datos[2]);
@@ -88,9 +85,9 @@ void Archivo_partida::cargar_elemento(Tablero* tablero, Lista<string> &datos)
     int tipo_objeto = 	buscar_dato(NOMBRES_STRING,MAX_NOMBRES,nombre_objeto);
     char nombre = tipo_objeto!=NO_ENCONTRADO ? NOMBRES_CHAR[tipo_objeto] : 0;
     Casilla *casilla = tablero->obtener_casilla(posicion_objeto);
-
+    
 	Objeto *elemento = crear_objeto(tipo_objeto,nombre,casilla, cantidad, ID);
-
+    
 	objetos[ID] = elemento;
     
 }
@@ -102,19 +99,19 @@ Objeto* Archivo_partida::cargar_personaje(Tablero* tablero, Lista<string> &datos
         nombre_objeto+=ESPACIO+datos[1];
         datos.borrar(1);
     }
-    int fila = convertir_entero(datos[6]);
-    int columna = convertir_entero(datos[7]);
-    Coordenada posicion_objeto(fila, columna);
+
+    Coordenada posicion_objeto(convertir_entero(datos[6])-1, convertir_entero(datos[7])-1);
     
     string ID = datos[1];
-		
+	
     int tipo_objeto = 	buscar_dato(NOMBRES_STRING,MAX_NOMBRES,nombre_objeto);
     char nombre = tipo_objeto!=NO_ENCONTRADO ? NOMBRES_CHAR[tipo_objeto] : 0;
+    
     Casilla *casilla = tablero->obtener_casilla(posicion_objeto);
 
 	Objeto *personaje = crear_objeto(tipo_objeto,nombre,casilla, 1, ID);
 
-    ((Ser*)personaje)->asignar_armadura(convertir_entero(datos[2]));
+	((Ser*)personaje)->asignar_armadura(convertir_entero(datos[2]));
     ((Ser*)personaje)->asignar_fuerza(convertir_entero(datos[3]));
     ((Ser*)personaje)->asignar_vida(convertir_entero(datos[4]));
     ((Ser*)personaje)->asignar_energia(convertir_entero(datos[5]));
