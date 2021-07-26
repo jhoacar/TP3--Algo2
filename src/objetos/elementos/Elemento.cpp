@@ -16,3 +16,6 @@ Elemento::~Elemento()
 int Elemento::obtener_cantidad(){
 	return this->cantidad;
 }
+void Elemento::asignar_cantidad(int cantidad){
+	this->cantidad=cantidad;
+}

@@ -16,6 +16,12 @@ Objeto::~Objeto(){
 Casilla* Objeto::obtener_casilla(){
     return this->casilla;
 }
+Coordenada Objeto::obtener_posicion(){
+    if(this->casilla==nullptr)
+        return POSICION_INVALIDA;
+    else
+        return this->casilla->obtener_posicion();
+}
 string Objeto::obtener_cuadrante(){
     return this->cuadrante;
 }

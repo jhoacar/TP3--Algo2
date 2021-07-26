@@ -7,6 +7,7 @@
 // (3) Tiene agua bendita en su inventario, aumenta +1 su armadura   => Pendiente
 
 int main(){
+    
     Coordenada posicion(10, 10);
     Casilla* camino = new Camino(posicion);
     Objeto* humano_simple = new Humano(camino, 'h', "id");

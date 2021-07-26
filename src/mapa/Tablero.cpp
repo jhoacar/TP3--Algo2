@@ -158,7 +158,7 @@ Casilla* Tablero::obtener_casilla(Coordenada posicion){
     int fila = posicion.obtener_fila();
     int columna = posicion.obtener_columna();
 
-    if(es_valida({fila,columna}))
+    if(es_valida(posicion))
         return casillas[fila][columna];        
     else  
         return nullptr;
@@ -188,7 +188,7 @@ Lista<Casilla*> Tablero::obtener_lista_casillas(Lista<Coordenada> posiciones){
     Lista<Casilla*> lista_casillas;
     while(posiciones.existe_siguiente()){
         Coordenada posicion = posiciones.siguiente_dato();
-        if(es_valida(posicion))
+        if(obtener_casilla(posicion)!= nullptr)
             lista_casillas.agregar(obtener_casilla(posicion));
     }
 

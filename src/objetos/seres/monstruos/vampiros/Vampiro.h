@@ -5,6 +5,10 @@
 
 class Vampiro : public Monstruo
 {
+
+    friend class Ataque_vampiro;
+    friend class Defensa_vampiro;
+
 	public:
 		Vampiro();
 		Vampiro(Casilla *casilla,char nombre,string ID);
@@ -16,16 +20,9 @@ class Vampiro : public Monstruo
         // POS: El vampiro se defiende. Es decir:
         //      Consume 4 puntos de energía y se oculta por un turno.
         //      Aumenta 1 punto de armadura por un turno.
-		void defender();
-        void atacar(Casilla *casilla);
+		void defender(Tablero *tablero);
 
-		// PRE: -
-		// POS:
-		void ocultarse();
-
-        // PRE: El vampiro se ha defendido en el turno anterior, por lo tanto oculto es true.
-        // POS: El vampiro aparece, por lo tanto se establece oculto en false
-		void aparecer();
+        void atacar(Coordenada posicion, Tablero *tablero);
 
         // PRE: -
         // POS: Devuelve true si tiene la armadura aumentada por defenderse, caso contrario devuelve false.
@@ -35,8 +32,6 @@ class Vampiro : public Monstruo
 
     protected:
 
-    private:
-        bool oculto;
         bool armadura_aumentada;
 };
 
