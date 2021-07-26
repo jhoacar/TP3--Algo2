@@ -10,12 +10,14 @@ Vampiro::Vampiro():Monstruo(){
     this->oculto = false;
     this->armadura_aumentada = false;
     ataque = nullptr;
+    defensa = nullptr;
 }
 Vampiro::Vampiro(Casilla *casilla,char nombre,string ID):Monstruo(casilla,nombre,ID)
 {
     this->oculto = false;
     this->armadura_aumentada = false;
     ataque = nullptr;
+    defensa = nullptr;
 }
 void Vampiro::mostrar(){
     cout<<"Objeto: Vampiro"<<endl;
@@ -24,6 +26,8 @@ Vampiro::~Vampiro()
 {
     if(ataque != nullptr)
         delete ataque;
+    if(defensa != nullptr)
+        delete defensa;
 }
 
 void Vampiro::regenerar_energia() {

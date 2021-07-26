@@ -41,7 +41,7 @@ class Humano : public Ser
         void defender(int eleccion);
         void defender(){}
         void defender(Tablero* tablero){}
-        void defender(int accion, Tablero*){}
+        void defender(int accion, Tablero* tablero);{}
 
 
         bool validacion_ataque(Casilla *casilla, Tablero* tablero);

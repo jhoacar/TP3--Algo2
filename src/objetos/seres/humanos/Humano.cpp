@@ -9,12 +9,14 @@ using std::cin;
 Humano::Humano():Ser(){
 	this->armadura_aumentada = false;
     ataque= nullptr;
+    defensa = nullptr;
 }
 
 Humano::Humano(Casilla *casilla,char nombre,string ID):Ser(casilla,nombre,ID)
 {
 	this->armadura_aumentada = false;
     ataque = nullptr;
+    defensa = nullptr;
 }
 
 void Humano::mostrar(){
@@ -23,8 +25,10 @@ void Humano::mostrar(){
 
 Humano::~Humano()
 {
-if(ataque != nullptr)
-    delete ataque;
+    if(ataque != nullptr)
+        delete ataque;
+    if(defensa != nullptr)
+        delete defensa;
 }
 
 void Humano::regenerar_energia() {
@@ -115,4 +119,5 @@ void Humano::regeneracion_maxima_energia(int maximo){
 
 void Humano::frenar_transformacion(){
     en_transformacion = false;
+}
 }

@@ -8,11 +8,13 @@ using std::endl;
 Zombie::Zombie():Monstruo(){
     this->escondido = false;
     ataque = nullptr;
+    defensa = nullptr;
 }
 Zombie::Zombie(Casilla *casilla,char nombre,string ID):Monstruo(casilla,nombre,ID)
 {
     this->escondido = false;
     ataque = nullptr;
+    defensa = nullptr;
 }
 void Zombie::mostrar(){
     cout<<"Objeto: Zombie"<<endl;
@@ -21,6 +23,8 @@ Zombie::~Zombie()
 {
     if(ataque != nullptr)
         delete ataque;
+    if(defensa != nullptr)
+        delete defensa;
 }
 
 void Zombie::regenerar_energia() {

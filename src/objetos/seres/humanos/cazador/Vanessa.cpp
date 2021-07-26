@@ -6,10 +6,12 @@ using std::cout;
 using std::endl;
 Vanessa::Vanessa():Cazador(){
     ataque = nullptr;
+    defensa = nullptr;
 }
 Vanessa::Vanessa(Casilla *casilla,char nombre,string ID):Cazador(casilla,nombre,ID)
 {
     ataque= nullptr;
+    defensa = nullptr;
 }
 void Vanessa::mostrar(){
     cout<<"Objeto: Vanessa"<<endl;
@@ -18,6 +20,8 @@ Vanessa::~Vanessa()
 {
     if(ataque != nullptr)
         delete ataque;
+    if(defensa != nullptr)
+        delete defensa;
 }
 
 bool Vanessa::validacion_ataque(Casilla *casilla, Tablero* tablero, char arma){

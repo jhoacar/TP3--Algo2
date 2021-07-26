@@ -6,10 +6,12 @@ using std::cout;
 using std::endl;
 Nosferatu::Nosferatu():Vampiro(){
     ataque = nullptr;
+    defensa = nullptr;
 }
 Nosferatu::Nosferatu(Casilla *casilla,char nombre,string ID):Vampiro(casilla,nombre,ID)
 {
     ataque = nullptr;
+    defensa = nullptr;
 }
 void Nosferatu::mostrar(){
     cout<<"Objeto: Nosferatu"<<endl;
@@ -18,6 +20,8 @@ Nosferatu::~Nosferatu()
 {
     if(ataque != nullptr)
         delete ataque;
+    if(defensa != nullptr)
+        delete defensa;
 }
 
 

@@ -7,16 +7,21 @@ using std::cout;
 using std::endl;
 Cazador::Cazador():Humano(){
     ataque = nullptr;
+    defensa = nullptr;
 }
 Cazador::Cazador(Casilla *casilla,char nombre,string ID):Humano(casilla,nombre,ID){
     ataque = nullptr;
+    defensa = nullptr;
 }
 void Cazador::mostrar(){
     cout<<"Objeto: Cazador"<<endl;
 }
 Cazador::~Cazador()
 {
-
+    if(ataque != nullptr)
+        delete ataque;
+    if(defensa != nullptr)
+        delete defensa;
 }
 
 

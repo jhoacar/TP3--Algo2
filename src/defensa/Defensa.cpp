@@ -4,6 +4,8 @@
 Defensa::Defensa(Ser *personaje){
     this -> personaje = personaje;
 }
+Defensa::~Defensa(){
+}
 
 bool Defensa::validar_energia(int minimo) {
 
