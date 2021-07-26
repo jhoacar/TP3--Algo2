@@ -1,5 +1,5 @@
 #include "Cazador.h"
-#include "../../../../ataque/Ataque_cazador.h"
+#include "../../../../ataque/humanos/cazador/Ataque_cazador.h"
 #include "../../../../defensa/tipos/Defensa_cazador.h"
 #include <iostream>
 

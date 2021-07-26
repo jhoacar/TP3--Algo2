@@ -1,7 +1,7 @@
 #include "Vanessa.h"
 #include "../../../../defensa/tipos/Defensa_vanesa.h"
 #include <iostream>
-#include "../../../../ataque/Ataque_vanesa.h"
+#include "../../../../ataque/humanos/cazador/Ataque_vanesa.h"
 using std::cout;
 using std::endl;
 Vanessa::Vanessa():Cazador(){

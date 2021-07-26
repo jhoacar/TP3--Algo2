@@ -1,6 +1,6 @@
 #include "Humano.h"
 #include "../../../defensa/tipos/Defensa_humano.h"
-#include "../../../ataque/Ataque_humano.h"
+#include "../../../ataque/humanos/Ataque_humano.h"
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -119,5 +119,4 @@ void Humano::regeneracion_maxima_energia(int maximo){
 
 void Humano::frenar_transformacion(){
     en_transformacion = false;
-}
 }

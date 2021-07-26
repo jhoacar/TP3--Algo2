@@ -18,6 +18,10 @@ class Vampiro : public Monstruo
         //      Consume 4 puntos de energía y se oculta por un turno.
         //      Aumenta 1 punto de armadura por un turno.
 		void defender();
+
+        virtual void defender(int eleccion) {};
+        virtual void defender(Tablero* tablero) {};
+        virtual void defender(int accion, Tablero*){};
         void atacar(Casilla *casilla, Tablero* tablero);
         void atacar(Casilla *casilla, Tablero* tablero, char arma);
         bool validacion_ataque(Casilla *casilla, Tablero* tablero);

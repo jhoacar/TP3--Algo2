@@ -1,5 +1,5 @@
 #include "Vampiro.h"
-#include "../../../../ataque/Ataque_vampiro.h"
+#include "../../../../ataque/monstruo/vampiro/Ataque_vampiro.h"
 #include "../../../../defensa/tipos/Defensa_vampiro.h"
 #include <iostream>
 

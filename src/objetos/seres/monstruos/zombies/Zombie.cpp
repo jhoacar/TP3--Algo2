@@ -1,6 +1,6 @@
 #include "Zombie.h"
 #include <iostream>
-#include "../../../../ataque/Ataque_zombie.h"
+#include "../../../../ataque/monstruo/zombie/Ataque_zombie.h"
 #include "../../../../defensa/tipos/Defensa_zombie.h"
 using std::cout;
 using std::endl;

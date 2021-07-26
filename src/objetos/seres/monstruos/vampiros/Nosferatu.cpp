@@ -1,5 +1,5 @@
 #include "Nosferatu.h"
-#include "../../../../ataque/Ataque_nosferatu.h"
+#include "../../../../ataque/monstruo/vampiro/Ataque_nosferatu.h"
 #include "../../../../defensa/tipos/Defensa_nosferatu.h"
 #include <iostream>
 using std::cout;
