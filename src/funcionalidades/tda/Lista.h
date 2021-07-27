@@ -434,7 +434,7 @@ Lista<Dato> Lista<Dato>::filtrar_datos(int inicio_busqueda,bool (*filtro)(Dato A
 
   while(inicio_busqueda < (int) tamano ){
 
-    if(nodo != nullptr && inicio_busqueda < (int) tamano-1 && filtro(*(nodo->dato) ) )
+    if(nodo != nullptr && inicio_busqueda < (int) tamano && filtro(*(nodo->dato) ) )
       encontrados.agregar(*(nodo->dato));
     nodo = nodo->siguiente;  
     inicio_busqueda++;

@@ -25,7 +25,7 @@ endef
 
 ##########################################################
 ### CONFIGURACION 
-APP 		:= TP3
+APP 		:= Nosferatu_Batalla_Final
 CPP     	:= g++
 VALGRIND	:= valgrind
 FLAGS 		:= -ggdb -std=c++11 -Wconversion -O0 -limits -Wall -Werror -pedantic
@@ -35,8 +35,7 @@ TESTSDIR	:= tests
 TESTOBJDIRS	:= tests_obj
 NAME_TEST 	:= test_
 #Los headers seran aquellos ficheros que si se llegasen a modificar, se compilara de nuevo todo el proyecto para detectar fallas
-HEADERS		:= Nodo.h
-#Lista.h Nodo.h Constantes.h Floyd.h Grafo.h
+HEADERS		:= Lista.h Nodo.h Constantes.h Floyd.h Grafo.h
 TEST 		:= no_hay_test_todavia
 
 ###########################################################
@@ -44,18 +43,29 @@ TEST 		:= no_hay_test_todavia
 ifeq ($(OS),Windows_NT) #WINDOWS ...
 ##########################################################
 ### SHELL SCRIPT WINDOWS
-SEARCH_FILES := dir /s/b
-SEARCH_DIRS  := dir $(SRC) /ad /b /s
-DELETE_FILES := rmdir /Q /S 
-MKDIR 		 := mkdir
+SEARCH_FILES 	:= dir /s/b
+SEARCH_DIRS  	:= dir $(SRC) /ad /b /s
+DELETE_OBJ_DIR 	:= if exist $(OBJ) rmdir /Q /S $(OBJ)
+DELETE_TEST_DIR := if exist $(TESTOBJDIRS) rmdir /Q /S $(TESTOBJDIRS)
+EXECUTABLES		:= $(shell if exist test_* dir /b test_* )
+ifneq ($(EXECUTABLES),)
+DELETE_TEST 	:= del /f $(EXECUTABLES)
+else
+DELETE_TEST		:= 
+endif
+DELETE_APP		:= if exist $(APP)* del /f $(APP)*
+MKDIR 		 	:= mkdir
 ##########################################################
 else #LINUX ...
 ##########################################################
 ### SHELL SCRIPT LINUX
-SEARCH_FILES := find $(SRC)/ -type f -iname
-SEARCH_DIRS  := find $(SRC)/ -type d
-DELETE_FILES := rm -f -r ./
-MKDIR 		 := mkdir -p
+SEARCH_FILES 	:= find $(SRC)/ -type f -iname
+SEARCH_DIRS  	:= find $(SRC)/ -type d
+DELETE_OBJ_DIR 	:= rm -f -r ./$(OBJ)
+DELETE_TEST_DIR := rm -f -r ./$(TESTOBJDIRS)
+DELETE_TEST 	:= find ./ -name "test_*" | grep '^./test_' | xargs rm -f -r
+DELETE_APP		:= rm -f -r $(APP)*
+MKDIR 		 	:= mkdir -p
 ##########################################################
 endif
 
@@ -99,11 +109,13 @@ $(TESTOBJDIRS):
 ########################################################
 
 ########################################################
-### ELIMINANDO TODA LA CARPETA ./obj y ./tests_obj
+### ELIMINANDO TODA LA CARPETA ./obj, ./tests_obj y todos los ejecutables
 clean:
-	$(DELETE_FILES)$(OBJ)
-	$(DELETE_FILES)$(TESTOBJDIRS)
-
+	$(DELETE_OBJ_DIR)
+	$(DELETE_TEST_DIR)
+	$(DELETE_TEST)
+	$(DELETE_APP)
+	$(info TODO HA SIDO BORRADO)
 ########################################################
 
 ########################################################
