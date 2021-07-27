@@ -5,6 +5,8 @@
 using std::string;
 #include "../mapa/Coordenada.h"
 
+const char NO_ARMA = 0;
+
 const string CAZADOR = "CV";
 
 const string FICHERO_OBJETOS = "estado.txt";

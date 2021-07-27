@@ -27,7 +27,7 @@ bool Ataque_humano::esta_en_rango_ataque(Coordenada posicion){
         return obtener_cuadrado(centro,1).existe(posicion);
 }
 
-void Ataque_humano::atacar(Coordenada posicion, Tablero *tablero){
+void Ataque_humano::atacar(Coordenada posicion, Tablero *tablero, char arma){
 
     if(!puede_atacar()){
         cout<<"No puede atacar por falta de escopeta o cantidad de balas";
@@ -84,7 +84,7 @@ void Ataque_humano::atacar_casilla(Casilla *casilla_ataque){
     if(monstruo->obtener_nombre()==NOMBRES_CHAR[ZOMBIE])
         vida_nueva-=personaje->obtener_fuerza();
     else
-        vida_nueva-=(int)((float)personaje->obtener_fuerza())*0.20;
+        vida_nueva-=(int)((float)personaje->obtener_fuerza()*0.20);
 
     monstruo->asignar_vida(vida_nueva);
 }

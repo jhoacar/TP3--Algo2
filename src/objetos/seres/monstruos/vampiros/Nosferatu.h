@@ -14,7 +14,8 @@ class Nosferatu : public Vampiro
 		void mostrar();
 		void regnerar_energia();
 		void defender(Tablero *tablero);
-		void atacar(Coordenada posicion,Tablero *tablero);
+		void atacar(Coordenada posicion,Tablero *tablero, char arma=NO_ARMA);
+		bool se_puede_atacar(Coordenada posicion,Tablero *tablero, char arma=NO_ARMA);
 		~Nosferatu();
 	protected:
 };

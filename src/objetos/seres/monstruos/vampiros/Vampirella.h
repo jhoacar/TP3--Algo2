@@ -15,7 +15,9 @@ class Vampirella : public Vampiro
 		void regenerar_energia();
 		~Vampirella();
 		void defender(Tablero *tablero);
-		void atacar(Coordenada posicion,Tablero *tablero);
+		void atacar(Coordenada posicion,Tablero *tablero,char arma=NO_ARMA);
+		bool se_puede_atacar(Coordenada posicion,Tablero *tablero,char arma=NO_ARMA);
+		
 	protected:
 };
 

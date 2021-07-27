@@ -1,6 +1,6 @@
 #include "Ataque_cazador.h"
-#include "../../objetos/seres/monstruos/vampiros/Vampiro.h"
-#include "../../objetos/seres/monstruos/zombies/Zombie.h"
+#include "../../../objetos/seres/monstruos/vampiros/Vampiro.h"
+#include "../../../objetos/seres/monstruos/zombies/Zombie.h"
 
 
 Ataque_cazador::Ataque_cazador(Cazador *cazador):Ataque_humano(cazador){
@@ -22,7 +22,7 @@ bool Ataque_cazador::esta_en_rango_ataque(Coordenada posicion){
         return obtener_cuadrado(centro,1).existe(posicion);
 }
 
-void Ataque_cazador::atacar(Coordenada posicion, Tablero *tablero){
+void Ataque_cazador::atacar(Coordenada posicion, Tablero *tablero,char arma){
 
     if(!puede_atacar()){
         cout<<"No puede atacar por falta de escopeta o cantidad de balas";
@@ -36,10 +36,14 @@ void Ataque_cazador::atacar(Coordenada posicion, Tablero *tablero){
         cout<<"No puede atacar esta posicion porque no se encuentra ningun monstruo";
     }
 
-    atacar_casilla(tablero->obtener_casilla(posicion));
+    atacar_casilla(tablero->obtener_casilla(posicion),arma);
 
 }
-void Ataque_cazador::atacar_casilla(Casilla *casilla_ataque){
+void Ataque_cazador::elegir_arma(){
+    
+}
+
+void Ataque_cazador::atacar_casilla(Casilla *casilla_ataque,char arma){
 
     Monstruo *monstruo =  (Monstruo*)casilla_ataque->obtener_objetos().filtrar_datos(0,es_tipo_monstruo)[0];
 
@@ -48,7 +52,7 @@ void Ataque_cazador::atacar_casilla(Casilla *casilla_ataque){
     if(monstruo->obtener_nombre()==NOMBRES_CHAR[ZOMBIE])
         vida_nueva-=personaje->obtener_fuerza();
     else
-        vida_nueva-=(int)((float)personaje->obtener_fuerza())*0.20;
+        vida_nueva-=(int)((float)personaje->obtener_fuerza()*0.20);
 
     monstruo->asignar_vida(vida_nueva);
 }

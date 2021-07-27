@@ -50,10 +50,15 @@ void Humano::defender(Tablero *tablero){
     defensa->defender(tablero);
 }
 
-void Humano::atacar(Coordenada posicion, Tablero *tablero){
+void Humano::atacar(Coordenada posicion, Tablero *tablero, char arma){
+    if(se_puede_atacar(posicion,tablero))
+        ataque->atacar(posicion,tablero);
+}
+
+bool Humano::se_puede_atacar(Coordenada posicion, Tablero *tablero, char arma){
     if(ataque==nullptr)
         ataque = new Ataque_humano(this);
-    ataque->atacar(posicion,tablero);
+    return ataque->se_puede_atacar(posicion,tablero);
 }
 
 void Humano::extraer_escopeta(){

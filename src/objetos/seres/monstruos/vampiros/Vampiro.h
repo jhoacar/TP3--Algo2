@@ -22,7 +22,9 @@ class Vampiro : public Monstruo
         //      Aumenta 1 punto de armadura por un turno.
 		void defender(Tablero *tablero);
 
-        void atacar(Coordenada posicion, Tablero *tablero);
+        void atacar(Coordenada posicion, Tablero *tablero,char arma=NO_ARMA);
+
+        bool se_puede_atacar(Coordenada posicion, Tablero *tablero,char arma=NO_ARMA);
 
         // PRE: -
         // POS: Devuelve true si tiene la armadura aumentada por defenderse, caso contrario devuelve false.

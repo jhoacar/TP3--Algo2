@@ -1,7 +1,7 @@
 #ifndef DEFENSA_ZOMBIE_H
 #define DEFENSA_ZOMBIE_H
 
-#include "../Defensa.h"
+#include "../../Defensa.h"
 #include "../../../objetos/seres/monstruos/zombies/Zombie.h"
 
 class Defensa_zombie:public Defensa{

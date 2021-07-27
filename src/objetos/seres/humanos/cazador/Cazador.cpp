@@ -1,6 +1,6 @@
 #include "Cazador.h"
-#include "../../../defensa/humanos/cazadores/Defensa_cazador.h"
-#include "../../../ataque/humanos/cazadores/Ataque_cazador.h"
+#include "../../../../defensa/humanos/cazadores/Defensa_cazador.h"
+#include "../../../../ataque/humanos/cazadores/Ataque_cazador.h"
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -22,11 +22,17 @@ void Cazador::defender(Tablero *tablero){
     defensa->defender(tablero);
 }
 
-void Cazador::atacar(Coordenada posicion, Tablero *tablero){
+void Cazador::atacar(Coordenada posicion, Tablero *tablero,char arma){
+    if(se_puede_atacar(posicion,tablero,arma))
+        ataque->atacar(posicion,tablero,arma);
+}
+
+bool Cazador::se_puede_atacar(Coordenada posicion, Tablero *tablero,char arma){
     if(ataque == nullptr)
         ataque = new Ataque_cazador(this);
-    ataque->atacar(posicion,tablero);
+    return ataque->se_puede_atacar(posicion,tablero,arma);
 }
+
 
 void Cazador::regenerar_energia() {
     this -> energia += REGENERAR_ENERGIA[HUMANO_CAZADOR];

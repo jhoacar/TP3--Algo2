@@ -58,7 +58,8 @@ class Ser : public Objeto
 		Lista<Objeto*>& obtener_inventario();
 		
 		virtual void defender(Tablero *tablero)=0;
-		virtual void atacar(Coordenada posicion, Tablero *tablero)=0;
+		virtual void atacar(Coordenada posicion, Tablero *tablero, char arma = NO_ARMA)=0;
+		virtual bool se_puede_atacar(Coordenada posicion, Tablero *tablero, char arma = NO_ARMA)=0;
 		virtual void regenerar_energia()=0;
 		virtual void encuentro_con_elemento()=0;
 };

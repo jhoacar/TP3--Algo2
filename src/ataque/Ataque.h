@@ -13,9 +13,9 @@ class Ataque{
         Ser *personaje;
     public:
         Ataque(Ser *personaje);
-        ~Ataque();
-        virtual void atacar(Coordenada posicion,Tablero *tablero)=0;
-
+        virtual ~Ataque();
+        virtual void atacar(Coordenada posicion,Tablero *tablero,char arma=NO_ARMA)=0;
+        virtual bool se_puede_atacar(Coordenada posicion,Tablero *tablero,char arma=NO_ARMA)=0;
 };
 
 #endif

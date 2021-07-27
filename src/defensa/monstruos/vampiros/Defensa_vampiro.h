@@ -1,7 +1,7 @@
 #ifndef DEFENSA_VAMPIRO_H
 #define DEFENSA_VAMPIRO_H
 
-#include "../Defensa.h"
+#include "../../Defensa.h"
 #include "../../../objetos/seres/monstruos/vampiros/Vampiro.h"
 
 class Defensa_vampiro:public Defensa{

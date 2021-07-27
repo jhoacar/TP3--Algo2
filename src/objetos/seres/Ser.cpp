@@ -1,4 +1,6 @@
 #include "Ser.h"
+#include "../../ataque/Ataque.h"
+#include "../../defensa/Defensa.h"
 
 bool es_agua(Objeto *objeto_a_comprobar){
     

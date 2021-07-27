@@ -4,6 +4,8 @@
 #include <string>
 using std::string;
 
+#include "../mapa/Coordenada.h"
+
 class Casilla;
 
 

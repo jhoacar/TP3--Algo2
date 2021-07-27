@@ -38,7 +38,9 @@ class Humano : public Ser
 		//      Si tiene agua bendita, puede regenera toda su energía o incrementa 1 su armadura por un turno.
 		void defender(Tablero *tablero);
 
-		void atacar(Coordenada posicion, Tablero *tablero);
+		void atacar(Coordenada posicion, Tablero *tablero, char arma=NO_ARMA);
+
+		bool se_puede_atacar(Coordenada posicion, Tablero *tablero, char arma=NO_ARMA);
 
 };
 

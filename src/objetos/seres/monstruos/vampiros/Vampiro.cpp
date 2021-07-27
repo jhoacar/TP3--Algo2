@@ -1,6 +1,6 @@
 #include "Vampiro.h"
-#include "../../../defensa/monstruos/vampiros/Defensa_vampiro.h"
-#include "../../../ataque/monstruos/vampiros/Ataque_vampiro.h"
+#include "../../../../defensa/monstruos/vampiros/Defensa_vampiro.h"
+#include "../../../../ataque/monstruos/vampiros/Ataque_vampiro.h"
 #include <iostream>
 
 using std::cout;
@@ -35,8 +35,15 @@ void Vampiro::defender(Tablero *tablero) {
         defensa = new Defensa_vampiro(this);
     defensa->defender(tablero);
 }
-void Vampiro::atacar(Coordenada posicion, Tablero *tablero){   
+void Vampiro::atacar(Coordenada posicion, Tablero *tablero,char arma){   
+    if(se_puede_atacar(posicion,tablero)) 
+        ataque->atacar(posicion,tablero);
+}
+bool Vampiro::se_puede_atacar(Coordenada posicion, Tablero *tablero,char arma){   
     if(ataque == nullptr)
         ataque = new Ataque_vampiro(this);
-    ataque->atacar(posicion,tablero);
+    return ataque->se_puede_atacar(posicion,tablero);
 }
+
+
+

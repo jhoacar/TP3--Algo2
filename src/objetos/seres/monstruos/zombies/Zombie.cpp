@@ -1,6 +1,6 @@
 #include "Zombie.h"
-#include "../../../defensa/monstruos/zombies/Defensa_zombie.h"
-#include "../../../ataque/monstruos/zombies/Ataque_zombie.h"
+#include "../../../../defensa/monstruos/zombies/Defensa_zombie.h"
+#include "../../../../ataque/monstruos/zombies/Ataque_zombie.h"
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -33,8 +33,13 @@ void Zombie::defender(Tablero *tablero) {
         defensa = new Defensa_zombie(this);
     defensa->defender(tablero);
 }
-void Zombie::atacar(Coordenada posicion, Tablero *tablero){
+void Zombie::atacar(Coordenada posicion, Tablero *tablero,char arma){
+    if(se_puede_atacar(posicion,tablero))
+        ataque->atacar(posicion,tablero);
+}
+
+bool Zombie::se_puede_atacar(Coordenada posicion, Tablero *tablero,char arma){
     if(ataque==nullptr)
         ataque = new Ataque_zombie(this);
-    ataque->atacar(posicion,tablero);
+    return ataque->se_puede_atacar(posicion,tablero);
 }
