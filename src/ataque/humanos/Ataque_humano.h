@@ -17,7 +17,6 @@ class Ataque_humano:public Ataque{
 
     public:
         Ataque_humano(Humano *personaje);
-        ~Ataque_humano();
         void atacar(Coordenada posicion, Tablero *tablero, char arma=NO_ARMA);
         bool se_puede_atacar(Coordenada posicion,Tablero *tablero, char arma=NO_ARMA);
 

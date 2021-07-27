@@ -21,7 +21,7 @@ class Ataque{
         virtual void consumir_energia()=0;
     public:
         Ataque(Ser *personaje);
-        virtual ~Ataque();
+        virtual ~Ataque()=default;
         virtual void atacar(Coordenada posicion,Tablero *tablero,char arma=NO_ARMA)=0;
         virtual bool se_puede_atacar(Coordenada posicion,Tablero *tablero,char arma=NO_ARMA)=0;
 };

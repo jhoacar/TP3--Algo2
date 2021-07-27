@@ -235,10 +235,10 @@ string Archivo_partida::obtener_contenido_objetos(Lista<Objeto*> &objetos)
 
 void Archivo_partida::grabar_estatus(Ser* ente)
 {
-    contenido_jugador+=to_string(ente->devolver_armadura())+ESPACIO;
-    contenido_jugador+=to_string(ente->devolver_fuerza())+ESPACIO;
-    contenido_jugador+=to_string(ente->devolver_vida())+ESPACIO;
-    contenido_jugador+=to_string(ente->devolver_energia())+ESPACIO;
+    contenido_jugador+=to_string(ente->obtener_armadura())+ESPACIO;
+    contenido_jugador+=to_string(ente->obtener_fuerza())+ESPACIO;
+    contenido_jugador+=to_string(ente->obtener_vida())+ESPACIO;
+    contenido_jugador+=to_string(ente->obtener_energia())+ESPACIO;
 }
 
 void Archivo_partida::grabar_posicion(Ser* ente)
