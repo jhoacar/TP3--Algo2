@@ -7,12 +7,11 @@
 
 class Ataque_vanesa:public Ataque_cazador{
 
-    bool esta_en_rango_ataque(Coordenada posicion);
-    void atacar_casilla(Casilla *casilla_atacar);
+    void consumir_energia();
+    void atacar_casilla(Casilla *casilla_atacar,char arma);
     bool puede_atacar();
     public:
         Ataque_vanesa(Vanessa *personaje);
-        ~Ataque_vanesa();
         void atacar(Coordenada posicion, Tablero *tablero, char arma);
         bool se_puede_atacar(Coordenada posicion, Tablero *tablero, char arma);
 };

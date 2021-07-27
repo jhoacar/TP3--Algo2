@@ -20,6 +20,8 @@ bool es_escopeta(Objeto *objeto_a_comprobar);
 bool es_estaca(Objeto *objeto_a_comprobar);
 
 bool es_tipo_humano(Objeto *objeto_a_comprobar);
+bool es_tipo_vampiro(Objeto *objeto_a_comprobar);
+bool es_tipo_zombie(Objeto *objeto_a_comprobar);
 bool es_tipo_monstruo(Objeto *objeto_a_comprobar);
 
 bool es_elemento(char nombre_objeto);
@@ -32,6 +34,8 @@ bool es_estaca(char nombre_personaje);
 
 
 bool es_tipo_humano(char nombre_personaje);
+bool es_tipo_vampiro(char nombre_personaje);
+bool es_tipo_zombie(char nombre_personaje);
 bool es_tipo_monstruo(char nombre_personaje);
 
 

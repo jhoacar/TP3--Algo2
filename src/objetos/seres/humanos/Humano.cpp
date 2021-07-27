@@ -62,7 +62,6 @@ bool Humano::se_puede_atacar(Coordenada posicion, Tablero *tablero, char arma){
 }
 
 void Humano::extraer_escopeta(){
-    if(!tiene_escopeta)
     tiene_escopeta = inventario.filtrar_datos(0,es_escopeta).obtener_tamano()!=0;
 }
 

@@ -5,12 +5,20 @@
 
 class Ser;
 
+bool tiene_humano(Casilla *casilla);
+
+bool tiene_monstruo(Casilla *casilla);
+
 int extraer_cantidad(Objeto *objeto);
 
 class Ataque{
 
     protected: 
         Ser *personaje;
+        virtual bool puede_atacar()=0;
+        virtual bool esta_en_rango_ataque(Coordenada posicion,char arma=NO_ARMA)=0;
+        virtual void atacar_casilla(Casilla *casilla_ataque)=0;
+        virtual void consumir_energia()=0;
     public:
         Ataque(Ser *personaje);
         virtual ~Ataque();

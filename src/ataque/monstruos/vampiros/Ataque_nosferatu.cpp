@@ -1,0 +1,48 @@
+#include "Ataque_nosferatu.h"
+
+Ataque_nosferatu::Ataque_nosferatu(Nosferatu *personaje):Ataque_vampiro(personaje){
+
+}
+
+void Ataque_nosferatu::consumir_energia(){
+    personaje->asignar_energia(personaje->obtener_energia()-GASTO_ENERGIA[NOSFERATU]);
+}
+
+
+bool Ataque_nosferatu::puede_atacar(){
+    return personaje->obtener_energia()>=GASTO_ENERGIA[NOSFERATU];
+}
+
+void Ataque_nosferatu::atacar(Coordenada posicion, Tablero *tablero, char arma){
+
+    atacar_casilla(tablero->obtener_casilla(posicion));
+
+    consumir_energia();
+}
+bool Ataque_nosferatu::esta_en_rango_ataque(Coordenada posicion,char arma){
+    Coordenada centro = personaje->obtener_posicion();
+    if(centro == POSICION_INVALIDA)
+        return false;
+    else
+        return obtener_cuadrado(centro,2).existe(posicion);
+}
+
+bool Ataque_nosferatu::se_puede_atacar(Coordenada posicion, Tablero *tablero, char arma){
+    return  puede_atacar() &&
+            esta_en_rango_ataque(posicion) &&
+            tiene_humano(tablero->obtener_casilla(posicion));    
+}
+
+void Ataque_nosferatu::atacar_casilla(Casilla *casilla_ataque){
+
+    Humano *humano =  (Humano*)casilla_ataque->obtener_objetos().filtrar_datos(0,es_tipo_humano)[0];
+
+    int vida_humano = humano->obtener_vida();
+    
+    if(vida_humano<=30)
+        humano->asignar_nombre(NOMBRES_CHAR[VAMPIRO]);
+    else
+        vida_humano-=personaje->obtener_fuerza();
+
+    humano->asignar_vida(vida_humano);
+}

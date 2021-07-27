@@ -35,6 +35,16 @@ bool es_tipo_humano(Objeto *objeto_a_comprobar){
     
     return objeto_a_comprobar==nullptr? false : es_tipo_humano(objeto_a_comprobar->obtener_nombre());
 }
+bool es_tipo_vampiro(Objeto *objeto_a_comprobar){
+    
+    return objeto_a_comprobar==nullptr? false : es_tipo_vampiro(objeto_a_comprobar->obtener_nombre());
+}
+
+bool es_tipo_zombie(Objeto *objeto_a_comprobar){
+    
+    return objeto_a_comprobar==nullptr? false : es_tipo_zombie(objeto_a_comprobar->obtener_nombre());
+}
+
 bool es_tipo_monstruo(Objeto *objeto_a_comprobar){
     
     return objeto_a_comprobar==nullptr? false : es_tipo_monstruo(objeto_a_comprobar->obtener_nombre());
@@ -69,12 +79,20 @@ bool es_tipo_humano(char nombre_personaje){
             nombre_personaje==NOMBRES_CHAR[HUMANO_CAZADOR] ||
             nombre_personaje==NOMBRES_CHAR[VANESA];
 }
-bool es_tipo_monstruo(char nombre_personaje){
-    
+bool es_tipo_vampiro(char nombre_personaje){
+
     return  nombre_personaje==NOMBRES_CHAR[VAMPIRO] ||
             nombre_personaje==NOMBRES_CHAR[VAMPIRELLA] ||
-            nombre_personaje==NOMBRES_CHAR[NOSFERATU] ||      
-            nombre_personaje==NOMBRES_CHAR[ZOMBIE]; 
+            nombre_personaje==NOMBRES_CHAR[NOSFERATU];
+}
+bool es_tipo_zombie(char nombre_personaje){
+
+    return  nombre_personaje==NOMBRES_CHAR[ZOMBIE]; 
+}
+
+bool es_tipo_monstruo(char nombre_personaje){
+    
+    return es_tipo_zombie(nombre_personaje)|| es_tipo_vampiro(nombre_personaje); 
 }
 
 Ser::Ser():Objeto(){

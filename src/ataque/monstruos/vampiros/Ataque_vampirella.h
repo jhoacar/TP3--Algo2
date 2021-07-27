@@ -7,10 +7,13 @@
 
 class Ataque_vampirella:public Ataque_vampiro{
 
+    bool puede_atacar();
+    void consumir_energia();
     public:
-        Ataque_vampirella(Ser *personaje);
-        ~Ataque_vampirella();
-        void atacar(Coordenada posicion, Tablero *tablero);
+        Ataque_vampirella(Vampirella *personaje);
+        void atacar(Coordenada posicion, Tablero *tablero,char arma=NO_ARMA);
+        bool se_puede_atacar(Coordenada posicion, Tablero *tablero,char arma=NO_ARMA);
+        
 };
 
 #endif

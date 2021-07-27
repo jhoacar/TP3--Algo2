@@ -2,15 +2,12 @@
 #include "../../objetos/seres/monstruos/vampiros/Vampiro.h"
 #include "../../objetos/seres/monstruos/zombies/Zombie.h"
 
-bool tiene_monstruo(Casilla *casilla){
-    if(casilla == nullptr)
-        return false;
-    else
-        return casilla->obtener_objetos().filtrar_datos(0,es_tipo_monstruo).obtener_tamano()!=0;
-}
-
 Ataque_humano::Ataque_humano(Humano *humano):Ataque(humano){
 
+}
+
+void Ataque_humano::consumir_energia(){
+    personaje->asignar_energia(personaje->obtener_energia()-GASTO_ENERGIA[HUMANO]);
 }
 
 bool Ataque_humano::puede_atacar(){
@@ -19,7 +16,8 @@ bool Ataque_humano::puede_atacar(){
             ((Humano*)personaje)->tiene_escopeta && 
             ((Humano*)personaje)->cantidad_balas>=MINIMO_BALAS ;
 }
-bool Ataque_humano::esta_en_rango_ataque(Coordenada posicion){
+
+bool Ataque_humano::esta_en_rango_ataque(Coordenada posicion, char arma){
     Coordenada centro = personaje->obtener_posicion();
     if(centro == POSICION_INVALIDA)
         return false;
@@ -27,23 +25,20 @@ bool Ataque_humano::esta_en_rango_ataque(Coordenada posicion){
         return obtener_cuadrado(centro,1).existe(posicion);
 }
 
-void Ataque_humano::atacar(Coordenada posicion, Tablero *tablero, char arma){
+bool Ataque_humano::se_puede_atacar(Coordenada posicion,Tablero *tablero, char arma){
 
-    if(!puede_atacar()){
-        cout<<"No puede atacar por falta de escopeta o cantidad de balas";
-        return;
-    }
-    else if(!esta_en_rango_ataque(posicion)){
-        cout<<"No puede atacar esta posicion porque no se encuentra en el rango de ataque";
-        return;
-    }
-    else if(!tiene_monstruo(tablero->obtener_casilla(posicion))){
-        cout<<"No puede atacar esta posicion porque no se encuentra ningun monstruo";
-    }
+    return  puede_atacar() && 
+            esta_en_rango_ataque(posicion) && 
+            tiene_monstruo(tablero->obtener_casilla(posicion));
+}
+
+void Ataque_humano::atacar(Coordenada posicion, Tablero *tablero, char arma){
 
     atacar_casilla(tablero->obtener_casilla(posicion));
     
     consumir_balas();
+
+    consumir_energia();
 }
 
 void Ataque_humano::eliminar_balas_inventario(){
