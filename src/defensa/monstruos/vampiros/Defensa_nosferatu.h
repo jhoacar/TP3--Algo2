@@ -12,7 +12,6 @@ class Defensa_nosferatu:public Defensa_vampiro{
 
     public:
         Defensa_nosferatu(Nosferatu *personaje);
-        ~Defensa_nosferatu();
         void defender(Tablero *tablero);
 };
 #endif

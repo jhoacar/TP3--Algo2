@@ -1,10 +1,10 @@
 #ifndef DEFENSA_VANESA_H
 #define DEFENSA_VANESA_H
 
-#include "../Defensa_humano.h"
+#include "Defensa_cazador.h"
 #include "../../../objetos/seres/humanos/cazador/Vanessa.h"
 
-class Defensa_vanesa:public Defensa_humano{
+class Defensa_vanesa:public Defensa_cazador{
 
     protected:
         int cantidad_agua;
@@ -12,7 +12,6 @@ class Defensa_vanesa:public Defensa_humano{
 
     public:
         Defensa_vanesa(Vanessa *personaje);
-        ~Defensa_vanesa();
         void defender(Tablero *tablero);
 };
 #endif

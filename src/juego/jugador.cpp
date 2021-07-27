@@ -1,4 +1,4 @@
-#include "jugador.h"
+#include "Jugador.h"
 
 Jugador::Jugador(int num, string bando){
     this->num_jugador = num;

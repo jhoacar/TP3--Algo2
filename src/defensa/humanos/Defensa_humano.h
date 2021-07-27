@@ -12,7 +12,6 @@ class Defensa_humano:public Defensa{
 
     public:
         Defensa_humano(Humano *personaje);
-        ~Defensa_humano();
         void defender(Tablero *tablero);
 };
 #endif

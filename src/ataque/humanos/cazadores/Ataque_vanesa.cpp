@@ -36,6 +36,9 @@ void Ataque_vanesa::atacar_casilla(Casilla *casilla_ataque,char arma){
     
     Monstruo *monstruo =  (Monstruo*)casilla_ataque->obtener_objetos().filtrar_datos(0,es_tipo_monstruo)[0];
 
+    if(monstruo->esta_oculto())
+        return;
+    
     int vida_nueva = monstruo->obtener_vida();
 
     if(monstruo->obtener_nombre()==NOMBRES_CHAR[ZOMBIE]){

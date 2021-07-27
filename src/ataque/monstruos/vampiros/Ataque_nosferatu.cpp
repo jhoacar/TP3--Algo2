@@ -1,5 +1,7 @@
 #include "Ataque_nosferatu.h"
 
+#include "../../../defensa/monstruos/vampiros/Defensa_vampiro.h"
+
 Ataque_nosferatu::Ataque_nosferatu(Nosferatu *personaje):Ataque_vampiro(personaje){
 
 }
@@ -33,6 +35,14 @@ bool Ataque_nosferatu::se_puede_atacar(Coordenada posicion, Tablero *tablero, ch
             tiene_humano(tablero->obtener_casilla(posicion));    
 }
 
+void Ataque_nosferatu::convertir_vampiro(Humano *humano){
+    humano->asignar_nombre(NOMBRES_CHAR[VAMPIRO]);
+    delete humano->obtener_ataque();
+    humano->asignar_ataque(new Ataque_vampiro((Vampiro*)humano));
+    delete humano->obtener_defensa();
+    humano->asignar_defensa(new Defensa_vampiro((Vampiro*)humano));
+}
+
 void Ataque_nosferatu::atacar_casilla(Casilla *casilla_ataque){
 
     Humano *humano =  (Humano*)casilla_ataque->obtener_objetos().filtrar_datos(0,es_tipo_humano)[0];
@@ -40,7 +50,7 @@ void Ataque_nosferatu::atacar_casilla(Casilla *casilla_ataque){
     int vida_humano = humano->obtener_vida();
     
     if(vida_humano<=30)
-        humano->asignar_nombre(NOMBRES_CHAR[VAMPIRO]);
+        convertir_vampiro(humano);
     else
         vida_humano-=personaje->obtener_fuerza();
 

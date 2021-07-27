@@ -12,7 +12,6 @@ class Defensa_vampiro:public Defensa{
 
     public:
         Defensa_vampiro(Vampiro *personaje);
-        ~Defensa_vampiro();
         void defender(Tablero *tablero);
 };
 #endif

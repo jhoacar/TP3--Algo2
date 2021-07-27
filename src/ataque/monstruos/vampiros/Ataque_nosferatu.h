@@ -8,6 +8,7 @@
 class Ataque_nosferatu:public Ataque_vampiro{
     
     void consumir_energia();
+    void convertir_vampiro(Humano *humano);
     bool puede_atacar();
     bool esta_en_rango_ataque(Coordenada posicion,char arma=NO_ARMA);
     void atacar_casilla(Casilla *casilla_ataque);

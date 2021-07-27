@@ -12,7 +12,6 @@ class Defensa_cazador:public Defensa_humano{
 
     public:
         Defensa_cazador(Cazador *personaje);
-        ~Defensa_cazador();
         void defender(Tablero *tablero);
 };
 #endif

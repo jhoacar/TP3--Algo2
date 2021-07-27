@@ -8,6 +8,7 @@
 
 class Ataque_zombie:public Ataque{
 
+        void convertir_zombie(Humano *humano);
         void consumir_energia();
         bool puede_atacar();
         bool esta_en_rango_ataque(Coordenada posicion,char arma=NO_ARMA);

@@ -134,6 +134,13 @@ int Ser::obtener_vida(){
     return this -> vida;
 }
 
+Ataque *Ser::obtener_ataque(){
+    return this->ataque;
+}
+Defensa *Ser::obtener_defensa(){
+    return this->defensa;
+}
+
 void Ser::asignar_armadura(int armadura) {
     this -> armadura = armadura;
 }
@@ -149,8 +156,15 @@ void Ser::asignar_fuerza(int fuerza){
 void Ser::asignar_vida(int vida){
     this -> vida = vida;
 }
+void Ser::asignar_ataque(Ataque *ataque){
+    this->ataque=ataque;
+}
+void Ser::asignar_defensa(Defensa *defensa){
+    this->defensa=defensa;
+}
 
 Lista<Objeto*>& Ser::obtener_inventario(){
     return this -> inventario;
 }
+
 

@@ -11,7 +11,7 @@ class Defensa{
         Ser *personaje;
     public:
         Defensa(Ser *personaje);
-        virtual ~Defensa();
+        virtual ~Defensa()=default;
         virtual void defender(Tablero *tablero)=0;
 };
 #endif

@@ -55,10 +55,14 @@ class Ser : public Objeto
 		int obtener_vida();
 		int obtener_energia();
 		int obtener_fuerza();
+		Ataque *obtener_ataque();
+		Defensa *obtener_defensa();
 		void asignar_armadura(int armadura);
 		void asignar_vida(int vida);
 		void asignar_energia(int energia);
 		void asignar_fuerza(int fuerza);
+		void asignar_ataque(Ataque *ataque);
+		void asignar_defensa(Defensa *defensa);
 		Lista<Objeto*>& obtener_inventario();
 		
 		virtual void defender(Tablero *tablero)=0;

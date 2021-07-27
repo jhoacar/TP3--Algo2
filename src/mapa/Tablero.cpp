@@ -4,16 +4,6 @@
 
 using namespace std;
 
-
-void imprimir_coordenada(Coordenada coord){
-    cout<<"("<<coord.obtener_fila()<<","<<coord.obtener_columna()<<")\t";
-}
-void imprimir_objeto(Objeto *objeto){
-    if(objeto!=nullptr)
-        objeto->mostrar();
-    cout<<endl;
-}
-
 Tablero::Tablero(){
 
     this->filas = 0;

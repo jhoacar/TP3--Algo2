@@ -1,5 +1,7 @@
 #include "Ataque_zombie.h"
 
+#include "../../../defensa/monstruos/zombies/Defensa_zombie.h"
+
 Ataque_zombie::Ataque_zombie(Zombie *personaje):Ataque(personaje){
 
 }
@@ -33,9 +35,17 @@ bool Ataque_zombie::se_puede_atacar(Coordenada posicion, Tablero *tablero, char 
             tiene_humano(tablero->obtener_casilla(posicion));    
 }
 
+void Ataque_zombie::convertir_zombie(Humano *humano){
+    humano->asignar_nombre(NOMBRES_CHAR[VAMPIRO]);
+    delete humano->obtener_ataque();
+    humano->asignar_ataque(new Ataque_zombie((Zombie*)humano));
+    delete humano->obtener_defensa();
+    humano->asignar_defensa(new Defensa_zombie((Zombie*)humano));
+}
+
 void Ataque_zombie::atacar_casilla(Casilla *casilla_ataque){
 
     Humano *humano =  (Humano*)casilla_ataque->obtener_objetos().filtrar_datos(0,es_tipo_humano)[0];
 
-    humano->asignar_nombre(NOMBRES_CHAR[ZOMBIE]);
+    convertir_zombie(humano);
 }

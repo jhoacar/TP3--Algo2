@@ -1,6 +1,8 @@
 #include "Humano.h"
 #include "../../../defensa/humanos/Defensa_humano.h"
 #include "../../../ataque/humanos/Ataque_Humano.h"
+#include "../../../ataque/monstruos/vampiros/Ataque_vampiro.h"
+#include "../../../ataque/monstruos/zombies/Ataque_zombie.h"
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -55,7 +57,9 @@ void Humano::atacar(Coordenada posicion, Tablero *tablero, char arma){
         ataque->atacar(posicion,tablero);
 }
 
+
 bool Humano::se_puede_atacar(Coordenada posicion, Tablero *tablero, char arma){
+
     if(ataque==nullptr)
         ataque = new Ataque_humano(this);
     return ataque->se_puede_atacar(posicion,tablero);
