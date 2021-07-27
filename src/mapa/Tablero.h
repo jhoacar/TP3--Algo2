@@ -72,7 +72,7 @@ class Tablero
 		
 		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Pre: Una posicion del tablero, comenzando desde fila=0, columna=0
-		//Post: Devuelve la casilla en la posicion indicada
+		//Post: Devuelve la casilla en la posicion indicada o nullptr si no se encuentra
 		Casilla* obtener_casilla(Coordenada posicion);
 		
 		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 

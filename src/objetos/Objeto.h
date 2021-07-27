@@ -4,7 +4,10 @@
 #include <string>
 using std::string;
 
+#include "../mapa/Coordenada.h"
+
 class Casilla;
+
 
 class Objeto{
     protected:
@@ -35,13 +38,18 @@ class Objeto{
         virtual void mostrar()=0;
         /*
         PRE:
-        POST: Devuelve la posicion del objeto
+        POST: Devuelve la casilla del objeto
         */
         Casilla* obtener_casilla();
         /*
         PRE:
-        POST: Devuelve el cuadrante del objeto
+        POST: Devuelve la posicion del objeto
         */
+        Coordenada obtener_posicion();
+        /*
+        PRE:
+        POST: Devuelve el cuadrante del objeto
+        */       
         string obtener_cuadrante();
         /*
         PRE:
