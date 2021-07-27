@@ -13,9 +13,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e85d939b-2f59-41d7-bbf2-19742a8bcaa5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Interfaz/Interfaz.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interfaz/Interfaz.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interfaz/Movimientos.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interfaz/Movimientos.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mapa/Tablero.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapa/Tablero.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_menu_dinamico" beforeDir="false" afterPath="$PROJECT_DIR$/test_menu_dinamico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objetos/seres/Ser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/Ser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objetos/seres/Ser.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/objetos/seres/Ser.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +61,13 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -90,7 +101,8 @@
       <workItem from="1627159917509" duration="4638000" />
       <workItem from="1627167046977" duration="6308000" />
       <workItem from="1627243482679" duration="104000" />
-      <workItem from="1627243631420" duration="1796000" />
+      <workItem from="1627243631420" duration="3418000" />
+      <workItem from="1627325887803" duration="18794000" />
     </task>
     <servers />
   </component>

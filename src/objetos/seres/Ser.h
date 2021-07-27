@@ -11,6 +11,7 @@ class Defensa;
 class Ataque;
 
 bool es_elemento(Objeto* objeto_a_comprobar);
+bool es_humano(Objeto* objeto_a_comprobar);
 
 class Ser : public Objeto
 {

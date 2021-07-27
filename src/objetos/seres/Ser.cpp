@@ -5,6 +5,12 @@ bool es_elemento(Objeto* objeto_a_comprobar) {
     return buscar_dato(NOMBRES_CHAR, MAX_NOMBRES,objeto_a_comprobar->obtener_nombre(),HUMANO) == NO_ENCONTRADO;
 }
 
+/*
+bool es_humano(Objeto* objeto_a_comprobar){
+    return buscar_dato(NOMBRES_CHAR, MAX_NOMBRES, objeto_a_comprobar->obtener_nombre(), )
+}
+*/
+
 Ser::Ser():Objeto(){
     objeto_referencia = new Agua(); //No me interesa el tipo de objeto, solo sus atributos
 }
