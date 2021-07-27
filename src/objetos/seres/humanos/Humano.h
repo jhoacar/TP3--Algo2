@@ -11,14 +11,17 @@ class Humano : public Ser
 
 	protected: 
 	
-		bool armadura_aumentada;
-
 		int cantidad_agua;
 		int cantidad_estacas;
 		int cantidad_balas;
 		int cantidad_cruces;
 		bool tiene_escopeta;
-
+		void extraer_balas();
+        void extraer_estacas();
+        void extraer_escopeta();
+        void extraer_agua();
+		void extraer_cruces();
+		
 	public:
 
 		Humano();
@@ -27,16 +30,15 @@ class Humano : public Ser
 		~Humano();
 		void regenerar_energia();
 		void encuentro_con_elemento();
-		void extraer_balas();
-        void extraer_estacas();
-        void extraer_escopeta();
-        void extraer_agua();
+		void actualizar_inventario();
+		bool tiene_agua_bendita();
+		bool tiene_cruz();
 		
 		// PRE: Una instancia de humano ha decidido defenderse.
 		// POS: El humano se defiende. Es decir:
 		//      Si no tiene agua bendita en su inventario, incrementa 3 puntos su energía.
 		//      Si tiene agua bendita, puede regenera toda su energía o incrementa 1 su armadura por un turno.
-		void defender(Tablero *tablero);
+		void defender(Tablero *tablero, int opcion);
 
 		void atacar(Coordenada posicion, Tablero *tablero, char arma=NO_ARMA);
 

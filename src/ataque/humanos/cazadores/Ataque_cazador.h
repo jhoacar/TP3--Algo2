@@ -5,9 +5,6 @@
 
 #include "../../../objetos/seres/humanos/cazador/Cazador.h"
 
-#include "../../../objetos/seres/monstruos/vampiros/Vampiro.h"
-#include "../../../objetos/seres/monstruos/zombies/Zombie.h"
-
 
 class Ataque_cazador:public Ataque_humano{
 
@@ -21,6 +18,7 @@ class Ataque_cazador:public Ataque_humano{
         void consumir_arma(const char arma);
         void consumir_agua();
         void consumir_toda_agua();
+        float obtener_ataque(char nombre_monstruo,char arma);
     public:
         Ataque_cazador(Cazador *personaje);
         void atacar(Coordenada posicion, Tablero *tablero, char arma);

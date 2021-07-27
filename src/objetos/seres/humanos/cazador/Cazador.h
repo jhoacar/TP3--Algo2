@@ -14,7 +14,7 @@ class Cazador : public Humano
 		void mostrar();
 		void regenerar_energia();
 		~Cazador();
-		void defender(Tablero *tablero);
+		void defender(Tablero *tablero, int opcion);
 		void atacar(Coordenada posicion, Tablero *tablero, char arma);
 		bool se_puede_atacar(Coordenada posicion, Tablero *tablero, char arma);
 	protected:

@@ -16,10 +16,10 @@ Cazador::~Cazador()
 
 }
 
-void Cazador::defender(Tablero *tablero){
+void Cazador::defender(Tablero *tablero, int opcion){
     if(defensa == nullptr)
         defensa = new Defensa_cazador(this);
-    defensa->defender(tablero);
+    defensa->defender(tablero,opcion);
 }
 
 void Cazador::atacar(Coordenada posicion, Tablero *tablero,char arma){

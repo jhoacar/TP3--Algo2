@@ -12,6 +12,6 @@ class Defensa_vampirella:public Defensa_vampiro{
 
     public:
         Defensa_vampirella(Vampirella *personaje);
-        void defender(Tablero *tablero);
+        void defender(Tablero *tablero, int opcion=NO_ENCONTRADO);
 };
 #endif

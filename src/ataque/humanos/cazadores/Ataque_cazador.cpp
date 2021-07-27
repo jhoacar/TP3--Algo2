@@ -80,33 +80,42 @@ void Ataque_cazador::atacar(Coordenada posicion, Tablero *tablero, char arma){
     consumir_energia();
 }
 
+float Ataque_cazador::obtener_ataque(char nombre_monstruo,  char arma){
+
+    float valor_ataque=0;
+
+    if(nombre_monstruo==NOMBRES_CHAR[ZOMBIE]){
+
+        if(arma == NOMBRES_CHAR[ESCOPETA])
+            valor_ataque=((float)personaje->obtener_fuerza())*((float)1.05);
+        else if(arma == NOMBRES_CHAR[AGUA])
+            consumir_toda_agua();
+        else if(arma == NOMBRES_CHAR[ESTACA])
+            valor_ataque=((float)personaje->obtener_fuerza())*((float)0.2);
+
+    }
+    else{
+        if(arma == NOMBRES_CHAR[ESCOPETA])
+            valor_ataque=((float)personaje->obtener_fuerza())*((float)0.3);
+        else if(arma == NOMBRES_CHAR[AGUA])
+            valor_ataque=((float)10);
+        else if(arma == NOMBRES_CHAR[ESTACA])
+            valor_ataque=((float)60);
+    }
+    return valor_ataque;
+}
+
 void Ataque_cazador::atacar_casilla(Casilla *casilla_ataque,char arma){
 
     
     Monstruo *monstruo =  (Monstruo*)casilla_ataque->obtener_objetos().filtrar_datos(0,es_tipo_monstruo)[0];
 
-    if(monstruo->esta_oculto())
+    if(hay_casos_especiales(monstruo,arma))
         return;
-        
-    int vida_nueva = monstruo->obtener_vida();
+    
+    int vida = monstruo->obtener_vida();
+    float valor_ataque = obtener_ataque(monstruo->obtener_nombre(),arma)*obtener_armadura(monstruo);
 
-    if(monstruo->obtener_nombre()==NOMBRES_CHAR[ZOMBIE]){
-        if(arma == NOMBRES_CHAR[ESCOPETA])
-            vida_nueva-=(int)((float)personaje->obtener_fuerza()*1.05);
-        else if(arma == NOMBRES_CHAR[AGUA])
-            consumir_toda_agua();
-        else if(arma == NOMBRES_CHAR[ESTACA])
-            vida_nueva-=(int)((float)personaje->obtener_fuerza()*0.2);
-    }
-    else{
-        if(arma == NOMBRES_CHAR[ESCOPETA])
-            vida_nueva-=(int)((float)personaje->obtener_fuerza()*0.3);
-        else if(arma == NOMBRES_CHAR[AGUA])
-            vida_nueva-=10;
-        else if(arma == NOMBRES_CHAR[ESTACA])
-            vida_nueva-=60;
-
-    }
-
-    monstruo->asignar_vida(vida_nueva);
+    monstruo->asignar_vida(vida-(int)valor_ataque);
+    
 }

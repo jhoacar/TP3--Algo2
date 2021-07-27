@@ -13,7 +13,7 @@ class Nosferatu : public Vampiro
 		Nosferatu(Casilla *casilla,char nombre,string ID);
 		void mostrar();
 		void regnerar_energia();
-		void defender(Tablero *tablero);
+		void defender(Tablero *tablero,int opcion = NO_ENCONTRADO);
 		void atacar(Coordenada posicion,Tablero *tablero, char arma=NO_ARMA);
 		bool se_puede_atacar(Coordenada posicion,Tablero *tablero, char arma=NO_ARMA);
 		~Nosferatu();

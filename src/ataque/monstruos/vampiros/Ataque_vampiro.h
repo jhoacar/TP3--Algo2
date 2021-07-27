@@ -14,6 +14,7 @@ class Ataque_vampiro:public Ataque{
         bool puede_atacar();
         bool esta_en_rango_ataque(Coordenada posicion,char arma=NO_ARMA);
         void atacar_casilla(Casilla *casilla_ataque);
+        bool hay_casos_especiales(Humano *humano);
     public:
         Ataque_vampiro(Vampiro *personaje);
         void atacar(Coordenada posicion, Tablero *tablero, char arma=NO_ARMA);

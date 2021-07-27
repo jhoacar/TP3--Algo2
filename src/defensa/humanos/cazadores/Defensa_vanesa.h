@@ -2,16 +2,16 @@
 #define DEFENSA_VANESA_H
 
 #include "Defensa_cazador.h"
-#include "../../../objetos/seres/humanos/cazador/Vanessa.h"
 
 class Defensa_vanesa:public Defensa_cazador{
 
     protected:
         int cantidad_agua;
         int cantidad_cruces;
-
+        void curar_aliados(Tablero *tablero);
+        void convertir_humano(Monstruo *personaje);
     public:
         Defensa_vanesa(Vanessa *personaje);
-        void defender(Tablero *tablero);
+        void defender(Tablero *tablero, int opcion=NO_ENCONTRADO);
 };
 #endif

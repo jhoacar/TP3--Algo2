@@ -30,7 +30,7 @@ void Vampiro::encuentro_con_elemento() {
     this -> casilla -> eliminar_objetos(solo_estaca);
 }
 
-void Vampiro::defender(Tablero *tablero) {
+void Vampiro::defender(Tablero *tablero, int opcion) {
     if(defensa == nullptr)
         defensa = new Defensa_vampiro(this);
     defensa->defender(tablero);

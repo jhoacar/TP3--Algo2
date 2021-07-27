@@ -14,7 +14,7 @@ class Vanessa : public Cazador
 		void mostrar();
 		void regenerar_energia();
 		~Vanessa();
-		void defender(Tablero *tablero);
+		void defender(Tablero *tablero,int opcion = NO_ENCONTRADO);
 		void atacar(Coordenada posicion, Tablero *tablero, char arma);
 		bool se_puede_atacar(Coordenada posicion, Tablero *tablero, char arma);
 		

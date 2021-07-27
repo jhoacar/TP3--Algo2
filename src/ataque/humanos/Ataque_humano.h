@@ -4,6 +4,10 @@
 #include "../Ataque.h"
 #include "../../objetos/seres/humanos/Humano.h"
 
+#include "../../objetos/seres/monstruos/vampiros/Vampiro.h"
+#include "../../objetos/seres/monstruos/zombies/Zombie.h"
+
+
 class Ataque_humano:public Ataque{
 
     protected: 
@@ -14,7 +18,8 @@ class Ataque_humano:public Ataque{
         void atacar_casilla(Casilla *casilla_ataque);
         void consumir_balas();
         void eliminar_balas_inventario();
-
+        bool hay_casos_especiales(Monstruo *monstruo, char arma=NOMBRES_CHAR[ESCOPETA]);
+        float obtener_ataque(char nombre_mostruo,char arma=NOMBRES_CHAR[ESCOPETA]);
     public:
         Ataque_humano(Humano *personaje);
         void atacar(Coordenada posicion, Tablero *tablero, char arma=NO_ARMA);

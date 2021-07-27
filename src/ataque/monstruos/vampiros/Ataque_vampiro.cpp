@@ -33,11 +33,18 @@ bool Ataque_vampiro::se_puede_atacar(Coordenada posicion, Tablero *tablero, char
             tiene_humano(tablero->obtener_casilla(posicion));    
 }
 
+bool Ataque_vampiro::hay_casos_especiales(Humano *humano){
+    return humano->obtener_nombre()==NOMBRES_CHAR[VANESA] && humano->tiene_cruz();
+}
+
 void Ataque_vampiro::atacar_casilla(Casilla *casilla_ataque){
 
     Humano *humano =  (Humano*)casilla_ataque->obtener_objetos().filtrar_datos(0,es_tipo_humano)[0];
 
-    int vida_nueva = humano->obtener_vida() - personaje->obtener_fuerza();
+    if(hay_casos_especiales(humano))
+        return;
+
+    int vida_nueva = humano->obtener_vida() - (int)(((float)personaje->obtener_fuerza())*obtener_armadura(humano));
 
     humano->asignar_vida(vida_nueva);
 }

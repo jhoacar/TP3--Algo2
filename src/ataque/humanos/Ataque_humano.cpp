@@ -1,6 +1,4 @@
 #include "Ataque_humano.h"
-#include "../../objetos/seres/monstruos/vampiros/Vampiro.h"
-#include "../../objetos/seres/monstruos/zombies/Zombie.h"
 
 Ataque_humano::Ataque_humano(Humano *humano):Ataque(humano){
 
@@ -70,19 +68,33 @@ void Ataque_humano::consumir_balas(){
     eliminar_balas_inventario();
 }
 
+bool Ataque_humano::hay_casos_especiales(Monstruo *monstruo, char arma){
+    return  monstruo==nullptr ||
+            ((monstruo->obtener_nombre()==NOMBRES_CHAR[VAMPIRO] && monstruo->esta_oculto() )||
+            (monstruo->obtener_nombre()==NOMBRES_CHAR[VAMPIRELLA] && monstruo->esta_oculto() && arma!=NOMBRES_CHAR[ESCOPETA]));
+}
+
+float Ataque_humano::obtener_ataque(char nombre_monstruo,char arma){
+    float valor_ataque=0;
+    
+    if(nombre_monstruo==NOMBRES_CHAR[ZOMBIE])
+        valor_ataque=((float)personaje->obtener_fuerza());
+    else
+        valor_ataque=((float)personaje->obtener_fuerza())*((float)0.20);
+
+    return valor_ataque;
+}
+
 void Ataque_humano::atacar_casilla(Casilla *casilla_ataque){
 
     Monstruo *monstruo =  (Monstruo*)casilla_ataque->obtener_objetos().filtrar_datos(0,es_tipo_monstruo)[0];
 
-    if(monstruo->esta_oculto())
+    if(hay_casos_especiales(monstruo))
         return;
 
-    int vida_nueva = monstruo->obtener_vida();
+    int vida = monstruo->obtener_vida();
 
-    if(monstruo->obtener_nombre()==NOMBRES_CHAR[ZOMBIE])
-        vida_nueva-=personaje->obtener_fuerza();
-    else
-        vida_nueva-=(int)((float)personaje->obtener_fuerza()*0.20);
+    float valor_ataque = obtener_ataque(monstruo->obtener_nombre())*obtener_armadura(monstruo);
 
-    monstruo->asignar_vida(vida_nueva);
+    monstruo->asignar_vida(vida-(int)valor_ataque);
 }

@@ -47,12 +47,15 @@ void Ataque_nosferatu::atacar_casilla(Casilla *casilla_ataque){
 
     Humano *humano =  (Humano*)casilla_ataque->obtener_objetos().filtrar_datos(0,es_tipo_humano)[0];
 
+    if(hay_casos_especiales(humano))
+        return;
+
     int vida_humano = humano->obtener_vida();
     
     if(vida_humano<=30)
         convertir_vampiro(humano);
     else
-        vida_humano-=personaje->obtener_fuerza();
+        vida_humano-=(int)(((float)personaje->obtener_fuerza())*obtener_armadura(humano));
 
     humano->asignar_vida(vida_humano);
 }

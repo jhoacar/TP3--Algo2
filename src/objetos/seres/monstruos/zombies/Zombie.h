@@ -19,9 +19,8 @@ class Zombie : public Monstruo
         // POS: El zombie se defiende. Es decir:
         //      Consume 2 puntos de energía y se esconde por un turno.
         //      Aumenta 20 puntos de vida.
-		void defender(Tablero *tablero);
-
-		void atacar(Coordenada posicion,Tablero *tablero,char arma=NO_ARMA);
+		void defender(Tablero *tablero,int opcion=NO_ENCONTRADO);
+		void atacar(Coordenada posicion, Tablero *tablero, char arma = NO_ARMA);
 
 		bool se_puede_atacar(Coordenada posicion,Tablero *tablero,char arma=NO_ARMA);
 		

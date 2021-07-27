@@ -154,6 +154,30 @@ Casilla* Tablero::obtener_casilla(Coordenada posicion){
         return nullptr;
 }
 
+Objeto* Tablero::obtener_objeto(Coordenada posicion, char nombre_objeto){
+    
+    int fila = posicion.obtener_fila();
+    int columna = posicion.obtener_columna();
+
+    if(!es_valida(posicion) || casillas[fila][columna]==nullptr)
+        return nullptr;
+
+    return casillas[fila][columna]->obtener_objeto(nombre_objeto); 
+}
+
+Lista<Objeto*> Tablero::obtener_objetos( char nombre_objeto){
+    
+    Lista<Objeto*> objetos;
+    for(int i=0; i<filas; i++){
+        for(int j=0; j<columnas; j++){
+            if(hay_casilla({i,j}))
+                objetos+=casillas[i][j]->obtener_objetos(nombre_objeto);
+        }
+    }
+    return objetos;
+}
+
+
 void Tablero::asignar_casilla(Casilla *casilla){
 
     if(casilla!=nullptr && es_valida(casilla->obtener_posicion())){

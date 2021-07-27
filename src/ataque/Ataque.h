@@ -19,6 +19,7 @@ class Ataque{
         virtual bool esta_en_rango_ataque(Coordenada posicion,char arma=NO_ARMA)=0;
         virtual void atacar_casilla(Casilla *casilla_ataque)=0;
         virtual void consumir_energia()=0;
+        float obtener_armadura(Ser *personaje);
     public:
         Ataque(Ser *personaje);
         virtual ~Ataque()=default;

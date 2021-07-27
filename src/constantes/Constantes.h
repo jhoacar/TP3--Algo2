@@ -7,6 +7,13 @@ using std::string;
 
 const char NO_ARMA = 0;
 
+const int OPCION_REGENERAR_ENERGIA  = 0;
+const int OPCION_AUMENTAR_ARMADURA  = 1; //Casos para el humano simple en defensa
+
+const int OPCION_CURARSE_VIDA       = 2;
+const int OPCION_CURAR_ALIADOS      = 3; //Casos para el cazador en defensa
+
+
 const string CAZADOR = "CV";
 
 const string FICHERO_OBJETOS = "estado.txt";
@@ -154,9 +161,6 @@ const int INFINITO = 99999999; //Tomara una valor grande
 const int PEQUENO = -1;
 const int GRANDE = 1;
 const int IGUAL = 0;
-
-
-
 
 #endif
 

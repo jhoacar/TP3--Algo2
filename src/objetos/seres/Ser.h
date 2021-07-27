@@ -11,6 +11,8 @@
 class Defensa;
 class Ataque;
 
+
+
 bool es_elemento(Objeto* objeto_a_comprobar);
 
 bool es_agua(Objeto *objeto_a_comprobar);
@@ -65,7 +67,7 @@ class Ser : public Objeto
 		void asignar_defensa(Defensa *defensa);
 		Lista<Objeto*>& obtener_inventario();
 		
-		virtual void defender(Tablero *tablero)=0;
+		virtual void defender(Tablero *tablero,int opcion=NO_ENCONTRADO)=0;
 		virtual void atacar(Coordenada posicion, Tablero *tablero, char arma = NO_ARMA)=0;
 		virtual bool se_puede_atacar(Coordenada posicion, Tablero *tablero, char arma = NO_ARMA)=0;
 		virtual void regenerar_energia()=0;

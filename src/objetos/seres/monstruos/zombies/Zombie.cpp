@@ -28,7 +28,7 @@ void Zombie::encuentro_con_elemento() {
     this -> casilla -> eliminar_objetos(solo_agua);
 }
 
-void Zombie::defender(Tablero *tablero) {
+void Zombie::defender(Tablero *tablero,int opcion) {
     if(defensa == nullptr)
         defensa = new Defensa_zombie(this);
     defensa->defender(tablero);

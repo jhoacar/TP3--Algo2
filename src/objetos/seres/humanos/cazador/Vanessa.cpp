@@ -17,7 +17,7 @@ Vanessa::~Vanessa()
 {
 	
 }
-void Vanessa::defender(Tablero *tablero){
+void Vanessa::defender(Tablero *tablero, int opcion){
     if(defensa == nullptr)
         defensa = new Defensa_vanesa(this);
     defensa->defender(tablero);

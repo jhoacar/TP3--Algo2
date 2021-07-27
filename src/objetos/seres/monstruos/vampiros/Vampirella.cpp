@@ -18,7 +18,7 @@ Vampirella::~Vampirella()
 {
 }
 
-void Vampirella::defender(Tablero *tablero){
+void Vampirella::defender(Tablero *tablero, int opcion){
     if(defensa==nullptr)
         defensa = new Defensa_vampirella(this);
     defensa->defender(tablero);

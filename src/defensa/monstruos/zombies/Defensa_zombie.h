@@ -12,6 +12,6 @@ class Defensa_zombie:public Defensa{
 
     public:
         Defensa_zombie(Zombie *personaje);
-        void defender(Tablero *tablero);
+        void defender(Tablero *tablero, int opcion = NO_ENCONTRADO);
 };
 #endif

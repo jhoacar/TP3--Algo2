@@ -17,7 +17,7 @@ Nosferatu::~Nosferatu()
 {
 
 }
-void Nosferatu::defender(Tablero *tablero){
+void Nosferatu::defender(Tablero *tablero, int opcion){
     if(defensa == nullptr)
         defensa = new Defensa_nosferatu(this);
     defensa->defender(tablero);

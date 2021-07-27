@@ -3,6 +3,8 @@
 
 #include "../Defensa.h"
 #include "../../objetos/seres/humanos/Humano.h"
+#include "../../objetos/seres/monstruos/vampiros/Vampiro.h"
+#include "../../objetos/seres/monstruos/zombies/Zombie.h"
 
 class Defensa_humano:public Defensa{
 
@@ -12,6 +14,6 @@ class Defensa_humano:public Defensa{
 
     public:
         Defensa_humano(Humano *personaje);
-        void defender(Tablero *tablero);
+        void defender(Tablero *tablero, int opcion);
 };
 #endif

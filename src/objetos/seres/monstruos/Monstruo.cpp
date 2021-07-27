@@ -26,4 +26,3 @@ void Monstruo::aparecer(){
     oculto = true;
 } 
 
-

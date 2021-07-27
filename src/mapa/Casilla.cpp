@@ -64,8 +64,8 @@ Lista<Objeto*> Casilla::obtener_objetos(char nombre_objeto){
 
     Lista<int> indices = objetos.buscar_todo_dato(objeto_referencia,comparacion_por_nombre);
 
-    for(int i=0; i < indices.obtener_tamano(); i++)
-        objetos_encontrados.agregar(objetos[indices[i]]);
+    while(indices.existe_siguiente())
+        objetos_encontrados.agregar(objetos[indices.siguiente_dato()]);
 
     return objetos_encontrados;
 }
@@ -74,6 +74,15 @@ Objeto *Casilla::obtener_objeto(string ID){
     objeto_referencia->asignar_ID(ID);
     
     int indice = objetos.buscar_dato(0,objeto_referencia,comparacion_por_ID);
+
+    return indice == NO_ENCONTRADO ? nullptr : objetos[indice];
+}
+
+Objeto *Casilla::obtener_objeto(char nombre_objeto){
+
+    objeto_referencia->asignar_nombre(nombre_objeto);
+    
+    int indice = objetos.buscar_dato(0,objeto_referencia,comparacion_por_nombre);
 
     return indice == NO_ENCONTRADO ? nullptr : objetos[indice];
 }
