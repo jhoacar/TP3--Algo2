@@ -1,6 +1,8 @@
 #ifndef DEFENSA_H
 #define DEFENSA_H
 
+#include "../mapa/Tablero.h"
+
 class Ser;
 
 class Defensa{
@@ -9,7 +11,7 @@ class Defensa{
         Ser *personaje;
     public:
         Defensa(Ser *personaje);
-        ~Defensa();
-        virtual void defender()=0;
+        virtual ~Defensa()=default;
+        virtual void defender(Tablero *tablero, int opcion = NO_ENCONTRADO)=0;
 };
 #endif

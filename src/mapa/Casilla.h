@@ -84,8 +84,12 @@ class Casilla{
         Lista<Objeto*> obtener_objetos(char nombre_objeto);
 
         //Pre: Un ID unico para el objeto
-        //Post: Devuelve el objeto que encuentra en la lista con dicho ID
+        //Post: Devuelve el objeto que encuentra en la lista con dicho ID o nullptr caso contrario
         Objeto *obtener_objeto(string ID);
+
+        //Pre: Un caracter con el nombre del objeto
+        //Post: Devuelve el objeto que encuentra en la lista con dicho nombre o nullptr caso contrario
+        Objeto *obtener_objeto(char nombre_objeto);
 
         //Pre: Una lista de caracteres con la representacion de cada nombre de objeto 
         //Post: Devuelve una sublista con todas las ocurrencia de cada nombre de la lista

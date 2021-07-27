@@ -13,10 +13,11 @@ agua 5 (3, 5) 034
 Vanesa (1, 2) 027
 bala 2 (5, 2) 152
 cruz (5, 3) 827
-escopeta (1, 3) 625
+escopeta (1, 3) 62
 humano (2, 1) 652
+zombi (1 ,1) 345
 agua 20 (1, 4) 028
-vampiro (5, 9) 048
+vampiro (5, 3) 048
 bala 5 (1, 5) 726
 humano (2, 5) 947
 Vampirella (3, 2) 619

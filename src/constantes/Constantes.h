@@ -3,22 +3,36 @@
 
 #include <string>
 using std::string;
+#include "../mapa/Coordenada.h"
+
+const char NO_ARMA = 0;
+
+const int OPCION_REGENERAR_ENERGIA  = 0;
+const int OPCION_AUMENTAR_ARMADURA  = 1; //Casos para el humano simple en defensa
+
+const int OPCION_CURARSE_VIDA       = 2;
+const int OPCION_CURAR_ALIADOS      = 3; //Casos para el cazador en defensa
+
 
 const string CAZADOR = "CV";
 
 const string FICHERO_OBJETOS = "estado.txt";
 const string FICHERO_TABLERO = "tablero.txt";
-const string FICHERO_PARTIDA = "Partida.txt";
-const string RUTA_GUARDADO_PARTIDA = "d://TP3--Algo2//partida.txt";
+const string FICHERO_PARTIDA = "partida.txt";
 
 
 //Convencion usada para este proyecto en los nombre,cardinales,colores,etc... 
 
 //Con las variables enumeradas obtengo una equivalencia (int) en char y string del nombre del objeto que se desea
 const size_t MAX_NOMBRES = 12;
-const string NOMBRES_STRING[MAX_NOMBRES]=	{"agua","bala","cruz","estaca","escopeta","humano","humano CV","Vanesa","vampiro","Vampirella","Nosferatu","zombi"};
-const char NOMBRES_CHAR[MAX_NOMBRES]=	{'a',	'b',	'c',	'e',	'E',		'h',		'H',	'W',		'v',		'V',		'N',	'z'};
-enum {AGUA=0,BALA,CRUZ,ESTACA,ESCOPETA,HUMANO,HUMANO_CAZADOR,VANESA,VAMPIRO,VAMPIRELLA,NOSFERATU,ZOMBIE};
+const string NOMBRES_STRING[MAX_NOMBRES]=	{"humano","humano CV","Vanesa","vampiro","Vampirella","Nosferatu","zombi","agua","bala","cruz","estaca","escopeta"};
+const char NOMBRES_CHAR[MAX_NOMBRES]=	{     'h',	'H',	      'W',	      'v',		'V',		'N',	'z',        'a',	'b',	'c',	'e',	      'E'};
+enum {HUMANO=0,HUMANO_CAZADOR,VANESA,VAMPIRO,VAMPIRELLA,NOSFERATU,ZOMBIE,AGUA,BALA,CRUZ,ESTACA,ESCOPETA};
+
+const int MAX_SERES = 7;
+const int REGENERAR_ENERGIA[MAX_SERES] = {5,8,10,4,6,10,5};
+const int GASTO_ENERGIA[MAX_SERES] = {5,6,8,2,4,6,5};
+const int MINIMO_BALAS = 2;
 
 //Con las variables enumeradas obtengo una equivalencia (int) en char y string del nombre del mapa que se desea
 const size_t MAX_TIPOS_MAPA = 6;
@@ -139,6 +153,7 @@ const string ID_maximo_estacas            = "999";
 //Constantes de uso para convencion de no encontrar un dato
 const int NO_ENCONTRADO = -1;
 const string NO_NUMERO = "-1";
+const Coordenada POSICION_INVALIDA = {-1,-1};
 
 const int INFINITO = 99999999; //Tomara una valor grande
 
@@ -146,11 +161,6 @@ const int INFINITO = 99999999; //Tomara una valor grande
 const int PEQUENO = -1;
 const int GRANDE = 1;
 const int IGUAL = 0;
-
-
-//Opciones de defensa del humano
-const int REGENERAR_ENERGIA = 1;
-const int AUMENTAR_ARMADURA = 2;
 
 #endif
 

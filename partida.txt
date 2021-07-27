@@ -1,0 +1,17 @@
+1
+humanos 5
+humano 001 0 0 0 0 2 2 0 0 0 0 0
+humano 022 0 0 0 0 1 2 0 0 0 0 0
+Vanesa 099 0 0 0 0 1 4 0 0 0 0 0
+humano 021 0 0 0 0 2 3 0 0 0 0 0
+humano CV 085 0 0 0 0 0 3 0 0 0 0 0
+monstruos 4
+zombi 134 0 0 0 0 3 5 0 0 0 0 0
+zombi 167 0 0 0 0 4 2 0 0 0 0 0
+vampiro 268 0 0 0 0 4 3 0 0 0 0 0
+Nosferatu 200 0 0 0 0 5 5 0 0 0 0 0
+items 4
+agua 302 10 3 3
+bala 366 3 2 5
+cruz 333 1 1 3
+escopeta 346 1 3 4

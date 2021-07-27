@@ -8,7 +8,6 @@
 class Archivo_objetos : Archivo {
     private:
     Diccionario<string,Objeto*> objetos;
-
     //PRE: se lee un archivo correctamente y se graba la informacion
     //POST: asigna el valor de las dimensiones que tendra el tablero.
     void extraer_dimensiones();

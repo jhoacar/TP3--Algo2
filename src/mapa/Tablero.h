@@ -72,9 +72,20 @@ class Tablero
 		
 		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Pre: Una posicion del tablero, comenzando desde fila=0, columna=0
-		//Post: Devuelve la casilla en la posicion indicada
+		//Post: Devuelve la casilla en la posicion indicada o nullptr si no se encuentra
 		Casilla* obtener_casilla(Coordenada posicion);
 		
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
+		//Pre: Una posicion del tablero, comenzando desde fila=0, columna=0
+		//Post: Devuelve el obejeto en la posicion indicada o nullptr si no se encuentra
+		Objeto* obtener_objeto(Coordenada posicion,char objeto);
+
+		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
+		//Pre: Un caracter del objeto
+		//Post: Devuelve una lista de objeto con dicho caracter del tablero
+		Lista<Objeto*> obtener_objetos(char objeto);
+
+
 		//Las posiciones seran evaluadas como { numero_fila , numero_columna } 
 		//Pre: Una lista de posiciones del tablero, comenzando desde fila=0, columna=0
 		//Post: Devuelve una lista de casillas encontradas en cada posicion

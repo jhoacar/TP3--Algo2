@@ -5,14 +5,18 @@
 
 class Cazador : public Humano
 {
+	friend class Ataque_cazador;
+    friend class Defensa_cazador;
+
 	public:
 		Cazador();
 		Cazador(Casilla *casilla,char nombre,string ID);
 		void mostrar();
 		void regenerar_energia();
 		~Cazador();
-		void defender();
-		void atacar(Casilla *casilla);
+		void defender(Tablero *tablero, int opcion);
+		void atacar(Coordenada posicion, Tablero *tablero, char arma);
+		bool se_puede_atacar(Coordenada posicion, Tablero *tablero, char arma);
 	protected:
 };
 

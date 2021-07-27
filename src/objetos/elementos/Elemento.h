@@ -9,6 +9,7 @@ class Elemento : public Objeto
 	public:
 		Elemento();
 		Elemento(Casilla *casilla,char nombre,int cantidad,string ID);
+		void asignar_cantidad(int cantidad);
 		/*
 		PRE:
 		POST: Devuelve la cantidad del elemento

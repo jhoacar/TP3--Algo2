@@ -4,16 +4,6 @@
 
 using namespace std;
 
-
-void imprimir_coordenada(Coordenada coord){
-    cout<<"("<<coord.obtener_fila()<<","<<coord.obtener_columna()<<")\t";
-}
-void imprimir_objeto(Objeto *objeto){
-    if(objeto!=nullptr)
-        objeto->mostrar();
-    cout<<endl;
-}
-
 Tablero::Tablero(){
 
     this->filas = 0;
@@ -158,11 +148,35 @@ Casilla* Tablero::obtener_casilla(Coordenada posicion){
     int fila = posicion.obtener_fila();
     int columna = posicion.obtener_columna();
 
-    if(es_valida({fila,columna}))
+    if(es_valida(posicion))
         return casillas[fila][columna];        
     else  
         return nullptr;
 }
+
+Objeto* Tablero::obtener_objeto(Coordenada posicion, char nombre_objeto){
+    
+    int fila = posicion.obtener_fila();
+    int columna = posicion.obtener_columna();
+
+    if(!es_valida(posicion) || casillas[fila][columna]==nullptr)
+        return nullptr;
+
+    return casillas[fila][columna]->obtener_objeto(nombre_objeto); 
+}
+
+Lista<Objeto*> Tablero::obtener_objetos( char nombre_objeto){
+    
+    Lista<Objeto*> objetos;
+    for(int i=0; i<filas; i++){
+        for(int j=0; j<columnas; j++){
+            if(hay_casilla({i,j}))
+                objetos+=casillas[i][j]->obtener_objetos(nombre_objeto);
+        }
+    }
+    return objetos;
+}
+
 
 void Tablero::asignar_casilla(Casilla *casilla){
 
@@ -188,7 +202,7 @@ Lista<Casilla*> Tablero::obtener_lista_casillas(Lista<Coordenada> posiciones){
     Lista<Casilla*> lista_casillas;
     while(posiciones.existe_siguiente()){
         Coordenada posicion = posiciones.siguiente_dato();
-        if(es_valida(posicion))
+        if(obtener_casilla(posicion)!= nullptr)
             lista_casillas.agregar(obtener_casilla(posicion));
     }
 

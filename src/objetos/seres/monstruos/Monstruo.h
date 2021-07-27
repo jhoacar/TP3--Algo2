@@ -2,6 +2,8 @@
 #define MONSTRUO_H
 
 #include "../Ser.h"
+#include "../../../ataque/Ataque.h"
+#include "../../../defensa/Defensa.h"
 
 class Monstruo : public Ser
 {
@@ -10,10 +12,12 @@ class Monstruo : public Ser
 		Monstruo(Casilla *casilla,char nombre,string ID);
 		~Monstruo();
 		void mostrar();
+		bool esta_oculto();
+		void ocultar();
+		void aparecer();
 	protected:
+		bool oculto;
+		
 };
-
-bool es_agua(Objeto* objeto_a_comprobar);
-bool es_estaca(Objeto* objeto_a_comprobar);
 
 #endif
