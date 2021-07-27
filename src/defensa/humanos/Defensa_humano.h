@@ -6,9 +6,13 @@
 
 class Defensa_humano:public Defensa{
 
+    protected:
+        int cantidad_agua;
+        int cantidad_cruces;
+
     public:
         Defensa_humano(Humano *personaje);
         ~Defensa_humano();
-        void defender();
+        void defender(Tablero *tablero);
 };
 #endif

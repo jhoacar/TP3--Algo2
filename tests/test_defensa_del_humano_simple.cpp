@@ -1,19 +1,16 @@
-#include "../src/funcionalidades/Includes_Objetos.h"
+#include "../src/archivo/Archivo_tablero.h"
+#include "../src/archivo/Archivo_objetos.h"
 #include <iostream>
 
-// Tests:
-// (1) No tiene agua bendita en su inventario, aumenta +3 su energía => Bien!
-// (2) Tiene agua bendita en su inventario, regenera toda su energía => Pendiente
-// (3) Tiene agua bendita en su inventario, aumenta +1 su armadura   => Pendiente
 
 int main(){
-    Coordenada posicion(10, 10);
-    Casilla* camino = new Camino(posicion);
-    Objeto* humano_simple = new Humano(camino, 'h', "id");
+    
+    Archivo_tablero datos_tablero(FICHERO_TABLERO);
+    Archivo_objetos datos_objeto(FICHERO_OBJETOS,datos_tablero.obtener_tablero());
 
-    cout << "Energía previa: " << ((Ser*)humano_simple)->devolver_energia() << endl;
-    ((Humano*)humano_simple)->defender();
-    cout << "Energía posterior: " << ((Ser*)humano_simple)->devolver_energia() << endl;
+    Tablero *tablero = datos_tablero.obtener_tablero();
+
+    tablero->mostrar_tablero();
 
     return 0;
 }

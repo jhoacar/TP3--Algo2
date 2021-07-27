@@ -1,14 +1,16 @@
 #include "Zombie.h"
+#include "../../../../defensa/monstruos/zombies/Defensa_zombie.h"
+#include "../../../../ataque/monstruos/zombies/Ataque_zombie.h"
 #include <iostream>
 using std::cout;
 using std::endl;
 
 Zombie::Zombie():Monstruo(){
-    this->escondido = false;
+    
 }
 Zombie::Zombie(Casilla *casilla,char nombre,string ID):Monstruo(casilla,nombre,ID)
 {
-    this->escondido = false;
+
 }
 void Zombie::mostrar(){
     cout<<"Objeto: Zombie"<<endl;
@@ -16,40 +18,28 @@ void Zombie::mostrar(){
 Zombie::~Zombie()
 {
 }
-
 void Zombie::regenerar_energia() {
-    this -> energia += 5;
+    this -> energia += REGENERAR_ENERGIA[ZOMBIE];
 }
 
 void Zombie::encuentro_con_elemento() {
-    Lista<Objeto*> objetos_casilla;
-    Lista<Objeto*> solo_agua;
-
-    objetos_casilla = this -> casilla ->obtener_objetos();
-    solo_agua = objetos_casilla.filtrar_datos(0, es_agua);
-
+    Lista<Objeto*> solo_agua = casilla->obtener_objetos().filtrar_datos(0, es_agua);
     this ->inventario += solo_agua;
-    cout << "Se agregaro con exito el agua al inventario" << endl;
-
     this -> casilla -> eliminar_objetos(solo_agua);
 }
 
-void Zombie::defender() {
-    this->energia -=3;
-    this->escondido = true;
-    this->vida +=20;
+void Zombie::defender(Tablero *tablero) {
+    if(defensa == nullptr)
+        defensa = new Defensa_zombie(this);
+    defensa->defender(tablero);
 }
-void Zombie::atacar(Casilla *casilla){
-    
-}
-
-void Zombie::resurgir() {
-    this->escondido = false;
+void Zombie::atacar(Coordenada posicion, Tablero *tablero,char arma){
+    if(se_puede_atacar(posicion,tablero))
+        ataque->atacar(posicion,tablero);
 }
 
-bool Zombie::esta_escondido() {
-    return this->escondido;
-}
-void Zombie::aparecer_zombie(){
-    this->escondido = false;
+bool Zombie::se_puede_atacar(Coordenada posicion, Tablero *tablero,char arma){
+    if(ataque==nullptr)
+        ataque = new Ataque_zombie(this);
+    return ataque->se_puede_atacar(posicion,tablero);
 }

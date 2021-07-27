@@ -35,8 +35,7 @@ TESTSDIR	:= tests
 TESTOBJDIRS	:= tests_obj
 NAME_TEST 	:= test_
 #Los headers seran aquellos ficheros que si se llegasen a modificar, se compilara de nuevo todo el proyecto para detectar fallas
-HEADERS		:= Nodo.h
-#Lista.h Nodo.h Constantes.h Floyd.h Grafo.h
+HEADERS		:= Lista.h Nodo.h Constantes.h Floyd.h Grafo.h
 TEST 		:= no_hay_test_todavia
 
 ###########################################################
@@ -48,13 +47,13 @@ SEARCH_FILES 	:= dir /s/b
 SEARCH_DIRS  	:= dir $(SRC) /ad /b /s
 DELETE_OBJ_DIR 	:= if exist $(OBJ) rmdir /Q /S $(OBJ)
 DELETE_TEST_DIR := if exist $(TESTOBJDIRS) rmdir /Q /S $(TESTOBJDIRS)
-EXECUTABLES		:= $(shell if exist *.exe dir *.exe /s/b )
+EXECUTABLES		:= $(shell if exist test_* dir /b test_* )
 ifneq ($(EXECUTABLES),)
 DELETE_TEST 	:= del /f $(EXECUTABLES)
 else
 DELETE_TEST		:= 
 endif
-DELETE_APP		:= 
+DELETE_APP		:= if exist $(APP)* del /f $(APP)*
 MKDIR 		 	:= mkdir
 ##########################################################
 else #LINUX ...
@@ -116,6 +115,7 @@ clean:
 	$(DELETE_TEST_DIR)
 	$(DELETE_TEST)
 	$(DELETE_APP)
+	$(info TODO HA SIDO BORRADO)
 ########################################################
 
 ########################################################

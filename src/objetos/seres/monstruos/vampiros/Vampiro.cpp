@@ -1,16 +1,16 @@
 #include "Vampiro.h"
+#include "../../../../defensa/monstruos/vampiros/Defensa_vampiro.h"
+#include "../../../../ataque/monstruos/vampiros/Ataque_vampiro.h"
 #include <iostream>
 
 using std::cout;
 using std::endl;
 
 Vampiro::Vampiro():Monstruo(){
-    this->oculto = false;
     this->armadura_aumentada = false;
 }
 Vampiro::Vampiro(Casilla *casilla,char nombre,string ID):Monstruo(casilla,nombre,ID)
 {
-    this->oculto = false;
     this->armadura_aumentada = false;
 }
 void Vampiro::mostrar(){
@@ -21,37 +21,29 @@ Vampiro::~Vampiro()
 }
 
 void Vampiro::regenerar_energia() {
-    this -> energia += 4;
+    this -> energia += REGENERAR_ENERGIA[VAMPIRO];
 }
 
 void Vampiro::encuentro_con_elemento() {
 
-    Lista<Objeto*> objetos_casilla;
-    Lista<Objeto*> solo_estaca;
-
-    objetos_casilla = this -> casilla ->obtener_objetos();
-    solo_estaca = objetos_casilla.filtrar_datos(0, es_estaca);
-
+    Lista<Objeto*> solo_estaca = casilla->obtener_objetos().filtrar_datos(0,es_estaca);
     this -> casilla -> eliminar_objetos(solo_estaca);
-    cout << "Se han destruido las estacas" << endl;
 }
 
-void Vampiro::defender() {
-    this->energia -=4;
-    this->ocultarse();
+void Vampiro::defender(Tablero *tablero) {
+    if(defensa == nullptr)
+        defensa = new Defensa_vampiro(this);
+    defensa->defender(tablero);
 }
-void Vampiro::atacar(Casilla *casilla){
+void Vampiro::atacar(Coordenada posicion, Tablero *tablero,char arma){   
+    if(se_puede_atacar(posicion,tablero)) 
+        ataque->atacar(posicion,tablero);
+}
+bool Vampiro::se_puede_atacar(Coordenada posicion, Tablero *tablero,char arma){   
+    if(ataque == nullptr)
+        ataque = new Ataque_vampiro(this);
+    return ataque->se_puede_atacar(posicion,tablero);
+}
 
-}
 
-void Vampiro::ocultarse() {
-    this->oculto = true;
-}
 
-void Vampiro::aparecer() {
-    this->oculto = false;
-}
-
-bool Vampiro::tiene_armadura_aumentada() {
-    return this->armadura_aumentada;
-}

@@ -3,23 +3,27 @@
 using std::cout;
 using std::endl;
 Monstruo::Monstruo():Ser(){
-
+    this->oculto=false;
 }
 Monstruo::Monstruo(Casilla *casilla,char nombre,string ID):Ser(casilla,nombre,ID)
 {
+    this->oculto=false;
+}
+Monstruo::~Monstruo()
+{
+
 }
 void Monstruo::mostrar(){
     cout<<"Objeto: Monstruo "<<endl;
 }
-Monstruo::~Monstruo()
-{
+bool Monstruo::esta_oculto(){
+    return oculto;
 }
-
-bool es_agua(Objeto* objeto_a_comprobar) {
-
-    return objeto_a_comprobar ->obtener_nombre() == NOMBRES_CHAR[AGUA];
+void Monstruo::ocultar(){
+    oculto = false;
 }
+void Monstruo::aparecer(){
+    oculto = true;
+} 
 
-bool es_estaca(Objeto* objeto_a_comprobar){
-    return objeto_a_comprobar->obtener_nombre() == NOMBRES_CHAR[ESTACA];
-}
+
