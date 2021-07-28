@@ -107,10 +107,7 @@ void Tablero::cargar_objeto(Objeto *objeto){
     if(objeto==nullptr)
         return;
 
-    Coordenada posicion(NO_ENCONTRADO,NO_ENCONTRADO);
-
-    if(objeto->obtener_casilla() != nullptr)
-        posicion = objeto->obtener_casilla()->obtener_posicion();
+    Coordenada posicion = objeto->obtener_posicion();
     
     int fila = posicion.obtener_fila();
     int columna = posicion.obtener_columna();

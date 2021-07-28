@@ -4,3 +4,7 @@
 Defensa::Defensa(Ser *personaje){
     this->personaje=personaje;
 }
+
+Defensa::~Defensa(){
+    
+}

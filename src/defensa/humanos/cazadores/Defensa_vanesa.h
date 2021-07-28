@@ -6,8 +6,6 @@
 class Defensa_vanesa:public Defensa_cazador{
 
     protected:
-        int cantidad_agua;
-        int cantidad_cruces;
         void curar_aliados(Tablero *tablero);
         void convertir_humano(Monstruo *personaje);
     public:

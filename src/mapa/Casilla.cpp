@@ -33,6 +33,14 @@ Casilla::Casilla(Coordenada pos):cuadrante(),posicion(pos),objetos(){
 }
 Casilla::~Casilla(){
     delete objeto_referencia;
+    objeto_referencia=nullptr;
+    objetos.reiniciar();
+    while(objetos.existe_siguiente()){
+        Objeto *objeto_borrar = objetos.siguiente_dato();
+        delete objeto_borrar;
+        objeto_borrar=nullptr;
+    }
+    objetos.reiniciar();
 }
 int Casilla::obtener_fila(){
     return this->posicion.obtener_fila();
@@ -50,10 +58,14 @@ void Casilla::asignar_cuadrante(string cuadrante){
     this->cuadrante=cuadrante;
 }
 void Casilla::agregar_objeto(Objeto *objeto){
-    this->objetos.agregar(objeto);
+    if(objeto!=nullptr && objeto->obtener_posicion()==this->posicion && !objetos.existe(objeto))
+        this->objetos.agregar(objeto);
 }
-void Casilla::agregar_objetos(Lista<Objeto*> objetos){
-    this->objetos+=objetos;
+void Casilla::agregar_objetos(Lista<Objeto*> objetos_cargar){
+    objetos_cargar.reiniciar();
+    while(objetos_cargar.existe_siguiente())
+        agregar_objeto(objetos_cargar.siguiente_dato());
+    objetos_cargar.reiniciar();
 }
 
 Lista<Objeto*> Casilla::obtener_objetos(char nombre_objeto){

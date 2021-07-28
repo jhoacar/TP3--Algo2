@@ -8,12 +8,10 @@ int extraer_cantidad(Objeto *objeto){
         return ((Elemento*)objeto)->obtener_cantidad();
 }
 bool tiene_monstruo(Casilla *casilla){
-    bool condicion;
     if(casilla == nullptr)
         return false;
     else
-        condicion = casilla->obtener_objetos().filtrar_datos(0,es_tipo_monstruo).obtener_tamano()!=0;
-    return condicion;
+        return casilla->obtener_objetos().filtrar_datos(0,es_tipo_monstruo).obtener_tamano()!=0;
 }
 
 bool tiene_humano(Casilla *casilla){
@@ -23,6 +21,9 @@ bool tiene_humano(Casilla *casilla){
         return casilla->obtener_objetos().filtrar_datos(0,es_tipo_humano).obtener_tamano()!=0;
 }
 
+Ataque::~Ataque(){
+    
+}
 Ataque::Ataque(Ser *personaje){
     this->personaje=personaje;
 }

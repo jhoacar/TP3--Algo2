@@ -48,7 +48,7 @@ void Humano::actualizar_inventario(){
     extraer_balas();
     extraer_escopeta();
     extraer_cruces();
-    extraer_escopeta();
+    extraer_estacas();
 }
 
 void Humano::defender(Tablero *tablero,int opcion){

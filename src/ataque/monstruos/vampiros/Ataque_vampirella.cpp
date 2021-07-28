@@ -7,17 +7,20 @@ void Ataque_vampirella::consumir_energia(){
     personaje->asignar_energia(personaje->obtener_energia()-GASTO_ENERGIA[VAMPIRELLA]);
 }
 
-bool Ataque_vampirella::puede_atacar(){
+bool Ataque_vampirella::tiene_energia(){
     return personaje->obtener_energia()>=GASTO_ENERGIA[VAMPIRELLA];
 }
 
-bool Ataque_vampirella::se_puede_atacar(Coordenada posicion, Tablero *tablero, char arma){
-    return  puede_atacar() &&
-            esta_en_rango_ataque(posicion) &&
-            tiene_humano(tablero->obtener_casilla(posicion));    
-}
-void Ataque_vampirella::atacar(Coordenada posicion, Tablero *tablero,char arma){
-    atacar_casilla(tablero->obtener_casilla(posicion));
-    consumir_energia();
-}
+void Ataque_vampirella::atacar_casilla(Casilla *casilla_ataque, char arma){
 
+    Humano *humano =  (Humano*)casilla_ataque->obtener_objetos().filtrar_datos(0,es_tipo_humano)[0];
+
+    if(hay_casos_especiales(humano))
+        return;
+
+    int vida_nueva = humano->obtener_vida() - (int)(((float)personaje->obtener_fuerza())*obtener_armadura(humano));
+
+    humano->asignar_vida(vida_nueva);
+
+    humano->asignar_armadura(humano->obtener_armadura()-1);
+}

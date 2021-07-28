@@ -10,19 +10,12 @@ class Ataque_cazador:public Ataque_humano{
 
     protected: 
         char arma;
-        void consumir_energia();
-        bool esta_en_rango_ataque(Coordenada posicion,char arma);
-        void atacar_casilla(Casilla *casilla_atacar,char arma);
-        bool puede_atacar();
-        bool tiene_arma(const char arma);
-        void consumir_arma(const char arma);
-        void consumir_agua();
-        void consumir_toda_agua();
-        float obtener_ataque(char nombre_monstruo,char arma);
+        virtual void consumir_energia();
+        virtual bool esta_en_rango_ataque(Coordenada posicion,char arma);
+        virtual bool tiene_energia();
+        virtual float obtener_ataque(char nombre_mostruo,char arma=NOMBRES_CHAR[ESCOPETA]);
     public:
         Ataque_cazador(Cazador *personaje);
-        void atacar(Coordenada posicion, Tablero *tablero, char arma);
-        bool se_puede_atacar(Coordenada posicion,Tablero *tablero,char arma);
 };
 
 #endif

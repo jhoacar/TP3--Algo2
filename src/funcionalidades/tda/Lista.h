@@ -77,7 +77,7 @@ class Lista
     //Post: Agrega al final de la lista el dato por parametro
     void agregar(Dato data);
 
-    //Pre: Un indice a eliminar de la lista
+    //Pre: Un indice a eliminar de la lista (sin liberar memoria)
     //Post: Devuelve verdadero si fue eliminado de la lista, falso caso contrario
     bool borrar(const int index);
     
@@ -354,7 +354,7 @@ bool Lista<Dato>::borrar(const int index){
   else //Se deja de referenciar 
     anterior->siguiente = borrar_nodo->siguiente;
 
-  delete borrar_nodo;
+  delete borrar_nodo; //Esto debe hacerse cuando se elimine toda la lista
   
   tamano--;
   return true;
@@ -507,7 +507,6 @@ void Lista<Dato>::limpiar(int (*compare)(const Dato a, const Dato b)){
   *this=nueva;
 }
 
-//Complejidad O(index_a + index_b)
 template <class Dato>
 void Lista<Dato>::swap(const int index_a, const int index_b){
   

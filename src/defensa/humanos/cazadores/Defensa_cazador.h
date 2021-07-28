@@ -7,8 +7,6 @@
 class Defensa_cazador:public Defensa_humano{
 
     protected:
-        int cantidad_agua;
-        int cantidad_cruces;
         void aumentar_vida_aliados(Tablero *tablero ,int vida);
 
     public:

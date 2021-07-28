@@ -7,16 +7,13 @@
 
 class Ataque_nosferatu:public Ataque_vampiro{
     
-    void consumir_energia();
+    virtual void consumir_energia();
     void convertir_vampiro(Humano *humano);
-    bool puede_atacar();
-    bool esta_en_rango_ataque(Coordenada posicion,char arma=NO_ARMA);
-    void atacar_casilla(Casilla *casilla_ataque);
+    virtual bool tiene_energia();
+    virtual bool esta_en_rango_ataque(Coordenada posicion,char arma=NO_ARMA);
+    virtual void atacar_casilla(Casilla *casilla_ataque, char arma=NO_ARMA);
     public:
-        Ataque_nosferatu(Nosferatu *personaje);
-        void atacar(Coordenada posicion, Tablero *tablero, char arma=NO_ARMA);
-        bool se_puede_atacar(Coordenada posicion, Tablero *tablero, char arma=NO_ARMA);
-        
+        Ataque_nosferatu(Nosferatu *personaje);       
 };
 
 #endif

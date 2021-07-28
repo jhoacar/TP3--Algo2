@@ -122,6 +122,16 @@ Ser::~Ser(){
     if(defensa!=nullptr)
         delete defensa;
     delete objeto_referencia;
+    ataque=nullptr;
+    defensa=nullptr;
+    objeto_referencia=nullptr;
+    inventario.reiniciar();
+    while(inventario.existe_siguiente()){
+        Objeto *elemento_borrar =  this->inventario.siguiente_dato();
+        delete elemento_borrar;
+        elemento_borrar = nullptr;
+    }
+    inventario.reiniciar();
 }
 
 int Ser::obtener_armadura() {

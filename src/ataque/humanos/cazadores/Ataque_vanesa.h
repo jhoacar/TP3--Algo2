@@ -7,14 +7,11 @@
 
 class Ataque_vanesa:public Ataque_cazador{
 
-    void consumir_energia();
-    void atacar_casilla(Casilla *casilla_atacar,char arma);
-    bool puede_atacar();
-    float obtener_ataque(char nombre_monstruo,char arma);
+    virtual void consumir_energia();
+    virtual bool tiene_energia();
+    virtual float obtener_ataque(char nombre_monstruo,char arma);
     public:
         Ataque_vanesa(Vanessa *personaje);
-        void atacar(Coordenada posicion, Tablero *tablero, char arma);
-        bool se_puede_atacar(Coordenada posicion, Tablero *tablero, char arma);
 };
 
 #endif
