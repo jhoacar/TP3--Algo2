@@ -9,6 +9,8 @@
 
 class Ataque_zombie:public Ataque_monstruo{
 
+        //PRE: recibe el humano a convertir
+        //POST: le cambia el nombre y su ataque y defensa
         void convertir_zombie(Humano *humano);
         void consumir_energia();
         bool tiene_energia();
