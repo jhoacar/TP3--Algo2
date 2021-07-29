@@ -294,11 +294,11 @@ void Tablero::mostrar_tablero(){
             if(hay_casilla({i,j})){
                 color(casillas[i][j]->obtener_color());
                 color(NEGRO);
-                cout<<" "<<casillas[i][j]->obtener_tipo()<<" ";
+                cout<<" ";
                 color(RESET);
             }
             else
-            cout<<" * ";
+            cout<<"*";
         }
         color(RESET);
         cout<<endl;

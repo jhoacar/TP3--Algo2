@@ -73,6 +73,7 @@ bool es_elemento(char nombre_objeto){
             es_escopeta(nombre_objeto) ||
             es_estaca(nombre_objeto);
 }
+
 bool es_tipo_humano(char nombre_personaje){
 
     return  nombre_personaje==NOMBRES_CHAR[HUMANO] ||

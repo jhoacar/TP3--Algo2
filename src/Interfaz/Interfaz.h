@@ -23,6 +23,7 @@ const int OPCION_6 = 6;
 const int OPCION_7 = 7;
 const int ESPACIO = 3;
 
+bool tiene_vida(Objeto* objeto);
 
 class Interfaz : public Movimientos{
 private:
@@ -39,16 +40,16 @@ public:
     void busqueda_objeto(Tablero* mapa);
     void mostrar_tablero(Tablero* mapa);
     void guerra(Tablero* mapa);
-    bool turno_jugador_1(Tablero* mapa, string bando);
-    bool turno_jugador_2();
+    bool turno_jugador(Tablero* mapa, string bando);
     void eleccion_movimiento_objeto(int eleccion, Objeto* personaje, Tablero* mapa);
     void ataque_humano(Objeto* personaje, Tablero* mapa);
     void ataque_mounstruo(Objeto* personaje, Tablero* mapa);
     void defensa_humano(Objeto* personaje, Tablero* mapa);
     void defensa_mounstruo(Objeto* personaje, Tablero* mapa);
     int eleccion_defensa_humano();
+    int eleccion_defensa_cazador();
     int eleccion_arma();
-    Coordenada eleccion_coordenada_ataque();
+    Coordenada eleccion_coordenada();
     int movimiento();
     void cantidad_integrantes(Lista<Objeto*> lista_humanos, Lista<Objeto*> lista_mounstruos);
     void agregar_objeto(Tablero* mapa, Lista<Objeto*> lista_humanos, Lista<Objeto*> lista_mounstruos);
@@ -66,7 +67,10 @@ public:
     Lista<Objeto*> extraer_mounstruos(Lista<Objeto*> lista_objetos);
     void asignar_bando(Jugador &jugador_1, Jugador &jugador_2);
     void eleccion_movimiento();
+    bool hay_personajes_con_vida(Lista<Objeto*> personajes);
     void jugar();
+    void mover(Objeto* personaje, Tablero *mapa);
+    void simulacion_camino_minimo(Coordenada destino,Objeto* personaje, Tablero* mapa);
 };
 
 

@@ -12,6 +12,8 @@ string convertir_nombre(char nombre_objeto);
 
 char obtener_nombre(string ID);
 
+
+
 class Objeto{
     protected:
         char nombre;
