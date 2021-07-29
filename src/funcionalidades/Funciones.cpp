@@ -6,6 +6,10 @@
 #include <stdio.h>
 #include <unistd.h>
 /* reads from keypress, doesn't echo */
+void demorar(int segundos){
+	sleep((unsigned int)segundos);
+}
+unsigned int sleep(unsigned int seconds);
 int getch(void)
 {
 	struct termios oldattr, newattr;
@@ -22,16 +26,29 @@ void pausa(){
 	cout<<"Pulse una tecla para continuar...";
 	cin.get();
 }
+void cursor(bool aparecer){
+	cout << (aparecer ? "\033[?25h" : "\033[?25l");
+}
 #endif // __linux__
 
 #ifdef __MINGW32__
 #define LIMPIAR "CLS"
 #include "conio.h"
+#include "windows.h"
 void pausa(){
 	system("pause");
 }
+void demorar(int segundos){
+	Sleep((unsigned long)(segundos*1000));
+}
+void cursor(bool aparecer) {
+    static const HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO cci;
+    GetConsoleCursorInfo(handle, &cci);
+    cci.bVisible = aparecer; // show/hide cursor
+    SetConsoleCursorInfo(handle, &cci);
+}
 #endif // __MINGW32__
-
 
 char tecla_pulsada(void){
 	return (char)getch();

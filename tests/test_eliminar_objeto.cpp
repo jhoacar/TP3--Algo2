@@ -81,11 +81,11 @@ int main(){
 
     Casilla *anterior = lago;
     
+    cursor(false);
 
     while(camino_minimo.existe_siguiente()){
 
-        gotoxy(1,5);
-        Sleep((unsigned long)1000);
+        demorar(1);
         
         gotoxy(humano_prueba->obtener_posicion()+incremento);
         color(anterior->obtener_color());
@@ -105,6 +105,8 @@ int main(){
         anterior = casilla_nueva; 
         
     }
+
+    cursor(true);
 
     delete tablero;
 

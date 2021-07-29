@@ -12,6 +12,9 @@
 
 using namespace std;
 
+void demorar(int segundos);
+
+void cursor(bool aparecer);
 
 //Post: Devuelve el caracter oprimido sin imprimirlo por consola
 char tecla_pulsada(void);
