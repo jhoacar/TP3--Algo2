@@ -11,8 +11,8 @@ template <class Dato>
 class Grafo {
 
 private:
-    
-    int ** matriz_adyacencia;
+
+    int **matriz_adyacencia;
     Lista<Dato>  * vertices;
     Floyd<Dato> * floyd;
 
@@ -130,8 +130,6 @@ Lista<Dato> Grafo<Dato>::obtener_camino_minimo(Dato origen, Dato destino, int (*
     int posicion_destino = vertices->buscar_dato(0,destino,compare);
 
     Lista<Dato> camino;
-
-    camino.agregar(origen);
 
     if(posicion_origen!=NO_ENCONTRADO && posicion_destino!=NO_ENCONTRADO)
         camino+=camino_minimo(posicion_origen, posicion_destino);

@@ -1,19 +1,43 @@
 #include "../src/funcionalidades/Includes_Objetos.h"
 #include <iostream>
+#include <windows.h>
+
+void imprimir_coordenada(Coordenada c){
+    cout<<"("<<c.obtener_fila()<<","<<c.obtener_columna()<<")";
+}
+
+void imprimir_casilla(Casilla *casilla){
+    if(casilla!=nullptr)
+        imprimir_coordenada(casilla->obtener_posicion());
+}
 
 int main(){
+
+    limpiar_pantalla();
     
     Casilla *lago = new Lago({0,0});
     Casilla *camino = new Camino({0,1});
     Casilla *volcan = new Volcan({1,0});
     Casilla *montana = new Montana({1,1});
+    Casilla *lago_1 = new Lago({0,2});
+    Casilla *camino_1 = new Camino({2,0});
+    Casilla *volcan_1 = new Volcan({2,2});
+    Casilla *montana_1 = new Montana({2,1});
+    Casilla *montana_2 = new Montana({1,2});
+    
 
-    Tablero *tablero = new Tablero(2,2);
+    Tablero *tablero = new Tablero(3,3);
 
     tablero->asignar_casilla(lago);
     tablero->asignar_casilla(camino);
     tablero->asignar_casilla(volcan);
     tablero->asignar_casilla(montana);
+    tablero->asignar_casilla(lago_1);
+    tablero->asignar_casilla(camino_1);
+    tablero->asignar_casilla(volcan_1);
+    tablero->asignar_casilla(montana_1);
+    tablero->asignar_casilla(montana_2);
+
 
     tablero->mostrar_tablero();
 
@@ -45,8 +69,42 @@ int main(){
     vampiro_prueba ->encuentro_con_elemento();
 
     
-    humano_prueba->defender(tablero);
+    //humano_prueba->defender(tablero);
         
+
+    Lista<Casilla*> camino_minimo = tablero->obtener_camino_minimo({0,0},{2,2},TIPO_HUMANO);
+
+    Coordenada incremento = {1,1};
+
+    gotoxy(humano_prueba->obtener_posicion()+incremento);
+    cout<<humano_prueba->obtener_nombre();
+
+    Casilla *anterior = lago;
+    
+
+    while(camino_minimo.existe_siguiente()){
+
+        gotoxy(1,5);
+        Sleep((unsigned long)1000);
+        
+        gotoxy(humano_prueba->obtener_posicion()+incremento);
+        color(anterior->obtener_color());
+        cout<<" ";
+        color(RESET);
+
+
+        anterior->eliminar_objeto(humano_prueba->obtener_nombre()); 
+        Casilla *casilla_nueva = camino_minimo.siguiente_dato();
+        humano_prueba->asignar_casilla( casilla_nueva );
+        humano_prueba->encuentro_con_elemento();
+        casilla_nueva->agregar_objeto(humano_prueba);
+
+        gotoxy(humano_prueba->obtener_posicion()+incremento);
+        cout<<humano_prueba->obtener_nombre();
+
+        anterior = casilla_nueva; 
+        
+    }
 
     delete tablero;
 

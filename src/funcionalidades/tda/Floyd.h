@@ -10,8 +10,8 @@ template <class Dato>
 class Floyd {
 private:
 
-    int ** matriz_costos;
-    int ** matriz_caminos;
+    int **matriz_costos; //Los pesos de cada arista
+    int **matriz_caminos; //Los indices de los vertices del camino a seguir
     int cantidad_vertices;
     Lista<Dato> *vertices;
 
@@ -79,6 +79,8 @@ int ** Floyd<Dato>::crear_matriz_caminos(){
             caminos[i][j] = j;
         }
     }
+
+
     return caminos;
 }
 
