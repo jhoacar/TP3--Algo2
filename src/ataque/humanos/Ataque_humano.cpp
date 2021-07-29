@@ -10,6 +10,8 @@ bool Ataque_humano::tiene_arma(const char arma){
                 ((Humano*)personaje)->cantidad_balas>=MINIMO_BALAS;
     else if(arma == NOMBRES_CHAR[AGUA])
         return ((Humano*)personaje)->cantidad_agua>0;
+    else if(arma == NOMBRES_CHAR[ESTACA])
+        return ((Humano*)personaje)->cantidad_estacas>0;
     else
         return false;
 }
