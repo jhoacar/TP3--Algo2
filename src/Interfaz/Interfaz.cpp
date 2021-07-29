@@ -554,8 +554,10 @@ void Interfaz::defensa_humano(Objeto *personaje, Tablero *mapa){
             ((Cazador*)personaje)->defender(mapa, opcion_cazador);
         }
     }
-    else
+    else{
         ((Vanessa*)personaje)->defender(mapa);
+    }
+    cout<<"Se defendio con exito la batalla"<<endl;
 }
 
 void Interfaz::defensa_mounstruo(Objeto *personaje, Tablero *mapa) {
@@ -579,7 +581,6 @@ void Interfaz::eleccion_movimiento_objeto(int eleccion, Objeto* personaje, Table
             else
                 this ->defensa_mounstruo(personaje, mapa);
             break;
-
         case OPCION_2:
             if (es_tipo_humano(personaje))
                 this ->ataque_humano(personaje, mapa);
@@ -677,7 +678,7 @@ void Interfaz::simulacion_camino_minimo(Coordenada destino,Objeto* personaje, Ta
 bool Interfaz::turno_jugador(Tablero* mapa, string bando) {
     int eleccion = 0;
 
-    if (bando == "humanos"){
+    if (bando == "Humanos"){
 
         Lista<Objeto*> humanos;
         humanos = mapa ->obtener_objetos().filtrar_datos(0, es_tipo_humano);
@@ -723,6 +724,7 @@ void Interfaz::guerra(Tablero* mapa) {
 
     int comienza = obtener_numero_aleatorio(1, 2);
 
+    
     if (comienza == 1){
         while(!juego_finalizado){
             this -> turnos++;
@@ -738,10 +740,10 @@ void Interfaz::guerra(Tablero* mapa) {
         while(!juego_finalizado){
             this -> turnos++;
             if (turnos%2 == 0)
-                juego_finalizado = this -> turno_jugador(mapa, jugador_1.obtener_bando());
+                juego_finalizado = this -> turno_jugador(mapa, jugador_2.obtener_bando());
             else{
                 //primero
-                juego_finalizado = this -> turno_jugador(mapa, jugador_2.obtener_bando());
+                juego_finalizado = this -> turno_jugador(mapa, jugador_1.obtener_bando());
             }
         }
     }

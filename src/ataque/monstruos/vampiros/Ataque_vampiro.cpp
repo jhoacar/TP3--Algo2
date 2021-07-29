@@ -34,7 +34,7 @@ void Ataque_vampiro::atacar_casilla(Casilla *casilla_ataque, char arma){
     if(hay_casos_especiales(humano))
         return;
 
-    int vida_nueva = humano->obtener_vida() - (int)(((float)personaje->obtener_fuerza())*obtener_armadura(humano));
+    int vida_nueva = humano->obtener_fuerza() - (int)(((float)personaje->obtener_fuerza())*obtener_armadura(humano));
 
     humano->asignar_vida(vida_nueva);
 }

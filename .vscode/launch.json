@@ -8,7 +8,7 @@
             "name": "(gdb) Iniciar",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}\\${fileBasenameNoExtension}.exe",
+            "program": "${workspaceFolder}\\Nosferatu_Batalla_Final.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

@@ -113,13 +113,13 @@ Dato& AVL<Llave,Dato>::buscar(Llave llave,bool &se_agrego, int (*comparar_llaves
     else if(comparar_llaves(llave,*(anterior->llave))==PEQUENO){
         anterior->izquierdo = new Vertice<Llave,Dato>(llave,anterior);
         se_agrego=true;
-        balancear(anterior);
+        //balancear(anterior);
         return *(anterior->izquierdo->dato);
     }
     else{
         anterior->derecho = new Vertice<Llave,Dato>(llave,anterior);
         se_agrego=true;
-        balancear(anterior);
+        //balancear(anterior);
         return *(anterior->derecho->dato);
     }
 }

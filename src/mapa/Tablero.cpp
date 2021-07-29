@@ -294,7 +294,7 @@ void Tablero::mostrar_tablero(){
             if(hay_casilla({i,j})){
                 color(casillas[i][j]->obtener_color());
                 color(NEGRO);
-                cout<<" ";
+                cout<<"   ";
                 color(RESET);
             }
             else

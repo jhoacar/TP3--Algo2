@@ -33,6 +33,7 @@ int Vanessa::se_puede_atacar(Coordenada posicion, Tablero *tablero,char arma){
         ataque = new Ataque_vanesa(this);
     return ataque->se_puede_atacar(posicion,tablero,arma);
 }
+
 void Vanessa::regenerar_energia() {
     this -> energia += REGENERAR_ENERGIA[VANESA];
 }
