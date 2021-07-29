@@ -233,7 +233,7 @@ void Tablero::cargar_grafo(int tipo_personaje){
 
 Lista<Casilla*> Tablero::obtener_camino_minimo(Coordenada origen, Coordenada destino, int tipo_personaje){
 
-    cargar_grafo(tipo_personaje);
+    cargar_grafo(tipo_personaje); //Carga todas las aristas con los pesos correspondientes al tipo de personaje
     Lista<Coordenada> camino_minimo = grafo.obtener_camino_minimo(origen,destino);
     return obtener_lista_casillas(camino_minimo);
 }
@@ -271,7 +271,8 @@ void Tablero::mostrar_tablero(){
             if(hay_casilla({i,j})){
                 color(casillas[i][j]->obtener_color());
                 color(NEGRO);
-                cout<<" "<<casillas[i][j]->obtener_tipo()<<" ";
+                cout<<" ";
+                //casillas[i][j]->obtener_tipo()<<" ";
                 color(RESET);
             }
             else
